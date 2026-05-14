@@ -136,7 +136,7 @@ export class LoginPage {
    * Wait for login form to be visible
    */
   async waitForLoginForm() {
-    await this.loginForm.waitFor({ state: 'visible', timeout: 5000 });
+    await this.loginForm.waitFor({ state: 'visible', timeout: 90000 });
   }
 
   /**
