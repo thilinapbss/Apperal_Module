@@ -1,0 +1,117 @@
+
+> apperal_module@1.0.0 test
+> playwright test
+
+◇ injected env (2) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+
+Running 54 tests using 1 worker
+
+[1A[2K◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+
+[1A[2K[1/54] [chromium] › e2e\apparel_regression_testing.spec.ts:18:7 › Login Page Tests › 01. Setup: Create persistent browser context
+[1A[2K[2/54] [chromium] › e2e\apparel_regression_testing.spec.ts:26:7 › Login Page Tests › 02. Should display error message on invalid credentials
+[1A[2K[3/54] [chromium] › e2e\apparel_regression_testing.spec.ts:40:7 › Login Page Tests › 03. Should successfully login with valid credentials and save auth
+[1A[2K[4/54] [chromium] › e2e\apparel_regression_testing.spec.ts:76:7 › User Work Flow › 05. Setup: Navigate to home page
+[1A[2K[5/54] [chromium] › e2e\apparel_regression_testing.spec.ts:82:7 › User Work Flow › 06. Should display all tile group headers
+[1A[2K[6/54] [chromium] › e2e\apparel_regression_testing.spec.ts:89:7 › User Work Flow › 07. Should display Merchandising Process tiles
+[1A[2K[7/54] [chromium] › e2e\apparel_regression_testing.spec.ts:100:7 › User Work Flow › 08. Should display Production Process tiles
+[1A[2K[8/54] [chromium] › e2e\apparel_regression_testing.spec.ts:110:7 › User Work Flow › 09. Should display Other tiles
+[1A[2K[9/54] [chromium] › e2e\apparel_regression_testing.spec.ts:119:7 › User Work Flow › 10. Should display Masters & Sub Masters tiles
+[1A[2K[10/54] [chromium] › e2e\apparel_regression_testing.spec.ts:127:7 › User Work Flow › 11. Click on Buyer PO Upload tile
+[1A[2K[11/54] [chromium] › e2e\apparel_regression_testing.spec.ts:135:7 › User Work Flow › 12. Verify Buyer PO Upload page loaded
+[1A[2K[12/54] [chromium] › e2e\apparel_regression_testing.spec.ts:139:7 › User Work Flow › 13. Click Create button
+[1A[2K[13/54] [chromium] › e2e\apparel_regression_testing.spec.ts:145:7 › User Work Flow › 14. Verify Buyer PO Upload form loaded
+[1A[2K[14/54] [chromium] › e2e\apparel_regression_testing.spec.ts:150:7 › User Work Flow › 15. Verify form fields are visible
+[1A[2K[15/54] [chromium] › e2e\apparel_regression_testing.spec.ts:155:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:155:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
+Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+
+[1A[2KAttempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+
+[1A[2KNo file input found, trying file chooser method
+
+[1A[2KClicked ExcelUpload button
+
+[1A[2KFile chooser event fired
+
+[1A[2KFile uploaded via file chooser
+
+[1A[2K[16/54] [chromium] › e2e\apparel_regression_testing.spec.ts:173:7 › User Work Flow › 18. Verify file upload success
+[1A[2K[17/54] [chromium] › e2e\apparel_regression_testing.spec.ts:179:7 › User Work Flow › 19. Read Excel file and verify data loaded
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:179:7 › User Work Flow › 19. Read Excel file and verify data loaded
+Extracted Excel Data: {
+  buyer: [32m'QA 2'[39m,
+  styleNo: [32m'QA0001'[39m,
+  styleDescription: [32m'QA2'[39m,
+  styleColor: [32m'QA2'[39m,
+  season: [32m'SS25 PH02'[39m
+}
+
+[1A[2KExcel Data: {
+  buyer: [32m'QA 2'[39m,
+  styleNo: [32m'QA0001'[39m,
+  styleDescription: [32m'QA2'[39m,
+  styleColor: [32m'QA2'[39m,
+  season: [32m'SS25 PH02'[39m
+}
+
+[1A[2KForm Values: {
+  buyer: [32m''[39m,
+  styleNo: [32m'QA0001'[39m,
+  styleDescription: [32m'QA2'[39m,
+  styleColor: [32m'QA2'[39m,
+  season: [32m'SS25 PH02'[39m
+}
+
+[1A[2K[18/54] [chromium] › e2e\apparel_regression_testing.spec.ts:227:7 › User Work Flow › 20. Cleanup: Close browser and context
+[1A[2K[19/54] [firefox] › e2e\apparel_regression_testing.spec.ts:18:7 › Login Page Tests › 01. Setup: Create persistent browser context
+[1A[2K  1) [firefox] › e2e\apparel_regression_testing.spec.ts:18:7 › Login Page Tests › 01. Setup: Create persistent browser context 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+
+
+[1A[2K[20/54] [firefox] › e2e\apparel_regression_testing.spec.ts:26:7 › Login Page Tests › 02. Should display error message on invalid credentials
+[1A[2K[21/54] [firefox] › e2e\apparel_regression_testing.spec.ts:40:7 › Login Page Tests › 03. Should successfully login with valid credentials and save auth
+[1A[2K[22/54] [firefox] › e2e\apparel_regression_testing.spec.ts:76:7 › User Work Flow › 05. Setup: Navigate to home page
+[1A[2K[23/54] [firefox] › e2e\apparel_regression_testing.spec.ts:82:7 › User Work Flow › 06. Should display all tile group headers
+[1A[2K[24/54] [firefox] › e2e\apparel_regression_testing.spec.ts:89:7 › User Work Flow › 07. Should display Merchandising Process tiles
+[1A[2K[25/54] [firefox] › e2e\apparel_regression_testing.spec.ts:100:7 › User Work Flow › 08. Should display Production Process tiles
+[1A[2K[26/54] [firefox] › e2e\apparel_regression_testing.spec.ts:110:7 › User Work Flow › 09. Should display Other tiles
+[1A[2K[27/54] [firefox] › e2e\apparel_regression_testing.spec.ts:119:7 › User Work Flow › 10. Should display Masters & Sub Masters tiles
+[1A[2K[28/54] [firefox] › e2e\apparel_regression_testing.spec.ts:127:7 › User Work Flow › 11. Click on Buyer PO Upload tile
+[1A[2K[29/54] [firefox] › e2e\apparel_regression_testing.spec.ts:135:7 › User Work Flow › 12. Verify Buyer PO Upload page loaded
+[1A[2K[30/54] [firefox] › e2e\apparel_regression_testing.spec.ts:139:7 › User Work Flow › 13. Click Create button
+[1A[2K[31/54] [firefox] › e2e\apparel_regression_testing.spec.ts:145:7 › User Work Flow › 14. Verify Buyer PO Upload form loaded
+[1A[2K[32/54] [firefox] › e2e\apparel_regression_testing.spec.ts:150:7 › User Work Flow › 15. Verify form fields are visible
+[1A[2K[33/54] [firefox] › e2e\apparel_regression_testing.spec.ts:155:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
+[1A[2K[34/54] [firefox] › e2e\apparel_regression_testing.spec.ts:173:7 › User Work Flow › 18. Verify file upload success
+[1A[2K[35/54] [firefox] › e2e\apparel_regression_testing.spec.ts:179:7 › User Work Flow › 19. Read Excel file and verify data loaded
+[1A[2K[36/54] [firefox] › e2e\apparel_regression_testing.spec.ts:227:7 › User Work Flow › 20. Cleanup: Close browser and context
+[1A[2K[37/54] [webkit] › e2e\apparel_regression_testing.spec.ts:18:7 › Login Page Tests › 01. Setup: Create persistent browser context
+[1A[2K  2) [webkit] › e2e\apparel_regression_testing.spec.ts:18:7 › Login Page Tests › 01. Setup: Create persistent browser context 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+
+
+[1A[2K[38/54] [webkit] › e2e\apparel_regression_testing.spec.ts:26:7 › Login Page Tests › 02. Should display error message on invalid credentials
+[1A[2K[39/54] [webkit] › e2e\apparel_regression_testing.spec.ts:40:7 › Login Page Tests › 03. Should successfully login with valid credentials and save auth
+[1A[2K[40/54] [webkit] › e2e\apparel_regression_testing.spec.ts:76:7 › User Work Flow › 05. Setup: Navigate to home page
+[1A[2K[41/54] [webkit] › e2e\apparel_regression_testing.spec.ts:82:7 › User Work Flow › 06. Should display all tile group headers
+[1A[2K[42/54] [webkit] › e2e\apparel_regression_testing.spec.ts:89:7 › User Work Flow › 07. Should display Merchandising Process tiles
+[1A[2K[43/54] [webkit] › e2e\apparel_regression_testing.spec.ts:100:7 › User Work Flow › 08. Should display Production Process tiles
+[1A[2K[44/54] [webkit] › e2e\apparel_regression_testing.spec.ts:110:7 › User Work Flow › 09. Should display Other tiles
+[1A[2K[45/54] [webkit] › e2e\apparel_regression_testing.spec.ts:119:7 › User Work Flow › 10. Should display Masters & Sub Masters tiles
+[1A[2K[46/54] [webkit] › e2e\apparel_regression_testing.spec.ts:127:7 › User Work Flow › 11. Click on Buyer PO Upload tile
+[1A[2K[47/54] [webkit] › e2e\apparel_regression_testing.spec.ts:135:7 › User Work Flow › 12. Verify Buyer PO Upload page loaded
+[1A[2K[48/54] [webkit] › e2e\apparel_regression_testing.spec.ts:139:7 › User Work Flow › 13. Click Create button
+[1A[2K[49/54] [webkit] › e2e\apparel_regression_testing.spec.ts:145:7 › User Work Flow › 14. Verify Buyer PO Upload form loaded
+[1A[2K[50/54] [webkit] › e2e\apparel_regression_testing.spec.ts:150:7 › User Work Flow › 15. Verify form fields are visible
+[1A[2K[51/54] [webkit] › e2e\apparel_regression_testing.spec.ts:155:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
+[1A[2K[52/54] [webkit] › e2e\apparel_regression_testing.spec.ts:173:7 › User Work Flow › 18. Verify file upload success
+[1A[2K[53/54] [webkit] › e2e\apparel_regression_testing.spec.ts:179:7 › User Work Flow › 19. Read Excel file and verify data loaded
+[1A[2K[54/54] [webkit] › e2e\apparel_regression_testing.spec.ts:227:7 › User Work Flow › 20. Cleanup: Close browser and context
+[1A[2K  2 failed
+    [firefox] › e2e\apparel_regression_testing.spec.ts:18:7 › Login Page Tests › 01. Setup: Create persistent browser context 
+    [webkit] › e2e\apparel_regression_testing.spec.ts:18:7 › Login Page Tests › 01. Setup: Create persistent browser context 
+  34 did not run
+  18 passed (1.4m)
