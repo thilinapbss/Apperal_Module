@@ -1,0 +1,70 @@
+{
+  "testScenarios": [
+    {
+      "excelFile": "PO Summary format1.xlsx",
+      "expectedData": {
+        "buyer": "QA 2",
+        "styleNo": "QA0001",
+        "styleDescription": "QA2",
+        "styleColor": "QA2",
+        "season": "SS25 PH02"
+      },
+      "poDate": {
+        "example": "1 May 2026"
+      },
+      "kimbleNo": {
+        "example": "KIM-001-QA2"
+      },
+      "remark": {
+        "example": "QA Testing - Test Order"
+      },
+      "poSizeBreakdown": {
+        "expectedData": {
+          "poNo": "QA2-T001",
+          "sizeS": 100,
+          "sizeM": 200,
+          "sizeL": 300,
+          "totalQty": 600
+        }
+      },
+      "lineItems": [
+        {
+          "poNo": "QA2-T001",
+          "countryCode": "UK",
+          "partNo": "S",
+          "qty": "600.00",
+          "deliveryDate": "20 May 2026",
+          "pcdDate": "25 May 2026",
+          "fobDate": "30 May 2026",
+          "deliveryNo": "DLV-0515-1709-001"
+        },
+        {
+          "poNo": "QA2-T001",
+          "countryCode": "UK",
+          "partNo": "L",
+          "qty": "500.00",
+          "deliveryDate": "20 May 2026",
+          "pcdDate": "25 May 2026",
+          "fobDate": "30 May 2026",
+          "deliveryNo": "DLV-0515-1709-002"
+        },
+        {
+          "poNo": "QA2-T001",
+          "countryCode": "UK",
+          "partNo": "M",
+          "qty": "500.00",
+          "deliveryDate": "20 May 2026",
+          "pcdDate": "25 May 2026",
+          "fobDate": "30 May 2026",
+          "deliveryNo": "DLV-0515-1709-003"
+        }
+      ]
+    }
+  ],
+  "suppliers": [
+    {
+      "Description": "PRIMARK",
+      "Value": "SUP-001"
+    }
+  ]
+}

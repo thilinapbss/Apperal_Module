@@ -2,110 +2,268 @@
 > apperal_module@1.0.0 test
 > playwright test
 
-◇ injected env (2) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+◇ injected env (2) from .env // tip: ⌁ auth for agents [www.vestauth.com]
 
-Running 54 tests using 1 worker
+Running 60 tests using 1 worker
 
-[1A[2K◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
-
-[1A[2K[1/54] [chromium] › e2e\apparel_regression_testing.spec.ts:18:7 › Login Page Tests › 01. Setup: Create persistent browser context
-[1A[2K[2/54] [chromium] › e2e\apparel_regression_testing.spec.ts:26:7 › Login Page Tests › 02. Should display error message on invalid credentials
-[1A[2K[3/54] [chromium] › e2e\apparel_regression_testing.spec.ts:40:7 › Login Page Tests › 03. Should successfully login with valid credentials and save auth
-[1A[2K[4/54] [chromium] › e2e\apparel_regression_testing.spec.ts:76:7 › User Work Flow › 05. Setup: Navigate to home page
-[1A[2K[5/54] [chromium] › e2e\apparel_regression_testing.spec.ts:82:7 › User Work Flow › 06. Should display all tile group headers
-[1A[2K[6/54] [chromium] › e2e\apparel_regression_testing.spec.ts:89:7 › User Work Flow › 07. Should display Merchandising Process tiles
-[1A[2K[7/54] [chromium] › e2e\apparel_regression_testing.spec.ts:100:7 › User Work Flow › 08. Should display Production Process tiles
-[1A[2K[8/54] [chromium] › e2e\apparel_regression_testing.spec.ts:110:7 › User Work Flow › 09. Should display Other tiles
-[1A[2K[9/54] [chromium] › e2e\apparel_regression_testing.spec.ts:119:7 › User Work Flow › 10. Should display Masters & Sub Masters tiles
-[1A[2K[10/54] [chromium] › e2e\apparel_regression_testing.spec.ts:127:7 › User Work Flow › 11. Click on Buyer PO Upload tile
-[1A[2K[11/54] [chromium] › e2e\apparel_regression_testing.spec.ts:135:7 › User Work Flow › 12. Verify Buyer PO Upload page loaded
-[1A[2K[12/54] [chromium] › e2e\apparel_regression_testing.spec.ts:139:7 › User Work Flow › 13. Click Create button
-[1A[2K[13/54] [chromium] › e2e\apparel_regression_testing.spec.ts:145:7 › User Work Flow › 14. Verify Buyer PO Upload form loaded
-[1A[2K[14/54] [chromium] › e2e\apparel_regression_testing.spec.ts:150:7 › User Work Flow › 15. Verify form fields are visible
-[1A[2K[15/54] [chromium] › e2e\apparel_regression_testing.spec.ts:155:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
-[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:155:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
-Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
-
-[1A[2KAttempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
-
-[1A[2KNo file input found, trying file chooser method
-
-[1A[2KClicked ExcelUpload button
-
-[1A[2KFile chooser event fired
-
-[1A[2KFile uploaded via file chooser
-
-[1A[2K[16/54] [chromium] › e2e\apparel_regression_testing.spec.ts:173:7 › User Work Flow › 18. Verify file upload success
-[1A[2K[17/54] [chromium] › e2e\apparel_regression_testing.spec.ts:179:7 › User Work Flow › 19. Read Excel file and verify data loaded
-[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:179:7 › User Work Flow › 19. Read Excel file and verify data loaded
-Extracted Excel Data: {
-  buyer: [32m'QA 2'[39m,
-  styleNo: [32m'QA0001'[39m,
-  styleDescription: [32m'QA2'[39m,
-  styleColor: [32m'QA2'[39m,
-  season: [32m'SS25 PH02'[39m
-}
-
-[1A[2KExcel Data: {
-  buyer: [32m'QA 2'[39m,
-  styleNo: [32m'QA0001'[39m,
-  styleDescription: [32m'QA2'[39m,
-  styleColor: [32m'QA2'[39m,
-  season: [32m'SS25 PH02'[39m
-}
-
-[1A[2KForm Values: {
-  buyer: [32m''[39m,
-  styleNo: [32m'QA0001'[39m,
-  styleDescription: [32m'QA2'[39m,
-  styleColor: [32m'QA2'[39m,
-  season: [32m'SS25 PH02'[39m
-}
-
-[1A[2K[18/54] [chromium] › e2e\apparel_regression_testing.spec.ts:227:7 › User Work Flow › 20. Cleanup: Close browser and context
 [1A[2K◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
 
-[1A[2K[19/54] [firefox] › e2e\apparel_regression_testing.spec.ts:18:7 › Login Page Tests › 01. Setup: Create persistent browser context
-[1A[2K[20/54] [firefox] › e2e\apparel_regression_testing.spec.ts:26:7 › Login Page Tests › 02. Should display error message on invalid credentials
-[1A[2K[21/54] [firefox] › e2e\apparel_regression_testing.spec.ts:40:7 › Login Page Tests › 03. Should successfully login with valid credentials and save auth
-[1A[2K[22/54] [firefox] › e2e\apparel_regression_testing.spec.ts:76:7 › User Work Flow › 05. Setup: Navigate to home page
-[1A[2K[23/54] [firefox] › e2e\apparel_regression_testing.spec.ts:82:7 › User Work Flow › 06. Should display all tile group headers
-[1A[2K[24/54] [firefox] › e2e\apparel_regression_testing.spec.ts:89:7 › User Work Flow › 07. Should display Merchandising Process tiles
-[1A[2K[25/54] [firefox] › e2e\apparel_regression_testing.spec.ts:100:7 › User Work Flow › 08. Should display Production Process tiles
-[1A[2K[26/54] [firefox] › e2e\apparel_regression_testing.spec.ts:110:7 › User Work Flow › 09. Should display Other tiles
-[1A[2K[27/54] [firefox] › e2e\apparel_regression_testing.spec.ts:119:7 › User Work Flow › 10. Should display Masters & Sub Masters tiles
-[1A[2K[28/54] [firefox] › e2e\apparel_regression_testing.spec.ts:127:7 › User Work Flow › 11. Click on Buyer PO Upload tile
-[1A[2K[29/54] [firefox] › e2e\apparel_regression_testing.spec.ts:135:7 › User Work Flow › 12. Verify Buyer PO Upload page loaded
-[1A[2K[30/54] [firefox] › e2e\apparel_regression_testing.spec.ts:139:7 › User Work Flow › 13. Click Create button
-[1A[2K[31/54] [firefox] › e2e\apparel_regression_testing.spec.ts:145:7 › User Work Flow › 14. Verify Buyer PO Upload form loaded
-[1A[2K[32/54] [firefox] › e2e\apparel_regression_testing.spec.ts:150:7 › User Work Flow › 15. Verify form fields are visible
-[1A[2K[33/54] [firefox] › e2e\apparel_regression_testing.spec.ts:155:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
-[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:155:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
+[1A[2K[1/60] [chromium] › e2e\apparel_regression_testing.spec.ts:23:7 › Login Page Tests › 01. Setup: Create persistent browser context
+[1A[2K[2/60] [chromium] › e2e\apparel_regression_testing.spec.ts:31:7 › Login Page Tests › 02. Should display error message on invalid credentials
+[1A[2K[3/60] [chromium] › e2e\apparel_regression_testing.spec.ts:45:7 › Login Page Tests › 03. Should successfully login with valid credentials and save auth
+[1A[2K[4/60] [chromium] › e2e\apparel_regression_testing.spec.ts:81:7 › User Work Flow › 05. Setup: Navigate to home page
+[1A[2K[5/60] [chromium] › e2e\apparel_regression_testing.spec.ts:87:7 › User Work Flow › 06. Should display all tile group headers
+[1A[2K[6/60] [chromium] › e2e\apparel_regression_testing.spec.ts:94:7 › User Work Flow › 07. Should display Merchandising Process tiles
+[1A[2K[7/60] [chromium] › e2e\apparel_regression_testing.spec.ts:105:7 › User Work Flow › 08. Should display Production Process tiles
+[1A[2K[8/60] [chromium] › e2e\apparel_regression_testing.spec.ts:115:7 › User Work Flow › 09. Should display Other tiles
+[1A[2K[9/60] [chromium] › e2e\apparel_regression_testing.spec.ts:124:7 › User Work Flow › 10. Should display Masters & Sub Masters tiles
+[1A[2K[10/60] [chromium] › e2e\apparel_regression_testing.spec.ts:132:7 › User Work Flow › 11. Click on Buyer PO Upload tile
+[1A[2K[11/60] [chromium] › e2e\apparel_regression_testing.spec.ts:140:7 › User Work Flow › 12. Verify Buyer PO Upload page loaded
+[1A[2K[12/60] [chromium] › e2e\apparel_regression_testing.spec.ts:144:7 › User Work Flow › 13. Click Create button
+[1A[2K[13/60] [chromium] › e2e\apparel_regression_testing.spec.ts:150:7 › User Work Flow › 14. Verify Buyer PO Upload form loaded
+[1A[2K[14/60] [chromium] › e2e\apparel_regression_testing.spec.ts:155:7 › User Work Flow › 15. Verify form fields are visible
+[1A[2K[15/60] [chromium] › e2e\apparel_regression_testing.spec.ts:160:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:160:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
 Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
 
 [1A[2KAttempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
 
 [1A[2KNo file input found, trying file chooser method
 
-[1A[2KClicked ExcelUpload button
+[1A[2KClicking ExcelUpload button
+
+[1A[2KFile chooser promise rejected: page.waitForEvent: Timeout 10000ms exceeded while waiting for event "filechooser"
+=========================== logs ===========================
+waiting for event "filechooser"
+============================================================
+
+[1A[2KError uploading file: TimeoutError: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('button:has-text("ExcelUpload"), button[id*="__button10"]').first()[22m
+[2m    - locator resolved to <button id="__button8" data-sap-ui-render="" data-ui5-accesskey="e" data-sap-ui="__button8" class="sapMBtnBase sapMBtn">…</button>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is not stable[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeTable">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeObjectPageSection">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div class="sapFeAvatar sapFeAvatarSizeM sapFeAvatarShapeSquare"></div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeTable">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeObjectPageSection">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div class="sapFeAvatar sapFeAvatarSizeM sapFeAvatarShapeSquare"></div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div class="sapFeAvatar sapFeAvatarSizeM sapFeAvatarShapeSquare"></div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeTable">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+[2m  38 × retrying click action[22m
+[2m       - waiting 500ms[22m
+[2m       - waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" id="apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage-busyIndicator" class="sapUiBlockLayer  sapUiLocalBusyIndicator sapUiLocalBusyIndicatorSizeMedium sapUiLocalBusyIndicatorFade">…</div> intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+
+[1A[2K  1) [chromium] › e2e\apparel_regression_testing.spec.ts:160:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx 
+
+    TimeoutError: locator.click: Timeout 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('button:has-text("ExcelUpload"), button[id*="__button10"]').first()[22m
+    [2m    - locator resolved to <button id="__button8" data-sap-ui-render="" data-ui5-accesskey="e" data-sap-ui="__button8" class="sapMBtnBase sapMBtn">…</button>[22m
+    [2m  - attempting click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is not stable[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeTable">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeObjectPageSection">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+    [2m  2 × retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div class="sapFeAvatar sapFeAvatarSizeM sapFeAvatarShapeSquare"></div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+    [2m  2 × retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeTable">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeObjectPageSection">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div class="sapFeAvatar sapFeAvatarSizeM sapFeAvatarShapeSquare"></div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div class="sapFeAvatar sapFeAvatarSizeM sapFeAvatarShapeSquare"></div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeTable">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalbuyerpoupload-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events[22m
+    [2m  38 × retrying click action[22m
+    [2m       - waiting 500ms[22m
+    [2m       - waiting for element to be visible, enabled and stable[22m
+    [2m       - element is visible, enabled and stable[22m
+    [2m       - scrolling into view if needed[22m
+    [2m       - done scrolling[22m
+    [2m       - <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" id="apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage-busyIndicator" class="sapUiBlockLayer  sapUiLocalBusyIndicator sapUiLocalBusyIndicatorSizeMedium sapUiLocalBusyIndicatorFade">…</div> intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+
+
+       at ..\src\pages\BuyerPoUpload\BuyerPoUploadFormPage.ts:93
+
+      91 |       // Click the button to trigger file chooser
+      92 |       console.log('Clicking ExcelUpload button');
+    > 93 |       await this.excelUploadButton.click();
+         |                                    ^
+      94 |
+      95 |       // Wait for file chooser to be triggered
+      96 |       await this.page.waitForTimeout(1000);
+        at BuyerPoUploadFormPage.uploadExcelFile (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\src\pages\BuyerPoUpload\BuyerPoUploadFormPage.ts:93:36)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:171:7)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
+
+    Error Context: test-results\apparel_regression_testing-67ec4-e---PO-Summary-format1-xlsx-chromium\error-context.md
+
+
+[1A[2K[16/60] [chromium] › e2e\apparel_regression_testing.spec.ts:178:7 › User Work Flow › 18. Verify file upload processed
+[1A[2K[17/60] [chromium] › e2e\apparel_regression_testing.spec.ts:185:7 › User Work Flow › 19. Read Excel file and verify data loaded
+[1A[2K[18/60] [chromium] › e2e\apparel_regression_testing.spec.ts:238:7 › User Work Flow › 20. Fill form: Select supplier, enter PO Date and Kimble Number
+[1A[2K[19/60] [chromium] › e2e\apparel_regression_testing.spec.ts:288:7 › User Work Flow › 21. Verify PO Size Breakdown table contains Excel data
+[1A[2K[20/60] [chromium] › e2e\apparel_regression_testing.spec.ts:308:7 › User Work Flow › 22. Cleanup: Close browser and context
+[1A[2K◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+
+[1A[2K[21/60] [firefox] › e2e\apparel_regression_testing.spec.ts:23:7 › Login Page Tests › 01. Setup: Create persistent browser context
+[1A[2K[22/60] [firefox] › e2e\apparel_regression_testing.spec.ts:31:7 › Login Page Tests › 02. Should display error message on invalid credentials
+[1A[2K[23/60] [firefox] › e2e\apparel_regression_testing.spec.ts:45:7 › Login Page Tests › 03. Should successfully login with valid credentials and save auth
+[1A[2K[24/60] [firefox] › e2e\apparel_regression_testing.spec.ts:81:7 › User Work Flow › 05. Setup: Navigate to home page
+[1A[2K[25/60] [firefox] › e2e\apparel_regression_testing.spec.ts:87:7 › User Work Flow › 06. Should display all tile group headers
+[1A[2K[26/60] [firefox] › e2e\apparel_regression_testing.spec.ts:94:7 › User Work Flow › 07. Should display Merchandising Process tiles
+[1A[2K[27/60] [firefox] › e2e\apparel_regression_testing.spec.ts:105:7 › User Work Flow › 08. Should display Production Process tiles
+[1A[2K[28/60] [firefox] › e2e\apparel_regression_testing.spec.ts:115:7 › User Work Flow › 09. Should display Other tiles
+[1A[2K[29/60] [firefox] › e2e\apparel_regression_testing.spec.ts:124:7 › User Work Flow › 10. Should display Masters & Sub Masters tiles
+[1A[2K[30/60] [firefox] › e2e\apparel_regression_testing.spec.ts:132:7 › User Work Flow › 11. Click on Buyer PO Upload tile
+[1A[2K[31/60] [firefox] › e2e\apparel_regression_testing.spec.ts:140:7 › User Work Flow › 12. Verify Buyer PO Upload page loaded
+[1A[2K[32/60] [firefox] › e2e\apparel_regression_testing.spec.ts:144:7 › User Work Flow › 13. Click Create button
+[1A[2K[33/60] [firefox] › e2e\apparel_regression_testing.spec.ts:150:7 › User Work Flow › 14. Verify Buyer PO Upload form loaded
+[1A[2K[34/60] [firefox] › e2e\apparel_regression_testing.spec.ts:155:7 › User Work Flow › 15. Verify form fields are visible
+[1A[2K[35/60] [firefox] › e2e\apparel_regression_testing.spec.ts:160:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
+[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:160:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
+Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+
+[1A[2KAttempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+
+[1A[2KNo file input found, trying file chooser method
+
+[1A[2KClicking ExcelUpload button
 
 [1A[2KNo file input found, file chooser did not trigger
 
-[1A[2KFile chooser event fired
+[1A[2K[36/60] [firefox] › e2e\apparel_regression_testing.spec.ts:178:7 › User Work Flow › 18. Verify file upload processed
+[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:178:7 › User Work Flow › 18. Verify file upload processed
+Waiting for form to process uploaded file...
 
-[1A[2K[34/54] [firefox] › e2e\apparel_regression_testing.spec.ts:173:7 › User Work Flow › 18. Verify file upload success
-[1A[2K[35/54] [firefox] › e2e\apparel_regression_testing.spec.ts:179:7 › User Work Flow › 19. Read Excel file and verify data loaded
-[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:179:7 › User Work Flow › 19. Read Excel file and verify data loaded
-Extracted Excel Data: {
-  buyer: [32m'QA 2'[39m,
-  styleNo: [32m'QA0001'[39m,
-  styleDescription: [32m'QA2'[39m,
-  styleColor: [32m'QA2'[39m,
-  season: [32m'SS25 PH02'[39m
-}
+[1A[2K✓ File upload processed, form ready for verification
 
-[1A[2KExcel Data: {
+[1A[2K[37/60] [firefox] › e2e\apparel_regression_testing.spec.ts:185:7 › User Work Flow › 19. Read Excel file and verify data loaded
+[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:185:7 › User Work Flow › 19. Read Excel file and verify data loaded
+Waiting for form data to populate...
+
+[1A[2KFile chooser promise rejected: page.waitForEvent: Timeout 10000ms exceeded while waiting for event "filechooser"
+=========================== logs ===========================
+waiting for event "filechooser"
+============================================================
+
+[1A[2KRetrieving form field values...
+
+[1A[2KNo value found for Buyer
+
+[1A[2KNo value found for StyleNo
+
+[1A[2KNo value found for StyleDescription
+
+[1A[2KNo value found for StyleColor
+
+[1A[2KNo value found for Season
+
+[1A[2KExtracted Excel Data: {
   buyer: [32m'QA 2'[39m,
   styleNo: [32m'QA0001'[39m,
   styleDescription: [32m'QA2'[39m,
@@ -115,37 +273,144 @@ Extracted Excel Data: {
 
 [1A[2KForm Values: {
   buyer: [32m''[39m,
+  styleNo: [32m''[39m,
+  styleDescription: [32m''[39m,
+  styleColor: [32m''[39m,
+  season: [32m''[39m
+}
+
+[1A[2K  2) [firefox] › e2e\apparel_regression_testing.spec.ts:185:7 › User Work Flow › 19. Read Excel file and verify data loaded 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected substring: [32m"QA0001"[39m
+    Received string:    [31m""[39m
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:219:28)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
+
+    Error Context: test-results\apparel_regression_testing-654c6-file-and-verify-data-loaded-firefox\error-context.md
+
+
+[1A[2K[38/60] [firefox] › e2e\apparel_regression_testing.spec.ts:238:7 › User Work Flow › 20. Fill form: Select supplier, enter PO Date and Kimble Number
+[1A[2K[39/60] [firefox] › e2e\apparel_regression_testing.spec.ts:288:7 › User Work Flow › 21. Verify PO Size Breakdown table contains Excel data
+[1A[2K[40/60] [firefox] › e2e\apparel_regression_testing.spec.ts:308:7 › User Work Flow › 22. Cleanup: Close browser and context
+[1A[2K◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+
+[1A[2K[41/60] [webkit] › e2e\apparel_regression_testing.spec.ts:23:7 › Login Page Tests › 01. Setup: Create persistent browser context
+[1A[2K[42/60] [webkit] › e2e\apparel_regression_testing.spec.ts:31:7 › Login Page Tests › 02. Should display error message on invalid credentials
+[1A[2K[43/60] [webkit] › e2e\apparel_regression_testing.spec.ts:45:7 › Login Page Tests › 03. Should successfully login with valid credentials and save auth
+[1A[2K[44/60] [webkit] › e2e\apparel_regression_testing.spec.ts:81:7 › User Work Flow › 05. Setup: Navigate to home page
+[1A[2K[45/60] [webkit] › e2e\apparel_regression_testing.spec.ts:87:7 › User Work Flow › 06. Should display all tile group headers
+[1A[2K[46/60] [webkit] › e2e\apparel_regression_testing.spec.ts:94:7 › User Work Flow › 07. Should display Merchandising Process tiles
+[1A[2K[47/60] [webkit] › e2e\apparel_regression_testing.spec.ts:105:7 › User Work Flow › 08. Should display Production Process tiles
+[1A[2K[48/60] [webkit] › e2e\apparel_regression_testing.spec.ts:115:7 › User Work Flow › 09. Should display Other tiles
+[1A[2K[49/60] [webkit] › e2e\apparel_regression_testing.spec.ts:124:7 › User Work Flow › 10. Should display Masters & Sub Masters tiles
+[1A[2K[50/60] [webkit] › e2e\apparel_regression_testing.spec.ts:132:7 › User Work Flow › 11. Click on Buyer PO Upload tile
+[1A[2K[51/60] [webkit] › e2e\apparel_regression_testing.spec.ts:140:7 › User Work Flow › 12. Verify Buyer PO Upload page loaded
+[1A[2K[52/60] [webkit] › e2e\apparel_regression_testing.spec.ts:144:7 › User Work Flow › 13. Click Create button
+[1A[2K[53/60] [webkit] › e2e\apparel_regression_testing.spec.ts:150:7 › User Work Flow › 14. Verify Buyer PO Upload form loaded
+[1A[2K[54/60] [webkit] › e2e\apparel_regression_testing.spec.ts:155:7 › User Work Flow › 15. Verify form fields are visible
+[1A[2K[55/60] [webkit] › e2e\apparel_regression_testing.spec.ts:160:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
+[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:160:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
+Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+
+[1A[2KAttempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+
+[1A[2KNo file input found, trying file chooser method
+
+[1A[2KClicking ExcelUpload button
+
+[1A[2KFile chooser event fired
+
+[1A[2KFiles set in file chooser
+
+[1A[2KFile uploaded via file chooser
+
+[1A[2K[56/60] [webkit] › e2e\apparel_regression_testing.spec.ts:178:7 › User Work Flow › 18. Verify file upload processed
+[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:178:7 › User Work Flow › 18. Verify file upload processed
+Waiting for form to process uploaded file...
+
+[1A[2K✓ File upload processed, form ready for verification
+
+[1A[2K[57/60] [webkit] › e2e\apparel_regression_testing.spec.ts:185:7 › User Work Flow › 19. Read Excel file and verify data loaded
+[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:185:7 › User Work Flow › 19. Read Excel file and verify data loaded
+Waiting for form data to populate...
+
+[1A[2KRetrieving form field values...
+
+[1A[2KBuyer value (via inputValue): "QA 2"
+
+[1A[2KStyleNo value (via inputValue): "QA0001"
+
+[1A[2KStyleDescription value (via inputValue): "QA2"
+
+[1A[2KStyleColor value (via inputValue): "QA2"
+
+[1A[2KSeason value (via inputValue): "SS25 PH02"
+
+[1A[2KExtracted Excel Data: {
+  buyer: [32m'QA 2'[39m,
   styleNo: [32m'QA0001'[39m,
   styleDescription: [32m'QA2'[39m,
   styleColor: [32m'QA2'[39m,
   season: [32m'SS25 PH02'[39m
 }
 
-[1A[2K[36/54] [firefox] › e2e\apparel_regression_testing.spec.ts:227:7 › User Work Flow › 20. Cleanup: Close browser and context
-[1A[2K[37/54] [webkit] › e2e\apparel_regression_testing.spec.ts:18:7 › Login Page Tests › 01. Setup: Create persistent browser context
-[1A[2K  1) [webkit] › e2e\apparel_regression_testing.spec.ts:18:7 › Login Page Tests › 01. Setup: Create persistent browser context 
+[1A[2KForm Values: {
+  buyer: [32m'QA 2'[39m,
+  styleNo: [32m'QA0001'[39m,
+  styleDescription: [32m'QA2'[39m,
+  styleColor: [32m'QA2'[39m,
+  season: [32m'SS25 PH02'[39m
+}
 
-    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+[1A[2K[58/60] [webkit] › e2e\apparel_regression_testing.spec.ts:238:7 › User Work Flow › 20. Fill form: Select supplier, enter PO Date and Kimble Number
+[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:238:7 › User Work Flow › 20. Fill form: Select supplier, enter PO Date and Kimble Number
+Step 1: Opening Supplier Code value help dialog...
+
+[1A[2K✓ Value help dialog opened
+
+[1A[2KStep 2: Selecting supplier from value help list...
+
+[1A[2KSelecting supplier: PRIMARK (SUP-001)
+
+[1A[2KSupplier not found by description, trying by value...
+
+[1A[2KSupplier code not found, selecting first supplier instead
+
+[1A[2KStep 3: Entering PO Date...
+
+[1A[2KEntering PO Date: 15 May 2026
+
+[1A[2K✓ PO Date entered: 
+
+[1A[2KStep 4: Entering Kimble Number...
+
+[1A[2KEntering Kimble No: KIM-001-QA2
+
+[1A[2K✓ Kimble No entered: 
+
+[1A[2K  3) [webkit] › e2e\apparel_regression_testing.spec.ts:238:7 › User Work Flow › 20. Fill form: Select supplier, enter PO Date and Kimble Number 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m"KIM-001-QA2"[39m
+    Received: [31m""[39m
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:283:29)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
+
+    Error Context: test-results\apparel_regression_testing-dd3ca-r-PO-Date-and-Kimble-Number-webkit\error-context.md
 
 
-[1A[2K[38/54] [webkit] › e2e\apparel_regression_testing.spec.ts:26:7 › Login Page Tests › 02. Should display error message on invalid credentials
-[1A[2K[39/54] [webkit] › e2e\apparel_regression_testing.spec.ts:40:7 › Login Page Tests › 03. Should successfully login with valid credentials and save auth
-[1A[2K[40/54] [webkit] › e2e\apparel_regression_testing.spec.ts:76:7 › User Work Flow › 05. Setup: Navigate to home page
-[1A[2K[41/54] [webkit] › e2e\apparel_regression_testing.spec.ts:82:7 › User Work Flow › 06. Should display all tile group headers
-[1A[2K[42/54] [webkit] › e2e\apparel_regression_testing.spec.ts:89:7 › User Work Flow › 07. Should display Merchandising Process tiles
-[1A[2K[43/54] [webkit] › e2e\apparel_regression_testing.spec.ts:100:7 › User Work Flow › 08. Should display Production Process tiles
-[1A[2K[44/54] [webkit] › e2e\apparel_regression_testing.spec.ts:110:7 › User Work Flow › 09. Should display Other tiles
-[1A[2K[45/54] [webkit] › e2e\apparel_regression_testing.spec.ts:119:7 › User Work Flow › 10. Should display Masters & Sub Masters tiles
-[1A[2K[46/54] [webkit] › e2e\apparel_regression_testing.spec.ts:127:7 › User Work Flow › 11. Click on Buyer PO Upload tile
-[1A[2K[47/54] [webkit] › e2e\apparel_regression_testing.spec.ts:135:7 › User Work Flow › 12. Verify Buyer PO Upload page loaded
-[1A[2K[48/54] [webkit] › e2e\apparel_regression_testing.spec.ts:139:7 › User Work Flow › 13. Click Create button
-[1A[2K[49/54] [webkit] › e2e\apparel_regression_testing.spec.ts:145:7 › User Work Flow › 14. Verify Buyer PO Upload form loaded
-[1A[2K[50/54] [webkit] › e2e\apparel_regression_testing.spec.ts:150:7 › User Work Flow › 15. Verify form fields are visible
-[1A[2K[51/54] [webkit] › e2e\apparel_regression_testing.spec.ts:155:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx
-[1A[2K[52/54] [webkit] › e2e\apparel_regression_testing.spec.ts:173:7 › User Work Flow › 18. Verify file upload success
-[1A[2K[53/54] [webkit] › e2e\apparel_regression_testing.spec.ts:179:7 › User Work Flow › 19. Read Excel file and verify data loaded
-[1A[2K[54/54] [webkit] › e2e\apparel_regression_testing.spec.ts:227:7 › User Work Flow › 20. Cleanup: Close browser and context
-[1A[2K  1 failed
-    [webkit] › e2e\apparel_regression_testing.spec.ts:18:7 › Login Page Tests › 01. Setup: Create persistent browser context 
-  17 did not run
-  36 passed (2.2m)
+[1A[2K[59/60] [webkit] › e2e\apparel_regression_testing.spec.ts:288:7 › User Work Flow › 21. Verify PO Size Breakdown table contains Excel data
+[1A[2K[60/60] [webkit] › e2e\apparel_regression_testing.spec.ts:308:7 › User Work Flow › 22. Cleanup: Close browser and context
+[1A[2K  3 failed
+    [chromium] › e2e\apparel_regression_testing.spec.ts:160:7 › User Work Flow › 16. Upload Excel file - PO Summary format1.xlsx 
+    [firefox] › e2e\apparel_regression_testing.spec.ts:185:7 › User Work Flow › 19. Read Excel file and verify data loaded 
+    [webkit] › e2e\apparel_regression_testing.spec.ts:238:7 › User Work Flow › 20. Fill form: Select supplier, enter PO Date and Kimble Number 
+  10 did not run
+  47 passed (5.6m)
