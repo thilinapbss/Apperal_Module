@@ -5,6 +5,7 @@ import { HomePage } from '../src/pages/HomePage';
 import { BuyerPoUploadPage } from '../src/pages/BuyerPoUpload/BuyerPoUploadPage';
 import { BuyerPoUploadFormPage } from '../src/pages/BuyerPoUpload/BuyerPoUploadFormPage';
 import { ExcelReader } from '../src/utils/ExcelReader';
+import { SegmentMasterPage } from '../src/pages/SegmentMaster/SegmentMasterPage';
 
 // Load test data
 const testDataPath = path.join(__dirname, '../testData/Buyer_PO_Upload/test-data.json');
@@ -19,7 +20,7 @@ let sharedPage: Page;
 let loginPage: LoginPage;
 let sharedContext: any;
 
-test.describe.serial('Login Page Tests', () => {
+test.describe('Login Page Tests', () => {
   test('01. Setup: Create persistent browser context', async ({ browser }) => {
     sharedContext = await browser.newContext({ storageState: { cookies: [], origins: [] } });
     sharedPage = await sharedContext.newPage();
@@ -76,8 +77,9 @@ test.describe.serial('Login Page Tests', () => {
 let homePage: HomePage;
 let buyerPoUploadPage: BuyerPoUploadPage;
 let buyerPoUploadFormPage: BuyerPoUploadFormPage;
+let segmentMasterPage: SegmentMasterPage;
 
-test.describe.serial('User Work Flow', () => {
+test.describe('User Work Flow', () => {
   test('05. Setup: Navigate to home page', async () => {
     await sharedPage.goto('/');
     homePage = new HomePage(sharedPage);
@@ -309,41 +311,24 @@ test.describe.serial('User Work Flow', () => {
     console.log('✓ All line item details filled successfully');
   });
 
+  test('22b. Capture all entered form data and save to buyerPO.json', async () => {
+    console.log('Capturing all form data before save...');
+    const formData = await buyerPoUploadFormPage.captureAllFormData();
+
+    console.log('Captured form data:', JSON.stringify(formData, null, 2));
+
+    const outputPath = path.join(__dirname, '../testData/Buyer_PO_Upload/buyerPO.json');
+    fs.writeFileSync(outputPath, JSON.stringify(formData, null, 2));
+    console.log(`✓ Form data saved to ${outputPath}`);
+  });
+
   test('23. Click Save/Create button to save the form', async () => {
     console.log('Saving the form by clicking Create button...');
     await buyerPoUploadFormPage.clickSaveCreateButton();
     console.log('✓ Form saved successfully');
   });
 
-  test('25. Verify Details table contains PO data with delivery numbers', async () => {
-    // Get the table data from the Details table
-    const tableData = await buyerPoUploadFormPage.verifyPOSizeBreakdownTableData();
 
-    console.log('Details Table Data:', JSON.stringify(tableData, null, 2));
-
-    // Verify table has data
-    expect(tableData.length).toBeGreaterThan(0);
-
-    // Verify the first row contains the expected PO data
-    const firstRow = tableData[0];
-    expect(firstRow.poNo).toContain('QA2-T001');
-    console.log(`✓ PO No verified: ${firstRow.poNo}`);
-
-    // Verify other fields are populated
-    expect(firstRow.countryCode).toBeTruthy();
-    console.log(`✓ Country Code: ${firstRow.countryCode}`);
-
-    expect(firstRow.partNo).toBeTruthy();
-    console.log(`✓ Part No: ${firstRow.partNo}`);
-
-    expect(firstRow.qty).toBeTruthy();
-    console.log(`✓ Qty: ${firstRow.qty}`);
-
-    expect(firstRow.total).toBeTruthy();
-    console.log(`✓ Total: ${firstRow.total}`);
-
-    console.log('✓ Details table verified with PO data');
-  });
 
   test('24. Capture all line item details and update test data JSON', async () => {
     console.log('Capturing all line item details with delivery numbers...');
@@ -379,7 +364,102 @@ test.describe.serial('User Work Flow', () => {
     console.log('✓ Test data JSON updated with actual delivery numbers and values');
   });
 
-  test('26. Cleanup: Close browser and context', async () => {
+
+
+
+
+  test('25. Verify saved record appears in the Buyer PO Upload list', async () => {
+    console.log('Navigating back to list to verify saved record...');
+    await buyerPoUploadFormPage.navigateBackToList();
+
+    // Read the actual supplier code from buyerPO.json (written by test 22b)
+    const buyerPOPath = path.join(__dirname, '../testData/Buyer_PO_Upload/buyerPO.json');
+    const buyerPOData = JSON.parse(fs.readFileSync(buyerPOPath, 'utf-8'));
+
+    const supplierCode = buyerPOData.header.supplierCode;
+    const styleNo      = buyerPOData.header.styleNo;
+    const season       = buyerPOData.header.season;
+
+    console.log('Verifying record with:', { supplierCode, styleNo, season });
+
+    const result = await buyerPoUploadFormPage.verifyRecordInListTable({
+      supplierCode,
+      styleNo,
+      season,
+    });
+
+    console.log(`Total rows in list : ${result.totalRows}`);
+    console.log(`Matching rows      : ${result.matchCount}`);
+
+    expect(result.found).toBe(true);
+    console.log(`✓ Saved record confirmed in Buyer PO Upload list (${result.matchCount} matching row(s) found)`);
+  });
+
+
+
+
+  test('26. Navigate to home page and verify tile content', async () => {
+    console.log('Navigating back to home page...');
+    await sharedPage.goto('/');
+    await homePage.waitForDashboard();
+    console.log('✓ Home page loaded');
+
+    // Verify group headers
+    await expect(homePage.groupHeader(homePage.merchandisingGroup)).toHaveText('Merchandising Process');
+    await expect(homePage.groupHeader(homePage.productionGroup)).toHaveText('Production Process');
+    await expect(homePage.groupHeader(homePage.otherGroup)).toHaveText('Other');
+    await expect(homePage.groupHeader(homePage.mastersGroup)).toHaveText('Masters & Sub Masters');
+    console.log('✓ All tile group headers verified');
+
+    // Verify key tiles are visible
+    await expect(homePage.tile(homePage.merchandisingGroup, 'Buyer PO Upload')).toBeVisible();
+    await expect(homePage.tile(homePage.mastersGroup, 'Segment Master')).toBeVisible();
+    console.log('✓ Key tiles verified on home page');
+  });
+
+  test('27. Click on Segment Master tile and verify navigation', async () => {
+    console.log('Clicking on Segment Master tile...');
+    const segmentMasterTile = homePage.tile(homePage.mastersGroup, 'Segment Master');
+    await expect(segmentMasterTile).toBeVisible();
+    await segmentMasterTile.click();
+    await sharedPage.waitForLoadState('networkidle');
+    console.log('✓ Clicked Segment Master tile');
+
+    // Verify navigation to Segment Master page
+    await expect(sharedPage).toHaveURL(/apperalsegmentmaster/);
+    console.log('✓ Segment Master page loaded successfully');
+  });
+
+  test('28. Click first Segment Master record and navigate to Object Page', async () => {
+    console.log('Initializing Segment Master page object...');
+    segmentMasterPage = new SegmentMasterPage(sharedPage);
+    await segmentMasterPage.waitForListLoad();
+    console.log('✓ Segment Master list loaded');
+
+    console.log('Clicking first record in Segment Master list...');
+    await segmentMasterPage.clickFirstRecord();
+    await segmentMasterPage.waitForObjectPageLoad();
+    console.log('✓ Segment Master Object Page loaded');
+
+    await expect(sharedPage).toHaveURL(/SegmentMasterObjectPage/);
+    console.log('✓ URL confirmed: on Segment Master Object Page');
+  });
+
+  test('28a. Click Create button in Details table and verify navigation', async () => {
+    console.log('Clicking Create button in Details table...');
+    await segmentMasterPage.clickDetailsCreateButton();
+    console.log('✓ Details Create button clicked');
+
+    // After clicking Create, a new draft record row / navigation should appear
+    await sharedPage.waitForTimeout(1500);
+    const url = sharedPage.url();
+    console.log(`Current URL after Create: ${url}`);
+
+    await expect(sharedPage.locator('[id*="SegmentMasterObjectPage"]')).toBeVisible();
+    console.log('✓ Segment Master Object Page still visible after Create clicked');
+  });
+
+  test('29. Cleanup: Close browser and context', async () => {
     await sharedPage.close();
   });
 });

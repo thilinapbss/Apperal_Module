@@ -21,6 +21,7 @@ export class BuyerPoUploadFormPage {
   readonly successMessage: Locator;
   readonly errorMessage: Locator;
   readonly supplierCodeValueHelpButton: Locator;
+  readonly supplierCodeInput: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -48,8 +49,9 @@ export class BuyerPoUploadFormPage {
     this.successMessage = page.locator('[role="alert"]').filter({ hasText: /success|saved|created|uploaded/i }).first();
     this.errorMessage = page.locator('[role="alert"]').filter({ hasText: /error|failed/i }).first();
 
-    // Value help button for Supplier Code field
+    // Value help button and input for Supplier Code field
     this.supplierCodeValueHelpButton = page.locator('[id*="SupplierCode::Field-edit-inner-vhi"][aria-label="Show Value Help"]').first();
+    this.supplierCodeInput = page.locator('input[id*="SupplierCode::Field-edit-inner"]:not([id*="-vhi"])').first();
   }
 
   async waitForFormLoad() {
@@ -130,35 +132,61 @@ export class BuyerPoUploadFormPage {
     await this.supplierCodeValueHelpButton.click();
   }
 
+  private async waitForSupplierDialogToClose() {
+    // Wait for the SAP UI5 supplier value help dialog to fully detach from the DOM.
+    // waitForLoadState('networkidle') is not sufficient — the dialog's sap-ui-static
+    // overlay stays in the DOM and blocks pointer events until it is fully removed.
+    try {
+      await this.page.waitForSelector('[id*="FieldValueHelp::SupplierCode::Dialog"]', {
+        state: 'detached',
+        timeout: 15000,
+      });
+    } catch {
+      await this.page.waitForSelector('[role="dialog"]', { state: 'hidden', timeout: 10000 });
+    }
+    // Allow SAP UI5 to finish re-rendering after dialog removal.
+    await this.page.waitForTimeout(800);
+  }
+
   async selectFirstSupplierFromValueHelpList() {
-    // Wait for the value help dialog to appear
     await this.page.waitForSelector('[role="dialog"]', { timeout: 10000 });
 
-    // Find and click the first selectable item in the list
-    const firstListItem = this.page.locator('[role="dialog"] [role="row"], [role="dialog"] [role="option"]').first();
-    await firstListItem.click();
+    // Wait for the first data row to be rendered and not in a loading/overlay state.
+    const firstCell = this.page.locator(
+      '[id*="FieldValueHelp::SupplierCode::Dialog"] tr[data-sap-ui-rowindex="0"] td'
+    ).first();
+    await firstCell.waitFor({ state: 'visible', timeout: 10000 });
+    await firstCell.click();
 
-    // Wait for dialog to close
-    await this.page.waitForLoadState('networkidle');
+    // Some SAP Fiori value help dialogs require an explicit OK/Select confirmation.
+    const dialog = this.page.locator('[role="dialog"]').first();
+    if (await dialog.isVisible()) {
+      const okButton = dialog.locator('button:has-text("OK"), button:has-text("Select")').first();
+      if (await okButton.isVisible()) {
+        await okButton.click();
+      }
+    }
+
+    await this.waitForSupplierDialogToClose();
   }
 
   async selectSupplierByCode(supplierCode: string) {
-    // Wait for the value help dialog to appear
     await this.page.waitForSelector('[role="dialog"]', { timeout: 10000 });
 
-    // Wait for the table to load
-    await this.page.waitForSelector('[role="grid"], table', { timeout: 5000 });
+    // Wait for table rows to be rendered.
+    await this.page.waitForSelector('[id*="FieldValueHelp::SupplierCode::Dialog"] tr[data-sap-ui-rowindex]', {
+      timeout: 10000,
+    });
 
-    // Find the supplier row in the table that contains the description/code
-    const tableRows = await this.page.locator('[role="grid"] [role="row"], table tbody tr').all();
+    const tableRows = await this.page.locator(
+      '[id*="FieldValueHelp::SupplierCode::Dialog"] tr[data-sap-ui-rowindex]'
+    ).all();
     let found = false;
 
     for (const row of tableRows) {
       const rowText = await row.textContent();
-      if (rowText && (rowText.includes(supplierCode) || rowText.includes('PRIMARK'))) {
-        // Click on the Description column cell in this row
-        const descriptionCell = row.locator('td').first();
-        await descriptionCell.click();
+      if (rowText && rowText.includes(supplierCode)) {
+        await row.locator('td').first().click();
         console.log(`Clicked on supplier row: ${supplierCode}`);
         found = true;
         break;
@@ -169,8 +197,16 @@ export class BuyerPoUploadFormPage {
       throw new Error(`Supplier with code "${supplierCode}" not found in value help table`);
     }
 
-    // Wait for dialog to close
-    await this.page.waitForLoadState('networkidle');
+    // Some SAP Fiori value help dialogs require an explicit OK/Select confirmation.
+    const dialog = this.page.locator('[role="dialog"]').first();
+    if (await dialog.isVisible()) {
+      const okButton = dialog.locator('button:has-text("OK"), button:has-text("Select")').first();
+      if (await okButton.isVisible()) {
+        await okButton.click();
+      }
+    }
+
+    await this.waitForSupplierDialogToClose();
   }
 
   async enterPODate(date: string) {
@@ -186,12 +222,15 @@ export class BuyerPoUploadFormPage {
     await calendarIcon.click();
     console.log('✓ Opened calendar picker');
 
-    // Wait for calendar to appear
     await this.page.waitForTimeout(500);
 
-    // Click on today's date (marked with sapUiCalItemNow class)
-    const todayButton = this.page.locator('[class*="sapUiCalItemNow"]').first();
-    await todayButton.click();
+    const allTodayButtons = await this.page.locator('[class*="sapUiCalItemNow"]').all();
+    for (const btn of allTodayButtons) {
+      if (await btn.isVisible()) {
+        await btn.click();
+        break;
+      }
+    }
     console.log('✓ Selected today from calendar');
 
     await this.page.waitForTimeout(500);
@@ -207,6 +246,35 @@ export class BuyerPoUploadFormPage {
 
   async getKimbleNoValue(): Promise<string> {
     return await this.kimbleNoInput.inputValue();
+  }
+
+  private async selectTodayInDateCell(cell: Locator) {
+    // Click the input first so SAP UI5 renders the calendar icon in the cell.
+    const input = cell.locator('input').first();
+    await input.click();
+
+    const calendarIcon = cell.locator('.sapMInputBaseIcon, [aria-label="Open Picker"]').first();
+    await calendarIcon.waitFor({ state: 'visible', timeout: 5000 });
+    await calendarIcon.click();
+
+    // Multiple sapUiCalItemNow elements may exist in the DOM simultaneously
+    // (e.g. the PODate calendar stays rendered but hidden). .first() would
+    // resolve to the hidden one. Instead, iterate and click the visible one.
+    await this.page.waitForTimeout(300);
+    const allTodayButtons = await this.page.locator('[class*="sapUiCalItemNow"]').all();
+    let clicked = false;
+    for (const btn of allTodayButtons) {
+      if (await btn.isVisible()) {
+        await btn.click();
+        clicked = true;
+        break;
+      }
+    }
+    if (!clicked) {
+      throw new Error('Could not find a visible today button in the date cell calendar');
+    }
+
+    await this.page.waitForTimeout(300);
   }
 
   private generateUniqueDeliveryNo(rowIndex: number): string {
@@ -233,7 +301,6 @@ export class BuyerPoUploadFormPage {
 
     for (let i = 0; i < Math.min(lineItems.length, tableRows.length); i++) {
       const cells = await tableRows[i].locator('[role="gridcell"]').all();
-      const item = lineItems[i];
 
       // Generate unique delivery number with date and time
       const uniqueDeliveryNo = this.generateUniqueDeliveryNo(i);
@@ -249,29 +316,20 @@ export class BuyerPoUploadFormPage {
 
       // Column 6: DeliveryDate
       if (cells.length > 6) {
-        const deliveryDateInput = cells[6].locator('input').first();
-        await deliveryDateInput.fill(item.deliveryDate);
-        await deliveryDateInput.press('Tab');
-        console.log(`✓ Row ${i}: DeliveryDate = "${item.deliveryDate}"`);
-        await this.page.waitForTimeout(300);
+        await this.selectTodayInDateCell(cells[6]);
+        console.log(`✓ Row ${i}: DeliveryDate = today`);
       }
 
       // Column 7: PCD_Date
       if (cells.length > 7) {
-        const pcdDateInput = cells[7].locator('input').first();
-        await pcdDateInput.fill(item.pcdDate);
-        await pcdDateInput.press('Tab');
-        console.log(`✓ Row ${i}: PCD_Date = "${item.pcdDate}"`);
-        await this.page.waitForTimeout(300);
+        await this.selectTodayInDateCell(cells[7]);
+        console.log(`✓ Row ${i}: PCD_Date = today`);
       }
 
       // Column 8: FOB_Date
       if (cells.length > 8) {
-        const fobDateInput = cells[8].locator('input').first();
-        await fobDateInput.fill(item.fobDate);
-        await fobDateInput.press('Enter');
-        console.log(`✓ Row ${i}: FOB_Date = "${item.fobDate}"`);
-        await this.page.waitForTimeout(300);
+        await this.selectTodayInDateCell(cells[8]);
+        console.log(`✓ Row ${i}: FOB_Date = today`);
       }
     }
 
@@ -289,27 +347,32 @@ export class BuyerPoUploadFormPage {
 
     console.log(`Capturing ${tableRows.length} rows with all details from table`);
 
-    const getInputValue = async (input: Locator): Promise<string> => {
-      try {
-        return await input.inputValue();
-      } catch {
-        return await input.getAttribute('value').then(v => v || '');
+    // Works in both edit mode (input elements) and display mode (span text) after save.
+    const getCellValue = async (cell: Locator): Promise<string> => {
+      const inputCount = await cell.locator('input').count();
+      if (inputCount > 0) {
+        try {
+          return await cell.locator('input').first().inputValue();
+        } catch {
+          return (await cell.locator('input').first().getAttribute('value')) ?? '';
+        }
       }
+      return (await cell.textContent())?.trim() ?? '';
     };
 
     for (let i = 0; i < tableRows.length; i++) {
       const cells = await tableRows[i].locator('[role="gridcell"]').all();
 
       if (cells.length >= 9) {
-        const poNo = await getInputValue(cells[0].locator('input').first());
-        const countryCode = await getInputValue(cells[1].locator('input').first());
-        const partNo = await getInputValue(cells[2].locator('input').first());
-        const qty = await getInputValue(cells[3].locator('input').first());
-        const total = await getInputValue(cells[4].locator('input').first());
-        const deliveryNo = await getInputValue(cells[5].locator('input').first());
-        const deliveryDate = await getInputValue(cells[6].locator('input').first());
-        const pcdDate = await getInputValue(cells[7].locator('input').first());
-        const fobDate = await getInputValue(cells[8].locator('input').first());
+        const poNo        = await getCellValue(cells[0]);
+        const countryCode = await getCellValue(cells[1]);
+        const partNo      = await getCellValue(cells[2]);
+        const qty         = await getCellValue(cells[3]);
+        const total       = await getCellValue(cells[4]);
+        const deliveryNo  = await getCellValue(cells[5]);
+        const deliveryDate = await getCellValue(cells[6]);
+        const pcdDate     = await getCellValue(cells[7]);
+        const fobDate     = await getCellValue(cells[8]);
 
         if (poNo || partNo) {
           tableData.push({
@@ -347,26 +410,23 @@ export class BuyerPoUploadFormPage {
       const cells = await tableRows[i].locator('[role="gridcell"]').all();
 
       if (cells.length >= 5) {
-        // Extract values from input fields in the cells
-        const poNoInput = cells[0].locator('input').first();
-        const countryCodeInput = cells[1].locator('input').first();
-        const partNoInput = cells[2].locator('input').first();
-        const qtyInput = cells[3].locator('input').first();
-        const totalInput = cells[4].locator('input').first();
-
-        const getInputValue = async (input: Locator): Promise<string> => {
-          try {
-            return await input.inputValue();
-          } catch {
-            return await input.getAttribute('value').then(v => v || '');
+        const getCellValue = async (cell: Locator): Promise<string> => {
+          const inputCount = await cell.locator('input').count();
+          if (inputCount > 0) {
+            try {
+              return await cell.locator('input').first().inputValue();
+            } catch {
+              return (await cell.locator('input').first().getAttribute('value')) ?? '';
+            }
           }
+          return (await cell.textContent())?.trim() ?? '';
         };
 
-        const poNo = await getInputValue(poNoInput);
-        const countryCode = await getInputValue(countryCodeInput);
-        const partNo = await getInputValue(partNoInput);
-        const qty = await getInputValue(qtyInput);
-        const total = await getInputValue(totalInput);
+        const poNo        = await getCellValue(cells[0]);
+        const countryCode = await getCellValue(cells[1]);
+        const partNo      = await getCellValue(cells[2]);
+        const qty         = await getCellValue(cells[3]);
+        const total       = await getCellValue(cells[4]);
 
         tableData.push({
           poNo: poNo?.trim() || '',
@@ -513,5 +573,95 @@ export class BuyerPoUploadFormPage {
       console.log(`Error verifying data: ${error}`);
       return false;
     }
+  }
+
+  async getSupplierCodeValue(): Promise<string> {
+    return await this.getFieldValue(this.supplierCodeInput, 'SupplierCode');
+  }
+
+  async captureAllFormData(): Promise<{
+    capturedAt: string;
+    header: Record<string, string>;
+    lineItems: Array<Record<string, string>>;
+  }> {
+    const header: Record<string, string> = {
+      buyer:            await this.getBuyerValue(),
+      styleNo:          await this.getStyleNoValue(),
+      styleDescription: await this.getStyleDescriptionValue(),
+      styleColor:       await this.getStyleColorValue(),
+      season:           await this.getSeasonValue(),
+      supplierCode:     await this.getSupplierCodeValue(),
+      poDate:           await this.getPODateValue(),
+      kimbleNo:         await this.getKimbleNoValue(),
+      remark:           await this.getRemarkValue(),
+    };
+
+    const lineItems = await this.captureLineItemsWithAllDetails();
+
+    return {
+      capturedAt: new Date().toISOString(),
+      header,
+      lineItems,
+    };
+  }
+
+  async navigateBackToList() {
+    const backButton = this.page.locator('[aria-label="Back"], [title="Back"]').first();
+    await backButton.click();
+    await this.page.waitForSelector(
+      '[id*="BuyerPoUploadHeaderList"][id*="LineItem-innerTable-listUl"]',
+      { timeout: 15000 }
+    );
+    await this.page.waitForLoadState('networkidle');
+    // Allow SAP UI5 to finish rendering row data after navigation.
+    await this.page.waitForTimeout(1500);
+    console.log('✓ Navigated back to list page');
+  }
+
+  async verifyRecordInListTable(expected: {
+    supplierCode?: string;
+    poDate?: string;
+    styleNo?: string;
+    season?: string;
+  }): Promise<{ found: boolean; matchCount: number; totalRows: number }> {
+    const tableSelector = '[id*="BuyerPoUploadHeaderList"][id*="LineItem-innerTable-listUl"]';
+    await this.page.waitForSelector(tableSelector, { timeout: 15000 });
+
+    const rows = await this.page.locator(`${tableSelector} tbody tr[role="row"]`).all();
+    const totalRows = rows.length;
+    let matchCount = 0;
+
+    // Read text directly from the td cell (works regardless of inner span class).
+    const getCellText = async (row: Locator, columnKey: string): Promise<string> => {
+      const cell = row.locator(`[data-sap-ui-column*="${columnKey}-innerColumn"]`);
+      if (await cell.count() === 0) return '';
+      return (await cell.textContent())?.trim() ?? '';
+    };
+
+    for (const row of rows) {
+      const supplierText = await getCellText(row, 'SupplierCode');
+      const poDateText   = await getCellText(row, 'PODate');
+      const styleNoText  = await getCellText(row, 'StyleNo');
+      const seasonText   = await getCellText(row, 'Season');
+
+      const matches =
+        (!expected.supplierCode || supplierText?.includes(expected.supplierCode)) &&
+        (!expected.poDate       || poDateText?.includes(expected.poDate)) &&
+        (!expected.styleNo      || styleNoText?.includes(expected.styleNo)) &&
+        (!expected.season       || seasonText?.includes(expected.season));
+
+      if (matches) {
+        matchCount++;
+        console.log(`  [Match ${matchCount}] Supplier: ${supplierText} | PO Date: ${poDateText} | Style No: ${styleNoText} | Season: ${seasonText}`);
+      }
+    }
+
+    if (matchCount > 0) {
+      console.log(`✓ Found ${matchCount} matching row(s) out of ${totalRows} total rows in list`);
+    } else {
+      console.log(`✗ No matching record found out of ${totalRows} rows. Expected:`, expected);
+    }
+
+    return { found: matchCount > 0, matchCount, totalRows };
   }
 }

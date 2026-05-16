@@ -31,32 +31,32 @@
         {
           "poNo": "QA2-T001",
           "countryCode": "UK",
-          "partNo": "S",
-          "qty": "600.00",
-          "deliveryDate": "20 May 2026",
-          "pcdDate": "25 May 2026",
-          "fobDate": "30 May 2026",
-          "deliveryNo": "DLV-0515-1709-001"
-        },
-        {
-          "poNo": "QA2-T001",
-          "countryCode": "UK",
           "partNo": "L",
           "qty": "500.00",
-          "deliveryDate": "20 May 2026",
-          "pcdDate": "25 May 2026",
-          "fobDate": "30 May 2026",
-          "deliveryNo": "DLV-0515-1709-002"
+          "deliveryDate": "May 17, 2026",
+          "pcdDate": "May 17, 2026",
+          "fobDate": "May 17, 2026",
+          "deliveryNo": "DLV-0517-0013-001"
         },
         {
           "poNo": "QA2-T001",
           "countryCode": "UK",
           "partNo": "M",
           "qty": "500.00",
-          "deliveryDate": "20 May 2026",
-          "pcdDate": "25 May 2026",
-          "fobDate": "30 May 2026",
-          "deliveryNo": "DLV-0515-1709-003"
+          "deliveryDate": "May 17, 2026",
+          "pcdDate": "May 17, 2026",
+          "fobDate": "May 17, 2026",
+          "deliveryNo": "DLV-0517-0013-002"
+        },
+        {
+          "poNo": "QA2-T001",
+          "countryCode": "UK",
+          "partNo": "S",
+          "qty": "600.00",
+          "deliveryDate": "May 17, 2026",
+          "pcdDate": "May 17, 2026",
+          "fobDate": "May 17, 2026",
+          "deliveryNo": "DLV-0517-0013-003"
         }
       ]
     }
@@ -64,7 +64,7 @@
   "suppliers": [
     {
       "Description": "PRIMARK",
-      "Value": "SUP-001"
+      "Value": "CS003"
     }
   ]
 }

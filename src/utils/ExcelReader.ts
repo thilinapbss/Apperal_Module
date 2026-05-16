@@ -1,4 +1,4 @@
-const XLSX = require('xlsx');
+import * as XLSX from 'xlsx';
 import * as fs from 'fs';
 
 export interface BuyerPOData {
@@ -23,7 +23,7 @@ export class ExcelReader {
       const worksheet = workbook.Sheets[sheetName];
 
       // Convert to JSON
-      const data = XLSX.utils.sheet_to_json(worksheet);
+      const data = XLSX.utils.sheet_to_json<Record<string, unknown>>(worksheet);
 
       if (data.length === 0) {
         throw new Error('Excel file is empty');
