@@ -11,7 +11,7 @@ export class SegmentMasterPage {
     this.page = page;
     this.listTable = page.locator('[id*="SegmentMasterList"][id*="LineItem-innerTable"]');
     this.firstListRow = page.locator('[id*="SegmentMasterList"][id*="LineItem-innerTable"] tbody tr').first();
-    this.listCreateButton = page.locator('[id*="SegmentMasterList"][id*="StandardAction::Create"]');
+    this.listCreateButton = page.locator('button[id*="SegmentMasterList--fe::table"][id*="LineItem::StandardAction::Create"]');
   }
 
   // Returns true if the list Create button is visible within 5 s.

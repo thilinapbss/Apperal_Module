@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-05-17T13:34:14.105Z",
+  "capturedAt": "2026-05-17T18:17:06.674Z",
   "header": {
     "buyer": "QA 2",
     "styleNo": "QA0001",
@@ -18,7 +18,7 @@
       "partNo": "S",
       "qty": "600.00",
       "total": "1,600.00",
-      "deliveryNo": "DLV-0517-1904-001",
+      "deliveryNo": "DLV-0517-2346-001",
       "deliveryDate": "May 17, 2026",
       "pcdDate": "May 17, 2026",
       "fobDate": "May 17, 2026"
@@ -29,7 +29,7 @@
       "partNo": "M",
       "qty": "500.00",
       "total": "1,600.00",
-      "deliveryNo": "DLV-0517-1904-002",
+      "deliveryNo": "DLV-0517-2347-002",
       "deliveryDate": "May 17, 2026",
       "pcdDate": "May 17, 2026",
       "fobDate": "May 17, 2026"
@@ -40,7 +40,7 @@
       "partNo": "L",
       "qty": "500.00",
       "total": "1,600.00",
-      "deliveryNo": "DLV-0517-1904-003",
+      "deliveryNo": "DLV-0517-2347-003",
       "deliveryDate": "May 17, 2026",
       "pcdDate": "May 17, 2026",
       "fobDate": "May 17, 2026"

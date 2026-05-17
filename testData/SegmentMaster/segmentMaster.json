@@ -1,0 +1,8 @@
+{
+  "name": "Test",
+  "segments": [
+    { "segmentCode": "SEG001", "segmentName": "Test Segment 1" },
+    { "segmentCode": "SEG002", "segmentName": "Test Segment 2" },
+    { "segmentCode": "SEG003", "segmentName": "Test Segment 3" }
+  ]
+}

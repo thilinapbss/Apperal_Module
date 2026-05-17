@@ -1,0 +1,14 @@
+Filling details for 3 line items in table
+✓ Row 0: DeliveryNo = "DLV-0517-2346-001"
+✓ Row 0: DeliveryDate = today
+✓ Row 0: PCD_Date = today
+✓ Row 0: FOB_Date = today
+✓ Row 1: DeliveryNo = "DLV-0517-2347-002"
+✓ Row 1: DeliveryDate = today
+✓ Row 1: PCD_Date = today
+✓ Row 1: FOB_Date = today
+✓ Row 2: DeliveryNo = "DLV-0517-2347-003"
+✓ Row 2: DeliveryDate = today
+✓ Row 2: PCD_Date = today
+✓ Row 2: FOB_Date = today
+✓ All line item details filled in

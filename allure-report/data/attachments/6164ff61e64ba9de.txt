@@ -1,0 +1,5 @@
+Uploading file: /Users/thilinaweerasinghe/Sitrek/Apperal_Module/testData/Buyer_PO_Upload/PO Summary format1.xlsx
+Attempting to upload file: /Users/thilinaweerasinghe/Sitrek/Apperal_Module/testData/Buyer_PO_Upload/PO Summary format1.xlsx
+Clicking Excel Upload button
+File chooser triggered, setting files
+✓ File uploaded successfully

@@ -1,3 +1,5 @@
 {
-  "name": "Test"
+  "name": "Test",
+  "segmentCode": "SEG001",
+  "segmentName": "Test Segment"
 }
