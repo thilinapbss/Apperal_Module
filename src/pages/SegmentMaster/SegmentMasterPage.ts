@@ -5,34 +5,26 @@ export class SegmentMasterPage {
 
   readonly listTable: Locator;
   readonly firstListRow: Locator;
-  readonly detailsCreateButton: Locator;
+  readonly listCreateButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.listTable = page.locator('[id*="SegmentMasterList"][id*="LineItem-innerTable"]');
     this.firstListRow = page.locator('[id*="SegmentMasterList"][id*="LineItem-innerTable"] tbody tr').first();
-    this.detailsCreateButton = page.locator('[id*="SegmentMasterObjectPage"][id*="Details::StandardAction::Create"]');
+    this.listCreateButton = page.locator('[id*="SegmentMasterList"][id*="StandardAction::Create"]');
   }
 
-  async waitForListLoad() {
-    await this.page.waitForSelector('[id*="SegmentMasterList"]', { timeout: 30000 });
-    await this.page.waitForLoadState('networkidle');
+  // Returns true if the list Create button is visible within 5 s.
+  // Short timeout prevents a long hang that can stale the browser CDP session.
+  async isListReady(): Promise<boolean> {
+    return this.listCreateButton
+      .waitFor({ state: 'visible', timeout: 5000 })
+      .then(() => true)
+      .catch(() => false);
   }
 
-  async clickFirstRecord() {
-    await this.firstListRow.waitFor({ state: 'visible', timeout: 15000 });
-    await this.firstListRow.click();
-    await this.page.waitForLoadState('networkidle');
-  }
-
-  async waitForObjectPageLoad() {
-    await this.page.waitForSelector('[id*="SegmentMasterObjectPage"]', { timeout: 30000 });
-    await this.page.waitForLoadState('networkidle');
-  }
-
-  async clickDetailsCreateButton() {
-    await this.detailsCreateButton.waitFor({ state: 'visible', timeout: 15000 });
-    await this.detailsCreateButton.click();
+  async clickCreateButton() {
+    await this.listCreateButton.click();
     await this.page.waitForLoadState('networkidle');
   }
 

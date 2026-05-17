@@ -31,12 +31,12 @@
         {
           "poNo": "QA2-T001",
           "countryCode": "UK",
-          "partNo": "L",
-          "qty": "500.00",
+          "partNo": "S",
+          "qty": "600.00",
           "deliveryDate": "May 17, 2026",
           "pcdDate": "May 17, 2026",
           "fobDate": "May 17, 2026",
-          "deliveryNo": "DLV-0517-0013-001"
+          "deliveryNo": "DLV-0517-1904-001"
         },
         {
           "poNo": "QA2-T001",
@@ -46,17 +46,17 @@
           "deliveryDate": "May 17, 2026",
           "pcdDate": "May 17, 2026",
           "fobDate": "May 17, 2026",
-          "deliveryNo": "DLV-0517-0013-002"
+          "deliveryNo": "DLV-0517-1904-002"
         },
         {
           "poNo": "QA2-T001",
           "countryCode": "UK",
-          "partNo": "S",
-          "qty": "600.00",
+          "partNo": "L",
+          "qty": "500.00",
           "deliveryDate": "May 17, 2026",
           "pcdDate": "May 17, 2026",
           "fobDate": "May 17, 2026",
-          "deliveryNo": "DLV-0517-0013-003"
+          "deliveryNo": "DLV-0517-1904-003"
         }
       ]
     }
