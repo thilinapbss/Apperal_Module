@@ -1,4 +1,4 @@
 {
   "playwright.reuseBrowser": true,
-  "playwright.workspaceFolder": "${workspaceFolder}/Apperal_Module"
+  "playwright.configFile": "${workspaceFolder}/playwright.config.ts"
 }
