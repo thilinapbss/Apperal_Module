@@ -731,6 +731,18 @@ test.describe('Apperal Module | Regression Test Suite', () => {
     await styleMasterCreatePage.selectRandomMerchandiser();
     console.log('Random merchandiser selected from dropdown');
 
+    // Step 11: Click branch value help button to open dropdown
+    await styleMasterCreatePage.clickBranchValueHelp();
+    console.log('Branch value help button clicked');
+
+    // Step 12: Wait for branch dropdown table to load
+    await styleMasterCreatePage.waitForBranchDropdownLoad();
+    console.log('Branch dropdown table loaded');
+
+    // Step 13: Select the branch from dropdown using branch code from test data
+    await styleMasterCreatePage.selectBranchByCode(subMasterBranchData.branchCode);
+    console.log(`Selected branch: ${subMasterBranchData.branchCode}`);
+
     console.log('Style Master form filled successfully');
   });
 });

@@ -11,6 +11,9 @@ export class StyleMasterCreate {
   readonly merchandiserValueHelpButton: Locator;
   readonly merchandiserDialog: Locator;
   readonly merchandiserTableBody: Locator;
+  readonly branchValueHelpButton: Locator;
+  readonly branchPopover: Locator;
+  readonly branchTableBody: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -23,6 +26,9 @@ export class StyleMasterCreate {
     this.merchandiserValueHelpButton = page.locator('span[id*="DataField::Merchandiser::Field-edit-inner-vhi"]');
     this.merchandiserDialog = page.locator('div[id*="FieldValueHelp::Merchandiser::Popover"]');
     this.merchandiserTableBody = page.locator('tbody[id*="Merchandiser::Popover"][id*="tblBody"]');
+    this.branchValueHelpButton = page.locator('span[id*="DataField::Branch::Field-edit-inner-vhi"]');
+    this.branchPopover = page.locator('div[id*="FieldValueHelp::Branch::Popover"]');
+    this.branchTableBody = page.locator('tbody[id*="Branch::Popover"][id*="tblBody"]');
   }
 
   async waitForFormLoad() {
@@ -132,5 +138,24 @@ export class StyleMasterCreate {
     await randomRow.click();
     await this.page.waitForLoadState('networkidle');
     console.log(`Selected merchandiser at random index: ${randomIndex}`);
+  }
+
+  async clickBranchValueHelp() {
+    await this.branchValueHelpButton.click();
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async waitForBranchDropdownLoad() {
+    await this.branchTableBody.waitFor({ state: 'attached', timeout: 10000 });
+    await this.page.waitForTimeout(500);
+  }
+
+  async selectBranchByCode(branchCode: string) {
+    // Find the row containing the branch code and click it
+    const matchingRow = this.branchTableBody.locator(
+      `tr[role="row"]:has(span:text("${branchCode}"))`
+    );
+    await matchingRow.click();
+    await this.page.waitForLoadState('networkidle');
   }
 }
