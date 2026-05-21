@@ -1,0 +1,119 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: apparel_regression_testing.spec.ts >> Apperal Module | Regression Test Suite >> 28. Add all segment line items
+- Location: e2e\apparel_regression_testing.spec.ts:401:7
+
+# Error details
+
+```
+TimeoutError: locator.pressSequentially: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('//input[contains(@id,\'input0\') and contains(@id,\'inner\')]').last()
+
+```
+
+# Test source
+
+```ts
+  1  | import { Page, Locator } from '@playwright/test';
+  2  | 
+  3  | export class SegmentMasterCreate {
+  4  |   readonly page: Page;
+  5  | 
+  6  |   // Header form
+  7  |   readonly nameInput: Locator;
+  8  |   readonly saveButton: Locator;
+  9  | 
+  10 |   // Line items table
+  11 |   readonly lineItemCreateButton: Locator;
+  12 |   readonly lineItemTable: Locator;
+  13 |   readonly firstLineItemRow: Locator;
+  14 | 
+  15 |   // First row inputs using XPath — input0 = Segment Code, input1 = Segment Name
+  16 |   readonly firstRowSegmentCodeInput: Locator;
+  17 | 
+  18 |   constructor(page: Page) {
+  19 |     this.page = page;
+  20 | 
+  21 |     this.nameInput = page.locator('[id*="DataField::Name::Field-edit-inner"]');
+  22 |     this.saveButton = page.locator('[id*="SegmentMasterObjectPage"][id*="FooterBar"][id*="Save"]');
+  23 | 
+  24 |     this.lineItemCreateButton = page.locator(
+  25 |       'button[id*="SegmentMasterObjectPage--fe::table::GeneralInformation::LineItem::Details::StandardAction::Create"]'
+  26 |     );
+  27 |     this.lineItemTable = page.locator(
+  28 |       '[id*="GeneralInformation::LineItem::Details-innerTable-listUl"]'
+  29 |     );
+  30 | 
+  31 |     this.firstLineItemRow = page
+  32 |       .locator('tr[id*="GeneralInformation::LineItem::Details-innerTableRow"]')
+  33 |       .first();
+  34 | 
+  35 |     this.firstRowSegmentCodeInput = page.locator(
+  36 |       "xpath=(//input[contains(@id,'input0') and contains(@id,'inner')])[1]"
+  37 |     );
+  38 |   }
+  39 | 
+  40 |   async waitForFormLoad() {
+  41 |     await this.nameInput.waitFor({ state: 'visible', timeout: 30000 });
+  42 |   }
+  43 | 
+  44 |   async fillName(name: string) {
+  45 |     await this.nameInput.fill(name);
+  46 |   }
+  47 | 
+  48 |   async clickLineItemCreateButton() {
+  49 |     await this.lineItemCreateButton.click();
+  50 |     await this.page.waitForLoadState('networkidle');
+  51 |   }
+  52 | 
+  53 |   async waitForLineItemRow() {
+  54 |     await this.firstLineItemRow.waitFor({ state: 'visible', timeout: 10000 });
+  55 |   }
+  56 | 
+  57 |   async fillLineItemRow(segmentCode: string, segmentName: string) {
+  58 |     await this.firstRowSegmentCodeInput.waitFor({ state: 'visible', timeout: 10000 });
+  59 |     await this.firstRowSegmentCodeInput.fill(segmentCode);
+  60 |   }
+  61 | 
+  62 |   async fillAllLineItemRows(segments: { segmentCode: string; segmentName: string }[]) {
+  63 |     for (let i = 0; i < segments.length; i++) {
+  64 |       await this.lineItemCreateButton.click();
+  65 |       await this.page.waitForLoadState('networkidle');
+  66 |       await this.page.waitForTimeout(2000);
+  67 | 
+  68 |       const codeInput = this.page
+  69 |         .locator("xpath=//input[contains(@id,'input0') and contains(@id,'inner')]")
+  70 |         .last();
+  71 |       const nameInput = this.page
+  72 |         .locator("xpath=//input[contains(@id,'input1') and contains(@id,'inner')]")
+  73 |         .last();
+  74 | 
+> 75 |       await codeInput.pressSequentially(segments[i].segmentCode, { delay: 50 });
+     |                       ^ TimeoutError: locator.pressSequentially: Timeout 30000ms exceeded.
+  76 |       await this.page.keyboard.press('Tab');
+  77 | 
+  78 |       await nameInput.pressSequentially(segments[i].segmentName, { delay: 50 });
+  79 |       await this.page.keyboard.press('Tab');
+  80 |     }
+  81 |   }
+  82 | 
+  83 |   async getLineItemRowCount(): Promise<number> {
+  84 |     return this.page
+  85 |       .locator('tr[id*="GeneralInformation::LineItem::Details-innerTableRow"]')
+  86 |       .count();
+  87 |   }
+  88 | 
+  89 |   async clickSaveButton() {
+  90 |     await this.saveButton.click();
+  91 |     await this.page.waitForLoadState('networkidle');
+  92 |   }
+  93 | }
+  94 | 
+```

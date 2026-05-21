@@ -1,0 +1,59 @@
+Buyer value (via inputValue): "QA 2"
+StyleNo value (via inputValue): "QA0001"
+StyleDescription value (via inputValue): "QA2"
+StyleColor value (via inputValue): "QA2"
+Season value (via inputValue): "SS25 PH02"
+SupplierCode value (via inputValue): "CS003"
+Remark value (via inputValue): "QA Testing - Test Order"
+Capturing 5 rows with all details from table
+✓ All line item details captured
+Captured form data: {
+  "capturedAt": "2026-05-20T05:24:27.210Z",
+  "header": {
+    "buyer": "QA 2",
+    "styleNo": "QA0001",
+    "styleDescription": "QA2",
+    "styleColor": "QA2",
+    "season": "SS25 PH02",
+    "supplierCode": "CS003",
+    "poDate": "May 20, 2026",
+    "kimbleNo": "KIM-001-QA2",
+    "remark": "QA Testing - Test Order"
+  },
+  "lineItems": [
+    {
+      "poNo": "QA2-T001",
+      "countryCode": "UK",
+      "partNo": "M",
+      "qty": "500.00",
+      "total": "1,600.00",
+      "deliveryNo": "DLV-0520-1054-001",
+      "deliveryDate": "May 20, 2026",
+      "pcdDate": "May 20, 2026",
+      "fobDate": "May 20, 2026"
+    },
+    {
+      "poNo": "QA2-T001",
+      "countryCode": "UK",
+      "partNo": "S",
+      "qty": "600.00",
+      "total": "1,600.00",
+      "deliveryNo": "DLV-0520-1054-002",
+      "deliveryDate": "May 20, 2026",
+      "pcdDate": "May 20, 2026",
+      "fobDate": "May 20, 2026"
+    },
+    {
+      "poNo": "QA2-T001",
+      "countryCode": "UK",
+      "partNo": "L",
+      "qty": "500.00",
+      "total": "1,600.00",
+      "deliveryNo": "DLV-0520-1054-003",
+      "deliveryDate": "May 20, 2026",
+      "pcdDate": "May 20, 2026",
+      "fobDate": "May 20, 2026"
+    }
+  ]
+}
+Form data saved to C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\buyerPO.json

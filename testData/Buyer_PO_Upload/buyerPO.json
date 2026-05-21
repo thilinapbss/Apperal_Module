@@ -1,49 +1,49 @@
 {
-  "capturedAt": "2026-05-17T18:17:06.674Z",
+  "capturedAt": "2026-05-21T07:43:41.278Z",
   "header": {
-    "buyer": "QA 2",
-    "styleNo": "QA0001",
-    "styleDescription": "QA2",
-    "styleColor": "QA2",
-    "season": "SS25 PH02",
+    "buyer": "Buyer 001",
+    "styleNo": "BUY0001",
+    "styleDescription": "BUY2",
+    "styleColor": "BUY_C2",
+    "season": "BUY25 SE02",
     "supplierCode": "CS003",
-    "poDate": "May 17, 2026",
+    "poDate": "May 21, 2026",
     "kimbleNo": "KIM-001-QA2",
     "remark": "QA Testing - Test Order"
   },
   "lineItems": [
     {
-      "poNo": "QA2-T001",
+      "poNo": "PONO",
       "countryCode": "UK",
       "partNo": "S",
       "qty": "600.00",
       "total": "1,600.00",
-      "deliveryNo": "DLV-0517-2346-001",
-      "deliveryDate": "May 17, 2026",
-      "pcdDate": "May 17, 2026",
-      "fobDate": "May 17, 2026"
+      "deliveryNo": "DLV-0521-1313-001",
+      "deliveryDate": "May 21, 2026",
+      "pcdDate": "May 21, 2026",
+      "fobDate": "May 21, 2026"
     },
     {
-      "poNo": "QA2-T001",
+      "poNo": "PONO",
       "countryCode": "UK",
       "partNo": "M",
       "qty": "500.00",
       "total": "1,600.00",
-      "deliveryNo": "DLV-0517-2347-002",
-      "deliveryDate": "May 17, 2026",
-      "pcdDate": "May 17, 2026",
-      "fobDate": "May 17, 2026"
+      "deliveryNo": "DLV-0521-1313-002",
+      "deliveryDate": "May 21, 2026",
+      "pcdDate": "May 21, 2026",
+      "fobDate": "May 21, 2026"
     },
     {
-      "poNo": "QA2-T001",
+      "poNo": "PONO",
       "countryCode": "UK",
       "partNo": "L",
       "qty": "500.00",
       "total": "1,600.00",
-      "deliveryNo": "DLV-0517-2347-003",
-      "deliveryDate": "May 17, 2026",
-      "pcdDate": "May 17, 2026",
-      "fobDate": "May 17, 2026"
+      "deliveryNo": "DLV-0521-1313-003",
+      "deliveryDate": "May 21, 2026",
+      "pcdDate": "May 21, 2026",
+      "fobDate": "May 21, 2026"
     }
   ]
 }

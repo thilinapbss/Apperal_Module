@@ -1,0 +1,6 @@
+✓ Navigated back to list page
+Verifying record with: { supplierCode: 'CS003', styleNo: 'BUY0001', season: 'BUY25 SE02' }
+  [Match 1] Supplier: CS003 | PO Date: May 21, 2026 | Style No: BUY0001 | Season: BUY25 SE02
+✓ Found 1 matching row(s) out of 26 total rows in list
+Total rows in list: 26
+Matching rows: 1

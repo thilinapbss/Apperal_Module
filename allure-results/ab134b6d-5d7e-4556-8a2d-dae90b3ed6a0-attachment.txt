@@ -1,0 +1,4 @@
+No value help dropdown for status field
+Filled vendor form: Name="Test Vendor", Status="Active"
+Vendor data captured and saved to C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Vendor\Vendor.json
+Vendor created and saved successfully

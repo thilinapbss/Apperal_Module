@@ -1,0 +1,4 @@
+Filled routing plan detail row 1: RT001 - Main Route 1 - WH-CMB
+Filled routing plan detail row 2: RT002 - Secondary Route - WH-CMB
+Filled routing plan detail row 3: RT003 - Distribution Route - WH-CMB
+Filled 3 routing plan detail rows

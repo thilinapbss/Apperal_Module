@@ -58,6 +58,9 @@ const styleMasterData: {
   styleMasterCode: string;
   styleMasterName: string;
   departments: string;
+  considerPacking: string;
+  vcp: string;
+  make: string;
 } = JSON.parse(fs.readFileSync(styleMasterDataPath, 'utf-8'));
 
 // segment master code test data
@@ -787,6 +790,18 @@ test.describe('Apperal Module | Regression Test Suite', () => {
     const packingSegment = segmentMasterData.segments.find((seg: any) => seg.segmentCode === 'SIZ')!;
     await styleMasterCreatePage.selectPackingSegmentByCode(packingSegment.segmentCode);
     console.log(`Selected packing segment: ${packingSegment.segmentCode} (${packingSegment.segmentName})`);
+
+    // Step 23: Fill Consider Packing field
+    await styleMasterCreatePage.fillConsiderPacking(styleMasterData.considerPacking);
+    console.log(`Filled Consider Packing: ${styleMasterData.considerPacking}`);
+
+    // Step 24: Fill VCP field
+    await styleMasterCreatePage.fillVCP(styleMasterData.vcp);
+    console.log(`Filled VCP: ${styleMasterData.vcp}`);
+
+    // Step 25: Fill Make field
+    await styleMasterCreatePage.fillMake(styleMasterData.make);
+    console.log(`Filled Make: ${styleMasterData.make}`);
 
     console.log('Style Master form filled successfully');
   });

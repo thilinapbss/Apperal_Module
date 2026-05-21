@@ -1,0 +1,3 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+File upload processed, form ready for verification

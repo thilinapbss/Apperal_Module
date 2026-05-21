@@ -23,6 +23,9 @@ export class StyleMasterCreate {
   readonly packingSegmentValueHelpButton: Locator;
   readonly packingSegmentPopover: Locator;
   readonly packingSegmentTableBody: Locator;
+  readonly considerPackingInput: Locator;
+  readonly vcpInput: Locator;
+  readonly makeInput: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -47,6 +50,9 @@ export class StyleMasterCreate {
     this.packingSegmentValueHelpButton = page.locator('span[id*="DataField::PackingSegment::Field-edit-inner-vhi"]');
     this.packingSegmentPopover = page.locator('div[id*="FieldValueHelp::PackingSegment::Popover"]');
     this.packingSegmentTableBody = page.locator('tbody[id*="PackingSegment::Popover"][id*="tblBody"]');
+    this.considerPackingInput = page.locator('input[id*="DataField::PackBaseUnit::Field-edit-inner-inner"]');
+    this.vcpInput = page.locator('input[id*="DataField::VCP::Field-edit-inner-inner"]');
+    this.makeInput = page.locator('input[id*="DataField::Make::Field-edit-inner-inner"]');
   }
 
   async waitForFormLoad() {
@@ -231,6 +237,92 @@ export class StyleMasterCreate {
       `tr[role="row"]:has(span:text("${segmentCode}"))`
     );
     await matchingRow.click();
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async fillConsiderPacking(value: string) {
+    await this.considerPackingInput.fill(value);
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async fillVCP(value: string) {
+    await this.page.evaluate(() => window.scrollBy(0, 500));
+    await this.page.waitForTimeout(500);
+
+    try {
+      await this.vcpInput.waitFor({ state: 'visible', timeout: 5000 });
+      await this.vcpInput.fill(value);
+    } catch (e) {
+      // Try alternative locator patterns
+      const alternativeSelectors = [
+        'input[id*="VCP"]',
+        'input[placeholder*="VCP"]',
+        'input[aria-label*="VCP"]',
+        'input[id*="DataField::VendorCertificationProfile"]',
+        'input[id*="DataField::Vcp"]'
+      ];
+
+      let found = false;
+      for (const selector of alternativeSelectors) {
+        try {
+          const element = this.page.locator(selector).first();
+          const count = await element.count();
+          if (count > 0) {
+            console.log(`Found VCP field using selector: ${selector}`);
+            await element.fill(value);
+            found = true;
+            break;
+          }
+        } catch {
+          continue;
+        }
+      }
+
+      if (!found) {
+        console.error('VCP field not found with any selector. Available alternatives tried.');
+        throw new Error(`Cannot find VCP input field. Tried selectors: ${alternativeSelectors.join(', ')}`);
+      }
+    }
+
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async fillMake(value: string) {
+    await this.page.evaluate(() => window.scrollBy(0, 500));
+    await this.page.waitForTimeout(500);
+
+    try {
+      await this.makeInput.waitFor({ state: 'visible', timeout: 5000 });
+      await this.makeInput.fill(value);
+    } catch (e) {
+      const alternativeSelectors = [
+        'input[id*="Make"]',
+        'input[placeholder*="Make"]',
+        'input[aria-label*="Make"]'
+      ];
+
+      let found = false;
+      for (const selector of alternativeSelectors) {
+        try {
+          const element = this.page.locator(selector).first();
+          const count = await element.count();
+          if (count > 0) {
+            console.log(`Found Make field using selector: ${selector}`);
+            await element.fill(value);
+            found = true;
+            break;
+          }
+        } catch {
+          continue;
+        }
+      }
+
+      if (!found) {
+        console.error('Make field not found with any selector.');
+        throw new Error(`Cannot find Make input field. Tried selectors: ${alternativeSelectors.join(', ')}`);
+      }
+    }
+
     await this.page.waitForLoadState('networkidle');
   }
 }

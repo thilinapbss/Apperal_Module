@@ -1,0 +1,39 @@
+Capturing 5 rows with all details from table
+✓ All line item details captured
+Captured Line Items: [
+  {
+    "poNo": "QA2-T001",
+    "countryCode": "UK",
+    "partNo": "S",
+    "qty": "600.00",
+    "total": "1,600.00",
+    "deliveryNo": "DLV-0520-1107-001",
+    "deliveryDate": "May 20, 2026",
+    "pcdDate": "May 20, 2026",
+    "fobDate": "May 20, 2026"
+  },
+  {
+    "poNo": "QA2-T001",
+    "countryCode": "UK",
+    "partNo": "L",
+    "qty": "500.00",
+    "total": "1,600.00",
+    "deliveryNo": "DLV-0520-1107-002",
+    "deliveryDate": "May 20, 2026",
+    "pcdDate": "May 20, 2026",
+    "fobDate": "May 20, 2026"
+  },
+  {
+    "poNo": "QA2-T001",
+    "countryCode": "UK",
+    "partNo": "M",
+    "qty": "500.00",
+    "total": "1,600.00",
+    "deliveryNo": "DLV-0520-1107-003",
+    "deliveryDate": "May 20, 2026",
+    "pcdDate": "May 20, 2026",
+    "fobDate": "May 20, 2026"
+  }
+]
+Captured 3 line items with complete data
+Test data JSON updated with actual delivery numbers and values

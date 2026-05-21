@@ -1,5 +1,22 @@
 {
-  "name": "Test",
-  "segmentCode": "SEG001",
-  "segmentName": "Test Segment"
+  "code": "SE68SG",
+  "name": "Segment 2",
+  "status": "",
+  "segments": [
+    {
+      "segmentCode": "SEA",
+      "segmentName": "Season",
+      "index": 3
+    },
+    {
+      "segmentCode": "COL",
+      "segmentName": "Color",
+      "index": 2
+    },
+    {
+      "segmentCode": "SIZ",
+      "segmentName": "Size",
+      "index": 1
+    }
+  ]
 }

@@ -1,0 +1,22 @@
+{
+  "routingPlanName": "Routing Plan 001",
+  "routingPlanCode": "RO10RU",
+  "status": "Active",
+  "details": [
+    {
+      "routeCode": "CU01",
+      "routeName": "Cutting",
+      "warehouse": "WH-CMB"
+    },
+    {
+      "routeCode": "SA1",
+      "routeName": "Sawing",
+      "warehouse": "WH-CMB"
+    },
+    {
+      "routeCode": "PA1",
+      "routeName": "Packing",
+      "warehouse": "WH-CMB"
+    }
+  ]
+}

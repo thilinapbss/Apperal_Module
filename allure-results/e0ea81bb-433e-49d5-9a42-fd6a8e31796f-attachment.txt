@@ -1,0 +1,10 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+Code field not found or not visible
+Name field not found or not visible
+Could not fill departments field: Error: locator.waitFor: Target crashed 
+Call log:
+  - waiting for locator('input[id*="DataField::Departments::Field-edit-inner-inner"]') to be visible
+
+Filled Style Master form: Code="SM001", Name="Test Style", Departments="RO170RU"
+Style Master data captured and saved to C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\StyleMaster\StyleMaster.json

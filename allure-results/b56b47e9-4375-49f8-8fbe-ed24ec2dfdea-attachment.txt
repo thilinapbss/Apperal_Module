@@ -1,0 +1,3 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+About to click create button

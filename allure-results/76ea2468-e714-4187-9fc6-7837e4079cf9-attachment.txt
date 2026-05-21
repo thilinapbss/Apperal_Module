@@ -1,0 +1,5 @@
+Code field not found or not visible
+Name field not found or not visible
+Departments field not visible
+Filled Style Master form: Code="SM001", Name="Test Style", Departments="RO170RU"
+Style Master data captured and saved to C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\StyleMaster\StyleMaster.json

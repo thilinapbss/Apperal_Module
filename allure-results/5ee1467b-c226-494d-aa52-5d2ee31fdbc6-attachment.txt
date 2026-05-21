@@ -1,0 +1,4 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+Departments button visible: false
+Current URL: http://kgntest.ddns.net:4005/launchpadPage.html#Shell-home

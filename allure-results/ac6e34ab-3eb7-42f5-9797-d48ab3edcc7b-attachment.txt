@@ -1,0 +1,13 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+Code field not found or not visible
+Name field not found or not visible
+Departments input field not visible
+Departments input click failed
+Filled Style Master form: Code="SM001", Name="Test Style", Departments="RO170RU"
+Style Master data captured and saved to C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\StyleMaster\StyleMaster.json
+Error clicking save button: Error: locator.waitFor: Target crashed 
+Call log:
+  - waiting for locator('button[id$="::FooterBar::StandardAction::Save"]') to be visible
+
+Style Master created and saved successfully

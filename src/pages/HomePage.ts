@@ -35,4 +35,14 @@ export class HomePage {
     await this.dashboardSection.waitFor({ state: 'visible', timeout: 90000 });
     await this.dashboardGroups.waitFor({ state: 'visible', timeout: 90000 });
   }
+
+  async clickRoutingPlanTile() {
+    const routingPlanTile = this.tile(this.mastersGroup, 'Routing Plan');
+    await routingPlanTile.click();
+  }
+
+  async clickVendorMerchandiserTile() {
+    const vendorTile = this.page.locator('a[href*="apperalvendor-display"]');
+    await vendorTile.click();
+  }
 }

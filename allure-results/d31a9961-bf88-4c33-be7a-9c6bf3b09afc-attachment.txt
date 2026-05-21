@@ -1,0 +1,3 @@
+Filled vendor form: Name="Vendor 001", Status="Active"
+Vendor data captured and saved to C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Vendor\Vendor.json
+Vendor created and saved successfully

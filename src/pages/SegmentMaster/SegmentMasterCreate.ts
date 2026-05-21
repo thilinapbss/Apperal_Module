@@ -19,7 +19,7 @@ export class SegmentMasterCreate {
     this.page = page;
 
     this.nameInput = page.locator('[id*="DataField::Name::Field-edit-inner"]');
-    this.saveButton = page.locator('[id*="SegmentMasterObjectPage"][id*="FooterBar"][id*="Save"]');
+    this.saveButton = page.locator('button[id*="SegmentMasterObjectPage"][id*="FooterBar"][id*="StandardAction"][id*="Save"]');
 
     this.lineItemCreateButton = page.locator(
       'button[id*="SegmentMasterObjectPage--fe::table::GeneralInformation::LineItem::Details::StandardAction::Create"]'
@@ -66,10 +66,10 @@ export class SegmentMasterCreate {
       await this.page.waitForTimeout(2000);
 
       const codeInput = this.page
-        .locator("xpath=//input[contains(@id,'input0') and contains(@id,'inner')]")
+        .locator("xpath=(//input)[11]")
         .last();
       const nameInput = this.page
-        .locator("xpath=//input[contains(@id,'input1') and contains(@id,'inner')]")
+        .locator("xpath=(//input)[12]")
         .last();
 
       await codeInput.pressSequentially(segments[i].segmentCode, { delay: 50 });
@@ -89,5 +89,68 @@ export class SegmentMasterCreate {
   async clickSaveButton() {
     await this.saveButton.click();
     await this.page.waitForLoadState('networkidle');
+  }
+
+  async captureAndSaveFormData(filePath: string) {
+    const fs = require('fs');
+    const path = require('path');
+
+    // Capture code from display field
+    const codeValue = await this.page
+      .locator('[id*="DataField::Code::Field-display"]')
+      .textContent()
+      .catch(() => '');
+
+    // Capture header data
+    const nameValue = await this.nameInput.inputValue().catch(() => '');
+
+    // Capture status from the visible value
+    const statusElement = await this.page.locator('[id*="DataField::Status::Field-edit-inner"]').inputValue().catch(() => '');
+
+    // Capture line item data from table
+    const lineItems = [];
+    const tableBody = this.page.locator('[id*="GeneralInformation::LineItem::Details-innerTable-tblBody"]');
+    const rows = tableBody.locator('tr[id*="innerTableRow"]');
+    const rowCount = await rows.count();
+
+    for (let i = 0; i < rowCount; i++) {
+      const row = rows.nth(i);
+
+      // Get all input fields in this row
+      const inputs = row.locator('input[type="text"]');
+      const inputCount = await inputs.count();
+
+      if (inputCount >= 2) {
+        const segmentCode = await inputs.nth(0).inputValue().catch(() => '');
+        const segmentName = await inputs.nth(1).inputValue().catch(() => '');
+        const index = await inputs.nth(2).inputValue().catch(() => `${i + 1}`);
+
+        if (segmentCode) {
+          lineItems.push({
+            segmentCode: segmentCode,
+            segmentName: segmentName,
+            index: parseInt(index) || i + 1
+          });
+        }
+      }
+    }
+
+    // Create the data structure
+    const formData = {
+      code: codeValue?.trim() || '',
+      name: nameValue,
+      status: statusElement,
+      segments: lineItems
+    };
+
+    // Ensure directory exists
+    const dir = path.dirname(filePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+
+    // Save to file
+    fs.writeFileSync(filePath, JSON.stringify(formData, null, 2), 'utf-8');
+    console.log(`Form data captured and saved to ${filePath}`);
   }
 }
