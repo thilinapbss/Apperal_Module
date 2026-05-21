@@ -1,5 +1,10 @@
 {
   "considerPacking": "Yes",
   "vcp": "Test Automation",
-  "make": "Make To Order"
+  "make": "Make To Order",
+  "price": "150.00",
+  "reference": "REF-2026-001",
+  "seasonSelection": "BUY25 SE02",
+  "styleColor": "Red",
+  "styleStatus": "Active"
 }

@@ -61,6 +61,11 @@ const styleMasterData: {
   considerPacking: string;
   vcp: string;
   make: string;
+  price: string;
+  reference: string;
+  seasonSelection: string;
+  styleColor: string;
+  styleStatus: string;
 } = JSON.parse(fs.readFileSync(styleMasterDataPath, 'utf-8'));
 
 // segment master code test data
@@ -854,6 +859,26 @@ test.describe('Apperal Module | Regression Test Suite', () => {
       await styleMasterCreatePage.selectRandomPONumber();
       console.log('No PO numbers in test data, selected random PO number');
     }
+
+    // Step 29: Fill Price field
+    await styleMasterCreatePage.fillPrice(styleMasterData.price);
+    console.log(`Filled Price: ${styleMasterData.price}`);
+
+    // Step 30: Fill Reference field
+    await styleMasterCreatePage.fillReference(styleMasterData.reference);
+    console.log(`Filled Reference: ${styleMasterData.reference}`);
+
+    // Step 31: Fill Season Selection field
+    await styleMasterCreatePage.fillSeasonSelection(styleMasterData.seasonSelection);
+    console.log(`Filled Season Selection: ${styleMasterData.seasonSelection}`);
+
+    // Step 32: Fill Style Color field
+    await styleMasterCreatePage.fillStyleColor(styleMasterData.styleColor);
+    console.log(`Filled Style Color: ${styleMasterData.styleColor}`);
+
+    // Step 33: Fill Style Status field
+    await styleMasterCreatePage.fillStyleStatus(styleMasterData.styleStatus);
+    console.log(`Filled Style Status: ${styleMasterData.styleStatus}`);
 
     console.log('Style Master form filled successfully');
   });

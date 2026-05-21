@@ -31,6 +31,11 @@ export class StyleMasterCreate {
   readonly poNumberTable: Locator;
   readonly poNumberTableBody: Locator;
   readonly poNumberOkButton: Locator;
+  readonly priceInput: Locator;
+  readonly referenceInput: Locator;
+  readonly seasonSelectionInput: Locator;
+  readonly styleColorInput: Locator;
+  readonly styleStatusInput: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -63,6 +68,11 @@ export class StyleMasterCreate {
     this.poNumberTable = page.locator('table[id*="Table-innerTable-table"]');
     this.poNumberTableBody = page.locator('table[id*="Table-innerTable-table"] tbody');
     this.poNumberOkButton = page.locator('button[id*="-ok"]');
+    this.priceInput = page.locator('input[id*="OtherInformation::price::Field-edit-inner"]');
+    this.referenceInput = page.locator('input[id*="OtherInformation::Reference::Field-edit-inner"]');
+    this.seasonSelectionInput = page.locator('input[id*="OtherInformation::seasonselection::Field-edit-inner"]');
+    this.styleColorInput = page.locator('input[id*="OtherInformation::StyleColor::Field-edit-inner"]');
+    this.styleStatusInput = page.locator('input[id*="OtherInformation::stylestatus::Field-edit-inner"]');
   }
 
   async waitForFormLoad() {
@@ -395,5 +405,30 @@ export class StyleMasterCreate {
     await this.poNumberOkButton.click();
     await this.page.waitForLoadState('networkidle');
     console.log(`Selected PO number at random index: ${randomIndex}`);
+  }
+
+  async fillPrice(value: string) {
+    await this.priceInput.fill(value);
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async fillReference(value: string) {
+    await this.referenceInput.fill(value);
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async fillSeasonSelection(value: string) {
+    await this.seasonSelectionInput.fill(value);
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async fillStyleColor(value: string) {
+    await this.styleColorInput.fill(value);
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async fillStyleStatus(value: string) {
+    await this.styleStatusInput.fill(value);
+    await this.page.waitForLoadState('networkidle');
   }
 }
