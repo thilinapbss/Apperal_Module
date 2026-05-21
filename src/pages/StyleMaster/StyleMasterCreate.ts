@@ -14,6 +14,9 @@ export class StyleMasterCreate {
   readonly branchValueHelpButton: Locator;
   readonly branchPopover: Locator;
   readonly branchTableBody: Locator;
+  readonly vendorMerchandiserValueHelpButton: Locator;
+  readonly vendorMerchandiserPopover: Locator;
+  readonly vendorMerchandiserTableBody: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -29,6 +32,9 @@ export class StyleMasterCreate {
     this.branchValueHelpButton = page.locator('span[id*="DataField::Branch::Field-edit-inner-vhi"]');
     this.branchPopover = page.locator('div[id*="FieldValueHelp::Branch::Popover"]');
     this.branchTableBody = page.locator('tbody[id*="Branch::Popover"][id*="tblBody"]');
+    this.vendorMerchandiserValueHelpButton = page.locator('span[id*="DataField::VendorMerchandiser::Field-edit-inner-vhi"]');
+    this.vendorMerchandiserPopover = page.locator('div[id*="FieldValueHelp::VendorMerchandiser::Popover"]');
+    this.vendorMerchandiserTableBody = page.locator('tbody[id*="VendorMerchandiser::Popover"][id*="tblBody"]');
   }
 
   async waitForFormLoad() {
@@ -154,6 +160,25 @@ export class StyleMasterCreate {
     // Find the row containing the branch code and click it
     const matchingRow = this.branchTableBody.locator(
       `tr[role="row"]:has(span:text("${branchCode}"))`
+    );
+    await matchingRow.click();
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async clickVendorMerchandiserValueHelp() {
+    await this.vendorMerchandiserValueHelpButton.click();
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async waitForVendorMerchandiserDropdownLoad() {
+    await this.vendorMerchandiserTableBody.waitFor({ state: 'attached', timeout: 10000 });
+    await this.page.waitForTimeout(500);
+  }
+
+  async selectVendorMerchandiserByName(vendorName: string) {
+    // Find the row containing the vendor name and click it
+    const matchingRow = this.vendorMerchandiserTableBody.locator(
+      `tr[role="row"]:has(span:text("${vendorName}"))`
     );
     await matchingRow.click();
     await this.page.waitForLoadState('networkidle');

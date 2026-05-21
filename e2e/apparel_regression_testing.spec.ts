@@ -743,6 +743,18 @@ test.describe('Apperal Module | Regression Test Suite', () => {
     await styleMasterCreatePage.selectBranchByCode(subMasterBranchData.branchCode);
     console.log(`Selected branch: ${subMasterBranchData.branchCode}`);
 
+    // Step 14: Click vendor merchandiser value help button to open dropdown
+    await styleMasterCreatePage.clickVendorMerchandiserValueHelp();
+    console.log('Vendor Merchandiser value help button clicked');
+
+    // Step 15: Wait for vendor merchandiser dropdown table to load
+    await styleMasterCreatePage.waitForVendorMerchandiserDropdownLoad();
+    console.log('Vendor Merchandiser dropdown table loaded');
+
+    // Step 16: Select the vendor merchandiser from dropdown using vendor name from test data
+    await styleMasterCreatePage.selectVendorMerchandiserByName(vendorData.vendorName);
+    console.log(`Selected vendor merchandiser: ${vendorData.vendorName}`);
+
     console.log('Style Master form filled successfully');
   });
 });
