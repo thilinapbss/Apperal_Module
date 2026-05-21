@@ -1,0 +1,33 @@
+Style Master form loaded
+Departments value help button clicked
+Departments dropdown table loaded
+Selected routing plan: Routing Plan 001
+Customer value help button clicked
+Customer dropdown table loaded
+Selected customer at random index: 7
+Random customer selected from dropdown
+Merchandiser value help button clicked
+Merchandiser dropdown table loaded
+Selected merchandiser at random index: 0
+Random merchandiser selected from dropdown
+Branch value help button clicked
+Branch dropdown table loaded
+Selected branch: BR002
+Vendor Merchandiser value help button clicked
+Vendor Merchandiser dropdown table loaded
+Selected vendor merchandiser: Vendor 001
+Segment Code value help button clicked
+Segment Code dropdown table loaded
+Selected segment code: SE68SG
+Packing Segment value help button clicked
+Packing Segment dropdown table loaded
+Selected packing segment: SIZ (Size)
+Filled Consider Packing: Yes
+Found VCP field using selector: input[id*="VCP"]
+Filled VCP: Test Automation
+Filled Make: Make To Order
+PO Number value help button clicked
+PO Number dialog loaded
+Selected PO number at random index: 8
+Random PO number selected from dialog
+Style Master form filled successfully

@@ -26,6 +26,11 @@ export class StyleMasterCreate {
   readonly considerPackingInput: Locator;
   readonly vcpInput: Locator;
   readonly makeInput: Locator;
+  readonly poNumberValueHelpButton: Locator;
+  readonly poNumberDialog: Locator;
+  readonly poNumberTable: Locator;
+  readonly poNumberTableBody: Locator;
+  readonly poNumberOkButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -53,6 +58,11 @@ export class StyleMasterCreate {
     this.considerPackingInput = page.locator('input[id*="DataField::PackBaseUnit::Field-edit-inner-inner"]');
     this.vcpInput = page.locator('input[id*="DataField::VCP::Field-edit-inner-inner"]');
     this.makeInput = page.locator('input[id*="DataField::Make::Field-edit-inner-inner"]');
+    this.poNumberValueHelpButton = page.locator('span[id*="PONumberSelection::PONumber::MultiValueField::_mvf-inner-vhi"]');
+    this.poNumberDialog = page.locator('div[role="dialog"]').filter({ hasText: 'Select: PO Numbers' });
+    this.poNumberTable = page.locator('table[id*="Table-innerTable-table"]');
+    this.poNumberTableBody = page.locator('table[id*="Table-innerTable-table"] tbody');
+    this.poNumberOkButton = page.locator('button[id*="-ok"]');
   }
 
   async waitForFormLoad() {
@@ -324,5 +334,66 @@ export class StyleMasterCreate {
     }
 
     await this.page.waitForLoadState('networkidle');
+  }
+
+  async clickPONumberValueHelp() {
+    // Try to close any open overlays first
+    try {
+      await this.page.locator('[class*="sapUiBLy"]').click({ force: true, timeout: 1000 });
+    } catch {
+      // Overlay doesn't exist, continue
+    }
+
+    await this.poNumberValueHelpButton.click({ force: true });
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async waitForPONumberDialogLoad() {
+    await this.poNumberDialog.waitFor({ state: 'attached', timeout: 10000 });
+    await this.page.waitForTimeout(500);
+  }
+
+  async selectPONumberByValue(poValue: string) {
+    // Find the row index containing the PO number value
+    const allRows = this.poNumberTableBody.locator('tr[role="row"]');
+    const rowIndex = await allRows.filter({ hasText: poValue }).first().evaluate(el => {
+      return el.getAttribute('data-sap-ui-rowindex');
+    });
+
+    // Click the row selector for this row
+    const rowSelector = this.page.locator(`[id*="Table-innerTable-rowsel${rowIndex}"]`);
+    await rowSelector.click();
+    await this.poNumberOkButton.click();
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async selectFirstPONumber() {
+    // Click the first row's selector
+    const firstRowSelector = this.page.locator('[id*="Table-innerTable-rowsel0"]').first();
+    await firstRowSelector.click();
+    await this.poNumberOkButton.click();
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async selectRandomPONumber() {
+    // Get all PO number rows from the table
+    const allRows = this.poNumberTableBody.locator('tr[role="row"]');
+    const rowCount = await allRows.count();
+
+    if (rowCount === 0) {
+      throw new Error('No PO number rows found in the table');
+    }
+
+    // Select a random row (0 to rowCount-1)
+    const randomIndex = Math.floor(Math.random() * rowCount);
+
+    // Click the row selector for the selected row using the row index
+    const rowSelector = this.page.locator(`[id*="Table-innerTable-rowsel${randomIndex}"]`).first();
+    await rowSelector.click();
+
+    // Click the OK button to confirm selection
+    await this.poNumberOkButton.click();
+    await this.page.waitForLoadState('networkidle');
+    console.log(`Selected PO number at random index: ${randomIndex}`);
   }
 }

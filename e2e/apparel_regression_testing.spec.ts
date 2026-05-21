@@ -71,6 +71,34 @@ const segmentCodeData: {
   status: string;
 } = JSON.parse(fs.readFileSync(segmentCodeDataPath, 'utf-8'));
 
+// buyer PO test data
+const buyerPODataPath = path.join(__dirname, '../testData/Buyer_PO_Upload/buyerPO.json');
+const buyerPOData: {
+  capturedAt: string;
+  header: {
+    buyer: string;
+    styleNo: string;
+    styleDescription: string;
+    styleColor: string;
+    season: string;
+    supplierCode: string;
+    poDate: string;
+    kimbleNo: string;
+    remark: string;
+  };
+  lineItems: {
+    poNo: string;
+    countryCode: string;
+    partNo: string;
+    qty: string;
+    total: string;
+    deliveryNo: string;
+    deliveryDate: string;
+    pcdDate: string;
+    fobDate: string;
+  }[];
+} = JSON.parse(fs.readFileSync(buyerPODataPath, 'utf-8'));
+
 const authFile = path.join(__dirname, '../playwright/.auth/user.json');
 
 let sharedPage: Page;
@@ -802,6 +830,30 @@ test.describe('Apperal Module | Regression Test Suite', () => {
     // Step 25: Fill Make field
     await styleMasterCreatePage.fillMake(styleMasterData.make);
     console.log(`Filled Make: ${styleMasterData.make}`);
+
+    // Step 26: Click PO Number value help button to open dialog
+    await styleMasterCreatePage.clickPONumberValueHelp();
+    console.log('PO Number value help button clicked');
+
+    // Step 27: Wait for PO Number dialog to load
+    await styleMasterCreatePage.waitForPONumberDialogLoad();
+    console.log('PO Number dialog loaded');
+
+    // Step 28: Get unique PO numbers from test data and select them
+    const uniquePONumbers = [...new Set(buyerPOData.lineItems.map(item => item.poNo))];
+    for (const poNo of uniquePONumbers) {
+      const poDisplayValue = `${poNo} (${buyerPOData.header.styleNo})`;
+      try {
+        await styleMasterCreatePage.selectPONumberByValue(poDisplayValue);
+        console.log(`Selected PO number: ${poDisplayValue}`);
+      } catch (e) {
+        console.log(`PO number ${poDisplayValue} not found, trying next one`);
+      }
+    }
+    if (uniquePONumbers.length === 0) {
+      await styleMasterCreatePage.selectRandomPONumber();
+      console.log('No PO numbers in test data, selected random PO number');
+    }
 
     console.log('Style Master form filled successfully');
   });
