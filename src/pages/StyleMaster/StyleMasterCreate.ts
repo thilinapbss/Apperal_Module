@@ -17,6 +17,9 @@ export class StyleMasterCreate {
   readonly vendorMerchandiserValueHelpButton: Locator;
   readonly vendorMerchandiserPopover: Locator;
   readonly vendorMerchandiserTableBody: Locator;
+  readonly segmentCodeValueHelpButton: Locator;
+  readonly segmentCodePopover: Locator;
+  readonly segmentCodeTableBody: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -35,6 +38,9 @@ export class StyleMasterCreate {
     this.vendorMerchandiserValueHelpButton = page.locator('span[id*="DataField::VendorMerchandiser::Field-edit-inner-vhi"]');
     this.vendorMerchandiserPopover = page.locator('div[id*="FieldValueHelp::VendorMerchandiser::Popover"]');
     this.vendorMerchandiserTableBody = page.locator('tbody[id*="VendorMerchandiser::Popover"][id*="tblBody"]');
+    this.segmentCodeValueHelpButton = page.locator('span[id*="DataField::SegmentCode::Field-edit-inner-vhi"]');
+    this.segmentCodePopover = page.locator('div[id*="FieldValueHelp::SegmentCode::Popover"]');
+    this.segmentCodeTableBody = page.locator('tbody[id*="SegmentCode::Popover"][id*="tblBody"]');
   }
 
   async waitForFormLoad() {
@@ -179,6 +185,25 @@ export class StyleMasterCreate {
     // Find the row containing the vendor name and click it
     const matchingRow = this.vendorMerchandiserTableBody.locator(
       `tr[role="row"]:has(span:text("${vendorName}"))`
+    );
+    await matchingRow.click();
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async clickSegmentCodeValueHelp() {
+    await this.segmentCodeValueHelpButton.click();
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async waitForSegmentCodeDropdownLoad() {
+    await this.segmentCodeTableBody.waitFor({ state: 'attached', timeout: 10000 });
+    await this.page.waitForTimeout(500);
+  }
+
+  async selectSegmentCodeByCode(segmentCode: string) {
+    // Find the row containing the segment code and click it
+    const matchingRow = this.segmentCodeTableBody.locator(
+      `tr[role="row"]:has(span:text("${segmentCode}"))`
     );
     await matchingRow.click();
     await this.page.waitForLoadState('networkidle');

@@ -60,6 +60,14 @@ const styleMasterData: {
   departments: string;
 } = JSON.parse(fs.readFileSync(styleMasterDataPath, 'utf-8'));
 
+// segment master code test data
+const segmentCodeDataPath = path.join(__dirname, '../testData/SegmentMaster/test-data.json');
+const segmentCodeData: {
+  code: string;
+  name: string;
+  status: string;
+} = JSON.parse(fs.readFileSync(segmentCodeDataPath, 'utf-8'));
+
 const authFile = path.join(__dirname, '../playwright/.auth/user.json');
 
 let sharedPage: Page;
@@ -754,6 +762,18 @@ test.describe('Apperal Module | Regression Test Suite', () => {
     // Step 16: Select the vendor merchandiser from dropdown using vendor name from test data
     await styleMasterCreatePage.selectVendorMerchandiserByName(vendorData.vendorName);
     console.log(`Selected vendor merchandiser: ${vendorData.vendorName}`);
+
+    // Step 17: Click segment code value help button to open dropdown
+    await styleMasterCreatePage.clickSegmentCodeValueHelp();
+    console.log('Segment Code value help button clicked');
+
+    // Step 18: Wait for segment code dropdown table to load
+    await styleMasterCreatePage.waitForSegmentCodeDropdownLoad();
+    console.log('Segment Code dropdown table loaded');
+
+    // Step 19: Select the segment code from dropdown using code from test data
+    await styleMasterCreatePage.selectSegmentCodeByCode(segmentCodeData.code);
+    console.log(`Selected segment code: ${segmentCodeData.code}`);
 
     console.log('Style Master form filled successfully');
   });
