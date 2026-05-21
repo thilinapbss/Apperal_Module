@@ -20,6 +20,9 @@ export class StyleMasterCreate {
   readonly segmentCodeValueHelpButton: Locator;
   readonly segmentCodePopover: Locator;
   readonly segmentCodeTableBody: Locator;
+  readonly packingSegmentValueHelpButton: Locator;
+  readonly packingSegmentPopover: Locator;
+  readonly packingSegmentTableBody: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -41,6 +44,9 @@ export class StyleMasterCreate {
     this.segmentCodeValueHelpButton = page.locator('span[id*="DataField::SegmentCode::Field-edit-inner-vhi"]');
     this.segmentCodePopover = page.locator('div[id*="FieldValueHelp::SegmentCode::Popover"]');
     this.segmentCodeTableBody = page.locator('tbody[id*="SegmentCode::Popover"][id*="tblBody"]');
+    this.packingSegmentValueHelpButton = page.locator('span[id*="DataField::PackingSegment::Field-edit-inner-vhi"]');
+    this.packingSegmentPopover = page.locator('div[id*="FieldValueHelp::PackingSegment::Popover"]');
+    this.packingSegmentTableBody = page.locator('tbody[id*="PackingSegment::Popover"][id*="tblBody"]');
   }
 
   async waitForFormLoad() {
@@ -203,6 +209,25 @@ export class StyleMasterCreate {
   async selectSegmentCodeByCode(segmentCode: string) {
     // Find the row containing the segment code and click it
     const matchingRow = this.segmentCodeTableBody.locator(
+      `tr[role="row"]:has(span:text("${segmentCode}"))`
+    );
+    await matchingRow.click();
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async clickPackingSegmentValueHelp() {
+    await this.packingSegmentValueHelpButton.click();
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  async waitForPackingSegmentDropdownLoad() {
+    await this.packingSegmentTableBody.waitFor({ state: 'attached', timeout: 10000 });
+    await this.page.waitForTimeout(500);
+  }
+
+  async selectPackingSegmentByCode(segmentCode: string) {
+    // Find the row containing the segment code and click it
+    const matchingRow = this.packingSegmentTableBody.locator(
       `tr[role="row"]:has(span:text("${segmentCode}"))`
     );
     await matchingRow.click();

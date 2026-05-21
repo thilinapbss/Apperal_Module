@@ -775,6 +775,19 @@ test.describe('Apperal Module | Regression Test Suite', () => {
     await styleMasterCreatePage.selectSegmentCodeByCode(segmentCodeData.code);
     console.log(`Selected segment code: ${segmentCodeData.code}`);
 
+    // Step 20: Click packing segment value help button to open dropdown
+    await styleMasterCreatePage.clickPackingSegmentValueHelp();
+    console.log('Packing Segment value help button clicked');
+
+    // Step 21: Wait for packing segment dropdown table to load
+    await styleMasterCreatePage.waitForPackingSegmentDropdownLoad();
+    console.log('Packing Segment dropdown table loaded');
+
+    // Step 22: Select the packing segment from dropdown using SIZ code from nested segments array
+    const packingSegment = segmentMasterData.segments.find((seg: any) => seg.segmentCode === 'SIZ')!;
+    await styleMasterCreatePage.selectPackingSegmentByCode(packingSegment.segmentCode);
+    console.log(`Selected packing segment: ${packingSegment.segmentCode} (${packingSegment.segmentName})`);
+
     console.log('Style Master form filled successfully');
   });
 });
