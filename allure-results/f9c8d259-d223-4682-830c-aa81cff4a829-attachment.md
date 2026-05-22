@@ -1,0 +1,226 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: apparel_regression_testing.spec.ts >> Apperal Module | Regression Test Suite >> 53. Fill Style Master Form and Save
+- Location: e2e\apparel_regression_testing.spec.ts:737:7
+
+# Error details
+
+```
+TimeoutError: locator.waitFor: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator('div[id*="FieldValueHelp::Customer::Dialog::qualifier"]').locator('tbody tr[data-sap-ui-rowindex]').first()
+
+```
+
+# Test source
+
+```ts
+  44  |   constructor(page: Page) {
+  45  |     this.page = page;
+  46  |     this.departmentsValueHelpButton = page.locator('span[id*="DataField::Departments::Field-edit-inner-vhi"]');
+  47  |     this.departmentsDropdownTable = page.locator('table[id*="SuggestTable-listUl"]');
+  48  |     this.departmentsTableBody = page.locator('tbody[id*="SuggestTable-tblBody"]');
+  49  |     this.customerValueHelpButton = page.locator('span[id*="DataField::Customer::Field-edit-inner-vhi"]');
+  50  |     this.customerDialog = page.locator('div[id*="FieldValueHelp::Customer::Dialog::qualifier"]');
+  51  |     this.customerTableBody = page.locator('table[id*="Table-innerTable-table"] tbody');
+  52  |     this.merchandiserValueHelpButton = page.locator('span[id*="DataField::Merchandiser::Field-edit-inner-vhi"]');
+  53  |     this.merchandiserDialog = page.locator('div[id*="FieldValueHelp::Merchandiser::Popover"]');
+  54  |     this.merchandiserTableBody = page.locator('tbody[id*="Merchandiser::Popover"][id*="tblBody"]');
+  55  |     this.branchValueHelpButton = page.locator('span[id*="DataField::Branch::Field-edit-inner-vhi"]');
+  56  |     this.branchPopover = page.locator('div[id*="FieldValueHelp::Branch::Popover"]');
+  57  |     this.branchTableBody = page.locator('tbody[id*="Branch::Popover"][id*="tblBody"]');
+  58  |     this.vendorMerchandiserValueHelpButton = page.locator('span[id*="DataField::VendorMerchandiser::Field-edit-inner-vhi"]');
+  59  |     this.vendorMerchandiserPopover = page.locator('div[id*="FieldValueHelp::VendorMerchandiser::Popover"]');
+  60  |     this.vendorMerchandiserTableBody = page.locator('tbody[id*="VendorMerchandiser::Popover"][id*="tblBody"]');
+  61  |     this.segmentCodeValueHelpButton = page.locator('span[id*="DataField::SegmentCode::Field-edit-inner-vhi"]');
+  62  |     this.segmentCodePopover = page.locator('div[id*="FieldValueHelp::SegmentCode::Popover"]');
+  63  |     this.segmentCodeTableBody = page.locator('tbody[id*="SegmentCode::Popover"][id*="tblBody"]');
+  64  |     this.packingSegmentValueHelpButton = page.locator('span[id*="DataField::PackingSegment::Field-edit-inner-vhi"]');
+  65  |     this.packingSegmentPopover = page.locator('div[id*="FieldValueHelp::PackingSegment::Popover"]');
+  66  |     this.packingSegmentTableBody = page.locator('tbody[id*="PackingSegment::Popover"][id*="tblBody"]');
+  67  |     this.considerPackingInput = page.locator('input[id*="DataField::PackBaseUnit::Field-edit-inner-inner"]');
+  68  |     this.vcpInput = page.locator('input[id*="DataField::VCP::Field-edit-inner-inner"]');
+  69  |     this.makeInput = page.locator('input[id*="DataField::Make::Field-edit-inner-inner"]');
+  70  |     this.poNumberValueHelpButton = page.locator('span[id*="PONumberSelection::PONumber::MultiValueField::_mvf-inner-vhi"]');
+  71  |     this.poNumberDialog = page.locator('div[role="dialog"]').filter({ hasText: 'Select: PO Numbers' });
+  72  |     this.poNumberTable = page.locator('table[id*="Table-innerTable-table"]');
+  73  |     this.poNumberTableBody = page.locator('table[id*="Table-innerTable-table"] tbody');
+  74  |     this.poNumberOkButton = page.locator('button[id*="-ok"]');
+  75  |     this.priceInput = page.locator('input[id*="OtherInformation::price::Field-edit-inner"]');
+  76  |     this.referenceInput = page.locator('input[id*="OtherInformation::Reference::Field-edit-inner"]');
+  77  |     this.seasonSelectionInput = page.locator('input[id*="OtherInformation::seasonselection::Field-edit-inner"]');
+  78  |     this.styleColorInput = page.locator('input[id*="OtherInformation::StyleColor::Field-edit-inner"]');
+  79  |     this.styleStatusInput = page.locator('input[id*="OtherInformation::stylestatus::Field-edit-inner"]');
+  80  |     this.attachmentDetailsCreateButton = page.locator('button[id*="AttachmentDetails::LineItem::StandardAction::Create"]');
+  81  |     this.attachmentDetailsTable = page.locator('div[id*="AttachmentDetails::LineItem-innerTable-tableCtrlCnt"]');
+  82  |     this.attachmentDetailsTableBody = page.locator('tbody[id*="AttachmentDetails::LineItem-innerTable-tblBody"], table[id*="AttachmentDetails::LineItem-innerTable-table"] tbody');
+  83  |   }
+  84  | 
+  85  |   async waitForFormLoad() {
+  86  |     await this.departmentsValueHelpButton.waitFor({ state: 'visible', timeout: 30000 });
+  87  |   }
+  88  | 
+  89  |   async clickDepartmentsValueHelp() {
+  90  |     await this.departmentsValueHelpButton.click();
+  91  |     await this.page.waitForLoadState('networkidle');
+  92  |   }
+  93  | 
+  94  |   async waitForDropdownLoad() {
+  95  |     await this.departmentsTableBody.waitFor({ state: 'attached', timeout: 10000 });
+  96  |     await this.page.waitForTimeout(500);
+  97  |   }
+  98  | 
+  99  |   async selectDepartmentByRoutingPlan(routingPlanName: string) {
+  100 |     // Find the row containing the routing plan name and click it
+  101 |     const matchingRow = this.departmentsTableBody.locator(
+  102 |       `tr[role="row"]:has(span:text("${routingPlanName}"))`
+  103 |     );
+  104 |     await matchingRow.click();
+  105 |     await this.page.waitForLoadState('networkidle');
+  106 |   }
+  107 | 
+  108 |   async selectFirstDepartment() {
+  109 |     // Click the first row in the dropdown table
+  110 |     const firstRow = this.departmentsTableBody.locator('tr[role="row"]').first();
+  111 |     await firstRow.click();
+  112 |     await this.page.waitForLoadState('networkidle');
+  113 |   }
+  114 | 
+  115 |   async clickCustomerValueHelp() {
+  116 |     await this.customerValueHelpButton.click();
+  117 |     await this.page.waitForLoadState('networkidle');
+  118 |   }
+  119 | 
+  120 |   async waitForCustomerDropdownLoad() {
+  121 |     await this.customerTableBody.waitFor({ state: 'attached', timeout: 10000 });
+  122 |     await this.page.waitForTimeout(2000);
+  123 |   }
+  124 | 
+  125 |   async selectCustomerByName(customerName: string) {
+  126 |     // Find the row containing the customer name and click it
+  127 |     const matchingRow = this.customerTableBody.locator(
+  128 |       `tr[role="row"]:has(span:text("${customerName}"))`
+  129 |     );
+  130 |     await matchingRow.click();
+  131 |     await this.page.waitForLoadState('networkidle');
+  132 |   }
+  133 | 
+  134 |   async selectFirstCustomer() {
+  135 |     // Click the first row in the dropdown table
+  136 |     const firstRow = this.customerTableBody.locator('tr[role="row"]').first();
+  137 |     await firstRow.click();
+  138 |     await this.page.waitForLoadState('networkidle');
+  139 |   }
+  140 | 
+  141 |   async selectRandomCustomer() {
+  142 |     // Wait for at least one row to be available in the customer table
+  143 |     const firstRow = this.customerDialog.locator('tbody tr[data-sap-ui-rowindex]').first();
+> 144 |     await firstRow.waitFor({ state: 'attached', timeout: 15000 });
+      |                    ^ TimeoutError: locator.waitFor: Timeout 15000ms exceeded.
+  145 |     await this.page.waitForTimeout(2000);
+  146 | 
+  147 |     // Get all customer rows from the SAP UI5 ResponsiveTable inside the customer dialog
+  148 |     const allRows = this.customerDialog.locator('tbody tr[data-sap-ui-rowindex]');
+  149 |     const rowCount = await allRows.count();
+  150 | 
+  151 |     if (rowCount === 0) {
+  152 |       throw new Error('No customer rows found in the customer dialog table');
+  153 |     }
+  154 | 
+  155 |     // Select a random row (0 to rowCount-1)
+  156 |     const randomIndex = Math.floor(Math.random() * rowCount);
+  157 |     const randomRow = allRows.nth(randomIndex);
+  158 | 
+  159 |     // Click on the first cell in the row instead of the row itself to avoid table overlay
+  160 |     const firstCell = randomRow.locator('td').first();
+  161 |     await firstCell.click();
+  162 |     await this.page.waitForLoadState('networkidle');
+  163 |     console.log(`Selected customer at random index: ${randomIndex}`);
+  164 |   }
+  165 | 
+  166 |   async clickMerchandiserValueHelp() {
+  167 |     await this.merchandiserValueHelpButton.click();
+  168 |     await this.page.waitForLoadState('networkidle');
+  169 |   }
+  170 | 
+  171 |   async waitForMerchandiserDropdownLoad() {
+  172 |     await this.merchandiserTableBody.waitFor({ state: 'attached', timeout: 10000 });
+  173 |     await this.page.waitForTimeout(2000);
+  174 |   }
+  175 | 
+  176 |   async selectRandomMerchandiser() {
+  177 |     // Get all merchandiser rows from the SuggestTable in the popover
+  178 |     const allRows = this.merchandiserTableBody.locator('tr[role="row"]');
+  179 |     const rowCount = await allRows.count();
+  180 | 
+  181 |     if (rowCount === 0) {
+  182 |       throw new Error('No merchandiser rows found in the dropdown table');
+  183 |     }
+  184 | 
+  185 |     // Select a random row (0 to rowCount-1)
+  186 |     const randomIndex = Math.floor(Math.random() * rowCount);
+  187 |     const randomRow = allRows.nth(randomIndex);
+  188 | 
+  189 |     await randomRow.click();
+  190 |     await this.page.waitForLoadState('networkidle');
+  191 |     console.log(`Selected merchandiser at random index: ${randomIndex}`);
+  192 |   }
+  193 | 
+  194 |   async clickBranchValueHelp() {
+  195 |     await this.branchValueHelpButton.click();
+  196 |     await this.page.waitForLoadState('networkidle');
+  197 |   }
+  198 | 
+  199 |   async waitForBranchDropdownLoad() {
+  200 |     await this.branchTableBody.waitFor({ state: 'attached', timeout: 10000 });
+  201 |     await this.page.waitForTimeout(500);
+  202 |   }
+  203 | 
+  204 |   async selectBranchByCode(branchCode: string) {
+  205 |     // Find the row containing the branch code and click it
+  206 |     const matchingRow = this.branchTableBody.locator(
+  207 |       `tr[role="row"]:has(span:text("${branchCode}"))`
+  208 |     );
+  209 |     await matchingRow.click();
+  210 |     await this.page.waitForLoadState('networkidle');
+  211 |   }
+  212 | 
+  213 |   async clickVendorMerchandiserValueHelp() {
+  214 |     await this.vendorMerchandiserValueHelpButton.click();
+  215 |     await this.page.waitForLoadState('networkidle');
+  216 |   }
+  217 | 
+  218 |   async waitForVendorMerchandiserDropdownLoad() {
+  219 |     await this.vendorMerchandiserTableBody.waitFor({ state: 'attached', timeout: 10000 });
+  220 |     await this.page.waitForTimeout(500);
+  221 |   }
+  222 | 
+  223 |   async selectVendorMerchandiserByName(vendorName: string) {
+  224 |     // Find the row containing the vendor name and click it
+  225 |     const matchingRow = this.vendorMerchandiserTableBody.locator(
+  226 |       `tr[role="row"]:has(span:text("${vendorName}"))`
+  227 |     );
+  228 |     await matchingRow.click();
+  229 |     await this.page.waitForLoadState('networkidle');
+  230 |   }
+  231 | 
+  232 |   async clickSegmentCodeValueHelp() {
+  233 |     await this.segmentCodeValueHelpButton.click();
+  234 |     await this.page.waitForLoadState('networkidle');
+  235 |   }
+  236 | 
+  237 |   async waitForSegmentCodeDropdownLoad() {
+  238 |     await this.segmentCodeTableBody.waitFor({ state: 'attached', timeout: 10000 });
+  239 |     await this.page.waitForTimeout(500);
+  240 |   }
+  241 | 
+  242 |   async selectSegmentCodeByCode(segmentCode: string) {
+  243 |     // Find the row containing the segment code and click it
+  244 |     const matchingRow = this.segmentCodeTableBody.locator(
+```

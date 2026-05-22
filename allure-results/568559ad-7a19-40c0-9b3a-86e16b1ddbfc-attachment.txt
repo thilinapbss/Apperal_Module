@@ -1,0 +1,48 @@
+========== SEGMENT NAMES & VALUES VERIFICATION TEST ==========
+Verifying SegmentMaster names and StyleMaster values in web app...
+
+PART A: SegmentMaster Segment Names
+-----------------------------------
+Segment names from SegmentMaster/test-data.json:
+  ✓ Size
+  ✓ Color
+  ✓ Season
+  ✓ "Size" in web app: true
+  ✓ "Color" in web app: true
+  ✓ "Season" in web app: true
+
+PART B: StyleMaster Segment Values
+-----------------------------------
+
+  Color Segment (Color):
+    - RED: Red
+    - GREEN: Green
+    - BLACK: Black
+
+  Size Segment (Size):
+    - S: Small
+    - M: Medium
+    - L: Large
+
+  Season Segment (Season):
+    - Su: Summer
+    - Wi: Winter
+
+Verifying segment values in web app:
+  ✓ Color: Red (RED) (by name)
+  ✗ Color: Green (GREEN) 
+  ✗ Color: Black (BLACK) 
+  ✓ Size: Small (S) (by name)
+  ✓ Size: Medium (M) (by code)
+  ✓ Size: Large (L) (by code)
+  ✓ Season: Summer (Su) (by code)
+  ✓ Season: Winter (Wi) (by code)
+
+PART C: Segment Sections in Navigation Bar
+------------------------------------------
+Segment sections found: 0
+
+========== VERIFICATION SUMMARY ==========
+SegmentMaster Names: 3/3 found
+StyleMaster Values: 6/8 found
+⚠ Missing segment values: Green(GREEN), Black(BLACK)

@@ -1,0 +1,116 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53B: KEY IN SEGMENT DATA FROM JSON FILE
+════════════════════════════════════════════════════════════
+✓ Form loaded and ready for segment data entry
+
+📄 JSON Source: testData/StyleMaster/test-data.json
+📍 Data Path: segments → {Color, Size, Season}
+
+
+╔════════════════════════════════════════════════════════════╗
+║      FILLING SEGMENT DATA FROM JSON FILE                  ║
+║      (SEGMENT → SECTION → ROW → CELL)                     ║
+╚════════════════════════════════════════════════════════════╝
+
+Found 9 segment sections in UI
+
+
+┌─ SEGMENT: COLOR
+│  Source: test-data.json → segments.Color.values
+│  Total Values: 3
+│  UI Section: Segment 1
+│
+│  Data Mapping:
+│    [1] Code: "RED" → Name: "Red"
+│    [2] Code: "GREEN" → Name: "Green"
+│    [3] Code: "BLACK" → Name: "Black"
+│
+
+▶ Processing Color (Segment 1)...
+  Looking for segment section at index 0...
+    Found section 0: "Style Masters (40)"
+    Extracted ID from h3: "StyleMaster::LineItem"
+    ✓ Section ID name: "StyleMaster::LineItem"
+  [1/3] Filling Red...
+  Looking for segment section at index 0...
+    Found section 0: "Style Masters (40)"
+    Extracted ID from h3: "StyleMaster::LineItem"
+    ✓ Section ID name: "StyleMaster::LineItem"
+│  Status: ✗ FAILED
+└─────────────────────────────────────────────────────
+
+┌─ SEGMENT: SIZE
+│  Source: test-data.json → segments.Size.values
+│  Total Values: 3
+│  UI Section: Segment 2
+│
+│  Data Mapping:
+│    [1] Code: "S" → Name: "Small"
+│    [2] Code: "M" → Name: "Medium"
+│    [3] Code: "L" → Name: "Large"
+│
+
+▶ Processing Size (Segment 2)...
+  Looking for segment section at index 1...
+    Found section 1: "Attachment Files"
+    Extracted ID from h3: "AttachmentDetails::LineItem"
+    ✓ Section ID name: "AttachmentDetails::LineItem"
+  [1/3] Filling Small...
+  [2/3] Filling Medium...
+  [3/3] Filling Large...
+✓ Size: 0/3 rows filled
+
+  Looking for segment section at index 1...
+    Found section 1: "Attachment Files (3)"
+    Extracted ID from h3: "AttachmentDetails::LineItem"
+    ✓ Section ID name: "AttachmentDetails::LineItem"
+│  Status: ✗ FAILED
+└─────────────────────────────────────────────────────
+
+┌─ SEGMENT: SEASON
+│  Source: test-data.json → segments.Season.values
+│  Total Values: 2
+│  UI Section: Segment 3
+│
+│  Data Mapping:
+│    [1] Code: "Su" → Name: "Summer"
+│    [2] Code: "Wi" → Name: "Winter"
+│
+
+▶ Processing Season (Segment 3)...
+  Looking for segment section at index 2...
+    Found section 2: "Size"
+    Extracted ID from h3: "Segment1::LineItem::Segment1"
+    ✓ Section ID name: "Segment1::LineItem::Segment1"
+  [1/2] Filling Summer...
+  [2/2] Filling Winter...
+✓ Season: 0/2 rows filled
+
+  Looking for segment section at index 2...
+    Found section 2: "Size (2)"
+    Extracted ID from h3: "Segment1::LineItem::Segment1"
+    ✓ Section ID name: "Segment1::LineItem::Segment1"
+│  Status: ✗ FAILED
+└─────────────────────────────────────────────────────
+
+╔════════════════════════════════════════════════════════════╗
+║             SEGMENT DATA FILL COMPLETE SUMMARY             ║
+╠════════════════════════════════════════════════════════════╣
+║ ✗ Segment: Color    → Section: Style Masters (40)
+║   └─ Row 1: [RED] = Red
+║   └─ Row 2: [GREEN] = Green
+║   └─ Row 3: [BLACK] = Black
+║ ✗ Segment: Size     → Section: Attachment Files (3)
+║   └─ Row 1: [S] = Small
+║   └─ Row 2: [M] = Medium
+║   └─ Row 3: [L] = Large
+║ ✗ Segment: Season   → Section: Size (2)       
+║   └─ Row 1: [Su] = Summer
+║   └─ Row 2: [Wi] = Winter
+╠════════════════════════════════════════════════════════════╣
+║ Total Segments: 3 | Success: 0 | Failed: 3
+╚════════════════════════════════════════════════════════════╝
+
+
+════════════════════════════════════════════════════════════

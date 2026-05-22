@@ -1,0 +1,3 @@
+Scrolled to Attachment Details section
+Attachment Details Create button is visible
+Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\src\testData\StyleMaster\UploadFiles\PDF_Upload.pdf

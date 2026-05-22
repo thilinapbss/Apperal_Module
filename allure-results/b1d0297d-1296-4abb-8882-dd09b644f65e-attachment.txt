@@ -1,0 +1,3 @@
+========== SEGMENT NAME VERIFICATION TEST ==========
+Starting verification of all segmentNames in JSON against web app...
+

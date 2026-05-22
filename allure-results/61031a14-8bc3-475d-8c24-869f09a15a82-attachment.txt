@@ -1,0 +1,4 @@
+Scrolled to Attachment Details section
+Attachment Details Create button is visible
+Uploading file from path: testData/StyleMaster/UploadFiles/PDF_Upload.pdf
+Resolved absolute path: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\StyleMaster\UploadFiles\PDF_Upload.pdf

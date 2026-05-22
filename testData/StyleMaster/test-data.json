@@ -6,5 +6,75 @@
   "reference": "REF-2026-001",
   "seasonSelection": "BUY25 SE02",
   "styleColor": "Red",
-  "styleStatus": "Active"
+  "styleStatus": "Active",
+  "segments": {
+    "Color": [
+      {
+        "code": "COL",
+        "name": "Color",
+        "values": [
+          {
+            "code": "RED",
+            "name": "Red"
+          },
+          {
+            "code": "GREEN",
+            "name": "Green"
+          },
+          {
+            "code": "BLACK",
+            "name": "Black"
+          }
+        ]
+      }
+    ],
+    "Size": [
+      {
+        "code": "SIZ",
+        "name": "Size",
+        "values": [
+          {
+            "code": "S",
+            "name": "Small"
+          },
+          {
+            "code": "M",
+            "name": "Medium"
+          },
+          {
+            "code": "L",
+            "name": "Large"
+          }
+        ]
+      }
+    ],
+    "Season": [
+      {
+        "code": "SEA",
+        "name": "Season",
+        "values": [
+          {
+            "code": "Su",
+            "name": "Summer"
+          },
+          {
+            "code": "Wi",
+            "name": "Winter"
+          }
+        ]
+      }
+    ]
+  },
+  "attachmentDetails": [
+    {
+      "docName": "Design Specification",
+      "remarks": "Design specs for the style",
+      "filePath": "testData/StyleMaster/UploadFiles/PDF_Upload.pdf"
+    },
+    {
+      "docName": "Quality Requirements",
+      "remarks": "Quality requirements document",
+      "filePath": "testData/StyleMaster/UploadFiles/sample-jpg-2mb.jpg"
+    }
+  ]
 }

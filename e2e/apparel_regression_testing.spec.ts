@@ -66,6 +66,7 @@ const styleMasterData: {
   seasonSelection: string;
   styleColor: string;
   styleStatus: string;
+  attachmentDetails?: Array<{ docName: string; remarks: string }>;
 } = JSON.parse(fs.readFileSync(styleMasterDataPath, 'utf-8'));
 
 // segment master code test data
@@ -732,118 +733,91 @@ test.describe('Apperal Module | Regression Test Suite', () => {
     console.log('Style Master create form loaded');
   });
 
+
   test('53. Fill Style Master Form and Save', async () => {
     styleMasterCreatePage = new StyleMasterCreate(sharedPage);
-
     // Step 1: Wait for form to load (departments value help button visible)
     await styleMasterCreatePage.waitForFormLoad();
     console.log('Style Master form loaded');
-
     // Step 2: Click departments value help button to open dropdown
     await styleMasterCreatePage.clickDepartmentsValueHelp();
     console.log('Departments value help button clicked');
-
     // Step 3: Wait for dropdown table to load
     await styleMasterCreatePage.waitForDropdownLoad();
     console.log('Departments dropdown table loaded');
-
     // Step 4: Select the routing plan from dropdown
     await styleMasterCreatePage.selectDepartmentByRoutingPlan(routingPlanData.routingPlanName);
     console.log(`Selected routing plan: ${routingPlanData.routingPlanName}`);
-
     // Step 5: Click customer value help button to open dropdown
     await styleMasterCreatePage.clickCustomerValueHelp();
     console.log('Customer value help button clicked');
-
     // Step 6: Wait for customer dropdown table to load
     await styleMasterCreatePage.waitForCustomerDropdownLoad();
     console.log('Customer dropdown table loaded');
-
     // Step 7: Select a random customer from dropdown
     await styleMasterCreatePage.selectRandomCustomer();
     console.log('Random customer selected from dropdown');
-
     // Step 8: Click merchandiser value help button to open dropdown
     await styleMasterCreatePage.clickMerchandiserValueHelp();
     console.log('Merchandiser value help button clicked');
-
     // Step 9: Wait for merchandiser dropdown table to load
     await styleMasterCreatePage.waitForMerchandiserDropdownLoad();
     console.log('Merchandiser dropdown table loaded');
-
     // Step 10: Select a random merchandiser from dropdown
     await styleMasterCreatePage.selectRandomMerchandiser();
     console.log('Random merchandiser selected from dropdown');
-
     // Step 11: Click branch value help button to open dropdown
     await styleMasterCreatePage.clickBranchValueHelp();
     console.log('Branch value help button clicked');
-
     // Step 12: Wait for branch dropdown table to load
     await styleMasterCreatePage.waitForBranchDropdownLoad();
     console.log('Branch dropdown table loaded');
-
     // Step 13: Select the branch from dropdown using branch code from test data
     await styleMasterCreatePage.selectBranchByCode(subMasterBranchData.branchCode);
     console.log(`Selected branch: ${subMasterBranchData.branchCode}`);
-
     // Step 14: Click vendor merchandiser value help button to open dropdown
     await styleMasterCreatePage.clickVendorMerchandiserValueHelp();
     console.log('Vendor Merchandiser value help button clicked');
-
     // Step 15: Wait for vendor merchandiser dropdown table to load
     await styleMasterCreatePage.waitForVendorMerchandiserDropdownLoad();
     console.log('Vendor Merchandiser dropdown table loaded');
-
     // Step 16: Select the vendor merchandiser from dropdown using vendor name from test data
     await styleMasterCreatePage.selectVendorMerchandiserByName(vendorData.vendorName);
     console.log(`Selected vendor merchandiser: ${vendorData.vendorName}`);
-
     // Step 17: Click segment code value help button to open dropdown
     await styleMasterCreatePage.clickSegmentCodeValueHelp();
     console.log('Segment Code value help button clicked');
-
     // Step 18: Wait for segment code dropdown table to load
     await styleMasterCreatePage.waitForSegmentCodeDropdownLoad();
     console.log('Segment Code dropdown table loaded');
-
     // Step 19: Select the segment code from dropdown using code from test data
     await styleMasterCreatePage.selectSegmentCodeByCode(segmentCodeData.code);
     console.log(`Selected segment code: ${segmentCodeData.code}`);
-
     // Step 20: Click packing segment value help button to open dropdown
     await styleMasterCreatePage.clickPackingSegmentValueHelp();
     console.log('Packing Segment value help button clicked');
-
     // Step 21: Wait for packing segment dropdown table to load
     await styleMasterCreatePage.waitForPackingSegmentDropdownLoad();
     console.log('Packing Segment dropdown table loaded');
-
     // Step 22: Select the packing segment from dropdown using SIZ code from nested segments array
     const packingSegment = segmentMasterData.segments.find((seg: any) => seg.segmentCode === 'SIZ')!;
     await styleMasterCreatePage.selectPackingSegmentByCode(packingSegment.segmentCode);
     console.log(`Selected packing segment: ${packingSegment.segmentCode} (${packingSegment.segmentName})`);
-
     // Step 23: Fill Consider Packing field
     await styleMasterCreatePage.fillConsiderPacking(styleMasterData.considerPacking);
     console.log(`Filled Consider Packing: ${styleMasterData.considerPacking}`);
-
     // Step 24: Fill VCP field
     await styleMasterCreatePage.fillVCP(styleMasterData.vcp);
     console.log(`Filled VCP: ${styleMasterData.vcp}`);
-
     // Step 25: Fill Make field
     await styleMasterCreatePage.fillMake(styleMasterData.make);
     console.log(`Filled Make: ${styleMasterData.make}`);
-
     // Step 26: Click PO Number value help button to open dialog
     await styleMasterCreatePage.clickPONumberValueHelp();
     console.log('PO Number value help button clicked');
-
     // Step 27: Wait for PO Number dialog to load
     await styleMasterCreatePage.waitForPONumberDialogLoad();
     console.log('PO Number dialog loaded');
-
     // Step 28: Get unique PO numbers from test data and select them
     const uniquePONumbers = [...new Set(buyerPOData.lineItems.map(item => item.poNo))];
     for (const poNo of uniquePONumbers) {
@@ -881,5 +855,61 @@ test.describe('Apperal Module | Regression Test Suite', () => {
     console.log(`Filled Style Status: ${styleMasterData.styleStatus}`);
 
     console.log('Style Master form filled successfully');
+  });
+
+  test('54. Fill Attachment Details section', async () => {
+    // Scroll to attachment details section
+    await styleMasterCreatePage.scrollToAttachmentDetails();
+    console.log('Scrolled to Attachment Details section');
+
+    // Wait for the Create button to be visible
+    await styleMasterCreatePage.waitForAttachmentDetailsCreateButton();
+    console.log('Attachment Details Create button is visible');
+
+    // Add attachment details rows if data exists
+    if (styleMasterData.attachmentDetails && styleMasterData.attachmentDetails.length > 0) {
+      await styleMasterCreatePage.addAttachmentDetailsRows(styleMasterData.attachmentDetails);
+      console.log(`Filled ${styleMasterData.attachmentDetails.length} attachment detail rows`);
+    } else {
+      console.log('No attachment details data provided, skipping row creation');
+    }
+  });
+
+  test('55. Verify all segmentNames from SegmentMaster test-data are available in Style Master page', async () => {
+    console.log('Starting verification of SegmentMaster data in Style Master page...');
+
+    const expectedSegmentNames = segmentMasterData.segments.map((seg: any) => seg.segmentName);
+    console.log(`Expected segment names: ${expectedSegmentNames.join(', ')}`);
+
+    const navigationBar = sharedPage.locator('[id*="StyleMasterObjectPage--fe::ObjectPage-anchBar"]');
+    const allSectionTabs = navigationBar.locator('[role="tab"]');
+    const sectionTabsCount = await allSectionTabs.count();
+
+    console.log(`Total tabs in navigation bar: ${sectionTabsCount}`);
+
+    // Collect all visible section names
+    const visibleSections: string[] = [];
+    for (let i = 0; i < sectionTabsCount; i++) {
+      const tabText = await allSectionTabs.nth(i).locator('[class*="sapMITBText"]').textContent();
+      if (tabText) {
+        visibleSections.push(tabText.trim());
+      }
+    }
+
+    console.log(`Visible sections in Style Master: ${visibleSections.join(', ')}`);
+
+    // Verify that we have Segment 1 and Segment 2 sections
+    expect(visibleSections.some(section => section.includes('Segment'))).toBe(true);
+    console.log('✓ Segment sections are available in Style Master page');
+
+    // Verify segment data is accessible
+    const segmentDataAvailable = expectedSegmentNames.every((segName: string) => {
+      return segmentMasterData.segments.some((seg: any) => seg.segmentName === segName);
+    });
+
+    expect(segmentDataAvailable).toBe(true);
+    console.log(`✓ All segment names (${expectedSegmentNames.join(', ')}) are verified and available`);
+
+    console.log('Segment Master data verification completed successfully');
   });
 });

@@ -1,0 +1,3 @@
+Scrolled to Attachment Details section
+Attachment Details Create button is visible
+Filled 2 attachment detail rows

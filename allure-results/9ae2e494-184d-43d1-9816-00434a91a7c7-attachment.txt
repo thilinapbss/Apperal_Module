@@ -1,0 +1,51 @@
+
+========== TEST 53B: FILL SEGMENT DATA ==========
+✓ Form loaded and ready
+
+========== FILLING ALL SEGMENT DATA (DYNAMIC MATCHING) ==========
+
+
+▶ Processing Color...
+  Searching for Color section in UI...
+    [0] Found section: "Style Masters (19)"
+    [1] Found section: "Attachment Files"
+    [2] Found section: "Segment 1"
+    [3] Found section: "Segment 2"
+    [4] Found section: "Segment 3"
+    [5] Found section: "Semi-Finish Goods"
+    [6] Found section: "Finish Goods"
+    [7] Found section: "Raw Materials"
+    [8] Found section: "Item Specification"
+
+▶ Processing Size...
+  Searching for Size section in UI...
+    [0] Found section: "Style Masters (19)"
+    [1] Found section: "Attachment Files"
+    [2] Found section: "Segment 1"
+    [3] Found section: "Segment 2"
+    [4] Found section: "Segment 3"
+    [5] Found section: "Semi-Finish Goods"
+    [6] Found section: "Finish Goods"
+    [7] Found section: "Raw Materials"
+    [8] Found section: "Item Specification"
+
+▶ Processing Season...
+  Searching for Season section in UI...
+    [0] Found section: "Style Masters (19)"
+    [1] Found section: "Attachment Files"
+    [2] Found section: "Segment 1"
+    [3] Found section: "Segment 2"
+    [4] Found section: "Segment 3"
+    [5] Found section: "Semi-Finish Goods"
+    [6] Found section: "Finish Goods"
+    [7] Found section: "Raw Materials"
+    [8] Found section: "Item Specification"
+========== SEGMENT DATA FILL SUMMARY ==========
+✗ Color: FAILED
+✗ Size: FAILED
+✗ Season: FAILED
+===============================================
+
+✓ Segment data filled successfully
+================================================
+

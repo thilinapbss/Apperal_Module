@@ -1,4 +1,5 @@
 import { Page, Locator } from '@playwright/test';
+import path from 'path';
 
 export class StyleMasterCreate {
   readonly page: Page;
@@ -36,6 +37,9 @@ export class StyleMasterCreate {
   readonly seasonSelectionInput: Locator;
   readonly styleColorInput: Locator;
   readonly styleStatusInput: Locator;
+  readonly attachmentDetailsCreateButton: Locator;
+  readonly attachmentDetailsTable: Locator;
+  readonly attachmentDetailsTableBody: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -73,6 +77,9 @@ export class StyleMasterCreate {
     this.seasonSelectionInput = page.locator('input[id*="OtherInformation::seasonselection::Field-edit-inner"]');
     this.styleColorInput = page.locator('input[id*="OtherInformation::StyleColor::Field-edit-inner"]');
     this.styleStatusInput = page.locator('input[id*="OtherInformation::stylestatus::Field-edit-inner"]');
+    this.attachmentDetailsCreateButton = page.locator('button[id*="AttachmentDetails::LineItem::StandardAction::Create"]');
+    this.attachmentDetailsTable = page.locator('div[id*="AttachmentDetails::LineItem-innerTable-tableCtrlCnt"]');
+    this.attachmentDetailsTableBody = page.locator('tbody[id*="AttachmentDetails::LineItem-innerTable-tblBody"], table[id*="AttachmentDetails::LineItem-innerTable-table"] tbody');
   }
 
   async waitForFormLoad() {
@@ -430,5 +437,416 @@ export class StyleMasterCreate {
   async fillStyleStatus(value: string) {
     await this.styleStatusInput.fill(value);
     await this.page.waitForLoadState('networkidle');
+  }
+
+  async scrollToAttachmentDetails() {
+    await this.page.evaluate(() => window.scrollBy(0, 1000));
+    await this.page.waitForTimeout(500);
+  }
+
+  async waitForAttachmentDetailsCreateButton() {
+    await this.attachmentDetailsCreateButton.waitFor({ state: 'visible', timeout: 10000 });
+  }
+
+  async clickAttachmentDetailsCreateButton() {
+    await this.attachmentDetailsCreateButton.click();
+    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForTimeout(500);
+  }
+
+  async waitForAttachmentDetailsTableRow() {
+    // Wait for a new row to be added to the table
+    const rows = this.attachmentDetailsTable.locator('tbody tr[role="row"]:not([class*="sapUiTableRowHidden"])');
+    await rows.first().waitFor({ state: 'visible', timeout: 10000 });
+    await this.page.waitForTimeout(1500);
+  }
+
+  async fillAttachmentDetailsRow(rowIndex: number, docName: string, remarks: string, filePath?: string) {
+
+    // Fill Doc Name field (first input in the row)
+    const docNameInput = this.page.locator('input[id*="__input"][id*="__clone"]').first();
+    await docNameInput.click();
+    await docNameInput.fill(docName);
+
+    // Fill Remarks field (second input in the row)
+    const remarksInput = this.page.locator('input[id*="__input"][id*="__clone"]').nth(1);
+    await remarksInput.click();
+    await remarksInput.fill(remarks);
+
+    // Upload file if provided
+    // if (filePath) {
+    //   await this.uploadAttachmentFile(filePath);
+    //   await this.page.waitForTimeout(1500);
+
+    //   // Click the Generate button
+    //   await this.page.locator('button[id*="RefreshSemiFinishGoods"]').click();
+    //   await this.page.waitForLoadState('networkidle');
+    // }
+
+    await this.page.waitForLoadState('networkidle');
+  }
+
+  // async uploadAttachmentFile(filePath: string) {
+  //   // Resolve the file path relative to the project root (go up 3 levels from src/pages/StyleMaster/)
+  //   const absolutePath = path.resolve(__dirname, '../../../', filePath);
+  //   console.log(`Uploading file from path: ${filePath}`);
+  //   console.log(`Resolved absolute path: ${absolutePath}`);
+
+  //   // Get all file inputs in the attachment details table
+  //   const fileInputs = this.attachmentDetailsTable.locator('input[type="file"][name="FEV4FileUpload"]');
+  //   const fileInputCount = await fileInputs.count();
+  //   console.log(`Found ${fileInputCount} file input(s) in the table`);
+
+  //   // Use the last file input (most recently added row)
+  //   const lastFileInput = fileInputs.last();
+
+  //   // Wait for the file input to be attached to the DOM
+  //   await lastFileInput.waitFor({ state: 'attached', timeout: 10000 });
+  //   console.log('File input found and attached to DOM');
+
+  //   // Set the file directly on the input element
+  //   await lastFileInput.setInputFiles(absolutePath);
+  //   console.log(`File set: ${absolutePath}`);
+
+  //   // Wait for upload to process
+  //   await this.page.waitForTimeout(3000);
+  //   await this.page.waitForLoadState('networkidle');
+  //   console.log(`File uploaded successfully: ${filePath}`);
+  // }
+
+  async addAttachmentDetailsRows(attachmentDetails: Array<{ docName: string; remarks: string; filePath?: string }>) {
+    for (let i = 0; i < attachmentDetails.length; i++) {
+      // Click Create button to add a new row
+      await this.clickAttachmentDetailsCreateButton();
+      await this.waitForAttachmentDetailsTableRow();
+
+      // Fill the row data
+      const rowIndex = i;
+      await this.fillAttachmentDetailsRow(
+        rowIndex,
+        attachmentDetails[i].docName,
+        attachmentDetails[i].remarks,
+        attachmentDetails[i].filePath
+      );
+    }
+  }
+
+  // Segment Data Entry Methods - DYNAMIC MATCHING
+
+  async detectSegmentSectionName(segmentIndex: number): Promise<string | null> {
+    try {
+      // Get all segment section headers
+      const sectionHeaders = this.page.locator('h3[id*="StyleMasterObjectPage--fe::table::"][id*="-title"]');
+      const allHeaders = await sectionHeaders.all();
+
+      if (segmentIndex < allHeaders.length) {
+        const headerText = await allHeaders[segmentIndex].textContent();
+        if (headerText) {
+          console.log(`    Detected section ${segmentIndex}: ${headerText}`);
+          return headerText.trim();
+        }
+      }
+    } catch (e) {
+      console.warn(`Could not detect segment section name`);
+    }
+    return null;
+  }
+
+  async findSegmentSectionByIndex(segmentIndex: number): Promise<{ sectionName: string; idName: string; index: number } | null> {
+    try {
+      console.log(`  Looking for Segment ${segmentIndex + 1}...`);
+
+      // Get all h3 headers and filter for ones containing "Segment"
+      const allH3 = this.page.locator('h3');
+      const allHeaders = await allH3.all();
+
+      let segmentCount = 0;
+      for (const header of allHeaders) {
+        const headerText = await header.textContent();
+        if (headerText && headerText.includes('Segment')) {
+          if (segmentCount === segmentIndex) {
+            const displayName = headerText.trim();
+            console.log(`    ✓ Found Segment ${segmentIndex + 1}: "${displayName}"`);
+
+            // Extract ID and segment name from h3
+            const headerId = await header.getAttribute('id');
+            console.log(`    Full h3 id: "${headerId}"`);
+
+            // Try to extract segment name from ID or use default pattern
+            let idName = `Segment${segmentIndex + 1}`;
+
+            if (headerId && headerId.includes('::table::')) {
+              const match = headerId.match(/::table::([^:]+)::/);
+              if (match && match[1]) {
+                idName = match[1];
+                console.log(`    ✓ Extracted segment ID: "${idName}"`);
+              }
+            }
+
+            console.log(`    Using ID for selectors: "${idName}"`);
+            return { sectionName: displayName, idName, index: segmentIndex };
+          }
+          segmentCount++;
+        }
+      }
+
+      console.warn(`  Segment ${segmentIndex + 1} not found. Only found ${segmentCount} segment sections.`);
+      return null;
+    } catch (e) {
+      console.error(`Error finding segment section at index ${segmentIndex}: ${e}`);
+      return null;
+    }
+  }
+
+  async scrollToSegmentSection(sectionName: string) {
+    try {
+      const anchor = this.page.locator(`a[id*="-anchor"]`).filter({
+        has: this.page.locator(`text=${sectionName}`)
+      });
+
+      if (await anchor.count() > 0) {
+        await anchor.first().click();
+        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForTimeout(800);
+        console.log(`    ✓ Scrolled to ${sectionName} section`);
+      }
+    } catch (e) {
+      console.log(`    Section ${sectionName} navigation skipped`);
+    }
+  }
+
+  async getSegmentCreateButton(sectionName: string) {
+    // Try multiple selector patterns
+    const selectors = [
+      `button[id*="${sectionName}::LineItem::StandardAction::Create"]`,
+      `button[id*="${sectionName}"][id*="Create"]`,
+      `button[id*="::LineItem::StandardAction::Create"]`
+    ];
+
+    for (const selector of selectors) {
+      const buttons = await this.page.locator(selector).all();
+      if (buttons.length > 0) {
+        return this.page.locator(selector).first();
+      }
+    }
+
+    throw new Error(`Create button not found for section: ${sectionName}`);
+  }
+
+  async clickSegmentCreateButton(sectionName: string) {
+    try {
+      const createButton = await this.getSegmentCreateButton(sectionName);
+      await createButton.waitFor({ state: 'visible', timeout: 15000 });
+      await createButton.click();
+      await this.page.waitForLoadState('networkidle');
+      await this.page.waitForTimeout(1000);
+    } catch (e) {
+      console.error(`Failed to find/click create button for ${sectionName}`);
+      throw e;
+    }
+  }
+
+  async fillSegmentValueInRow(sectionName: string, codeValue: string, nameValue: string) {
+    try {
+      // Find the table body for this section
+      const segmentTableBody = this.page.locator(`tbody[id*="${sectionName}::LineItem"][id*="tblBody"]`);
+      const count = await segmentTableBody.count();
+
+      if (count === 0) {
+        throw new Error(`Table body not found for ${sectionName}`);
+      }
+
+      await segmentTableBody.waitFor({ state: 'attached', timeout: 10000 });
+      await this.page.waitForTimeout(500);
+
+      // Get the FIRST row (always fill the first row)
+      const allRows = segmentTableBody.locator('tr[role="row"]');
+      const rowCount = await allRows.count();
+
+      if (rowCount === 0) {
+        console.warn(`  No rows found in ${sectionName} table`);
+        return false;
+      }
+
+      // Always use the first row
+      const firstRow = allRows.first();
+      await firstRow.waitFor({ state: 'attached', timeout: 5000 });
+
+      // Get input fields in the first row
+      const inputs = firstRow.locator('input[type="text"]');
+      const inputCount = await inputs.count();
+
+      if (inputCount >= 2) {
+        // Fill Code field (first input)
+        const codeInput = inputs.nth(0);
+        await codeInput.waitFor({ state: 'visible', timeout: 5000 });
+        await codeInput.click();
+        await codeInput.clear();
+        await codeInput.fill(codeValue);
+        console.log(`    → Code field filled: ${codeValue}`);
+
+        await this.page.keyboard.press('Tab');
+        await this.page.waitForTimeout(300);
+
+        // Fill Name field (second input)
+        const nameInput = inputs.nth(1);
+        await nameInput.waitFor({ state: 'visible', timeout: 5000 });
+        await nameInput.click();
+        await nameInput.clear();
+        await nameInput.fill(nameValue);
+        console.log(`    → Name field filled: ${nameValue}`);
+
+        await this.page.keyboard.press('Tab');
+        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForTimeout(500);
+
+        return true;
+      } else {
+        console.warn(`  Expected 2+ inputs but found ${inputCount}`);
+        return false;
+      }
+    } catch (e) {
+      console.error(`Failed to fill segment value in ${sectionName}: ${e}`);
+      return false;
+    }
+  }
+
+  async fillSegmentDataType(
+    segmentDataType: string,
+    segmentIndex: number,
+    values: Array<{ code: string; name: string }>
+  ) {
+    console.log(`\n▶ Processing ${segmentDataType} (Segment ${segmentIndex + 1})...`);
+
+    try {
+      // Find the section by index
+      const section = await this.findSegmentSectionByIndex(segmentIndex);
+
+      if (!section) {
+        console.warn(`✗ Could not find UI section for segment ${segmentIndex + 1}`);
+        return false;
+      }
+
+      // Navigate to section
+      await this.scrollToSegmentSection(section.sectionName);
+
+      // Fill each value
+      let successCount = 0;
+      for (let i = 0; i < values.length; i++) {
+        console.log(`  [${i + 1}/${values.length}] Filling ${values[i].name}...`);
+
+        // Click Create button using the section's ID name
+        await this.clickSegmentCreateButton(section.idName);
+        await this.page.waitForTimeout(800);
+
+        // Fill the row using the section's ID name
+        const success = await this.fillSegmentValueInRow(
+          section.idName,
+          values[i].code,
+          values[i].name
+        );
+
+        if (success) {
+          console.log(`    ✓ Filled: ${values[i].code} = ${values[i].name}`);
+          successCount++;
+        }
+      }
+
+      console.log(`✓ ${segmentDataType}: ${successCount}/${values.length} rows filled\n`);
+      return successCount === values.length;
+    } catch (e) {
+      console.error(`✗ Error processing ${segmentDataType}: ${e}`);
+      return false;
+    }
+  }
+
+  async fillAllSegmentData(segmentsData: {
+    Color?: Array<{ code: string; name: string; values: Array<{ code: string; name: string }> }>;
+    Size?: Array<{ code: string; name: string; values: Array<{ code: string; name: string }> }>;
+    Season?: Array<{ code: string; name: string; values: Array<{ code: string; name: string }> }>;
+  }) {
+    console.log('\n╔════════════════════════════════════════════════════════════╗');
+    console.log('║      FILLING SEGMENT DATA FROM JSON FILE                  ║');
+    console.log('║      (SEGMENT → SECTION → ROW → CELL)                     ║');
+    console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+    const results: { [key: string]: boolean } = {};
+    const dataMapping: Array<{
+      segment: string;
+      section: string;
+      rows: Array<{ code: string; name: string }>;
+    }> = [];
+
+    // Get all segment section indices
+    const sectionHeaders = this.page.locator('h3[id*="table::"][id*="-title"]');
+    const allHeaders = await sectionHeaders.all();
+    console.log(`Found ${allHeaders.length} segment sections in UI\n`);
+
+    // Process each segment type in order, mapped to section indices sequentially
+    let segmentIndex = 0;
+    for (const [segmentType, data] of Object.entries(segmentsData)) {
+      if (data && Array.isArray(data) && data.length > 0) {
+        const values = data[0].values;
+
+        if (values && values.length > 0) {
+          console.log(`\n┌─ SEGMENT: ${segmentType.toUpperCase()}`);
+          console.log(`│  Source: test-data.json → segments.${segmentType}.values`);
+          console.log(`│  Total Values: ${values.length}`);
+          console.log(`│  UI Section: Segment ${segmentIndex + 1}`);
+          console.log(`│`);
+
+          // Show data mapping
+          console.log(`│  Data Mapping:`);
+          values.forEach((val, idx) => {
+            console.log(`│    [${idx + 1}] Code: "${val.code}" → Name: "${val.name}"`);
+          });
+          console.log(`│`);
+
+          // Execute fill - pass segment index for sequential mapping
+          const success = await this.fillSegmentDataType(segmentType, segmentIndex, values);
+          results[segmentType] = success;
+
+          // Get section info
+          const section = await this.findSegmentSectionByIndex(segmentIndex);
+          dataMapping.push({
+            segment: segmentType,
+            section: section?.sectionName || `Segment ${segmentIndex + 1}`,
+            rows: values
+          });
+
+          console.log(`│  Status: ${success ? '✓ COMPLETED' : '✗ FAILED'}`);
+          console.log(`└─────────────────────────────────────────────────────`);
+
+          segmentIndex++;
+        }
+      }
+    }
+
+    // Detailed Summary
+    console.log('\n╔════════════════════════════════════════════════════════════╗');
+    console.log('║             SEGMENT DATA FILL COMPLETE SUMMARY             ║');
+    console.log('╠════════════════════════════════════════════════════════════╣');
+
+    for (const mapping of dataMapping) {
+      const status = results[mapping.segment] ? '✓' : '✗';
+      console.log(`║ ${status} Segment: ${mapping.segment.padEnd(8)} → Section: ${mapping.section.padEnd(15)}`);
+      mapping.rows.forEach((row, idx) => {
+        console.log(`║   └─ Row ${idx + 1}: [${row.code}] = ${row.name}`);
+      });
+    }
+
+    console.log('╠════════════════════════════════════════════════════════════╣');
+    const totalSegments = Object.keys(results).length;
+    const successCount = Object.values(results).filter(r => r).length;
+    console.log(`║ Total Segments: ${totalSegments} | Success: ${successCount} | Failed: ${totalSegments - successCount}`);
+    console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+    // Return summary for verification
+    return {
+      totalSegments,
+      successCount,
+      results,
+      dataMapping
+    };
   }
 }

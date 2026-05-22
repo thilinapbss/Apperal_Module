@@ -1,0 +1,2 @@
+Scrolled to Attachment Details section
+Attachment Details Create button is visible

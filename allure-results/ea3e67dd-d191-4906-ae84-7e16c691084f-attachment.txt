@@ -1,0 +1,6 @@
+  Could not find section matching Color
+✗ Could not find UI section for Color
+  Could not find section matching Size
+✗ Could not find UI section for Size
+  Could not find section matching Season
+✗ Could not find UI section for Season

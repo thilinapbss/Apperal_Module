@@ -1,0 +1,9 @@
+Scrolled to Attachment Details section
+Attachment Details Create button is visible
+Uploading file from path: testData/StyleMaster/UploadFiles/PDF_Upload.pdf
+Resolved absolute path: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\StyleMaster\UploadFiles\PDF_Upload.pdf
+File uploaded successfully: testData/StyleMaster/UploadFiles/PDF_Upload.pdf
+Uploading file from path: testData/StyleMaster/UploadFiles/sample-jpg-2mb.jpg
+Resolved absolute path: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\StyleMaster\UploadFiles\sample-jpg-2mb.jpg
+File uploaded successfully: testData/StyleMaster/UploadFiles/sample-jpg-2mb.jpg
+Filled 2 attachment detail rows
