@@ -1,0 +1,58 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53B: FILL SEGMENT DATA FROM JSON
+════════════════════════════════════════════════════════════
+
+📍 Current page: http://kgntest.ddns.net:4005/launchpadPage.html#apperalstylemaster-display&/StyleMaster(ID=2152ec45-fa44-4910-b243-90c17e85d660,IsActiveEntity=false)?sap-iapp-state=TAS210IBZSRI2GZ11UKCR5F38UNDDWJVDKAWDUYFB
+
+📋 Loaded segments from JSON:
+  - Color
+  - Size
+  - Season
+
+════════════════════════════════════════════════════════════
+  DEBUG: SEGMENT PAGE STRUCTURE
+════════════════════════════════════════════════════════════
+
+Found 1 h3 headers:
+  [0] ID: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem-title | Text: "Style Masters (102)"
+
+Found 30 span[id*="-title-inner"] elements:
+  [0] ID: __tile1-title-inner | Text: "Buyer PO Upload"
+  [1] ID: __tile11-title-inner | Text: "Style Master"
+  [2] ID: __tile6-title-inner | Text: "Trim Allocation"
+  [3] ID: __tile5-title-inner | Text: "Bill Of Material"
+  [4] ID: __tile7-title-inner | Text: "Cost Sheet"
+  [5] ID: __tile19-title-inner | Text: "ERP Post"
+  [6] ID: __tile8-title-inner | Text: "Lay Sheet"
+  [7] ID: __tile26-title-inner | Text: "Production Order"
+  [8] ID: __tile10-title-inner | Text: "Gantt Chart Dashboard"
+  [9] ID: __tile14-title-inner | Text: "Inspection"
+  [10] ID: __tile15-title-inner | Text: "Inspection Checklist"
+  [11] ID: __tile13-title-inner | Text: "QC"
+  [12] ID: __tile0-title-inner | Text: "Number Series"
+  [13] ID: __tile17-title-inner | Text: "UDO Creation"
+  [14] ID: __tile12-title-inner | Text: "Count Barcode"
+
+Found 0 ObjectPageSection elements:
+
+🔍 Processing segment: Color
+  Looking for section: "Color"...
+  ✗ Segment "Color" not found on page
+
+🔍 Processing segment: Size
+  Looking for section: "Size"...
+  ✗ Segment "Size" not found on page
+
+🔍 Processing segment: Season
+  Looking for section: "Season"...
+  ✗ Segment "Season" not found on page
+
+════════════════════════════════════════════════════════════
+  SEGMENT PROCESSING SUMMARY
+════════════════════════════════════════════════════════════
+  ✗ Color
+  ✗ Size
+  ✗ Season
+
+  Total: 0/3 segments processed successfully

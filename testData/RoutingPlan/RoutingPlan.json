@@ -4,19 +4,22 @@
   "status": "Active",
   "details": [
     {
-      "routeCode": "PA1",
-      "routeName": "Packing",
-      "warehouse": "WH-CMB"
+      "routeCode": "CU01",
+      "routeName": "Cutting",
+      "warehouse": "WH-CMB",
+      "isSemiFinishGood": true
     },
     {
       "routeCode": "SA1",
       "routeName": "Sawing",
-      "warehouse": "WH-CMB"
+      "warehouse": "WH-CMB",
+      "isSemiFinishGood": true
     },
     {
-      "routeCode": "CU01",
-      "routeName": "Cutting",
-      "warehouse": "WH-CMB"
+      "routeCode": "PA1",
+      "routeName": "Packing",
+      "warehouse": "WH-CMB",
+      "isSemiFinishGood": false
     }
   ]
 }

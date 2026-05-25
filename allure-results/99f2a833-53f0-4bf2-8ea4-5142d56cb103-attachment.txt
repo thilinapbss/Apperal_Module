@@ -1,0 +1,4 @@
+Starting verification of SegmentMaster data in Style Master page...
+Expected segment names: Size, Color, Season
+Total tabs in navigation bar: 12
+Visible sections in Style Master: General Information, PO Numbers, Other Information, Attachment Files, Size, Color, Season, Semi-Finish Goods, Finish Goods, Raw Materials, Allocation Hierarchy, Item Specification

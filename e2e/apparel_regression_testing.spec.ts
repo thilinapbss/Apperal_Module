@@ -66,6 +66,11 @@ const styleMasterData: {
   seasonSelection: string;
   styleColor: string;
   styleStatus: string;
+  segments?: {
+    Color?: Array<{ code: string; name: string; values: Array<{ code: string; name: string }> }>;
+    Size?: Array<{ code: string; name: string; values: Array<{ code: string; name: string }> }>;
+    Season?: Array<{ code: string; name: string; values: Array<{ code: string; name: string }> }>;
+  };
   attachmentDetails?: Array<{ docName: string; remarks: string }>;
 } = JSON.parse(fs.readFileSync(styleMasterDataPath, 'utf-8'));
 
@@ -857,21 +862,456 @@ test.describe('Apperal Module | Regression Test Suite', () => {
     console.log('Style Master form filled successfully');
   });
 
-  test('54. Fill Attachment Details section', async () => {
-    // Scroll to attachment details section
-    await styleMasterCreatePage.scrollToAttachmentDetails();
-    console.log('Scrolled to Attachment Details section');
+  // test('53b. Fill segment data from JSON for all segments', async () => {
+  //   console.log('\n════════════════════════════════════════════════════════════');
+  //   console.log('  TEST 53B: FILL SEGMENT DATA FROM JSON');
+  //   console.log('════════════════════════════════════════════════════════════');
 
-    // Wait for the Create button to be visible
-    await styleMasterCreatePage.waitForAttachmentDetailsCreateButton();
-    console.log('Attachment Details Create button is visible');
+  //   try {
+  //     // Initialize page object if not already done
+  //     if (!styleMasterCreatePage) {
+  //       styleMasterCreatePage = new StyleMasterCreate(sharedPage);
+  //     }
 
-    // Add attachment details rows if data exists
-    if (styleMasterData.attachmentDetails && styleMasterData.attachmentDetails.length > 0) {
-      await styleMasterCreatePage.addAttachmentDetailsRows(styleMasterData.attachmentDetails);
-      console.log(`Filled ${styleMasterData.attachmentDetails.length} attachment detail rows`);
-    } else {
-      console.log('No attachment details data provided, skipping row creation');
+  //     // Check if we're still on the Style Master form, if not navigate back
+  //     const currentUrl = sharedPage.url();
+  //     console.log(`\n📍 Current page: ${currentUrl}`);
+
+  //     let formReady = false;
+  //     try {
+  //       await styleMasterCreatePage.waitForFormLoad();
+  //       formReady = true;
+  //       console.log('  ✓ Style Master create form is already open');
+  //     } catch {
+  //       console.log('  ⚠️ Style Master create form not detected, navigating back to the form...');
+  //     }
+
+  //     if (!formReady) {
+  //       await sharedPage.goto('http://kgntest.ddns.net:4005/launchpadPage.html?sap-ushell-config=lean#Shell-home');
+  //       await sharedPage.waitForLoadState('networkidle');
+
+  //       // Click Style Master tile
+  //       const styleMasterTile = sharedPage.locator('[id*="StyleMaster"]').first();
+  //       await styleMasterTile.click();
+  //       await sharedPage.waitForLoadState('networkidle');
+
+  //       // Click Create button
+  //       const createButton = sharedPage.locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first();
+  //       await createButton.click();
+  //       await sharedPage.waitForLoadState('networkidle');
+
+  //       await styleMasterCreatePage.waitForFormLoad();
+  //     }
+
+  //     // Load JSON data
+  //     const styleMasterData = JSON.parse(fs.readFileSync(styleMasterDataPath, 'utf-8'));
+  //     const segmentTypes = Object.keys(styleMasterData.segments || {});
+  //     if (segmentTypes.length === 0) {
+  //       throw new Error('No segment data found in Style Master JSON');
+  //     }
+  //     console.log('\n📋 Loaded segments from JSON:');
+  //     segmentTypes.forEach(segmentType => {
+  //       console.log(`  - ${segmentType}`);
+  //     });
+
+  //     // DEBUG: Find where Color, Size, Season segments actually are on the page
+  //     try {
+  //       console.log('\n════════════════════════════════════════════════════════════');
+  //       console.log('  DEBUG: CHECKING SEGMENT SPANS');
+  //       console.log('════════════════════════════════════════════════════════════');
+
+  //       // Check for Segment1, Segment2, Segment3 title spans
+  //       for (const segPattern of ['Segment1', 'Segment2', 'Segment3']) {
+  //         const titleSelector = `span[id*="${segPattern}"][id*="-title-inner"]`;
+  //         const count = await sharedPage.locator(titleSelector).count();
+  //         if (count > 0) {
+  //           const text = await sharedPage.locator(titleSelector).first().textContent();
+  //           console.log(`  ${segPattern}: Found | Text: "${text}"`);
+  //         } else {
+  //           console.log(`  ${segPattern}: NOT found`);
+  //         }
+  //       }
+  //     } catch (debugError) {
+  //       console.log('  DEBUG section error (non-blocking):', debugError);
+  //     }
+
+  //     // Process each segment from JSON
+  //     const segmentResults: { [key: string]: boolean } = {};
+
+  //     for (const [segmentType] of Object.entries(styleMasterData.segments)) {
+  //       console.log(`\n🔍 Processing segment: ${segmentType}`);
+
+  //       try {
+  //         // Find the segment section
+  //         const segment = await styleMasterCreatePage.findSegmentSectionByType(segmentType);
+
+  //         if (!segment) {
+  //           console.log(`  ✗ Segment "${segmentType}" not found on page`);
+  //           segmentResults[segmentType] = false;
+  //           continue;
+  //         }
+
+  //         console.log(`  ✓ Found ${segmentType} segment: ${segment.sectionName} (ID: ${segment.idName})`);
+
+  //         // Click the Create button
+  //         console.log(`  📌 Clicking Create button for ${segmentType}...`);
+  //         await styleMasterCreatePage.clickSegmentCreateButton(segment.idName);
+  //         console.log(`  ✓ Create button clicked`);
+
+  //         segmentResults[segmentType] = true;
+
+  //         // Wait a moment before processing next segment
+  //         await sharedPage.waitForTimeout(500);
+
+  //       } catch (segmentError) {
+  //         console.error(`  ✗ Error processing ${segmentType}: ${segmentError}`);
+  //         segmentResults[segmentType] = false;
+  //       }
+  //     }
+
+  //     // Summary
+  //     console.log('\n════════════════════════════════════════════════════════════');
+  //     console.log('  SEGMENT PROCESSING SUMMARY');
+  //     console.log('════════════════════════════════════════════════════════════');
+  //     Object.entries(segmentResults).forEach(([segment, success]) => {
+  //       console.log(`  ${success ? '✓' : '✗'} ${segment}`);
+  //     });
+
+  //     const successCount = Object.values(segmentResults).filter(r => r).length;
+  //     const totalCount = Object.keys(segmentResults).length;
+  //     console.log(`\n  Total: ${successCount}/${totalCount} segments processed successfully`);
+
+  //     if (successCount === totalCount) {
+  //       console.log('✓ TEST 53B PASSED: All segments identified and Create buttons clicked');
+  //     } else {
+  //       throw new Error(`Only ${successCount}/${totalCount} segments were successfully processed`);
+  //     }
+
+  //   } catch (error) {
+  //     console.error('\n✗ TEST 53B FAILED:');
+  //     console.error(error);
+  //     throw error;
+  //   }
+  // });
+
+  test('53b. Fill segment data from JSON by position', async () => {
+    console.log('\n════════════════════════════════════════════════════════════');
+    console.log('  TEST 53B: FILL SEGMENT DATA FROM JSON BY POSITION');
+    console.log('════════════════════════════════════════════════════════════');
+
+    try {
+      // Initialize page object if not already done
+      if (!styleMasterCreatePage) {
+        styleMasterCreatePage = new StyleMasterCreate(sharedPage);
+      }
+
+      // Check if we're still on the Style Master form
+      const currentUrl = sharedPage.url();
+      console.log(`\n📍 Current page: ${currentUrl}`);
+
+      let formReady = false;
+      try {
+        await styleMasterCreatePage.waitForFormLoad();
+        formReady = true;
+        console.log('  ✓ Style Master create form is already open');
+      } catch {
+        console.log('  ⚠️ Style Master create form not detected, navigating back...');
+      }
+
+      if (!formReady) {
+        await sharedPage.goto('http://kgntest.ddns.net:4005/launchpadPage.html?sap-ushell-config=lean#Shell-home');
+        await sharedPage.waitForLoadState('networkidle');
+        await sharedPage.waitForTimeout(2000);
+
+        // Click Style Master tile
+        const styleMasterTile = sharedPage.locator('a[href*="apperalstylemaster-display"]');
+        await styleMasterTile.first().waitFor({ state: 'visible', timeout: 30000 });
+        await styleMasterTile.first().click();
+        await sharedPage.waitForLoadState('networkidle');
+
+        // Click Create button
+        const createButton = sharedPage.locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first();
+        await createButton.waitFor({ state: 'visible', timeout: 30000 });
+        await createButton.click();
+        await sharedPage.waitForLoadState('networkidle');
+
+        await styleMasterCreatePage.waitForFormLoad();
+      }
+
+      const segments = styleMasterData.segments || {};
+
+      if (Object.keys(segments).length === 0) {
+        throw new Error('No segment data found in JSON');
+      }
+
+      console.log('\n📋 Loaded segments from JSON:');
+      Object.keys(segments).forEach(segmentType => {
+        console.log(`  - ${segmentType}`);
+      });
+
+      // Fill segments by position
+      const result = await styleMasterCreatePage.fillAllSegmentDataByPosition(segments);
+
+      if (result.successCount === result.totalSegments) {
+        console.log('\n✓ TEST 53B PASSED: All segments filled successfully');
+      } else {
+        throw new Error(`Only ${result.successCount}/${result.totalSegments} segments were successfully filled`);
+      }
+
+    } catch (error) {
+      console.error('\n✗ TEST 53B FAILED:');
+      console.error(error);
+      throw error;
+    }
+  });
+
+  test('53c. Click Generate button in Semi-Finish Goods', async () => {
+    console.log('\n════════════════════════════════════════════════════════════');
+    console.log('  TEST 53C: CLICK GENERATE BUTTON');
+    console.log('════════════════════════════════════════════════════════════');
+
+    try {
+      // Initialize page object if not already done
+      if (!styleMasterCreatePage) {
+        styleMasterCreatePage = new StyleMasterCreate(sharedPage);
+      }
+
+      // Click the Generate button
+      await styleMasterCreatePage.clickSemiFinishGoodsGenerateButton();
+
+      console.log('\n✓ TEST 53C PASSED: Generate button clicked successfully');
+
+    } catch (error) {
+      console.error('\n✗ TEST 53C FAILED:');
+      console.error(error);
+      throw error;
+    }
+  });
+
+  test('53d. Verify Semi-Finish Goods combinations', async () => {
+    console.log('\n════════════════════════════════════════════════════════════');
+    console.log('  TEST 53D: VERIFY SEMI-FINISH GOODS COMBINATIONS');
+    console.log('════════════════════════════════════════════════════════════');
+
+    try {
+      // Initialize page object if not already done
+      if (!styleMasterCreatePage) {
+        styleMasterCreatePage = new StyleMasterCreate(sharedPage);
+      }
+
+      // Load segment data
+      const styleMasterData = JSON.parse(fs.readFileSync(styleMasterDataPath, 'utf-8'));
+      const segments = styleMasterData.segments || {};
+
+      // Load routing plan data
+      const routingData = JSON.parse(fs.readFileSync(routingPlanDataPath, 'utf-8'));
+      const routingPlans = routingData.details || [];
+
+      // Verify combinations
+      const result = await styleMasterCreatePage.verifySemiFinishGoodsCombinations(
+        segments,
+        routingPlans
+      );
+
+      if (result.allFound) {
+        console.log('\n✓ TEST 53D PASSED: All Semi-Finish Goods combinations verified');
+      } else {
+        throw new Error(
+          `Semi-Finish Goods verification failed: Expected ${result.expectedCount}, found ${result.foundCount}, missing ${result.missingCount}`
+        );
+      }
+
+    } catch (error) {
+      console.error('\n✗ TEST 53D FAILED:');
+      console.error(error);
+      throw error;
+    }
+  });
+
+  test('53e. Click Finish Goods Generate button', async () => {
+    console.log('\n════════════════════════════════════════════════════════════');
+    console.log('  TEST 53E: CLICK FINISH GOODS GENERATE BUTTON');
+    console.log('════════════════════════════════════════════════════════════');
+
+    try {
+      // Initialize page object if not already done
+      if (!styleMasterCreatePage) {
+        styleMasterCreatePage = new StyleMasterCreate(sharedPage);
+      }
+
+      // Click the Finish Goods Generate button
+      const result = await styleMasterCreatePage.clickFinishGoodsGenerateButton();
+
+      if (result) {
+        console.log('\n✓ TEST 53E PASSED: Finish Goods Generate button clicked successfully');
+      } else {
+        throw new Error('Failed to click Finish Goods Generate button');
+      }
+
+    } catch (error) {
+      console.error('\n✗ TEST 53E FAILED:');
+      console.error(error);
+      throw error;
+    }
+  });
+
+  test('53f. Verify Finish Goods combinations', async () => {
+    console.log('\n════════════════════════════════════════════════════════════');
+    console.log('  TEST 53F: VERIFY FINISH GOODS COMBINATIONS');
+    console.log('════════════════════════════════════════════════════════════');
+
+    try {
+      // Initialize page object if not already done
+      if (!styleMasterCreatePage) {
+        styleMasterCreatePage = new StyleMasterCreate(sharedPage);
+      }
+
+      // Load segment data
+      const styleMasterData = JSON.parse(fs.readFileSync(styleMasterDataPath, 'utf-8'));
+      const segments = styleMasterData.segments || {};
+
+      // Load routing plan data
+      const routingData = JSON.parse(fs.readFileSync(routingPlanDataPath, 'utf-8'));
+      const routingPlans = routingData.details || [];
+
+      // Verify combinations
+      const result = await styleMasterCreatePage.verifyFinishGoodsCombinations(
+        segments,
+        routingPlans
+      );
+
+      if (result.allFound) {
+        console.log('\n✓ TEST 53F PASSED: All Finish Goods combinations verified');
+      } else {
+        throw new Error(
+          `Finish Goods verification failed: Expected ${result.expectedCount}, found ${result.foundCount}, missing ${result.missingCount}`
+        );
+      }
+
+    } catch (error) {
+      console.error('\n✗ TEST 53F FAILED:');
+      console.error(error);
+      throw error;
+    }
+  });
+
+  test('54. DEBUG: Dump page HTML to find segments', async () => {
+    console.log('\n════════════════════════════════════════════════════════════');
+    console.log('  TEST 54: DEBUG PAGE HTML STRUCTURE');
+    console.log('════════════════════════════════════════════════════════════');
+
+    try {
+      // Get the entire page HTML and search for segment-related patterns
+      const pageContent = await sharedPage.content();
+
+      // Find all IDs containing "Segment" followed by "Color", "Size", or "Season"
+      const segmentPatterns = [
+        { name: 'Colour', pattern: /Segment\d+[^"]*Color/gi },
+        { name: 'Size', pattern: /Segment\d+[^"]*Size/gi },
+        { name: 'Season', pattern: /Segment\d+[^"]*Season/gi },
+      ];
+
+      console.log('\n🔍 Searching page HTML for segment patterns:\n');
+
+      for (const { name, pattern } of segmentPatterns) {
+        const matches = pageContent.match(pattern) || [];
+        console.log(`${name}:`);
+        if (matches.length > 0) {
+          matches.forEach((match, idx) => {
+            console.log(`  [${idx}] ${match.slice(0, 100)}`);
+          });
+        } else {
+          console.log(`  No matches found`);
+        }
+      }
+
+      // Also search for any ID patterns that look like segment tables
+      const segmentTablePattern = /id="[^"]*::table::Segment[^"]*"/gi;
+      const tableMatches = pageContent.match(segmentTablePattern) || [];
+      console.log(`\n\nFound ${tableMatches.length} segment table patterns:`);
+      tableMatches.slice(0, 10).forEach((match, idx) => {
+        console.log(`  [${idx}] ${match}`);
+      });
+
+      // Search for specific h3 or header elements that might contain segment names
+      const headerPattern = /<(h[1-6]|div[^>]*class="[^"]*title[^"]*")[^>]*>([^<]*Color|[^<]*Size|[^<]*Season)[^<]*<\/\1>/gi;
+      const headerMatches = pageContent.match(headerPattern) || [];
+      console.log(`\n\nFound ${headerMatches.length} header elements containing segment names:`);
+      headerMatches.slice(0, 10).forEach((match, idx) => {
+        console.log(`  [${idx}] ${match.slice(0, 150)}`);
+      });
+
+    } catch (error) {
+      console.error('\n✗ DEBUG FAILED:');
+      console.error(error);
+      throw error;
+    }
+  });
+
+  test('56. Identify Color segment and click Create button', async () => {
+    console.log('\n════════════════════════════════════════════════════════════');
+    console.log('  TEST 56: IDENTIFY COLOR SEGMENT AND CLICK CREATE');
+    console.log('════════════════════════════════════════════════════════════');
+
+    try {
+      // Initialize page object if not already done
+      if (!styleMasterCreatePage) {
+        styleMasterCreatePage = new StyleMasterCreate(sharedPage);
+      }
+
+      // Check if we're on the correct page
+      const currentUrl = sharedPage.url();
+      console.log(`  Current URL: ${currentUrl}`);
+
+      if (!currentUrl.includes('apperalstylemaster-display') && !currentUrl.includes('StyleMaster')) {
+        console.log('  Not on Style Master page, navigating back...');
+        await sharedPage.goto('http://kgntest.ddns.net:4005/launchpadPage.html?sap-ushell-config=lean#Shell-home');
+        await sharedPage.waitForTimeout(2000);
+      }
+
+      // Now look for segment sections on the page
+      console.log('\n📍 Searching for segment sections...');
+
+      // First, check all elements with "-title-inner" in their ID
+      const allTitleElements = await sharedPage.locator('[id*="-title-inner"]').all();
+      console.log(`  Found ${allTitleElements.length} elements with "-title-inner" in ID`);
+
+      // Also check if we need to scroll down to see segment sections
+      console.log('  Scrolling down to reveal segment sections...');
+      await sharedPage.evaluate(() => {
+        const mainContent = document.querySelector('[id*="ObjectPageForm"]');
+        if (mainContent) {
+          mainContent.scrollTop = mainContent.scrollHeight;
+        }
+      });
+      await sharedPage.waitForTimeout(1000);
+
+      // Try finding Color segment
+      console.log('\n📍 Finding Color segment...');
+      const colorSegment = await styleMasterCreatePage.findSegmentSectionByType('Color');
+
+      if (!colorSegment) {
+        throw new Error('Color segment not found on page');
+      }
+
+      console.log(`✓ Color segment identified:`);
+      console.log(`  - Display Name: ${colorSegment.sectionName}`);
+      console.log(`  - Segment ID: ${colorSegment.idName}`);
+
+      // Click the Create button for Color segment
+      console.log(`\n🔘 Clicking Create button for Color segment...`);
+      await styleMasterCreatePage.clickSegmentCreateButton(colorSegment.idName);
+
+      console.log(`✓ Create button clicked successfully for Color segment`);
+
+      console.log('\n════════════════════════════════════════════════════════════');
+      console.log('✓ TEST 56 PASSED: Color segment identified and Create clicked');
+      console.log('════════════════════════════════════════════════════════════\n');
+
+    } catch (error) {
+      console.error('\n✗ TEST 56 FAILED:');
+      console.error(error);
+      throw error;
     }
   });
 
@@ -898,18 +1338,110 @@ test.describe('Apperal Module | Regression Test Suite', () => {
 
     console.log(`Visible sections in Style Master: ${visibleSections.join(', ')}`);
 
-    // Verify that we have Segment 1 and Segment 2 sections
-    expect(visibleSections.some(section => section.includes('Segment'))).toBe(true);
-    console.log('✓ Segment sections are available in Style Master page');
-
-    // Verify segment data is accessible
-    const segmentDataAvailable = expectedSegmentNames.every((segName: string) => {
-      return segmentMasterData.segments.some((seg: any) => seg.segmentName === segName);
+    // Verify that all expected segment names are present in visible sections
+    const allSegmentsFound = expectedSegmentNames.every((expectedName: string) => {
+      return visibleSections.some(section => section.toLowerCase() === expectedName.toLowerCase());
     });
 
-    expect(segmentDataAvailable).toBe(true);
-    console.log(`✓ All segment names (${expectedSegmentNames.join(', ')}) are verified and available`);
+    expect(allSegmentsFound).toBe(true);
+    console.log(`✓ All expected segments (${expectedSegmentNames.join(', ')}) are available in Style Master page`);
+
+    // Display verification results
+    console.log('\nSegment Verification Results:');
+    expectedSegmentNames.forEach((segName: string) => {
+      const found = visibleSections.some(section => section.toLowerCase() === segName.toLowerCase());
+      console.log(`  ${found ? '✓' : '✗'} "${segName}" - ${found ? 'Found' : 'Not Found'}`);
+    });
 
     console.log('Segment Master data verification completed successfully');
+  });
+
+  test('57. Comprehensive verification of all Semi-Finish Goods combinations', async () => {
+    console.log('\n════════════════════════════════════════════════════════════');
+    console.log('  TEST 57: COMPREHENSIVE SEMI-FINISH GOODS VERIFICATION');
+    console.log('════════════════════════════════════════════════════════════');
+
+    try {
+      // Initialize page object if not already done
+      if (!styleMasterCreatePage) {
+        styleMasterCreatePage = new StyleMasterCreate(sharedPage);
+      }
+
+      // Load segment data from test-data.json
+      const styleMasterData = JSON.parse(fs.readFileSync(styleMasterDataPath, 'utf-8'));
+      const segments = styleMasterData.segments || {};
+
+      // Load routing plan data from RoutingPlan.json (complete with all routes)
+      const routingPlanPath = path.join(__dirname, '../testData/RoutingPlan/RoutingPlan.json');
+      const routingPlanData: any = JSON.parse(fs.readFileSync(routingPlanPath, 'utf-8'));
+      const routingPlans = routingPlanData.details || [];
+
+      console.log('\n📋 Loaded Data:');
+      console.log(`  Routing Plan: ${routingPlanData.routingPlanName}`);
+      console.log(`  Routes: ${routingPlans.length}`);
+      routingPlans.forEach((route: any) => {
+        console.log(`    - ${route.routeCode}: ${route.routeName}`);
+      });
+
+      // Extract segment values
+      const segmentValues: { [key: string]: string[] } = {};
+      const segmentNames: { [key: string]: string } = {};
+
+      for (const [segmentType, segmentData] of Object.entries(segments)) {
+        if (segmentData && Array.isArray(segmentData) && segmentData.length > 0) {
+          const values = segmentData[0].values || [];
+          segmentValues[segmentType] = values.map((v: any) => v.code);
+          segmentNames[segmentType] = values.map((v: any) => v.name);
+        }
+      }
+
+      console.log(`\n  Segments: ${Object.keys(segmentValues).length}`);
+      for (const [segmentType, codes] of Object.entries(segmentValues)) {
+        console.log(`    - ${segmentType}: ${codes.join(', ')}`);
+      }
+
+      // Calculate expected combinations
+      const sizeValues = segmentValues['Size'] || [];
+      const colorValues = segmentValues['Color'] || [];
+      const seasonValues = segmentValues['Season'] || [];
+
+      const expectedCount = sizeValues.length * colorValues.length * seasonValues.length * routingPlans.length;
+
+      console.log(`\n📊 Expected Combinations Calculation:`);
+      console.log(`  Size: ${sizeValues.length} values`);
+      console.log(`  Color: ${colorValues.length} values`);
+      console.log(`  Season: ${seasonValues.length} values`);
+      console.log(`  Routes: ${routingPlans.length} routes`);
+      console.log(`  Total: ${sizeValues.length} × ${colorValues.length} × ${seasonValues.length} × ${routingPlans.length} = ${expectedCount} combinations`);
+
+      // Verify combinations using the page object method
+      const verificationResult = await styleMasterCreatePage.verifySemiFinishGoodsCombinations(
+        segments,
+        routingPlans
+      );
+
+      // Additional detailed report
+      console.log('\n📊 Detailed Verification Report:');
+      console.log(`  Expected Combinations: ${verificationResult.expectedCount}`);
+      console.log(`  Actual Rows in Table: ${verificationResult.actualCount}`);
+      console.log(`  Successfully Found: ${verificationResult.foundCount}`);
+      console.log(`  Missing Combinations: ${verificationResult.missingCount}`);
+      console.log(`  Match Status: ${verificationResult.allFound ? '✓ PASS' : '✗ FAIL'}`);
+
+      if (verificationResult.allFound) {
+        console.log('\n✓ TEST 57 PASSED: All combinations verified successfully!');
+        expect(verificationResult.allFound).toBe(true);
+      } else {
+        console.log(`\n✗ TEST 57 FAILED: ${verificationResult.missingCount} combinations are missing`);
+        throw new Error(
+          `Verification failed: Expected ${verificationResult.expectedCount}, found ${verificationResult.foundCount}`
+        );
+      }
+
+    } catch (error) {
+      console.error('\n✗ TEST 57 FAILED:');
+      console.error(error);
+      throw error;
+    }
   });
 });

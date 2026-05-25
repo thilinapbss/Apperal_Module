@@ -1,0 +1,63 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53B: FILL SEGMENT DATA FROM JSON
+════════════════════════════════════════════════════════════
+
+📍 Current page: http://kgntest.ddns.net:4005/launchpadPage.html#apperalstylemaster-display&/StyleMaster(ID=81ea6213-b57a-4463-b01f-0d237e0f42fe,IsActiveEntity=false)?sap-iapp-state=TASJIGZCTTUHANKOQHQLOY0XKKKIHEDKRZCHMD6VH
+
+📋 Loaded segments from JSON:
+  - Color
+  - Size
+  - Season
+
+════════════════════════════════════════════════════════════
+  DEBUG: SEGMENT PAGE STRUCTURE
+════════════════════════════════════════════════════════════
+
+Found 6 h3 headers:
+  [0] ID: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem-title | Text: "Style Masters (98)"
+  [1] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem-title | Text: "Attachment Files"
+  [2] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::SemiFinishGoods::LineItem::SemiFinishGoods-title | Text: "Semi-Finish Goods"
+  [3] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods-title | Text: "Finish Goods"
+  [4] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials-title | Text: "Raw Materials"
+  [5] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification-title | Text: "Item Specification"
+
+Found 35 span[id*="-title-inner"] elements:
+  [0] ID: __tile1-title-inner | Text: "Buyer PO Upload"
+  [1] ID: __tile12-title-inner | Text: "Style Master"
+  [2] ID: __tile5-title-inner | Text: "Trim Allocation"
+  [3] ID: __tile56-title-inner | Text: "Bill Of Material"
+  [4] ID: __tile6-title-inner | Text: "Cost Sheet"
+  [5] ID: __tile20-title-inner | Text: "ERP Post"
+  [6] ID: __tile9-title-inner | Text: "Lay Sheet"
+  [7] ID: __tile7-title-inner | Text: "Master Plan"
+  [8] ID: __tile8-title-inner | Text: "Work In Progress"
+  [9] ID: __tile25-title-inner | Text: "Production Order"
+  [10] ID: __tile11-title-inner | Text: "Gantt Chart Dashboard"
+  [11] ID: __tile15-title-inner | Text: "Inspection"
+  [12] ID: __tile16-title-inner | Text: "Inspection Checklist"
+  [13] ID: __tile14-title-inner | Text: "QC"
+  [14] ID: __tile0-title-inner | Text: "Number Series"
+
+Found 0 ObjectPageSection elements:
+
+🔍 Processing segment: Color
+  Looking for section: "Color"...
+  ✗ Segment "Color" not found on page
+
+🔍 Processing segment: Size
+  Looking for section: "Size"...
+  ✗ Segment "Size" not found on page
+
+🔍 Processing segment: Season
+  Looking for section: "Season"...
+  ✗ Segment "Season" not found on page
+
+════════════════════════════════════════════════════════════
+  SEGMENT PROCESSING SUMMARY
+════════════════════════════════════════════════════════════
+  ✗ Color
+  ✗ Size
+  ✗ Season
+
+  Total: 0/3 segments processed successfully

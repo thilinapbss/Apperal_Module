@@ -1,0 +1,61 @@
+
+✗ ERROR during segment data entry:
+locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('span[id*="DataField::Departments::Field-edit-inner-vhi"]') to be visible
+
+    at StyleMasterCreate.waitForFormLoad (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\src\pages\StyleMaster\StyleMasterCreate.ts:86:43)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:882:35)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:15)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:17)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:22) {
+  name: 'TimeoutError',
+  [Symbol(step)]: {
+    location: {
+      file: 'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\StyleMaster\\StyleMasterCreate.ts',
+      line: 86,
+      column: 43,
+      function: 'StyleMasterCreate.waitForFormLoad'
+    },
+    category: 'pw:api',
+    title: `Wait for selector locator('span[id*="DataField::Departments::Field-edit-inner-vhi"]')`,
+    apiName: 'locator.waitFor',
+    params: {
+      selector: 'span[id*="DataField::Departments::Field-edit-inner-vhi"]',
+      strict: true,
+      omitReturnValue: true,
+      state: 'visible',
+      timeout: 30000
+    },
+    group: undefined,
+    stepId: 'pw:api@91',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@91',
+      _title: `Wait for selector locator('span[id*="DataField::Departments::Field-edit-inner-vhi"]')`,
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1779680077734,
+    error: {
+      message: 'TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\n' +
+        'Call log:\n' +
+        `\x1B[2m  - waiting for locator('span[id*="DataField::Departments::Field-edit-inner-vhi"]') to be visible\x1B[22m\n`,
+      stack: 'TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\n' +
+        'Call log:\n' +
+        `\x1B[2m  - waiting for locator('span[id*="DataField::Departments::Field-edit-inner-vhi"]') to be visible\x1B[22m\n` +
+        '\n' +
+        '    at StyleMasterCreate.waitForFormLoad (C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\StyleMaster\\StyleMasterCreate.ts:86:43)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:882:35)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:15)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:17)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:22)',
+      cause: undefined
+    }
+  }
+}

@@ -1,0 +1,29 @@
+
+════════════════════════════════════════════════════════════
+  TEST 54: DEBUG PAGE HTML STRUCTURE
+════════════════════════════════════════════════════════════
+
+🔍 Searching page HTML for segment patterns:
+
+Colour:
+  No matches found
+Size:
+  No matches found
+Season:
+  No matches found
+
+
+Found 195 segment table patterns:
+  [0] id="apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment1::LineItem::Segment1"
+  [1] id="apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment1::LineItem::Segment1-innerTable"
+  [2] id="apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment1::LineItem::Segment1-toolbar"
+  [3] id="apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment1::LineItem::Segment1-title"
+  [4] id="apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment1::LineItem::Segment1-title-inner"
+  [5] id="apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment1::LineItem::Segment1::StandardAction::BasicSearch"
+  [6] id="apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment1::LineItem::Segment1::StandardAction::Create"
+  [7] id="apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment1::LineItem::Segment1::StandardAction::Create-inner"
+  [8] id="apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment1::LineItem::Segment1::StandardAction::Create-content"
+  [9] id="apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment1::LineItem::Segment1::StandardAction::Create-BDI-content"
+
+
+Found 0 header elements containing segment names:

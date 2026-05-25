@@ -1,0 +1,118 @@
+
+✗ Failed to verify Semi-Finish Goods combinations:
+locator.evaluate: Target page, context or browser has been closed
+Call log:
+  - waiting for locator('[id*="SemiFinishGoods-innerTable-sapUiTableCtrlScr"]').first()
+
+    at StyleMasterCreate.verifySemiFinishGoodsCombinations (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\src\pages\StyleMaster\StyleMasterCreate.ts:1049:29)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:1351:62)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:15)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:17)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:22) {
+  [Symbol(step)]: {
+    location: {
+      file: 'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\StyleMaster\\StyleMasterCreate.ts',
+      line: 1049,
+      column: 29,
+      function: 'StyleMasterCreate.verifySemiFinishGoodsCombinations'
+    },
+    category: 'pw:api',
+    title: `Evaluate locator('[id*="SemiFinishGoods-innerTable-sapUiTableCtrlScr"]').first()`,
+    apiName: 'locator.evaluate',
+    params: {
+      selector: '[id*="SemiFinishGoods-innerTable-sapUiTableCtrlScr"] >> nth=0',
+      strict: true,
+      state: 'attached',
+      timeout: 30000
+    },
+    group: undefined,
+    stepId: 'pw:api@90',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@90',
+      _title: `Evaluate locator('[id*="SemiFinishGoods-innerTable-sapUiTableCtrlScr"]').first()`,
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1779709601898,
+    error: {
+      message: 'Error: locator.evaluate: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        `\x1B[2m  - waiting for locator('[id*="SemiFinishGoods-innerTable-sapUiTableCtrlScr"]').first()\x1B[22m\n`,
+      stack: 'Error: locator.evaluate: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        `\x1B[2m  - waiting for locator('[id*="SemiFinishGoods-innerTable-sapUiTableCtrlScr"]').first()\x1B[22m\n` +
+        '\n' +
+        '    at StyleMasterCreate.verifySemiFinishGoodsCombinations (C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\StyleMaster\\StyleMasterCreate.ts:1049:29)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:1351:62)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:15)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:17)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:22)',
+      cause: undefined
+    }
+  }
+}
+
+✗ TEST 57 FAILED:
+locator.evaluate: Target page, context or browser has been closed
+Call log:
+  - waiting for locator('[id*="SemiFinishGoods-innerTable-sapUiTableCtrlScr"]').first()
+
+    at StyleMasterCreate.verifySemiFinishGoodsCombinations (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\src\pages\StyleMaster\StyleMasterCreate.ts:1049:29)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:1351:62)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:15)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:17)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:22) {
+  [Symbol(step)]: {
+    location: {
+      file: 'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\StyleMaster\\StyleMasterCreate.ts',
+      line: 1049,
+      column: 29,
+      function: 'StyleMasterCreate.verifySemiFinishGoodsCombinations'
+    },
+    category: 'pw:api',
+    title: `Evaluate locator('[id*="SemiFinishGoods-innerTable-sapUiTableCtrlScr"]').first()`,
+    apiName: 'locator.evaluate',
+    params: {
+      selector: '[id*="SemiFinishGoods-innerTable-sapUiTableCtrlScr"] >> nth=0',
+      strict: true,
+      state: 'attached',
+      timeout: 30000
+    },
+    group: undefined,
+    stepId: 'pw:api@90',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@90',
+      _title: `Evaluate locator('[id*="SemiFinishGoods-innerTable-sapUiTableCtrlScr"]').first()`,
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1779709601898,
+    error: {
+      message: 'Error: locator.evaluate: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        `\x1B[2m  - waiting for locator('[id*="SemiFinishGoods-innerTable-sapUiTableCtrlScr"]').first()\x1B[22m\n`,
+      stack: 'Error: locator.evaluate: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        `\x1B[2m  - waiting for locator('[id*="SemiFinishGoods-innerTable-sapUiTableCtrlScr"]').first()\x1B[22m\n` +
+        '\n' +
+        '    at StyleMasterCreate.verifySemiFinishGoodsCombinations (C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\StyleMaster\\StyleMasterCreate.ts:1049:29)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:1351:62)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:15)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:17)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:22)',
+      cause: undefined
+    }
+  }
+}

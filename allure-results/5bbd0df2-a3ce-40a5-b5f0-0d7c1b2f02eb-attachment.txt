@@ -1,0 +1,73 @@
+  Section "Color" not found on page
+✗ Could not find UI section for Color
+  Section "Color" not found on page
+  Section "Size" not found on page
+✗ Could not find UI section for Size
+  Section "Size" not found on page
+  Section "Season" not found on page
+✗ Could not find UI section for Season
+  Section "Season" not found on page
+
+✗ ERROR during segment data entry:
+ExpectError: expect(received).toBe(expected) // Object.is equality
+
+Expected: 3
+Received: 0
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:898:36)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7) {
+  matcherResult: {
+    actual: 0,
+    expected: 3,
+    message: '\x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoBe\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // Object.is equality\x1B[22m\n' +
+      '\n' +
+      'Expected: \x1B[32m3\x1B[39m\n' +
+      'Received: \x1B[31m0\x1B[39m',
+    name: 'toBe',
+    pass: false
+  },
+  [Symbol(step)]: {
+    category: 'expect',
+    apiName: 'expect.toBe',
+    title: 'Expect "toBe"',
+    shortTitle: 'Expect "toBe"',
+    params: { expected: 3 },
+    stepId: 'expect@110',
+    group: undefined,
+    boxedStack: undefined,
+    location: {
+      file: 'Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts',
+      line: 898,
+      column: 36,
+      function: 'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services'
+    },
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'expect@110',
+      _title: 'Expect "toBe"',
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1779683823915,
+    error: {
+      message: 'Error: \x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoBe\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // Object.is equality\x1B[22m\n' +
+        '\n' +
+        'Expected: \x1B[32m3\x1B[39m\n' +
+        'Received: \x1B[31m0\x1B[39m',
+      stack: 'Error: \x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoBe\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // Object.is equality\x1B[22m\n' +
+        '\n' +
+        'Expected: \x1B[32m3\x1B[39m\n' +
+        'Received: \x1B[31m0\x1B[39m\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:898:36)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:9)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:11)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:7)',
+      cause: undefined
+    }
+  }
+}

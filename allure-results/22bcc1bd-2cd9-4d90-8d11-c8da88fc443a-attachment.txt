@@ -1,0 +1,47 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53B: FILL SEGMENT DATA FROM JSON
+════════════════════════════════════════════════════════════
+
+📍 Current page: http://kgntest.ddns.net:4005/launchpadPage.html#apperalstylemaster-display&/StyleMaster(ID=135bf72c-ed8e-4bff-a9aa-704c6f1e34b9,IsActiveEntity=false)
+
+📋 Loaded segments from JSON:
+  - Color
+  - Size
+  - Season
+
+🔍 Processing segment: Color
+  Looking for section: "Color"...
+  Searching for span elements with segment text...
+  Found 30 span elements with "-title-inner" in ID
+  No span match found, checking h3 elements...
+  Found 6 h3 elements
+  Trying specific Segment pattern search...
+  ✗ Segment "Color" not found on page
+
+🔍 Processing segment: Size
+  Looking for section: "Size"...
+  Searching for span elements with segment text...
+  Found 35 span elements with "-title-inner" in ID
+  No span match found, checking h3 elements...
+  Found 6 h3 elements
+  Trying specific Segment pattern search...
+  ✗ Segment "Size" not found on page
+
+🔍 Processing segment: Season
+  Looking for section: "Season"...
+  Searching for span elements with segment text...
+  Found 35 span elements with "-title-inner" in ID
+  No span match found, checking h3 elements...
+  Found 6 h3 elements
+  Trying specific Segment pattern search...
+  ✗ Segment "Season" not found on page
+
+════════════════════════════════════════════════════════════
+  SEGMENT PROCESSING SUMMARY
+════════════════════════════════════════════════════════════
+  ✗ Color
+  ✗ Size
+  ✗ Season
+
+  Total: 0/3 segments processed successfully

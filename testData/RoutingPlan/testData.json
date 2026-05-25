@@ -6,17 +6,20 @@
     {
       "routeCode": "CU01",
       "routeName": "Cutting",
-      "warehouse": "WH-CMB"
+      "warehouse": "WH-CMB",
+      "isSemiFinishGood": true
     },
     {
       "routeCode": "SA1",
       "routeName": "Sawing",
-      "warehouse": "WH-CMB"
+      "warehouse": "WH-CMB",
+      "isSemiFinishGood": true
     },
     {
       "routeCode": "PA1",
       "routeName": "Packing",
-      "warehouse": "WH-CMB"
+      "warehouse": "WH-CMB",
+      "isSemiFinishGood": false
     }
   ]
 }

@@ -1,0 +1,14 @@
+
+════════════════════════════════════════════════════════════
+  TEST 56: IDENTIFY COLOR SEGMENT AND CLICK CREATE
+════════════════════════════════════════════════════════════
+  Current URL: http://kgntest.ddns.net:4005/launchpadPage.html#apperalstylemaster-display&/StyleMaster(ID=11e0946b-2e03-44ac-92be-456405736a95,IsActiveEntity=false)
+
+📍 Searching for segment sections...
+  Found 35 elements with "-title-inner" in ID
+  Scrolling down to reveal segment sections...
+
+📍 Finding Color segment...
+  Looking for section: "Color"...
+  Found 0 h3 segment title elements
+  Available text values: 

@@ -1,0 +1,85 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+
+════════════════════════════════════════════════════════════
+  TEST 53B: KEY IN SEGMENT DATA FROM JSON FILE
+════════════════════════════════════════════════════════════
+ℹ Form load check skipped (may not be on form page yet)
+
+📄 JSON Source: testData/StyleMaster/test-data.json
+📍 Data Path: segments → {Color, Size, Season}
+
+
+╔════════════════════════════════════════════════════════════╗
+║      FILLING SEGMENT DATA FROM JSON FILE                  ║
+║      (SEGMENT → SECTION → ROW → CELL)                     ║
+╚════════════════════════════════════════════════════════════╝
+
+
+┌─ SEGMENT: COLOR
+│  Source: test-data.json → segments.Color.values
+│  Total Values: 3
+│
+│  Data Mapping:
+│    [1] Code: "RED" → Name: "Red"
+│    [2] Code: "GREEN" → Name: "Green"
+│    [3] Code: "BLACK" → Name: "Black"
+│
+
+▶ Processing Color...
+  Looking for section: "Color"...
+  Looking for section: "Color"...
+│  Status: ✗ FAILED
+└─────────────────────────────────────────────────────
+
+┌─ SEGMENT: SIZE
+│  Source: test-data.json → segments.Size.values
+│  Total Values: 3
+│
+│  Data Mapping:
+│    [1] Code: "S" → Name: "Small"
+│    [2] Code: "M" → Name: "Medium"
+│    [3] Code: "L" → Name: "Large"
+│
+
+▶ Processing Size...
+  Looking for section: "Size"...
+  Looking for section: "Size"...
+│  Status: ✗ FAILED
+└─────────────────────────────────────────────────────
+
+┌─ SEGMENT: SEASON
+│  Source: test-data.json → segments.Season.values
+│  Total Values: 2
+│
+│  Data Mapping:
+│    [1] Code: "Su" → Name: "Summer"
+│    [2] Code: "Wi" → Name: "Winter"
+│
+
+▶ Processing Season...
+  Looking for section: "Season"...
+  Looking for section: "Season"...
+│  Status: ✗ FAILED
+└─────────────────────────────────────────────────────
+
+╔════════════════════════════════════════════════════════════╗
+║             SEGMENT DATA FILL COMPLETE SUMMARY             ║
+╠════════════════════════════════════════════════════════════╣
+║ ✗ Segment: Color    → Section: Color          
+║   └─ Row 1: [RED] = Red
+║   └─ Row 2: [GREEN] = Green
+║   └─ Row 3: [BLACK] = Black
+║ ✗ Segment: Size     → Section: Size           
+║   └─ Row 1: [S] = Small
+║   └─ Row 2: [M] = Medium
+║   └─ Row 3: [L] = Large
+║ ✗ Segment: Season   → Section: Season         
+║   └─ Row 1: [Su] = Summer
+║   └─ Row 2: [Wi] = Winter
+╠════════════════════════════════════════════════════════════╣
+║ Total Segments: 3 | Success: 0 | Failed: 3
+╚════════════════════════════════════════════════════════════╝
+
+
+════════════════════════════════════════════════════════════

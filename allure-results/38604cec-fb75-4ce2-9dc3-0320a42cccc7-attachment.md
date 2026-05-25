@@ -1,0 +1,23 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: apparel_regression_testing.spec.ts >> Apperal Module | Regression Test Suite >> 53b. Key In Segment Data from JSON File
+- Location: e2e\apparel_regression_testing.spec.ts:865:7
+
+# Error details
+
+```
+Test timeout of 120000ms exceeded.
+```
+
+```
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 3
+Received: 0
+```

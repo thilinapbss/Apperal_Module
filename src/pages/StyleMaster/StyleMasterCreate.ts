@@ -552,48 +552,43 @@ export class StyleMasterCreate {
     return null;
   }
 
-  async findSegmentSectionByIndex(segmentIndex: number): Promise<{ sectionName: string; idName: string; index: number } | null> {
+  async findSegmentSectionByType(segmentType: string): Promise<{ sectionName: string; idName: string } | null> {
     try {
-      console.log(`  Looking for Segment ${segmentIndex + 1}...`);
+      console.log(`  Looking for section: "${segmentType}"...`);
 
-      // Get all h3 headers and filter for ones containing "Segment"
-      const allH3 = this.page.locator('h3');
-      const allHeaders = await allH3.all();
+      // Only search Segment1, Segment2, Segment3 (actual segments on the form)
+      const segmentPatterns = ['Segment1', 'Segment2', 'Segment3'];
+      const segmentMap: { [key: string]: string } = {};
 
-      let segmentCount = 0;
-      for (const header of allHeaders) {
-        const headerText = await header.textContent();
-        if (headerText && headerText.includes('Segment')) {
-          if (segmentCount === segmentIndex) {
-            const displayName = headerText.trim();
-            console.log(`    ✓ Found Segment ${segmentIndex + 1}: "${displayName}"`);
+      for (const segPattern of segmentPatterns) {
+        const titleSelector = `span[id*="${segPattern}"][id*="-title-inner"]`;
+        const count = await this.page.locator(titleSelector).count();
 
-            // Extract ID and segment name from h3
-            const headerId = await header.getAttribute('id');
-            console.log(`    Full h3 id: "${headerId}"`);
+        // Only process if the element exists
+        if (count > 0) {
+          const titleElement = this.page.locator(titleSelector).first();
+          const titleText = await titleElement.textContent();
 
-            // Try to extract segment name from ID or use default pattern
-            let idName = `Segment${segmentIndex + 1}`;
+          if (titleText) {
+            // Clean up text: remove count like "(1)" from "Size (1)"
+            const cleanedText = titleText.replace(/\s*\(\d+\)\s*$/, '').trim();
+            segmentMap[segPattern] = cleanedText;
+            console.log(`  Segment "${segPattern}": "${cleanedText}"`);
 
-            if (headerId && headerId.includes('::table::')) {
-              const match = headerId.match(/::table::([^:]+)::/);
-              if (match && match[1]) {
-                idName = match[1];
-                console.log(`    ✓ Extracted segment ID: "${idName}"`);
-              }
+            // Check if this matches the segment type we're looking for
+            if (cleanedText.toLowerCase() === segmentType.toLowerCase()) {
+              console.log(`  ✓ Found matching segment: ${segPattern} = ${cleanedText}`);
+              return { sectionName: cleanedText, idName: segPattern };
             }
-
-            console.log(`    Using ID for selectors: "${idName}"`);
-            return { sectionName: displayName, idName, index: segmentIndex };
           }
-          segmentCount++;
         }
       }
 
-      console.warn(`  Segment ${segmentIndex + 1} not found. Only found ${segmentCount} segment sections.`);
+      console.log(`  Available segments: ${Object.entries(segmentMap).map(([id, name]) => `${id}=${name}`).join(', ')}`);
+      console.warn(`  Section "${segmentType}" not found on page`);
       return null;
     } catch (e) {
-      console.error(`Error finding segment section at index ${segmentIndex}: ${e}`);
+      console.error(`Error finding segment section "${segmentType}": ${e}`);
       return null;
     }
   }
@@ -713,17 +708,16 @@ export class StyleMasterCreate {
 
   async fillSegmentDataType(
     segmentDataType: string,
-    segmentIndex: number,
     values: Array<{ code: string; name: string }>
   ) {
-    console.log(`\n▶ Processing ${segmentDataType} (Segment ${segmentIndex + 1})...`);
+    console.log(`\n▶ Processing ${segmentDataType}...`);
 
     try {
-      // Find the section by index
-      const section = await this.findSegmentSectionByIndex(segmentIndex);
+      // Find the section by segment type name
+      const section = await this.findSegmentSectionByType(segmentDataType);
 
       if (!section) {
-        console.warn(`✗ Could not find UI section for segment ${segmentIndex + 1}`);
+        console.warn(`✗ Could not find UI section for ${segmentDataType}`);
         return false;
       }
 
@@ -777,13 +771,7 @@ export class StyleMasterCreate {
       rows: Array<{ code: string; name: string }>;
     }> = [];
 
-    // Get all segment section indices
-    const sectionHeaders = this.page.locator('h3[id*="table::"][id*="-title"]');
-    const allHeaders = await sectionHeaders.all();
-    console.log(`Found ${allHeaders.length} segment sections in UI\n`);
-
-    // Process each segment type in order, mapped to section indices sequentially
-    let segmentIndex = 0;
+    // Process each segment type
     for (const [segmentType, data] of Object.entries(segmentsData)) {
       if (data && Array.isArray(data) && data.length > 0) {
         const values = data[0].values;
@@ -792,7 +780,6 @@ export class StyleMasterCreate {
           console.log(`\n┌─ SEGMENT: ${segmentType.toUpperCase()}`);
           console.log(`│  Source: test-data.json → segments.${segmentType}.values`);
           console.log(`│  Total Values: ${values.length}`);
-          console.log(`│  UI Section: Segment ${segmentIndex + 1}`);
           console.log(`│`);
 
           // Show data mapping
@@ -802,22 +789,20 @@ export class StyleMasterCreate {
           });
           console.log(`│`);
 
-          // Execute fill - pass segment index for sequential mapping
-          const success = await this.fillSegmentDataType(segmentType, segmentIndex, values);
+          // Execute fill
+          const success = await this.fillSegmentDataType(segmentType, values);
           results[segmentType] = success;
 
           // Get section info
-          const section = await this.findSegmentSectionByIndex(segmentIndex);
+          const section = await this.findSegmentSectionByType(segmentType);
           dataMapping.push({
             segment: segmentType,
-            section: section?.sectionName || `Segment ${segmentIndex + 1}`,
+            section: section?.sectionName || segmentType,
             rows: values
           });
 
           console.log(`│  Status: ${success ? '✓ COMPLETED' : '✗ FAILED'}`);
           console.log(`└─────────────────────────────────────────────────────`);
-
-          segmentIndex++;
         }
       }
     }
@@ -848,5 +833,648 @@ export class StyleMasterCreate {
       results,
       dataMapping
     };
+  }
+
+  async fillAllSegmentDataByPosition(segmentsData: {
+    [key: string]: Array<{ code: string; name: string; values: Array<{ code: string; name: string }> }>;
+  }) {
+    console.log('\n╔════════════════════════════════════════════════════════════╗');
+    console.log('║   FILLING SEGMENTS BY POSITION (Segment1, 2, 3)            ║');
+    console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+    const segmentPositions = ['Segment1', 'Segment2', 'Segment3'];
+    const results: { [key: string]: boolean } = {};
+    const segmentEntries = Object.entries(segmentsData);
+
+    // Fill segments in position order
+    for (let i = 0; i < Math.min(segmentEntries.length, segmentPositions.length); i++) {
+      const [segmentType, segmentData] = segmentEntries[i];
+      const segmentPosition = segmentPositions[i];
+
+      if (segmentData && Array.isArray(segmentData) && segmentData.length > 0) {
+        const values = segmentData[0].values;
+
+        if (values && values.length > 0) {
+          console.log(`\n┌─ POSITION: ${segmentPosition} ← ${segmentType.toUpperCase()}`);
+          console.log(`│  Values to fill: ${values.length}`);
+
+          try {
+            // Fill each value - click Create for each row
+            let successCount = 0;
+            for (let j = 0; j < values.length; j++) {
+              // Click Create button before filling each row
+              console.log(`│  Clicking Create button for row ${j + 1}...`);
+              await this.clickSegmentCreateButton(segmentPosition);
+              console.log(`│  ✓ Create button clicked`);
+
+              // Fill the newly created row
+              const success = await this.fillSegmentValueInRow(
+                segmentPosition,
+                values[j].code,
+                values[j].name
+              );
+
+              if (success) {
+                console.log(`│    ✓ Row ${j + 1}: [${values[j].code}] = ${values[j].name}`);
+                successCount++;
+              } else {
+                console.log(`│    ✗ Row ${j + 1}: Failed to fill`);
+              }
+
+              // Wait before next row
+              if (j < values.length - 1) {
+                await this.page.waitForTimeout(300);
+              }
+            }
+
+            const allSuccess = successCount === values.length;
+            results[segmentType] = allSuccess;
+            console.log(`│  Status: ${allSuccess ? '✓ COMPLETED' : '✗ PARTIAL'} (${successCount}/${values.length})`);
+            console.log(`└─────────────────────────────────────────────────────`);
+
+            // Wait before processing next segment
+            await this.page.waitForTimeout(500);
+          } catch (e) {
+            console.error(`│  ✗ Error: ${e}`);
+            results[segmentType] = false;
+            console.log(`└─────────────────────────────────────────────────────`);
+          }
+        }
+      }
+    }
+
+    // Summary
+    console.log('\n╔════════════════════════════════════════════════════════════╗');
+    console.log('║          SEGMENT FILL BY POSITION - SUMMARY                ║');
+    console.log('╠════════════════════════════════════════════════════════════╣');
+
+    for (const [segmentType, success] of Object.entries(results)) {
+      const status = success ? '✓' : '✗';
+      console.log(`║ ${status} ${segmentType.padEnd(10)} filled successfully`);
+    }
+
+    const totalSegments = Object.keys(results).length;
+    const successCount = Object.values(results).filter(r => r).length;
+    console.log('╠════════════════════════════════════════════════════════════╣');
+    console.log(`║ Total: ${successCount}/${totalSegments} segments filled`);
+    console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+    return {
+      totalSegments,
+      successCount,
+      results
+    };
+  }
+
+  async clickSemiFinishGoodsGenerateButton() {
+    try {
+      console.log('\n╔════════════════════════════════════════════════════════════╗');
+      console.log('║         CLICKING SEMI-FINISH GOODS GENERATE BUTTON         ║');
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      // Scroll to Semi-Finish Goods section
+      console.log('  Scrolling to Semi-Finish Goods section...');
+      await this.page.evaluate(() => {
+        const semiFinishGoodsSection = document.querySelector('[id*="SemiFinishGoods"]');
+        if (semiFinishGoodsSection) {
+          semiFinishGoodsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+      await this.page.waitForTimeout(1000);
+
+      // Find and click the Generate button
+      const generateButton = this.page.locator(
+        'button[id*="SemiFinishGoods::CustomAction::RefreshSemiFinishGoods"]'
+      );
+
+      const count = await generateButton.count();
+      if (count === 0) {
+        throw new Error('Semi-Finish Goods Generate button not found');
+      }
+
+      console.log('  ✓ Generate button found');
+      await generateButton.waitFor({ state: 'visible', timeout: 10000 });
+      console.log('  ✓ Generate button is visible');
+
+      await generateButton.click();
+      console.log('  ✓ Generate button clicked');
+
+      // Wait for the generation process
+      await this.page.waitForLoadState('networkidle');
+      await this.page.waitForTimeout(1000);
+
+      console.log('\n║ ✓ Semi-Finish Goods data generated successfully');
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      return true;
+    } catch (e) {
+      console.error('\n✗ Failed to click Semi-Finish Goods Generate button:');
+      console.error(e);
+      throw e;
+    }
+  }
+
+  async verifySemiFinishGoodsCombinations(
+    segmentsData: { [key: string]: Array<{ code: string; name: string; values: Array<{ code: string; name: string }> }> },
+    routingPlans: Array<{ routeCode: string; routeName: string; isSemiFinishGood?: boolean }>
+  ) {
+    try {
+      console.log('\n╔════════════════════════════════════════════════════════════╗');
+      console.log('║      VERIFYING SEMI-FINISH GOODS COMBINATIONS              ║');
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      // Extract segment values
+      const segmentValues: { [key: string]: Array<{ code: string; name: string }> } = {};
+      for (const [segmentType, segmentData] of Object.entries(segmentsData)) {
+        if (segmentData && Array.isArray(segmentData) && segmentData.length > 0) {
+          segmentValues[segmentType] = segmentData[0].values || [];
+        }
+      }
+
+      console.log('📋 Segment Values:');
+      for (const [segmentType, values] of Object.entries(segmentValues)) {
+        console.log(`  ${segmentType}: ${values.map(v => `${v.code}(${v.name})`).join(', ')}`);
+      }
+
+      // Filter routes: only use Semi-Finish Goods routes
+      const semiFinishGoodsRoutes = routingPlans.filter(route => route.isSemiFinishGood !== false);
+      const finishGoodsRoutes = routingPlans.filter(route => route.isSemiFinishGood === false);
+
+      console.log('\n📋 Routing Routes:');
+      console.log('  Semi-Finish Goods Routes:');
+      semiFinishGoodsRoutes.forEach(route => {
+        console.log(`    ${route.routeCode}: ${route.routeName}`);
+      });
+      if (finishGoodsRoutes.length > 0) {
+        console.log('  Finish Goods Routes (excluded):');
+        finishGoodsRoutes.forEach(route => {
+          console.log(`    ${route.routeCode}: ${route.routeName}`);
+        });
+      }
+
+      // Calculate expected combinations (only using Semi-Finish Goods routes)
+      const sizeValues = segmentValues['Size'] || [];
+      const colorValues = segmentValues['Color'] || [];
+      const seasonValues = segmentValues['Season'] || [];
+
+      const expectedCombinations: Array<{ code: string; name: string }> = [];
+
+      for (const size of sizeValues) {
+        for (const color of colorValues) {
+          for (const season of seasonValues) {
+            for (const route of semiFinishGoodsRoutes) {
+              const code = `${size.code}-${color.code}-${season.code}-${route.routeCode}`;
+              const name = `${size.name}-${color.name}-${season.name}-${route.routeName}`;
+              expectedCombinations.push({ code, name });
+            }
+          }
+        }
+      }
+
+      console.log(`\n📊 Expected Combinations: ${expectedCombinations.length}`);
+      console.log(`  Calculation: ${sizeValues.length} sizes × ${colorValues.length} colors × ${seasonValues.length} seasons × ${semiFinishGoodsRoutes.length} semi-finish routes = ${expectedCombinations.length}`);
+
+      // Get actual rows from table
+      console.log(`\n📊 Loading all rows from virtualized table...`);
+      console.log(`  (Using keyboard navigation to load all rows)`);
+
+      // Extract all item codes using keyboard navigation
+      const actualCodes: Set<string> = new Set();
+      const actualNames: Map<string, string> = new Map();
+
+      // Click on the first cell of the table to focus it
+      const firstCell = this.page.locator('table[id*="SemiFinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex="0"] td[data-sap-ui-colid*="ItemCode"]').first();
+      await firstCell.click();
+      await this.page.waitForTimeout(300);
+
+      console.log(`  ✓ Table focused`);
+
+      // Press Ctrl+End to go to the last row to load all rows
+      await this.page.keyboard.press('Control+End');
+      await this.page.waitForTimeout(1000);
+
+      console.log(`  ✓ Navigated to end of table`);
+
+      // Now go back to the beginning
+      await this.page.keyboard.press('Control+Home');
+      await this.page.waitForTimeout(500);
+
+      console.log(`  ✓ Back at beginning of table`);
+
+      // Extract all currently rendered rows
+      const tableRows = this.page.locator('table[id*="SemiFinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex]');
+      const totalTableRows = await tableRows.count();
+
+      console.log(`  ✓ Total table rows found in DOM: ${totalTableRows}`);
+
+      // Extract from all visible rows
+      for (let i = 0; i < totalTableRows; i++) {
+        const row = tableRows.nth(i);
+        const cells = row.locator('td[role="gridcell"]');
+
+        const codeCell = cells.nth(0);
+        const nameCell = cells.nth(1);
+
+        const code = await codeCell.locator('span[class*="sapMText"]').first().textContent();
+        const name = await nameCell.locator('span[class*="sapMText"]').first().textContent();
+
+        if (code && code.trim()) {
+          actualCodes.add(code.trim());
+          if (name && name.trim()) {
+            actualNames.set(code.trim(), name.trim());
+          }
+        }
+
+        if ((i + 1) % 10 === 0) {
+          console.log(`  Extracted from rows 1-${i + 1}: ${actualCodes.size} unique codes`);
+        }
+      }
+
+      // If we still don't have all rows, try scrolling with Page Down
+      if (actualCodes.size < 36) {
+        console.log(`\n  ⚠️ Found only ${actualCodes.size} codes, attempting Page Down scrolling...`);
+
+        // Click on first row again
+        await firstCell.click();
+        await this.page.waitForTimeout(300);
+
+        // Press Page Down multiple times to load more rows
+        for (let pageDown = 0; pageDown < 10; pageDown++) {
+          await this.page.keyboard.press('PageDown');
+          await this.page.waitForTimeout(400);
+
+          // Extract visible rows after each Page Down
+          const visibleRows = this.page.locator('table[id*="SemiFinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex]');
+          const visibleCount = await visibleRows.count();
+
+          for (let i = 0; i < visibleCount; i++) {
+            const row = visibleRows.nth(i);
+            const cells = row.locator('td[role="gridcell"]');
+            const codeCell = cells.nth(0);
+            const nameCell = cells.nth(1);
+
+            const code = await codeCell.locator('span[class*="sapMText"]').first().textContent();
+            const name = await nameCell.locator('span[class*="sapMText"]').first().textContent();
+
+            if (code && code.trim()) {
+              actualCodes.add(code.trim());
+              if (name && name.trim()) {
+                actualNames.set(code.trim(), name.trim());
+              }
+            }
+          }
+
+          console.log(`  [PageDown ${pageDown + 1}] Visible rows: ${visibleCount}, Total codes: ${actualCodes.size}`);
+
+          if (actualCodes.size >= 36) {
+            console.log(`  ✓ All 36 codes found!`);
+            break;
+          }
+        }
+      }
+
+      console.log(`\n  ✓ Row extraction complete!`);
+      console.log(`  ✓ Total unique codes found: ${actualCodes.size}`);
+
+      const actualRowCount = actualCodes.size;
+      console.log(`\n📊 Actual Rows Extracted: ${actualRowCount}`);
+
+      console.log('\n🔍 Verification Results:');
+
+      // Check if all expected combinations exist
+      let foundCount = 0;
+      const missingCombinations: string[] = [];
+
+      for (const expected of expectedCombinations) {
+        if (actualCodes.has(expected.code)) {
+          foundCount++;
+        } else {
+          missingCombinations.push(expected.code);
+        }
+      }
+
+      const allFound = foundCount === expectedCombinations.length;
+      console.log(`  ✓ Expected: ${expectedCombinations.length}`);
+      console.log(`  ✓ Found: ${foundCount}`);
+      console.log(`  ${allFound ? '✓' : '✗'} Match: ${allFound ? 'YES' : 'NO'}`);
+
+      if (missingCombinations.length > 0 && missingCombinations.length <= 10) {
+        console.log(`\n  Missing combinations (${missingCombinations.length}):`);
+        missingCombinations.forEach((code, idx) => {
+          console.log(`    ${idx + 1}. ${code}`);
+        });
+      } else if (missingCombinations.length > 10) {
+        console.log(`\n  Missing ${missingCombinations.length} combinations (showing first 5):`);
+        missingCombinations.slice(0, 5).forEach((code, idx) => {
+          console.log(`    ${idx + 1}. ${code}`);
+        });
+      }
+
+      console.log('\n╔════════════════════════════════════════════════════════════╗');
+      if (allFound) {
+        console.log('║ ✓ ALL COMBINATIONS VERIFIED SUCCESSFULLY                  ║');
+      } else {
+        console.log('║ ✗ SOME COMBINATIONS ARE MISSING                           ║');
+      }
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      return {
+        allFound,
+        expectedCount: expectedCombinations.length,
+        actualCount: actualRowCount,
+        foundCount,
+        missingCount: missingCombinations.length,
+        missingCombinations
+      };
+    } catch (e) {
+      console.error('\n✗ Failed to verify Semi-Finish Goods combinations:');
+      console.error(e);
+      throw e;
+    }
+  }
+
+  async clickFinishGoodsGenerateButton() {
+    try {
+      console.log('\n╔════════════════════════════════════════════════════════════╗');
+      console.log('║           CLICKING FINISH GOODS GENERATE BUTTON            ║');
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      // Scroll to Finish Goods section
+      console.log('  Scrolling to Finish Goods section...');
+      await this.page.evaluate(() => {
+        const finishGoodsSection = document.querySelector('[id*="FinishGoods"]');
+        if (finishGoodsSection) {
+          finishGoodsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+      await this.page.waitForTimeout(1000);
+
+      // Find and click the Generate button
+      const generateButton = this.page.locator(
+        'button[id*="FinishGoods::CustomAction::RefreshFinishGoods"]'
+      );
+
+      const count = await generateButton.count();
+      if (count === 0) {
+        throw new Error('Finish Goods Generate button not found');
+      }
+
+      console.log('  ✓ Generate button found');
+      await generateButton.waitFor({ state: 'visible', timeout: 10000 });
+      console.log('  ✓ Generate button is visible');
+
+      await generateButton.click();
+      console.log('  ✓ Generate button clicked');
+
+      // Wait for the generation process
+      await this.page.waitForLoadState('networkidle');
+      await this.page.waitForTimeout(1000);
+
+      console.log('\n║ ✓ Finish Goods data generated successfully');
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      return true;
+    } catch (e) {
+      console.error('\n✗ Failed to click Finish Goods Generate button:');
+      console.error(e);
+      throw e;
+    }
+  }
+
+  async verifyFinishGoodsCombinations(
+    segmentsData: { [key: string]: Array<{ code: string; name: string; values: Array<{ code: string; name: string }> }> },
+    routingPlans: Array<{ routeCode: string; routeName: string; isSemiFinishGood?: boolean }>
+  ) {
+    try {
+      console.log('\n╔════════════════════════════════════════════════════════════╗');
+      console.log('║        VERIFYING FINISH GOODS COMBINATIONS                 ║');
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      // Extract segment values
+      const segmentValues: { [key: string]: Array<{ code: string; name: string }> } = {};
+      for (const [segmentType, segmentData] of Object.entries(segmentsData)) {
+        if (segmentData && Array.isArray(segmentData) && segmentData.length > 0) {
+          segmentValues[segmentType] = segmentData[0].values || [];
+        }
+      }
+
+      console.log('📋 Segment Values:');
+      for (const [segmentType, values] of Object.entries(segmentValues)) {
+        console.log(`  ${segmentType}: ${values.map(v => `${v.code}(${v.name})`).join(', ')}`);
+      }
+
+      // Filter routes: only use Finish Goods routes
+      const finishGoodsRoutes = routingPlans.filter(route => route.isSemiFinishGood === false);
+      const semiFinishGoodsRoutes = routingPlans.filter(route => route.isSemiFinishGood !== false);
+
+      console.log('\n📋 Routing Routes:');
+      if (finishGoodsRoutes.length > 0) {
+        console.log('  Finish Goods Routes:');
+        finishGoodsRoutes.forEach(route => {
+          console.log(`    ${route.routeCode}: ${route.routeName}`);
+        });
+      }
+      console.log('  Semi-Finish Goods Routes (excluded):');
+      semiFinishGoodsRoutes.forEach(route => {
+        console.log(`    ${route.routeCode}: ${route.routeName}`);
+      });
+
+      // Calculate expected combinations (only using Finish Goods routes)
+      const sizeValues = segmentValues['Size'] || [];
+      const colorValues = segmentValues['Color'] || [];
+      const seasonValues = segmentValues['Season'] || [];
+
+      const expectedCombinations: Array<{ code: string; name: string }> = [];
+
+      for (const size of sizeValues) {
+        for (const color of colorValues) {
+          for (const season of seasonValues) {
+            for (const route of finishGoodsRoutes) {
+              const code = `${size.code}-${color.code}-${season.code}-${route.routeCode}`;
+              const name = `${size.name}-${color.name}-${season.name}-${route.routeName}`;
+              expectedCombinations.push({ code, name });
+            }
+          }
+        }
+      }
+
+      console.log(`\n📊 Expected Combinations: ${expectedCombinations.length}`);
+      console.log(`  Calculation: ${sizeValues.length} sizes × ${colorValues.length} colors × ${seasonValues.length} seasons × ${finishGoodsRoutes.length} finish goods route(s) = ${expectedCombinations.length}`);
+
+      // Get actual rows from table
+      console.log(`\n📊 Loading all rows from virtualized table...`);
+      console.log(`  (Using keyboard navigation to load all rows)`);
+
+      // Extract all item codes using keyboard navigation
+      const actualCodes: Set<string> = new Set();
+      const actualNames: Map<string, string> = new Map();
+
+      // Click on the first cell of the table to focus it
+      const firstCell = this.page.locator('table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex="0"] td[data-sap-ui-colid*="ItemCode"]').first();
+      await firstCell.click();
+      await this.page.waitForTimeout(300);
+
+      console.log(`  ✓ Table focused`);
+
+      // Press Ctrl+End to go to the last row to load all rows
+      await this.page.keyboard.press('Control+End');
+      await this.page.waitForTimeout(1000);
+
+      console.log(`  ✓ Navigated to end of table`);
+
+      // Now go back to the beginning
+      await this.page.keyboard.press('Control+Home');
+      await this.page.waitForTimeout(500);
+
+      console.log(`  ✓ Back at beginning of table`);
+
+      // Extract all currently rendered rows
+      const tableRows = this.page.locator('table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex]');
+      const totalTableRows = await tableRows.count();
+
+      console.log(`  ✓ Total table rows found in DOM: ${totalTableRows}`);
+
+      // Extract from all visible rows with error handling
+      for (let i = 0; i < totalTableRows; i++) {
+        try {
+          const row = tableRows.nth(i);
+          const cells = row.locator('td[role="gridcell"]');
+
+          const codeCell = cells.nth(0);
+          const nameCell = cells.nth(1);
+
+          const code = await codeCell.locator('span[class*="sapMText"]').first().textContent();
+          const name = await nameCell.locator('span[class*="sapMText"]').first().textContent();
+
+          if (code && code.trim()) {
+            actualCodes.add(code.trim());
+            if (name && name.trim()) {
+              actualNames.set(code.trim(), name.trim());
+            }
+          }
+
+          if ((i + 1) % 10 === 0) {
+            console.log(`  Extracted from rows 1-${i + 1}: ${actualCodes.size} unique codes`);
+          }
+        } catch (e: unknown) {
+          // Row extraction failed, possibly out of range
+          const errorMsg = e instanceof Error ? e.message : String(e);
+          console.log(`  ⚠️ Failed to extract row ${i}: ${errorMsg}`);
+          break;
+        }
+      }
+
+      // If we still don't have all rows, try scrolling with Page Down
+      if (actualCodes.size < expectedCombinations.length) {
+        console.log(`\n  ⚠️ Found only ${actualCodes.size} codes, attempting Page Down scrolling...`);
+
+        // Click on first row again
+        await firstCell.click();
+        await this.page.waitForTimeout(300);
+
+        // Press Page Down multiple times to load more rows
+        for (let pageDown = 0; pageDown < 10; pageDown++) {
+          try {
+            await this.page.keyboard.press('PageDown');
+            await this.page.waitForTimeout(400);
+
+            // Extract visible rows after each Page Down
+            const visibleRows = this.page.locator('table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex]');
+            const visibleCount = await visibleRows.count();
+
+            for (let i = 0; i < visibleCount; i++) {
+              try {
+                const row = visibleRows.nth(i);
+                const cells = row.locator('td[role="gridcell"]');
+                const codeCell = cells.nth(0);
+                const nameCell = cells.nth(1);
+
+                const code = await codeCell.locator('span[class*="sapMText"]').first().textContent();
+                const name = await nameCell.locator('span[class*="sapMText"]').first().textContent();
+
+                if (code && code.trim()) {
+                  actualCodes.add(code.trim());
+                  if (name && name.trim()) {
+                    actualNames.set(code.trim(), name.trim());
+                  }
+                }
+              } catch (e: unknown) {
+                // Row extraction failed
+                break;
+              }
+            }
+
+            console.log(`  [PageDown ${pageDown + 1}] Visible rows: ${visibleCount}, Total codes: ${actualCodes.size}`);
+
+            if (actualCodes.size >= expectedCombinations.length) {
+              console.log(`  ✓ All expected codes found!`);
+              break;
+            }
+          } catch (e: unknown) {
+            const errorMsg = e instanceof Error ? e.message : String(e);
+            console.log(`  ⚠️ PageDown iteration failed: ${errorMsg}`);
+            break;
+          }
+        }
+      }
+
+      console.log(`\n  ✓ Row extraction complete!`);
+      console.log(`  ✓ Total unique codes found: ${actualCodes.size}`);
+
+      const actualRowCount = actualCodes.size;
+      console.log(`\n📊 Actual Rows Extracted: ${actualRowCount}`);
+
+      console.log('\n🔍 Verification Results:');
+
+      // Check if all expected combinations exist
+      let foundCount = 0;
+      const missingCombinations: string[] = [];
+
+      for (const expected of expectedCombinations) {
+        if (actualCodes.has(expected.code)) {
+          foundCount++;
+        } else {
+          missingCombinations.push(expected.code);
+        }
+      }
+
+      const allFound = foundCount === expectedCombinations.length;
+      console.log(`  ✓ Expected: ${expectedCombinations.length}`);
+      console.log(`  ✓ Found: ${foundCount}`);
+      console.log(`  ${allFound ? '✓' : '✗'} Match: ${allFound ? 'YES' : 'NO'}`);
+
+      if (missingCombinations.length > 0 && missingCombinations.length <= 10) {
+        console.log(`\n  Missing combinations (${missingCombinations.length}):`);
+        missingCombinations.forEach((code, idx) => {
+          console.log(`    ${idx + 1}. ${code}`);
+        });
+      } else if (missingCombinations.length > 10) {
+        console.log(`\n  Missing ${missingCombinations.length} combinations (showing first 5):`);
+        missingCombinations.slice(0, 5).forEach((code, idx) => {
+          console.log(`    ${idx + 1}. ${code}`);
+        });
+      }
+
+      console.log('\n╔════════════════════════════════════════════════════════════╗');
+      if (allFound) {
+        console.log('║ ✓ ALL COMBINATIONS VERIFIED SUCCESSFULLY                  ║');
+      } else {
+        console.log('║ ✗ SOME COMBINATIONS ARE MISSING                           ║');
+      }
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      return {
+        allFound,
+        expectedCount: expectedCombinations.length,
+        actualCount: actualRowCount,
+        foundCount,
+        missingCount: missingCombinations.length,
+        missingCombinations
+      };
+    } catch (e) {
+      console.error('\n✗ Failed to verify Finish Goods combinations:');
+      console.error(e);
+      throw e;
+    }
   }
 }

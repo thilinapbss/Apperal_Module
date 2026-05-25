@@ -1,0 +1,14 @@
+
+════════════════════════════════════════════════════════════
+  TEST 56: IDENTIFY COLOR SEGMENT AND CLICK CREATE
+════════════════════════════════════════════════════════════
+  Current URL: http://kgntest.ddns.net:4005/launchpadPage.html#apperalstylemaster-display&/StyleMaster(ID=54497188-9bc3-4a60-90ed-f7cf8a63586b,IsActiveEntity=false)
+
+📍 Searching for segment sections...
+  Found 35 elements with "-title-inner" in ID
+  Scrolling down to reveal segment sections...
+
+📍 Finding Color segment...
+  Looking for section: "Color"...
+  Found 35 segment title elements
+  Available text values: Buyer PO Upload, Style Master, Trim Allocation, Bill Of Material, Cost Sheet, ERP Post, Lay Sheet, Master Plan, Work In Progress, Production Order, Gantt Chart Dashboard, Inspection, Inspection Checklist, QC, Number Series, UDO Creation, Count Barcode, Cartoons, Inventory Transfer, Bar Code Generator, Approval Stage, Approval Template, Notification, User & Role Management, Segment Master, Season Selection Submaster, Routing Plan, Vendor Merchandiser, Sub Master Branch, Style Masters (45), Attachment Files, Semi-Finish Goods, Finish Goods, Raw Materials, Item Specification

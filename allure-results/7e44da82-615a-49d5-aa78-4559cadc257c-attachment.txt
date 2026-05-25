@@ -1,0 +1,79 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53B: FILL SEGMENT DATA FROM JSON
+════════════════════════════════════════════════════════════
+
+📍 Current page: http://kgntest.ddns.net:4005/launchpadPage.html#apperalstylemaster-display&/StyleMaster(ID=0bac2439-9adb-4de2-8834-9ba4d83b3bc1,IsActiveEntity=false)
+
+📋 Loaded segments from JSON:
+  - Color
+  - Size
+  - Season
+
+════════════════════════════════════════════════════════════
+  DEBUG: SEGMENT PAGE STRUCTURE
+════════════════════════════════════════════════════════════
+
+Found 9 h3 headers:
+  [0] ID: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem-title | Text: "Style Masters (101)"
+  [1] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem-title | Text: "Attachment Files"
+  [2] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment1::LineItem::Segment1-title | Text: "Segment 1"
+  [3] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment2::LineItem::Segment2-title | Text: "Segment 2"
+  [4] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment3::LineItem::segment3-title | Text: "Segment 3"
+  [5] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::SemiFinishGoods::LineItem::SemiFinishGoods-title | Text: "Semi-Finish Goods"
+  [6] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods-title | Text: "Finish Goods"
+  [7] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials-title | Text: "Raw Materials"
+  [8] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification-title | Text: "Item Specification"
+
+Found 38 span[id*="-title-inner"] elements:
+  [0] ID: __tile0-title-inner | Text: "Buyer PO Upload"
+  [1] ID: __tile11-title-inner | Text: "Style Master"
+  [2] ID: __tile4-title-inner | Text: "Trim Allocation"
+  [3] ID: __tile56-title-inner | Text: "Bill Of Material"
+  [4] ID: __tile5-title-inner | Text: "Cost Sheet"
+  [5] ID: __tile17-title-inner | Text: "ERP Post"
+  [6] ID: __tile8-title-inner | Text: "Lay Sheet"
+  [7] ID: __tile6-title-inner | Text: "Master Plan"
+  [8] ID: __tile7-title-inner | Text: "Work In Progress"
+  [9] ID: __tile24-title-inner | Text: "Production Order"
+  [10] ID: __tile10-title-inner | Text: "Gantt Chart Dashboard"
+  [11] ID: __tile14-title-inner | Text: "Inspection Checklist"
+  [12] ID: __tile58-title-inner | Text: "Inspection"
+  [13] ID: __tile13-title-inner | Text: "QC"
+  [14] ID: __tile55-title-inner | Text: "Number Series"
+
+Found 0 ObjectPageSection elements:
+
+🔍 Processing segment: Color
+  Looking for section: "Color"...
+  Segment "Segment1": "Segment 1"
+  Segment "Segment2": "Segment 2"
+  Segment "Segment3": "Segment 3"
+  ✗ Segment "Color" not found on page
+
+🔍 Processing segment: Size
+  Looking for section: "Size"...
+  Segment "Segment1": "Size"
+  ✓ Found matching segment: Segment1 = Size
+  ✓ Found Size segment: Size (ID: Segment1)
+  📌 Clicking Create button for Size...
+  ✓ Create button clicked
+
+🔍 Processing segment: Season
+  Looking for section: "Season"...
+  Segment "Segment1": "Size (1)"
+  Segment "Segment2": "Color"
+  Segment "Segment3": "Season"
+  ✓ Found matching segment: Segment3 = Season
+  ✓ Found Season segment: Season (ID: Segment3)
+  📌 Clicking Create button for Season...
+  ✓ Create button clicked
+
+════════════════════════════════════════════════════════════
+  SEGMENT PROCESSING SUMMARY
+════════════════════════════════════════════════════════════
+  ✗ Color
+  ✓ Size
+  ✓ Season
+
+  Total: 2/3 segments processed successfully

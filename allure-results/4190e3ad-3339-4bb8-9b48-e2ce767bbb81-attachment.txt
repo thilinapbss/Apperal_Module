@@ -1,0 +1,77 @@
+
+════════════════════════════════════════════════════════════
+  DEBUG: DUMPING ALL RELEVANT ELEMENTS
+════════════════════════════════════════════════════════════
+
+Total elements with 'title' in ID: 95
+  [0] ID: __tile1-title | Text: "Buyer PO Upload"
+  [1] ID: __tile1-title-inner | Text: "Buyer PO Upload"
+  [2] ID: __tile13-title | Text: "Style Master"
+  [3] ID: __tile13-title-inner | Text: "Style Master"
+  [4] ID: __tile6-title | Text: "Trim Allocation"
+  [5] ID: __tile6-title-inner | Text: "Trim Allocation"
+  [6] ID: __tile5-title | Text: "Bill Of Material"
+  [7] ID: __tile5-title-inner | Text: "Bill Of Material"
+  [8] ID: __tile7-title | Text: "Cost Sheet"
+  [9] ID: __tile7-title-inner | Text: "Cost Sheet"
+  [10] ID: __tile57-title | Text: "ERP Post"
+  [11] ID: __tile57-title-inner | Text: "ERP Post"
+  [12] ID: __tile10-title | Text: "Lay Sheet"
+  [13] ID: __tile10-title-inner | Text: "Lay Sheet"
+  [14] ID: __tile8-title | Text: "Master Plan"
+  [15] ID: __tile8-title-inner | Text: "Master Plan"
+  [16] ID: __tile9-title | Text: "Work In Progress"
+  [17] ID: __tile9-title-inner | Text: "Work In Progress"
+  [18] ID: __tile26-title | Text: "Production Order"
+  [19] ID: __tile26-title-inner | Text: "Production Order"
+  [20] ID: __tile12-title | Text: "Gantt Chart Dashboard"
+  [21] ID: __tile12-title-inner | Text: "Gantt Chart Dashboard"
+  [22] ID: __tile16-title | Text: "Inspection"
+  [23] ID: __tile16-title-inner | Text: "Inspection"
+  [24] ID: __tile17-title | Text: "Inspection Checklist"
+  [25] ID: __tile17-title-inner | Text: "Inspection Checklist"
+  [26] ID: __tile15-title | Text: "QC"
+  [27] ID: __tile15-title-inner | Text: "QC"
+  [28] ID: __tile0-title | Text: "Number Series"
+  [29] ID: __tile0-title-inner | Text: "Number Series"
+  [30] ID: __tile19-title | Text: "UDO Creation"
+  [31] ID: __tile19-title-inner | Text: "UDO Creation"
+  [32] ID: __tile14-title | Text: "Count Barcode"
+  [33] ID: __tile14-title-inner | Text: "Count Barcode"
+  [34] ID: __tile20-title | Text: "Cartoons"
+  [35] ID: __tile20-title-inner | Text: "Cartoons"
+  [36] ID: __tile24-title | Text: "Inventory Transfer"
+  [37] ID: __tile24-title-inner | Text: "Inventory Transfer"
+  [38] ID: __tile25-title | Text: "Bar Code Generator"
+  [39] ID: __tile25-title-inner | Text: "Bar Code Generator"
+  [40] ID: __tile58-title | Text: "Approval Stage"
+  [41] ID: __tile58-title-inner | Text: "Approval Stage"
+  [42] ID: __tile22-title | Text: "Approval Template"
+  [43] ID: __tile22-title-inner | Text: "Approval Template"
+  [44] ID: __tile23-title | Text: "Notification"
+  [45] ID: __tile23-title-inner | Text: "Notification"
+  [46] ID: __tile21-title | Text: "User & Role Management"
+  [47] ID: __tile21-title-inner | Text: "User & Role Management"
+  [48] ID: __tile2-title | Text: "Segment Master"
+  [49] ID: __tile2-title-inner | Text: "Segment Master"
+
+Total buttons found: 75
+  Create Button: ID: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create | Text: "Create"
+  Create Button: ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create | Text: "Create"
+  Create Button: ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create | Text: "Create"
+  Create Button: ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create | Text: "Create"
+  Create Button: ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create | Text: "Create"
+
+Current URL: http://kgntest.ddns.net:4005/launchpadPage.html#apperalstylemaster-display&/StyleMaster(ID=47023c4c-8b19-4277-adab-c06c0ba55946,IsActiveEntity=false)
+Total forms on page: 11
+Total tables on page: 12
+  Table 0: ID: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem-innerTable-listUl
+  Table 1: ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem-innerTable-header
+  Table 2: ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem-innerTable-table
+  Table 3: ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::SemiFinishGoods::LineItem::SemiFinishGoods-innerTable-header
+  Table 4: ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::SemiFinishGoods::LineItem::SemiFinishGoods-innerTable-table
+  Table 5: ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods-innerTable-header
+  Table 6: ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods-innerTable-table
+  Table 7: ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials-innerTable-header
+  Table 8: ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials-innerTable-table
+  Table 9: ID: apperal.stylemaster::StyleMasterObjectPage--fe::CustomSubSection::StyleTreeTable--styleTreeTable-header

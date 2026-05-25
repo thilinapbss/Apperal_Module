@@ -1,0 +1,24 @@
+Error finding segment section "Color": TimeoutError: locator.textContent: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('span[id*="Segment1"][id*="-title-inner"]').first()
+
+Error finding segment section "Size": TimeoutError: locator.textContent: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('span[id*="Segment1"][id*="-title-inner"]').first()
+
+Error finding segment section "Season": TimeoutError: locator.textContent: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('span[id*="Segment1"][id*="-title-inner"]').first()
+
+
+✗ TEST 53B FAILED:
+Error: Only 0/3 segments were successfully processed
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:999:15
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11
+    at TimeoutManager.withRunnable (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:1816:14)
+    at TestInfoImpl._runWithTimeout (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2535:7)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7
+    at WorkerMain._runTest (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3016:5)
+    at WorkerMain.runTestGroup (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2911:9)
+    at process.<anonymous> (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\common\index.js:1955:25)

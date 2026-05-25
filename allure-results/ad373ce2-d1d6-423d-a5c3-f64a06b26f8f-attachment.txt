@@ -1,0 +1,17 @@
+
+════════════════════════════════════════════════════════════
+  TEST 56: IDENTIFY COLOR SEGMENT AND CLICK CREATE
+════════════════════════════════════════════════════════════
+
+📍 Clicking Color tab in navigation bar...
+  Found 9 tabs in navigation bar
+    Tab 0: "General Information"
+    Tab 1: "PO Numbers"
+    Tab 2: "Other Information"
+    Tab 3: "Attachment Files"
+    Tab 4: "Semi-Finish Goods"
+    Tab 5: "Finish Goods"
+    Tab 6: "Raw Materials"
+    Tab 7: "Allocation Hierarchy"
+    Tab 8: "Item Specification"
+  Available tabs: General Information, PO Numbers, Other Information, Attachment Files, Semi-Finish Goods, Finish Goods, Raw Materials, Allocation Hierarchy, Item Specification

@@ -1,0 +1,6 @@
+
+════════════════════════════════════════════════════════════
+  TEST 56: IDENTIFY COLOR SEGMENT AND CLICK CREATE
+════════════════════════════════════════════════════════════
+  Current URL: http://kgntest.ddns.net:4005/launchpadPage.html#apperalstylemaster-display&/StyleMaster(ID=a58599d6-c715-46fc-84a5-c002f7f10475,IsActiveEntity=false)
+  Not on ObjectPage, navigating back...

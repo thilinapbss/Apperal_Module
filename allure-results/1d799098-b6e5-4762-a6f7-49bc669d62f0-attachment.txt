@@ -1,0 +1,9 @@
+
+════════════════════════════════════════════════════════════
+  TEST 56: IDENTIFY COLOR SEGMENT AND CLICK CREATE
+════════════════════════════════════════════════════════════
+
+📍 Finding Color segment...
+  Looking for section: "Color"...
+  Found 38 segment title elements
+  Available text values: Buyer PO Upload, Style Master, Trim Allocation, Bill Of Material, Cost Sheet, ERP Post, Lay Sheet, Master Plan, Work In Progress, Production Order, Gantt Chart Dashboard, Inspection, Inspection Checklist, QC, Number Series, UDO Creation, Count Barcode, Cartoons, Inventory Transfer, Bar Code Generator, Approval Stage, Approval Template, Notification, User & Role Management, Segment Master, Season Selection Submaster, Routing Plan, Vendor Merchandiser, Sub Master Branch, Style Masters (33), Attachment Files, Segment 1, Segment 2, Segment 3, Semi-Finish Goods, Finish Goods, Raw Materials, Item Specification

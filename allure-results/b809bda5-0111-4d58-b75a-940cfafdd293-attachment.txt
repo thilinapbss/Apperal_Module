@@ -1,0 +1,40 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53D: VERIFY SEMI-FINISH GOODS COMBINATIONS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║      VERIFYING SEMI-FINISH GOODS COMBINATIONS              ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Segment Values:
+  Size: S(Small), M(Medium), L(Large)
+  Color: RED(Red), GRE(Green), BLA(Black)
+  Season: Su(Summer), Wi(Winter)
+
+📋 Routing Plans:
+  CU01: Cutting
+  SA1: Sawing
+  PA1: Packing
+
+📊 Expected Combinations: 54
+  Calculation: 3 sizes × 3 colors × 2 seasons × 3 routes = 54
+
+📊 Actual Rows in Table: 5
+
+🔍 Verification Results:
+  ✓ Expected: 54
+  ✓ Found: 5
+  ✗ Match: NO
+
+  Missing 49 combinations (showing first 5):
+    1. S-RED-Su-SA1
+    2. S-RED-Su-PA1
+    3. S-RED-Wi-SA1
+    4. S-RED-Wi-PA1
+    5. S-GRE-Su-SA1
+
+╔════════════════════════════════════════════════════════════╗
+║ ✗ SOME COMBINATIONS ARE MISSING                           ║
+╚════════════════════════════════════════════════════════════╝
+

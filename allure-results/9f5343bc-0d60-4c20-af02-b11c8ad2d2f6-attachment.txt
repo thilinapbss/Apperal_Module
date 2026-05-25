@@ -1,0 +1,53 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53B: FILL SEGMENT DATA FROM JSON
+════════════════════════════════════════════════════════════
+
+📍 Current page: http://kgntest.ddns.net:4005/launchpadPage.html#apperalstylemaster-display&/StyleMaster(ID=c881d069-a89d-4953-a884-226c7398f535,IsActiveEntity=false)
+
+📋 Loaded segments from JSON:
+  - Color
+  - Size
+  - Season
+
+🔍 Processing segment: Color
+  Looking for section: "Color"...
+  Searching for span elements with segment text...
+  Found 38 span elements with "-title-inner" in ID
+  No span match found, checking h3 elements...
+  Found 9 h3 elements
+  Trying specific Segment pattern search...
+  ✓ Found "Color" in Segment2 element
+  ✓ Found Color segment: Color (ID: Segment2)
+  📌 Clicking Create button for Color...
+  ✓ Create button clicked
+
+🔍 Processing segment: Size
+  Looking for section: "Size"...
+  Searching for span elements with segment text...
+  Found 38 span elements with "-title-inner" in ID
+  ✓ Found matching span: "Size" with ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment1::LineItem::Segment1-title-inner
+  ✓ Extracted Segment ID: "Segment1"
+  ✓ Found Size segment: Size (ID: Segment1)
+  📌 Clicking Create button for Size...
+  ✓ Create button clicked
+
+🔍 Processing segment: Season
+  Looking for section: "Season"...
+  Searching for span elements with segment text...
+  Found 38 span elements with "-title-inner" in ID
+  ✓ Found matching span: "Season" with ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment3::LineItem::segment3-title-inner
+  ✓ Extracted Segment ID: "Segment3"
+  ✓ Found Season segment: Season (ID: Segment3)
+  📌 Clicking Create button for Season...
+  ✓ Create button clicked
+
+════════════════════════════════════════════════════════════
+  SEGMENT PROCESSING SUMMARY
+════════════════════════════════════════════════════════════
+  ✓ Color
+  ✓ Size
+  ✓ Season
+
+  Total: 3/3 segments processed successfully
+✓ TEST 53B PASSED: All segments identified and Create buttons clicked

@@ -1,0 +1,33 @@
+
+════════════════════════════════════════════════════════════
+  TEST 56: IDENTIFY COLOR SEGMENT AND CLICK CREATE
+════════════════════════════════════════════════════════════
+
+📍 Clicking Color tab in navigation bar...
+  Found 12 tabs in navigation bar
+    Tab 0: "General Information"
+    Tab 1: "PO Numbers"
+    Tab 2: "Other Information"
+    Tab 3: "Attachment Files"
+    Tab 4: "Size"
+    Tab 5: "Color"
+  ✓ Found Color tab at position 5
+
+📍 Finding Color segment section...
+  Looking for section: "Color"...
+  Found 38 segment title elements
+    ✓ Found section: "Color"
+    Title ID: "apperal.stylemaster::StyleMasterObjectPage--fe::table::Segment2::LineItem::Segment2-title-inner"
+    ✓ Extracted Segment ID: "Segment2"
+    Using Segment ID for selectors: "Segment2"
+✓ Color segment identified:
+  - Display Name: Color
+  - Segment ID: Segment2
+
+🔘 Clicking Create button for Color segment...
+✓ Create button clicked successfully for Color segment
+
+════════════════════════════════════════════════════════════
+✓ TEST 56 PASSED: Color segment identified and Create clicked
+════════════════════════════════════════════════════════════
+

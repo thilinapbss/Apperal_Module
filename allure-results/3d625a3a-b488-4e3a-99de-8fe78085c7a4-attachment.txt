@@ -1,0 +1,16 @@
+
+════════════════════════════════════════════════════════════
+  TEST 56: IDENTIFY COLOR SEGMENT AND CLICK CREATE
+════════════════════════════════════════════════════════════
+  Current URL: http://kgntest.ddns.net:4005/launchpadPage.html#apperalstylemaster-display&/StyleMaster(ID=bb550524-ba2b-416e-b4e6-91b835f88e8e,IsActiveEntity=false)
+
+📍 Searching for segment sections...
+  Found 38 elements with "-title-inner" in ID
+  Scrolling down to reveal segment sections...
+
+📍 Finding Color segment...
+  Looking for section: "Color"...
+  Segment "Segment1": "Segment 1"
+  Segment "Segment2": "Segment 2"
+  Segment "Segment3": "Segment 3"
+  Available segments: Segment1=Segment 1, Segment2=Segment 2, Segment3=Segment 3

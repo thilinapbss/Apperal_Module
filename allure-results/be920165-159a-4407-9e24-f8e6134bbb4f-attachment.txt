@@ -1,0 +1,21 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+
+════════════════════════════════════════════════════════════
+  TEST 54: DEBUG PAGE HTML STRUCTURE
+════════════════════════════════════════════════════════════
+
+🔍 Searching page HTML for segment patterns:
+
+Colour:
+  No matches found
+Size:
+  No matches found
+Season:
+  No matches found
+
+
+Found 0 segment table patterns:
+
+
+Found 0 header elements containing segment names:

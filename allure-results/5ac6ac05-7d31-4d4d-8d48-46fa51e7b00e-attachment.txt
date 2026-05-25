@@ -1,0 +1,81 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53B: FILL SEGMENT DATA FROM JSON
+════════════════════════════════════════════════════════════
+
+📍 Current page: http://kgntest.ddns.net:4005/launchpadPage.html#apperalstylemaster-display&/StyleMaster(ID=504d73a0-8b6d-4212-8f58-6e5f222bdcf6,IsActiveEntity=false)
+  ✓ Style Master create form is already open
+
+📋 Loaded segments from JSON:
+  - Color
+  - Size
+  - Season
+
+════════════════════════════════════════════════════════════
+  DEBUG: LOOKING FOR SEGMENT LOCATIONS
+════════════════════════════════════════════════════════════
+
+Color: Found 54 elements:
+  [0] HTML | ID: null | Parent: no-parent
+  [1] BODY | ID: content | Parent: no-parent
+  [2] DIV | ID: shellLayout | Parent: content
+
+Size: Found 38 elements:
+  [0] HTML | ID: null | Parent: no-parent
+  [1] BODY | ID: content | Parent: no-parent
+  [2] DIV | ID: sap-ui-static | Parent: content
+
+Season: Found 75 elements:
+  [0] HTML | ID: null | Parent: no-parent
+  [1] BODY | ID: content | Parent: no-parent
+  [2] DIV | ID: shellLayout | Parent: content
+
+
+Found 15 tables with "Segment" or "::table" in ID:
+  [0] ID: apperal.stylemaster::StyleMasterObjectPage--fe::FormContainer::GeneralInfo::FieldValueHelp::SegmentCode::Popover::qualifier::::SuggestTable-listUl
+  [1] ID: apperal.stylemaster::StyleMasterObjectPage--fe::FormContainer::GeneralInfo::FieldValueHelp::PackingSegment::Popover::qualifier::::SuggestTable-listUl
+  [2] ID: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem-innerTable-listUl
+  [3] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem-innerTable-header
+  [4] ID: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem-innerTable-table
+
+
+Found 15 potential section containers (first 5):
+  [0] ID: null
+  [1] ID: dashboardGroups
+  [2] ID: null
+  [3] ID: null
+  [4] ID: null
+
+🔍 Processing segment: Color
+  Looking for section: "Color"...
+  Segment "Segment1": "Segment 1"
+  Segment "Segment2": "Segment 2"
+  Segment "Segment3": "Segment 3"
+  ✗ Segment "Color" not found on page
+
+🔍 Processing segment: Size
+  Looking for section: "Size"...
+  Segment "Segment1": "Size"
+  ✓ Found matching segment: Segment1 = Size
+  ✓ Found Size segment: Size (ID: Segment1)
+  📌 Clicking Create button for Size...
+  ✓ Create button clicked
+
+🔍 Processing segment: Season
+  Looking for section: "Season"...
+  Segment "Segment1": "Size (1)"
+  Segment "Segment2": "Color"
+  Segment "Segment3": "Season"
+  ✓ Found matching segment: Segment3 = Season
+  ✓ Found Season segment: Season (ID: Segment3)
+  📌 Clicking Create button for Season...
+  ✓ Create button clicked
+
+════════════════════════════════════════════════════════════
+  SEGMENT PROCESSING SUMMARY
+════════════════════════════════════════════════════════════
+  ✗ Color
+  ✓ Size
+  ✓ Season
+
+  Total: 2/3 segments processed successfully

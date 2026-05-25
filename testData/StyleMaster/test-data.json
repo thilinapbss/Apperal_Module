@@ -8,26 +8,6 @@
   "styleColor": "Red",
   "styleStatus": "Active",
   "segments": {
-    "Color": [
-      {
-        "code": "COL",
-        "name": "Color",
-        "values": [
-          {
-            "code": "RED",
-            "name": "Red"
-          },
-          {
-            "code": "GREEN",
-            "name": "Green"
-          },
-          {
-            "code": "BLACK",
-            "name": "Black"
-          }
-        ]
-      }
-    ],
     "Size": [
       {
         "code": "SIZ",
@@ -44,6 +24,26 @@
           {
             "code": "L",
             "name": "Large"
+          }
+        ]
+      }
+    ],
+        "Color": [
+      {
+        "code": "COL",
+        "name": "Colour",
+        "values": [
+          {
+            "code": "RED",
+            "name": "Red"
+          },
+          {
+            "code": "GRE",
+            "name": "Green"
+          },
+          {
+            "code": "BLA",
+            "name": "Black"
           }
         ]
       }

@@ -1,0 +1,47 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+
+════════════════════════════════════════════════════════════
+  TEST 57: COMPREHENSIVE SEMI-FINISH GOODS VERIFICATION
+════════════════════════════════════════════════════════════
+
+📋 Loaded Data:
+  Routing Plan: Routing Plan 001
+  Routes: 3
+    - CU01: Cutting
+    - SA1: Sawing
+    - PA1: Packing
+
+  Segments: 3
+    - Size: S, M, L
+    - Color: RED, GRE, BLA
+    - Season: Su, Wi
+
+📊 Expected Combinations Calculation:
+  Size: 3 values
+  Color: 3 values
+  Season: 2 values
+  Routes: 3 routes
+  Total: 3 × 3 × 2 × 3 = 54 combinations
+
+╔════════════════════════════════════════════════════════════╗
+║      VERIFYING SEMI-FINISH GOODS COMBINATIONS              ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Segment Values:
+  Size: S(Small), M(Medium), L(Large)
+  Color: RED(Red), GRE(Green), BLA(Black)
+  Season: Su(Summer), Wi(Winter)
+
+📋 Routing Routes:
+  Semi-Finish Goods Routes:
+    CU01: Cutting
+    SA1: Sawing
+  Finish Goods Routes (excluded):
+    PA1: Packing
+
+📊 Expected Combinations: 36
+  Calculation: 3 sizes × 3 colors × 2 seasons × 2 semi-finish routes = 36
+
+📊 Loading all rows from virtualized table...
+  (Table uses virtual scrolling - extracting all rendered rows)

@@ -1,0 +1,680 @@
+◇ injected env (2) from .env // tip: ⌘ override existing { override: true }
+
+Running 3 tests using 1 worker
+
+[1A[2K◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+
+[1A[2K[1/3] [chromium] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File
+Session lost — re-logging in...
+
+[1A[2KRe-login successful, resumed from home page
+
+[1A[2K
+════════════════════════════════════════════════════════════
+
+[1A[2K  TEST 53B: KEY IN SEGMENT DATA FROM JSON FILE
+
+[1A[2K════════════════════════════════════════════════════════════
+
+[1A[2Kℹ Form load check skipped (may not be on form page yet)
+
+
+[1A[2K📄 JSON Source: testData/StyleMaster/test-data.json
+
+[1A[2K📍 Data Path: segments → {Color, Size, Season}
+
+[1A[2K
+
+[1A[2K
+╔════════════════════════════════════════════════════════════╗
+
+[1A[2K║      FILLING SEGMENT DATA FROM JSON FILE                  ║
+
+[1A[2K║      (SEGMENT → SECTION → ROW → CELL)                     ║
+
+[1A[2K╚════════════════════════════════════════════════════════════╝
+
+
+[1A[2K
+┌─ SEGMENT: COLOR
+
+[1A[2K│  Source: test-data.json → segments.Color.values
+
+[1A[2K│  Total Values: 3
+
+[1A[2K│
+
+[1A[2K│  Data Mapping:
+
+[1A[2K│    [1] Code: "RED" → Name: "Red"
+
+[1A[2K│    [2] Code: "GREEN" → Name: "Green"
+
+[1A[2K│    [3] Code: "BLACK" → Name: "Black"
+
+[1A[2K│
+
+[1A[2K
+▶ Processing Color...
+
+[1A[2K  Looking for section: "Color"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+
+[1A[2K  Looking for section: "Color"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+[1A[2K│  Status: ✗ FAILED
+
+[1A[2K└─────────────────────────────────────────────────────
+
+[1A[2K
+┌─ SEGMENT: SIZE
+
+[1A[2K│  Source: test-data.json → segments.Size.values
+
+[1A[2K│  Total Values: 3
+
+[1A[2K│
+
+[1A[2K│  Data Mapping:
+
+[1A[2K│    [1] Code: "S" → Name: "Small"
+
+[1A[2K│    [2] Code: "M" → Name: "Medium"
+
+[1A[2K│    [3] Code: "L" → Name: "Large"
+
+[1A[2K│
+
+[1A[2K
+▶ Processing Size...
+
+[1A[2K  Looking for section: "Size"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+
+[1A[2K  Looking for section: "Size"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+[1A[2K│  Status: ✗ FAILED
+
+[1A[2K└─────────────────────────────────────────────────────
+
+[1A[2K
+┌─ SEGMENT: SEASON
+
+[1A[2K│  Source: test-data.json → segments.Season.values
+
+[1A[2K│  Total Values: 2
+
+[1A[2K│
+
+[1A[2K│  Data Mapping:
+
+[1A[2K│    [1] Code: "Su" → Name: "Summer"
+
+[1A[2K│    [2] Code: "Wi" → Name: "Winter"
+
+[1A[2K│
+
+[1A[2K
+▶ Processing Season...
+
+[1A[2K  Looking for section: "Season"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+
+[1A[2K  Looking for section: "Season"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+[1A[2K│  Status: ✗ FAILED
+
+[1A[2K└─────────────────────────────────────────────────────
+
+[1A[2K
+╔════════════════════════════════════════════════════════════╗
+
+[1A[2K║             SEGMENT DATA FILL COMPLETE SUMMARY             ║
+
+[1A[2K╠════════════════════════════════════════════════════════════╣
+
+[1A[2K║ ✗ Segment: Color    → Section: Color          
+
+[1A[2K║   └─ Row 1: [RED] = Red
+
+[1A[2K║   └─ Row 2: [GREEN] = Green
+
+[1A[2K║   └─ Row 3: [BLACK] = Black
+
+[1A[2K║ ✗ Segment: Size     → Section: Size           
+
+[1A[2K║   └─ Row 1: [S] = Small
+
+[1A[2K║   └─ Row 2: [M] = Medium
+
+[1A[2K║   └─ Row 3: [L] = Large
+
+[1A[2K║ ✗ Segment: Season   → Section: Season         
+
+[1A[2K║   └─ Row 1: [Su] = Summer
+
+[1A[2K║   └─ Row 2: [Wi] = Winter
+
+[1A[2K╠════════════════════════════════════════════════════════════╣
+
+[1A[2K║ Total Segments: 3 | Success: 0 | Failed: 3
+
+[1A[2K╚════════════════════════════════════════════════════════════╝
+
+
+
+
+[1A[2K
+════════════════════════════════════════════════════════════
+
+[1A[2K  1) [chromium] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m3[39m
+    Received: [31m0[39m
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:898:36)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
+
+    Error Context: test-results\apparel_regression_testing-9aee7-Segment-Data-from-JSON-File-chromium\error-context.md
+
+    Error Context: test-results\apparel_regression_testing-9aee7-Segment-Data-from-JSON-File-chromium\error-context.md
+
+
+[1A[2K◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+
+[1A[2K[2/3] [firefox] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File
+[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File
+Session lost — re-logging in...
+
+[1A[2KRe-login successful, resumed from home page
+
+[1A[2K
+════════════════════════════════════════════════════════════
+
+[1A[2K  TEST 53B: KEY IN SEGMENT DATA FROM JSON FILE
+
+[1A[2K════════════════════════════════════════════════════════════
+
+[1A[2Kℹ Form load check skipped (may not be on form page yet)
+
+
+[1A[2K📄 JSON Source: testData/StyleMaster/test-data.json
+
+[1A[2K📍 Data Path: segments → {Color, Size, Season}
+
+[1A[2K
+
+[1A[2K
+╔════════════════════════════════════════════════════════════╗
+
+[1A[2K║      FILLING SEGMENT DATA FROM JSON FILE                  ║
+
+[1A[2K║      (SEGMENT → SECTION → ROW → CELL)                     ║
+
+[1A[2K╚════════════════════════════════════════════════════════════╝
+
+
+[1A[2K
+┌─ SEGMENT: COLOR
+
+[1A[2K│  Source: test-data.json → segments.Color.values
+
+[1A[2K│  Total Values: 3
+
+[1A[2K│
+
+[1A[2K│  Data Mapping:
+
+[1A[2K│    [1] Code: "RED" → Name: "Red"
+
+[1A[2K│    [2] Code: "GREEN" → Name: "Green"
+
+[1A[2K│    [3] Code: "BLACK" → Name: "Black"
+
+[1A[2K│
+
+[1A[2K
+▶ Processing Color...
+
+[1A[2K  Looking for section: "Color"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+
+[1A[2K  Looking for section: "Color"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+[1A[2K│  Status: ✗ FAILED
+
+[1A[2K└─────────────────────────────────────────────────────
+
+[1A[2K
+┌─ SEGMENT: SIZE
+
+[1A[2K│  Source: test-data.json → segments.Size.values
+
+[1A[2K│  Total Values: 3
+
+[1A[2K│
+
+[1A[2K│  Data Mapping:
+
+[1A[2K│    [1] Code: "S" → Name: "Small"
+
+[1A[2K│    [2] Code: "M" → Name: "Medium"
+
+[1A[2K│    [3] Code: "L" → Name: "Large"
+
+[1A[2K│
+
+[1A[2K
+▶ Processing Size...
+
+[1A[2K  Looking for section: "Size"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+
+[1A[2K  Looking for section: "Size"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+[1A[2K│  Status: ✗ FAILED
+
+[1A[2K└─────────────────────────────────────────────────────
+
+[1A[2K
+┌─ SEGMENT: SEASON
+
+[1A[2K│  Source: test-data.json → segments.Season.values
+
+[1A[2K│  Total Values: 2
+
+[1A[2K│
+
+[1A[2K│  Data Mapping:
+
+[1A[2K│    [1] Code: "Su" → Name: "Summer"
+
+[1A[2K│    [2] Code: "Wi" → Name: "Winter"
+
+[1A[2K│
+
+[1A[2K
+▶ Processing Season...
+
+[1A[2K  Looking for section: "Season"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+
+[1A[2K  Looking for section: "Season"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+[1A[2K│  Status: ✗ FAILED
+
+[1A[2K└─────────────────────────────────────────────────────
+
+[1A[2K
+╔════════════════════════════════════════════════════════════╗
+
+[1A[2K║             SEGMENT DATA FILL COMPLETE SUMMARY             ║
+
+[1A[2K╠════════════════════════════════════════════════════════════╣
+
+[1A[2K║ ✗ Segment: Color    → Section: Color          
+
+[1A[2K║   └─ Row 1: [RED] = Red
+
+[1A[2K║   └─ Row 2: [GREEN] = Green
+
+[1A[2K║   └─ Row 3: [BLACK] = Black
+
+[1A[2K║ ✗ Segment: Size     → Section: Size           
+
+[1A[2K║   └─ Row 1: [S] = Small
+
+[1A[2K║   └─ Row 2: [M] = Medium
+
+[1A[2K║   └─ Row 3: [L] = Large
+
+[1A[2K║ ✗ Segment: Season   → Section: Season         
+
+[1A[2K║   └─ Row 1: [Su] = Summer
+
+[1A[2K║   └─ Row 2: [Wi] = Winter
+
+[1A[2K╠════════════════════════════════════════════════════════════╣
+
+[1A[2K║ Total Segments: 3 | Success: 0 | Failed: 3
+
+[1A[2K╚════════════════════════════════════════════════════════════╝
+
+
+
+
+[1A[2K
+════════════════════════════════════════════════════════════
+
+[1A[2K  2) [firefox] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m3[39m
+    Received: [31m0[39m
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:898:36)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
+
+    Error Context: test-results\apparel_regression_testing-9aee7-Segment-Data-from-JSON-File-firefox\error-context.md
+
+    Error Context: test-results\apparel_regression_testing-9aee7-Segment-Data-from-JSON-File-firefox\error-context.md
+
+
+[1A[2K◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+
+[1A[2K[3/3] [webkit] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File
+[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File
+Session lost — re-logging in...
+
+[1A[2KRe-login successful, resumed from home page
+
+[1A[2K
+════════════════════════════════════════════════════════════
+
+[1A[2K  TEST 53B: KEY IN SEGMENT DATA FROM JSON FILE
+
+[1A[2K════════════════════════════════════════════════════════════
+
+[1A[2Kℹ Form load check skipped (may not be on form page yet)
+
+
+[1A[2K📄 JSON Source: testData/StyleMaster/test-data.json
+
+[1A[2K📍 Data Path: segments → {Color, Size, Season}
+
+[1A[2K
+
+[1A[2K
+╔════════════════════════════════════════════════════════════╗
+
+[1A[2K║      FILLING SEGMENT DATA FROM JSON FILE                  ║
+
+[1A[2K║      (SEGMENT → SECTION → ROW → CELL)                     ║
+
+[1A[2K╚════════════════════════════════════════════════════════════╝
+
+
+[1A[2K
+┌─ SEGMENT: COLOR
+
+[1A[2K│  Source: test-data.json → segments.Color.values
+
+[1A[2K│  Total Values: 3
+
+[1A[2K│
+
+[1A[2K│  Data Mapping:
+
+[1A[2K│    [1] Code: "RED" → Name: "Red"
+
+[1A[2K│    [2] Code: "GREEN" → Name: "Green"
+
+[1A[2K│    [3] Code: "BLACK" → Name: "Black"
+
+[1A[2K│
+
+[1A[2K
+▶ Processing Color...
+
+[1A[2K  Looking for section: "Color"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+
+[1A[2K  Looking for section: "Color"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+[1A[2K│  Status: ✗ FAILED
+
+[1A[2K└─────────────────────────────────────────────────────
+
+[1A[2K
+┌─ SEGMENT: SIZE
+
+[1A[2K│  Source: test-data.json → segments.Size.values
+
+[1A[2K│  Total Values: 3
+
+[1A[2K│
+
+[1A[2K│  Data Mapping:
+
+[1A[2K│    [1] Code: "S" → Name: "Small"
+
+[1A[2K│    [2] Code: "M" → Name: "Medium"
+
+[1A[2K│    [3] Code: "L" → Name: "Large"
+
+[1A[2K│
+
+[1A[2K
+▶ Processing Size...
+
+[1A[2K  Looking for section: "Size"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+
+[1A[2K  Looking for section: "Size"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+[1A[2K│  Status: ✗ FAILED
+
+[1A[2K└─────────────────────────────────────────────────────
+
+[1A[2K
+┌─ SEGMENT: SEASON
+
+[1A[2K│  Source: test-data.json → segments.Season.values
+
+[1A[2K│  Total Values: 2
+
+[1A[2K│
+
+[1A[2K│  Data Mapping:
+
+[1A[2K│    [1] Code: "Su" → Name: "Summer"
+
+[1A[2K│    [2] Code: "Wi" → Name: "Winter"
+
+[1A[2K│
+
+[1A[2K
+▶ Processing Season...
+
+[1A[2K  Looking for section: "Season"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+
+[1A[2K  Looking for section: "Season"...
+
+[1A[2K  ℹ No section elements with ::table:: found on page
+
+[1A[2K  ℹ Searching for alternative segment selectors...
+
+[1A[2K  ℹ Found 0 div elements with ::table:::
+
+
+[1A[2K│  Status: ✗ FAILED
+
+[1A[2K└─────────────────────────────────────────────────────
+
+[1A[2K
+╔════════════════════════════════════════════════════════════╗
+
+[1A[2K║             SEGMENT DATA FILL COMPLETE SUMMARY             ║
+
+[1A[2K╠════════════════════════════════════════════════════════════╣
+
+[1A[2K║ ✗ Segment: Color    → Section: Color          
+
+[1A[2K║   └─ Row 1: [RED] = Red
+
+[1A[2K║   └─ Row 2: [GREEN] = Green
+
+[1A[2K║   └─ Row 3: [BLACK] = Black
+
+[1A[2K║ ✗ Segment: Size     → Section: Size           
+
+[1A[2K║   └─ Row 1: [S] = Small
+
+[1A[2K║   └─ Row 2: [M] = Medium
+
+[1A[2K║   └─ Row 3: [L] = Large
+
+[1A[2K║ ✗ Segment: Season   → Section: Season         
+
+[1A[2K║   └─ Row 1: [Su] = Summer
+
+[1A[2K║   └─ Row 2: [Wi] = Winter
+
+[1A[2K╠════════════════════════════════════════════════════════════╣
+
+[1A[2K║ Total Segments: 3 | Success: 0 | Failed: 3
+
+[1A[2K╚════════════════════════════════════════════════════════════╝
+
+
+
+
+[1A[2K
+════════════════════════════════════════════════════════════
+
+[1A[2K  3) [webkit] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m3[39m
+    Received: [31m0[39m
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:898:36)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
+
+    Error Context: test-results\apparel_regression_testing-9aee7-Segment-Data-from-JSON-File-webkit\error-context.md
+
+    Error Context: test-results\apparel_regression_testing-9aee7-Segment-Data-from-JSON-File-webkit\error-context.md
+
+
+[1A[2K  3 failed
+    [chromium] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File 
+    [firefox] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File 
+    [webkit] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File 

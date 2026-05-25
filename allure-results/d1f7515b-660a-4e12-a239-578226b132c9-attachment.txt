@@ -1,0 +1,29 @@
+
+════════════════════════════════════════════════════════════
+  TEST 56: IDENTIFY COLOR SEGMENT AND CLICK CREATE
+════════════════════════════════════════════════════════════
+  Current URL: http://kgntest.ddns.net:4005/launchpadPage.html#apperalstylemaster-display&/StyleMaster(ID=c881d069-a89d-4953-a884-226c7398f535,IsActiveEntity=false)
+
+📍 Searching for segment sections...
+  Found 38 elements with "-title-inner" in ID
+  Scrolling down to reveal segment sections...
+
+📍 Finding Color segment...
+  Looking for section: "Color"...
+  Searching for span elements with segment text...
+  Found 38 span elements with "-title-inner" in ID
+  No span match found, checking h3 elements...
+  Found 9 h3 elements
+  Trying specific Segment pattern search...
+  ✓ Found "Color" in Segment2 element
+✓ Color segment identified:
+  - Display Name: Color
+  - Segment ID: Segment2
+
+🔘 Clicking Create button for Color segment...
+✓ Create button clicked successfully for Color segment
+
+════════════════════════════════════════════════════════════
+✓ TEST 56 PASSED: Color segment identified and Create clicked
+════════════════════════════════════════════════════════════
+
