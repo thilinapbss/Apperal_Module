@@ -1311,12 +1311,6 @@ export class StyleMasterCreate {
       const actualRowCount = await dataRows.count();
 
       console.log(`  ✓ Found ${actualRowCount} non-empty rows`);
-
-      // Get the table title to see the count displayed
-      const titleSpan = finishGoodsSection.locator('h3 span');
-      const titleText = await titleSpan.textContent();
-      console.log(`  ✓ Table title: ${titleText}`);
-
       console.log(`\n📊 Actual Rows: ${actualRowCount}`);
       console.log(`\n🔍 Verification Results:`);
       console.log(`  ✓ Expected: ${expectedCount}`);
