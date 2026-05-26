@@ -1289,9 +1289,22 @@ export class StyleMasterCreate {
       // Count non-empty rows in Finish Goods section using XPath
       console.log(`\n📊 Counting non-empty rows in Finish Goods section...`);
 
-      // Find the Finish Goods section
-      const finishGoodsSection = this.page.locator('//section[@id="apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::FinishGoods"]');
-      await finishGoodsSection.waitFor({ state: 'visible', timeout: 10000 });
+      // Scroll to Finish Goods section
+      await this.page.evaluate(() => {
+        const finishGoodsElement = document.querySelector('[id*="FinishGoods"]');
+        if (finishGoodsElement) {
+          finishGoodsElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+      await this.page.waitForTimeout(1000);
+
+      // Find the Finish Goods section using a more robust selector
+      const finishGoodsSection = this.page.locator('section[id*="FinishGoods"]');
+      const sectionCount = await finishGoodsSection.count();
+
+      if (sectionCount === 0) {
+        throw new Error('Finish Goods section not found on the page');
+      }
 
       // Find all rows in the section that have data (input with non-empty value)
       const dataRows = finishGoodsSection.locator('table tbody tr:has(input:not([value=""]))');
