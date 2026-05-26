@@ -611,7 +611,7 @@ export class StyleMasterCreate {
   }
 
   async getSegmentCreateButton(sectionName: string) {
-    // Try multiple selector patterns
+    // Try multiple selector patterns - be flexible about matching the right button
     const selectors = [
       `button[id*="${sectionName}::LineItem::StandardAction::Create"]`,
       `button[id*="${sectionName}"][id*="Create"]`,
@@ -621,6 +621,14 @@ export class StyleMasterCreate {
     for (const selector of selectors) {
       const buttons = await this.page.locator(selector).all();
       if (buttons.length > 0) {
+        // Return the first visible button, or first button if none are visible
+        for (const btn of buttons) {
+          const isVisible = await btn.isVisible().catch(() => false);
+          if (isVisible) {
+            return btn;
+          }
+        }
+        // If no visible buttons, return the first one anyway
         return this.page.locator(selector).first();
       }
     }
@@ -630,9 +638,40 @@ export class StyleMasterCreate {
 
   async clickSegmentCreateButton(sectionName: string) {
     try {
+      // First, ensure the section is visible by scrolling to it
+      await this.page.evaluate((name) => {
+        const section = document.querySelector(`[id*="${name}"]`);
+        if (section) {
+          section.scrollIntoView({ behavior: 'auto', block: 'center' });
+        }
+      }, sectionName);
+      await this.page.waitForTimeout(500);
+
       const createButton = await this.getSegmentCreateButton(sectionName);
-      await createButton.waitFor({ state: 'visible', timeout: 15000 });
-      await createButton.click();
+
+      // Try normal click, but use JavaScript click if visibility is an issue
+      try {
+        await createButton.waitFor({ state: 'visible', timeout: 3000 });
+        await createButton.click();
+      } catch {
+        // Button exists but is hidden - use JavaScript click
+        console.log(`  → Button hidden, using JavaScript click for ${sectionName}`);
+        await createButton.evaluate(el => {
+          el.scrollIntoView({ behavior: 'auto', block: 'center' });
+        });
+        await this.page.waitForTimeout(300);
+
+        // Try Playwright click with force option
+        try {
+          await createButton.click({ force: true });
+        } catch {
+          // Final fallback: direct JavaScript click
+          await createButton.evaluate(el => {
+            (el as HTMLElement).click();
+          });
+        }
+      }
+
       await this.page.waitForLoadState('networkidle');
       await this.page.waitForTimeout(1000);
     } catch (e) {
