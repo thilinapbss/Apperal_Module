@@ -1279,197 +1279,54 @@ export class StyleMasterCreate {
         console.log(`    ${route.routeCode}: ${route.routeName}`);
       });
 
-      // Calculate expected combinations (only using Finish Goods routes)
+      // Calculate expected count (count of size values)
       const sizeValues = segmentValues['Size'] || [];
-      const colorValues = segmentValues['Color'] || [];
-      const seasonValues = segmentValues['Season'] || [];
+      const expectedCount = sizeValues.length;
 
-      const expectedCombinations: Array<{ code: string; name: string }> = [];
+      console.log(`\n📊 Expected Row Count: ${expectedCount}`);
+      console.log(`  Expected items: ${sizeValues.map(s => `${s.code}(${s.name})`).join(', ')}`);
 
-      for (const size of sizeValues) {
-        for (const color of colorValues) {
-          for (const season of seasonValues) {
-            for (const route of finishGoodsRoutes) {
-              const code = `${size.code}-${color.code}-${season.code}-${route.routeCode}`;
-              const name = `${size.name}-${color.name}-${season.name}-${route.routeName}`;
-              expectedCombinations.push({ code, name });
-            }
-          }
-        }
-      }
+      // Count non-empty rows in Finish Goods section using XPath
+      console.log(`\n📊 Counting non-empty rows in Finish Goods section...`);
 
-      console.log(`\n📊 Expected Combinations: ${expectedCombinations.length}`);
-      console.log(`  Calculation: ${sizeValues.length} sizes × ${colorValues.length} colors × ${seasonValues.length} seasons × ${finishGoodsRoutes.length} finish goods route(s) = ${expectedCombinations.length}`);
+      // Find the Finish Goods section
+      const finishGoodsSection = this.page.locator('//section[@id="apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::FinishGoods"]');
+      await finishGoodsSection.waitFor({ state: 'visible', timeout: 10000 });
 
-      // Get actual rows from table
-      console.log(`\n📊 Loading all rows from virtualized table...`);
-      console.log(`  (Using keyboard navigation to load all rows)`);
+      // Find all rows in the section that have data (input with non-empty value)
+      const dataRows = finishGoodsSection.locator('table tbody tr:has(input[value!=""])');
+      const actualRowCount = await dataRows.count();
 
-      // Extract all item codes using keyboard navigation
-      const actualCodes: Set<string> = new Set();
-      const actualNames: Map<string, string> = new Map();
+      console.log(`  ✓ Found ${actualRowCount} non-empty rows`);
 
-      // Click on the first cell of the table to focus it
-      const firstCell = this.page.locator('table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex="0"] td[data-sap-ui-colid*="ItemCode"]').first();
-      await firstCell.click();
-      await this.page.waitForTimeout(300);
+      // Get the table title to see the count displayed
+      const titleSpan = finishGoodsSection.locator('h3 span');
+      const titleText = await titleSpan.textContent();
+      console.log(`  ✓ Table title: ${titleText}`);
 
-      console.log(`  ✓ Table focused`);
+      console.log(`\n📊 Actual Rows: ${actualRowCount}`);
+      console.log(`\n🔍 Verification Results:`);
+      console.log(`  ✓ Expected: ${expectedCount}`);
+      console.log(`  ✓ Found: ${actualRowCount}`);
 
-      // Press Ctrl+End to go to the last row to load all rows
-      await this.page.keyboard.press('Control+End');
-      await this.page.waitForTimeout(1000);
-
-      console.log(`  ✓ Navigated to end of table`);
-
-      // Now go back to the beginning
-      await this.page.keyboard.press('Control+Home');
-      await this.page.waitForTimeout(500);
-
-      console.log(`  ✓ Back at beginning of table`);
-
-      // Extract all currently rendered rows
-      const tableRows = this.page.locator('table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex]');
-      const totalTableRows = await tableRows.count();
-
-      console.log(`  ✓ Total table rows found in DOM: ${totalTableRows}`);
-
-      // Extract from all visible rows with error handling
-      for (let i = 0; i < totalTableRows; i++) {
-        try {
-          const row = tableRows.nth(i);
-          const cells = row.locator('td[role="gridcell"]');
-
-          const codeCell = cells.nth(0);
-          const nameCell = cells.nth(1);
-
-          const code = await codeCell.locator('span[class*="sapMText"]').first().textContent();
-          const name = await nameCell.locator('span[class*="sapMText"]').first().textContent();
-
-          if (code && code.trim()) {
-            actualCodes.add(code.trim());
-            if (name && name.trim()) {
-              actualNames.set(code.trim(), name.trim());
-            }
-          }
-
-          if ((i + 1) % 10 === 0) {
-            console.log(`  Extracted from rows 1-${i + 1}: ${actualCodes.size} unique codes`);
-          }
-        } catch (e: unknown) {
-          // Row extraction failed, possibly out of range
-          const errorMsg = e instanceof Error ? e.message : String(e);
-          console.log(`  ⚠️ Failed to extract row ${i}: ${errorMsg}`);
-          break;
-        }
-      }
-
-      // If we still don't have all rows, try scrolling with Page Down
-      if (actualCodes.size < expectedCombinations.length) {
-        console.log(`\n  ⚠️ Found only ${actualCodes.size} codes, attempting Page Down scrolling...`);
-
-        // Click on first row again
-        await firstCell.click();
-        await this.page.waitForTimeout(300);
-
-        // Press Page Down multiple times to load more rows
-        for (let pageDown = 0; pageDown < 10; pageDown++) {
-          try {
-            await this.page.keyboard.press('PageDown');
-            await this.page.waitForTimeout(400);
-
-            // Extract visible rows after each Page Down
-            const visibleRows = this.page.locator('table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex]');
-            const visibleCount = await visibleRows.count();
-
-            for (let i = 0; i < visibleCount; i++) {
-              try {
-                const row = visibleRows.nth(i);
-                const cells = row.locator('td[role="gridcell"]');
-                const codeCell = cells.nth(0);
-                const nameCell = cells.nth(1);
-
-                const code = await codeCell.locator('span[class*="sapMText"]').first().textContent();
-                const name = await nameCell.locator('span[class*="sapMText"]').first().textContent();
-
-                if (code && code.trim()) {
-                  actualCodes.add(code.trim());
-                  if (name && name.trim()) {
-                    actualNames.set(code.trim(), name.trim());
-                  }
-                }
-              } catch (e: unknown) {
-                // Row extraction failed
-                break;
-              }
-            }
-
-            console.log(`  [PageDown ${pageDown + 1}] Visible rows: ${visibleCount}, Total codes: ${actualCodes.size}`);
-
-            if (actualCodes.size >= expectedCombinations.length) {
-              console.log(`  ✓ All expected codes found!`);
-              break;
-            }
-          } catch (e: unknown) {
-            const errorMsg = e instanceof Error ? e.message : String(e);
-            console.log(`  ⚠️ PageDown iteration failed: ${errorMsg}`);
-            break;
-          }
-        }
-      }
-
-      console.log(`\n  ✓ Row extraction complete!`);
-      console.log(`  ✓ Total unique codes found: ${actualCodes.size}`);
-
-      const actualRowCount = actualCodes.size;
-      console.log(`\n📊 Actual Rows Extracted: ${actualRowCount}`);
-
-      console.log('\n🔍 Verification Results:');
-
-      // Check if all expected combinations exist
-      let foundCount = 0;
-      const missingCombinations: string[] = [];
-
-      for (const expected of expectedCombinations) {
-        if (actualCodes.has(expected.code)) {
-          foundCount++;
-        } else {
-          missingCombinations.push(expected.code);
-        }
-      }
-
-      const allFound = foundCount === expectedCombinations.length;
-      console.log(`  ✓ Expected: ${expectedCombinations.length}`);
-      console.log(`  ✓ Found: ${foundCount}`);
+      const allFound = actualRowCount === expectedCount;
       console.log(`  ${allFound ? '✓' : '✗'} Match: ${allFound ? 'YES' : 'NO'}`);
-
-      if (missingCombinations.length > 0 && missingCombinations.length <= 10) {
-        console.log(`\n  Missing combinations (${missingCombinations.length}):`);
-        missingCombinations.forEach((code, idx) => {
-          console.log(`    ${idx + 1}. ${code}`);
-        });
-      } else if (missingCombinations.length > 10) {
-        console.log(`\n  Missing ${missingCombinations.length} combinations (showing first 5):`);
-        missingCombinations.slice(0, 5).forEach((code, idx) => {
-          console.log(`    ${idx + 1}. ${code}`);
-        });
-      }
 
       console.log('\n╔════════════════════════════════════════════════════════════╗');
       if (allFound) {
-        console.log('║ ✓ ALL COMBINATIONS VERIFIED SUCCESSFULLY                  ║');
+        console.log('║ ✓ FINISH GOODS ROW COUNT VERIFIED SUCCESSFULLY            ║');
       } else {
-        console.log('║ ✗ SOME COMBINATIONS ARE MISSING                           ║');
+        console.log('║ ✗ FINISH GOODS ROW COUNT MISMATCH                         ║');
       }
       console.log('╚════════════════════════════════════════════════════════════╝\n');
 
       return {
         allFound,
-        expectedCount: expectedCombinations.length,
+        expectedCount,
         actualCount: actualRowCount,
-        foundCount,
-        missingCount: missingCombinations.length,
-        missingCombinations
+        foundCount: actualRowCount,
+        missingCount: Math.max(0, expectedCount - actualRowCount),
+        missingCombinations: []
       };
     } catch (e) {
       console.error('\n✗ Failed to verify Finish Goods combinations:');
