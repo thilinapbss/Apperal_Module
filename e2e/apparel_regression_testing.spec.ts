@@ -1195,4 +1195,33 @@ test.describe('Apperal Module | Regression Test Suite', () => {
     }
   });
 
+  test('53g. Select Buyer PO Items for Finish Goods rows', async () => {
+    console.log('\n════════════════════════════════════════════════════════════');
+    console.log('  TEST 53G: SELECT BUYER PO ITEMS');
+    console.log('════════════════════════════════════════════════════════════');
+
+    try {
+      // Initialize page object if not already done
+      if (!styleMasterCreatePage) {
+        styleMasterCreatePage = new StyleMasterCreate(sharedPage);
+      }
+
+      // Select Buyer PO Items for each row
+      const result = await styleMasterCreatePage.selectBuyerPOItemsForFinishGoods();
+
+      if (result.allSelected) {
+        console.log('\n✓ TEST 53G PASSED: All Buyer PO Items selected successfully');
+      } else {
+        throw new Error(
+          `Buyer PO Item selection incomplete: ${result.successCount}/${result.totalRows} items selected`
+        );
+      }
+
+    } catch (error) {
+      console.error('\n✗ TEST 53G FAILED:');
+      console.error(error);
+      throw error;
+    }
+  });
+
 });

@@ -1334,4 +1334,101 @@ export class StyleMasterCreate {
       throw e;
     }
   }
+
+  async selectBuyerPOItemsForFinishGoods() {
+    try {
+      console.log('\n╔════════════════════════════════════════════════════════════╗');
+      console.log('║         SELECTING BUYER PO ITEMS FOR FINISH GOODS           ║');
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      // Find the Finish Goods table
+      const finishGoodsTable = this.page.locator('table[id*="FinishGoods-innerTable-table"]');
+      const rows = finishGoodsTable.locator('tbody tr[data-sap-ui-rowindex]');
+      const rowCount = await rows.count();
+
+      console.log(`📋 Found ${rowCount} rows in Finish Goods table`);
+
+      let successCount = 0;
+
+      for (let i = 0; i < rowCount; i++) {
+        try {
+          const row = rows.nth(i);
+
+          // Get the ItemCode value
+          const itemCodeInput = row.locator('td[data-sap-ui-colid*="ItemCode"] input').first();
+          const itemCode = await itemCodeInput.inputValue();
+
+          if (!itemCode || itemCode.trim() === '') {
+            console.log(`  Row ${i + 1}: Skipped (empty ItemCode)`);
+            continue;
+          }
+
+          console.log(`  Row ${i + 1}: ItemCode = ${itemCode}`);
+
+          // Find the BuyerPOItem field value help button
+          const valueHelpButton = row.locator('[id*="BuyerPOItem"][id*="vhi"]').first();
+          const buttonCount = await valueHelpButton.count();
+
+          if (buttonCount === 0) {
+            console.log(`    ✗ Value help button not found for BuyerPOItem`);
+            continue;
+          }
+
+          // Click the value help button to open dropdown
+          await valueHelpButton.click();
+          await this.page.waitForTimeout(500);
+
+          console.log(`    ✓ Value help dropdown opened`);
+
+          // Find and click the matching item in the dropdown
+          // The dropdown shows items with values like S, M, L
+          const dropdownItems = this.page.locator('[role="grid"] tbody tr[role="row"]');
+          const dropdownItemCount = await dropdownItems.count();
+
+          let itemSelected = false;
+
+          for (let j = 0; j < dropdownItemCount; j++) {
+            const dropdownItem = dropdownItems.nth(j);
+            const itemText = await dropdownItem.locator('span').first().textContent();
+
+            if (itemText && itemText.trim() === itemCode.trim()) {
+              await dropdownItem.click();
+              await this.page.waitForTimeout(300);
+              console.log(`    ✓ Selected ${itemCode} from dropdown`);
+              itemSelected = true;
+              successCount++;
+              break;
+            }
+          }
+
+          if (!itemSelected) {
+            console.log(`    ✗ Could not find matching item in dropdown for ${itemCode}`);
+          }
+        } catch (e) {
+          const errorMsg = e instanceof Error ? e.message : String(e);
+          console.log(`  Row ${i + 1}: Error - ${errorMsg.substring(0, 50)}`);
+        }
+      }
+
+      console.log(`\n📊 Successfully selected Buyer PO Items: ${successCount}/${rowCount}`);
+
+      console.log('\n╔════════════════════════════════════════════════════════════╗');
+      if (successCount === rowCount) {
+        console.log('║ ✓ ALL BUYER PO ITEMS SELECTED SUCCESSFULLY                ║');
+      } else {
+        console.log(`║ ⚠️  PARTIALLY COMPLETED (${successCount}/${rowCount})                  ║`);
+      }
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      return {
+        allSelected: successCount === rowCount,
+        successCount,
+        totalRows: rowCount
+      };
+    } catch (e) {
+      console.error('\n✗ Failed to select Buyer PO Items:');
+      console.error(e);
+      throw e;
+    }
+  }
 }
