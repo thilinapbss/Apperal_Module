@@ -1294,7 +1294,7 @@ export class StyleMasterCreate {
       await finishGoodsSection.waitFor({ state: 'visible', timeout: 10000 });
 
       // Find all rows in the section that have data (input with non-empty value)
-      const dataRows = finishGoodsSection.locator('table tbody tr:has(input[value!=""])');
+      const dataRows = finishGoodsSection.locator('table tbody tr:has(input:not([value=""]))');
       const actualRowCount = await dataRows.count();
 
       console.log(`  ✓ Found ${actualRowCount} non-empty rows`);
