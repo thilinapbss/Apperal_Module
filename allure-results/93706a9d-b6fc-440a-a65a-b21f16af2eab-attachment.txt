@@ -1,0 +1,96 @@
+
+✗ Failed to verify Finish Goods combinations:
+locator.click: Target page, context or browser has been closed
+    at StyleMasterCreate.verifyFinishGoodsCombinations (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\src\pages\StyleMaster\StyleMasterCreate.ts:1373:25)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:1178:22)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11) {
+  [Symbol(step)]: {
+    location: {
+      file: 'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\StyleMaster\\StyleMasterCreate.ts',
+      line: 1373,
+      column: 25,
+      function: 'StyleMasterCreate.verifyFinishGoodsCombinations'
+    },
+    category: 'pw:api',
+    title: `Click locator('table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex="0"] td[data-sap-ui-colid*="ItemCode"]').first()`,
+    apiName: 'locator.click',
+    params: {
+      selector: 'table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex="0"] td[data-sap-ui-colid*="ItemCode"] >> nth=0',
+      strict: true,
+      timeout: 30000
+    },
+    group: undefined,
+    stepId: 'pw:api@88',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@88',
+      _title: `Click locator('table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex="0"] td[data-sap-ui-colid*="ItemCode"]').first()`,
+      _parentStep: [TestStepInfoImpl],
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1779768612958,
+    error: {
+      message: 'Error: locator.click: Target page, context or browser has been closed',
+      stack: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        '    at StyleMasterCreate.verifyFinishGoodsCombinations (C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\StyleMaster\\StyleMasterCreate.ts:1373:25)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:1178:22)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:9)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:11)',
+      cause: undefined
+    }
+  }
+}
+
+✗ TEST 53F FAILED:
+locator.click: Target page, context or browser has been closed
+    at StyleMasterCreate.verifyFinishGoodsCombinations (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\src\pages\StyleMaster\StyleMasterCreate.ts:1373:25)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:1178:22)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11) {
+  [Symbol(step)]: {
+    location: {
+      file: 'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\StyleMaster\\StyleMasterCreate.ts',
+      line: 1373,
+      column: 25,
+      function: 'StyleMasterCreate.verifyFinishGoodsCombinations'
+    },
+    category: 'pw:api',
+    title: `Click locator('table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex="0"] td[data-sap-ui-colid*="ItemCode"]').first()`,
+    apiName: 'locator.click',
+    params: {
+      selector: 'table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex="0"] td[data-sap-ui-colid*="ItemCode"] >> nth=0',
+      strict: true,
+      timeout: 30000
+    },
+    group: undefined,
+    stepId: 'pw:api@88',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@88',
+      _title: `Click locator('table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex="0"] td[data-sap-ui-colid*="ItemCode"]').first()`,
+      _parentStep: [TestStepInfoImpl],
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1779768612958,
+    error: {
+      message: 'Error: locator.click: Target page, context or browser has been closed',
+      stack: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        '    at StyleMasterCreate.verifyFinishGoodsCombinations (C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\StyleMaster\\StyleMasterCreate.ts:1373:25)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:1178:22)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:9)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:11)',
+      cause: undefined
+    }
+  }
+}

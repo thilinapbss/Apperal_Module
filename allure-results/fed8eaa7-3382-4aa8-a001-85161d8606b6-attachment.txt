@@ -1,0 +1,55 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53F: VERIFY FINISH GOODS COMBINATIONS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║        VERIFYING FINISH GOODS COMBINATIONS                 ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Segment Values:
+  Size: S(Small), M(Medium), L(Large)
+  Color: RED(Red), GRE(Green), BLA(Black)
+  Season: Su(Summer), Wi(Winter)
+
+📋 Routing Routes:
+  Finish Goods Routes:
+    PA1: Packing
+  Semi-Finish Goods Routes (excluded):
+    CU01: Cutting
+    SA1: Sawing
+
+📊 Expected Combinations: 3
+  Note: Finish Goods generation uses simplified logic (size × route only)
+  Calculation: 3 sizes × 1 finish goods route(s) = 3
+
+📊 Loading all rows from virtualized table...
+  (Using keyboard navigation to load all rows)
+  ✓ Table focused
+  ✓ Navigated to end of table
+  ✓ Back at beginning of table
+  ✓ Total table rows found in DOM: 10
+  ⚠️ Failed to extract row 5: locator.textContent: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex]').nth(5).locator('td[role="gridcell"]').first().locator('span[class*="sapMText"]').first()
+
+
+  ✓ Row extraction complete!
+  ✓ Total unique codes found: 5
+
+📊 Actual Rows Extracted: 5
+
+🔍 Verification Results:
+  ✓ Expected: 3
+  ✓ Found: 0
+  ✗ Match: NO
+
+  Missing combinations (3):
+    1. S-PA1
+    2. M-PA1
+    3. L-PA1
+
+╔════════════════════════════════════════════════════════════╗
+║ ✗ SOME COMBINATIONS ARE MISSING                           ║
+╚════════════════════════════════════════════════════════════╝
+

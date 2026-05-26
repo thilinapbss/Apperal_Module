@@ -1,0 +1,31 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53G: SELECT BUYER PO ITEMS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║         SELECTING BUYER PO ITEMS FOR FINISH GOODS           ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Found 10 rows in Finish Goods table
+  Row 1: Error - locator.inputValue: Timeout 30000ms exceeded.
+Call
+  Row 2: Error - locator.inputValue: Timeout 30000ms exceeded.
+Call
+  Row 3: Error - locator.inputValue: Timeout 30000ms exceeded.
+Call
+  Row 4: Error - locator.inputValue: Timeout 30000ms exceeded.
+Call
+  Row 5: Error - locator.inputValue: Target page, context or browse
+  Row 6: Error - locator.inputValue: Target page, context or browse
+  Row 7: Error - locator.inputValue: Target page, context or browse
+  Row 8: Error - locator.inputValue: Target page, context or browse
+  Row 9: Error - locator.inputValue: Target page, context or browse
+  Row 10: Error - locator.inputValue: Target page, context or browse
+
+📊 Successfully selected Buyer PO Items: 0/10
+
+╔════════════════════════════════════════════════════════════╗
+║ ⚠️  PARTIALLY COMPLETED (0/10)                  ║
+╚════════════════════════════════════════════════════════════╝
+

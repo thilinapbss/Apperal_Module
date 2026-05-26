@@ -1,0 +1,189 @@
+
+> apperal_module@1.0.0 test
+> playwright test --grep 53b
+
+◇ injected env (2) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+
+Running 3 tests using 1 worker
+
+[1A[2K◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+
+[1A[2K[1/3] [chromium] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position
+Session lost — re-logging in...
+
+[1A[2KRe-login successful, resumed from home page
+
+[1A[2K
+════════════════════════════════════════════════════════════
+
+[1A[2K  TEST 53B: FILL SEGMENT DATA FROM JSON BY POSITION
+
+[1A[2K════════════════════════════════════════════════════════════
+
+[1A[2K
+📍 Current page: http://kgntest.ddns.net:4005/launchpadPage.html#Shell-home
+
+[1A[2K  ⚠️ Style Master create form not detected, navigating back...
+
+[1A[2K
+📋 Loaded segments from JSON:
+
+[1A[2K  - Size
+
+[1A[2K  - Color
+
+[1A[2K  - Season
+
+[1A[2K
+╔════════════════════════════════════════════════════════════╗
+
+[1A[2K║   FILLING SEGMENTS BY POSITION (Segment1, 2, 3)            ║
+
+[1A[2K╚════════════════════════════════════════════════════════════╝
+
+
+[1A[2K
+┌─ POSITION: Segment1 ← SIZE
+
+[1A[2K│  Values to fill: 3
+
+[1A[2K│  Clicking Create button for row 1...
+
+[1A[2K│  ✓ Create button clicked
+
+[1A[2KFailed to fill segment value in Segment1: Error: Table body not found for Segment1
+
+[1A[2K│    ✗ Row 1: Failed to fill
+
+[1A[2K│  Clicking Create button for row 2...
+
+[1A[2K│  ✓ Create button clicked
+
+[1A[2KFailed to fill segment value in Segment1: Error: Table body not found for Segment1
+
+[1A[2K│    ✗ Row 2: Failed to fill
+
+[1A[2K│  Clicking Create button for row 3...
+
+[1A[2K│  ✓ Create button clicked
+
+[1A[2KFailed to fill segment value in Segment1: Error: Table body not found for Segment1
+
+[1A[2K│    ✗ Row 3: Failed to fill
+
+[1A[2K│  Status: ✗ PARTIAL (0/3)
+
+[1A[2K└─────────────────────────────────────────────────────
+
+[1A[2K
+┌─ POSITION: Segment2 ← COLOR
+
+[1A[2K│  Values to fill: 3
+
+[1A[2K│  Clicking Create button for row 1...
+
+[1A[2K│  ✓ Create button clicked
+
+[1A[2KFailed to fill segment value in Segment2: Error: Table body not found for Segment2
+
+[1A[2K│    ✗ Row 1: Failed to fill
+
+[1A[2K│  Clicking Create button for row 2...
+
+[1A[2K│  ✓ Create button clicked
+
+[1A[2KFailed to fill segment value in Segment2: Error: Table body not found for Segment2
+
+[1A[2K│    ✗ Row 2: Failed to fill
+
+[1A[2K│  Clicking Create button for row 3...
+
+[1A[2K│  ✓ Create button clicked
+
+[1A[2KFailed to fill segment value in Segment2: Error: Table body not found for Segment2
+
+[1A[2K│    ✗ Row 3: Failed to fill
+
+[1A[2K│  Status: ✗ PARTIAL (0/3)
+
+[1A[2K└─────────────────────────────────────────────────────
+
+[1A[2K
+┌─ POSITION: Segment3 ← SEASON
+
+[1A[2K│  Values to fill: 2
+
+[1A[2K│  Clicking Create button for row 1...
+
+[1A[2K│  ✓ Create button clicked
+
+[1A[2KFailed to fill segment value in Segment3: Error: Table body not found for Segment3
+
+[1A[2K│    ✗ Row 1: Failed to fill
+
+[1A[2K│  Clicking Create button for row 2...
+
+[1A[2K│  ✓ Create button clicked
+
+[1A[2KFailed to fill segment value in Segment3: Error: Table body not found for Segment3
+
+[1A[2K│    ✗ Row 2: Failed to fill
+
+[1A[2K│  Status: ✗ PARTIAL (0/2)
+
+[1A[2K└─────────────────────────────────────────────────────
+
+[1A[2K
+╔════════════════════════════════════════════════════════════╗
+
+[1A[2K║          SEGMENT FILL BY POSITION - SUMMARY                ║
+
+[1A[2K╠════════════════════════════════════════════════════════════╣
+
+[1A[2K║ ✗ Size       filled successfully
+
+[1A[2K║ ✗ Color      filled successfully
+
+[1A[2K║ ✗ Season     filled successfully
+
+[1A[2K╠════════════════════════════════════════════════════════════╣
+
+[1A[2K║ Total: 0/3 segments filled
+
+[1A[2K╚════════════════════════════════════════════════════════════╝
+
+
+[1A[2K
+✗ TEST 53B FAILED:
+
+[1A[2KError: Only 0/3 segments were successfully filled
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39me2e\apparel_regression_testing.spec.ts:1058:15
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3045:9
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:2537:11
+    at TimeoutManager.withRunnable [90m(C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:1816:14[90m)[39m
+    at TestInfoImpl._runWithTimeout [90m(C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:2535:7[90m)[39m
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3043:7
+    at WorkerMain._runTest [90m(C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3016:5[90m)[39m
+    at WorkerMain.runTestGroup [90m(C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:2911:9[90m)[39m
+    at process.<anonymous> [90m(C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\common\index.js:1955:25[90m)[39m
+
+[1A[2K  1) [chromium] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position 
+
+    Error: Only 0/3 segments were successfully filled
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:1058:15)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
+
+    Error Context: test-results\apparel_regression_testing-baa9f--data-from-JSON-by-position-chromium\error-context.md
+
+    Error Context: test-results\apparel_regression_testing-baa9f--data-from-JSON-by-position-chromium\error-context.md
+
+
+[1A[2K◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+
+[1A[2K[2/3] [firefox] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position
+[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position
+Session lost — re-logging in...
+

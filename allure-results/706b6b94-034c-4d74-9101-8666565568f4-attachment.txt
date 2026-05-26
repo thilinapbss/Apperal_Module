@@ -1,0 +1,62 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53F: VERIFY FINISH GOODS COMBINATIONS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║        VERIFYING FINISH GOODS COMBINATIONS                 ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Segment Values:
+  Size: S(Small), M(Medium), L(Large)
+  Color: RED(Red), GRE(Green), BLA(Black)
+  Season: Su(Summer), Wi(Winter)
+
+📋 Routing Routes:
+  Finish Goods Routes:
+    PA1: Packing
+  Semi-Finish Goods Routes (excluded):
+    CU01: Cutting
+    SA1: Sawing
+
+📊 Expected Combinations: 18
+  Calculation: 3 sizes × 3 colors × 2 seasons × 1 finish goods route(s) = 18
+
+📊 Loading all rows from virtualized table...
+  (Using keyboard navigation to load all rows)
+  ✓ Table focused
+  ✓ Navigated to end of table
+  ✓ Back at beginning of table
+  ✓ Total table rows found in DOM: 10
+  ⚠️ Failed to extract row 5: locator.textContent: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('table[id*="FinishGoods-innerTable-table"] tbody tr[data-sap-ui-rowindex]').nth(5).locator('td[role="gridcell"]').first().locator('span[class*="sapMText"]').first()
+
+
+  ⚠️ Found only 5 codes, attempting Page Down scrolling...
+  [PageDown 1] Visible rows: 10, Total codes: 10
+  [PageDown 2] Visible rows: 10, Total codes: 10
+  [PageDown 3] Visible rows: 10, Total codes: 10
+  ⚠️ PageDown iteration failed: keyboard.press: Target page, context or browser has been closed
+
+  ✓ Row extraction complete!
+  ✓ Total unique codes found: 10
+
+📊 Actual Rows Extracted: 10
+
+🔍 Verification Results:
+  ✓ Expected: 18
+  ✓ Found: 0
+  ✗ Match: NO
+
+  Missing 18 combinations (showing first 5):
+    1. S-RED-Su-PA1
+    2. S-RED-Wi-PA1
+    3. S-GRE-Su-PA1
+    4. S-GRE-Wi-PA1
+    5. S-BLA-Su-PA1
+
+╔════════════════════════════════════════════════════════════╗
+║ ✗ SOME COMBINATIONS ARE MISSING                           ║
+╚════════════════════════════════════════════════════════════╝
+

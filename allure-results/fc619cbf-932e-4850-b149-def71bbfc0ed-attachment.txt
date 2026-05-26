@@ -1,0 +1,34 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53F: VERIFY FINISH GOODS COMBINATIONS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║        VERIFYING FINISH GOODS COMBINATIONS                 ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Segment Values:
+  Size: S(Small), M(Medium), L(Large)
+  Color: RED(Red), GRE(Green), BLA(Black)
+  Season: Su(Summer), Wi(Winter)
+
+📋 Routing Routes:
+  Finish Goods Routes:
+    PA1: Packing
+  Semi-Finish Goods Routes (excluded):
+    CU01: Cutting
+    SA1: Sawing
+
+📊 Expected Combinations: 3
+  Note: Finish Goods table displays size codes only
+  Expected items: S(Small), M(Medium), L(Large)
+
+📊 Loading all rows from virtualized table...
+  (Using keyboard navigation to load all rows)
+  ✓ Table focused
+  ✓ Navigated to end of table
+  ✓ Back at beginning of table
+  ✓ Total table rows found in DOM: 10
+  ⚠️ Failed to extract row 1: locator.textContent: Target page, context or browser has been closed
+
+  ⚠️ Found only 1 codes, attempting Page Down scrolling...

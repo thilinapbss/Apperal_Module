@@ -682,19 +682,35 @@ export class StyleMasterCreate {
 
   async fillSegmentValueInRow(sectionName: string, codeValue: string, nameValue: string) {
     try {
-      // Find the table body for this section
-      const segmentTableBody = this.page.locator(`tbody[id*="${sectionName}::LineItem"][id*="tblBody"]`);
-      const count = await segmentTableBody.count();
+      // Try multiple selectors to find the table body
+      const tableBodySelectors = [
+        `tbody[id*="${sectionName}::LineItem"][id*="tblBody"]`,
+        `tbody[id*="${sectionName}"][id*="tblBody"]`,
+        `tbody[id*="::LineItem"][id*="tblBody"]`,
+        `table[id*="${sectionName}"] tbody`,
+        `div[id*="${sectionName}"] tbody`
+      ];
 
-      if (count === 0) {
-        throw new Error(`Table body not found for ${sectionName}`);
+      let segmentTableBody;
+      for (const selector of tableBodySelectors) {
+        const candidates = this.page.locator(selector);
+        const count = await candidates.count();
+        if (count > 0) {
+          segmentTableBody = candidates;
+          console.log(`  Found table body using selector: ${selector}`);
+          break;
+        }
       }
 
-      await segmentTableBody.waitFor({ state: 'attached', timeout: 10000 });
+      if (!segmentTableBody) {
+        throw new Error(`Table body not found for ${sectionName} - tried multiple selectors`);
+      }
+
+      await segmentTableBody.first().waitFor({ state: 'attached', timeout: 10000 });
       await this.page.waitForTimeout(500);
 
       // Get the FIRST row (always fill the first row)
-      const allRows = segmentTableBody.locator('tr[role="row"]');
+      const allRows = segmentTableBody.first().locator('tr[role="row"]');
       const rowCount = await allRows.count();
 
       if (rowCount === 0) {

@@ -1,0 +1,29 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+
+════════════════════════════════════════════════════════════
+  TEST 53F: VERIFY FINISH GOODS COMBINATIONS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║        VERIFYING FINISH GOODS COMBINATIONS                 ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Segment Values:
+  Size: S(Small), M(Medium), L(Large)
+  Color: RED(Red), GRE(Green), BLA(Black)
+  Season: Su(Summer), Wi(Winter)
+
+📋 Routing Routes:
+  Finish Goods Routes:
+    PA1: Packing
+  Semi-Finish Goods Routes (excluded):
+    CU01: Cutting
+    SA1: Sawing
+
+📊 Expected Combinations: 3
+  Note: Finish Goods generation uses simplified logic (size × route only)
+  Calculation: 3 sizes × 1 finish goods route(s) = 3
+
+📊 Loading all rows from virtualized table...
+  (Using keyboard navigation to load all rows)
