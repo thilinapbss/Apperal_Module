@@ -1354,8 +1354,9 @@ export class StyleMasterCreate {
         try {
           const row = rows.nth(i);
 
-          // Get the ItemCode value
-          const itemCodeInput = row.locator('td[data-sap-ui-colid*="ItemCode"] input').first();
+          // Get the ItemCode value from the first column
+          const itemCodeCell = row.locator('td[data-sap-ui-colid*="ItemCode"]').first();
+          const itemCodeInput = itemCodeCell.locator('input').first();
           const itemCode = await itemCodeInput.inputValue();
 
           if (!itemCode || itemCode.trim() === '') {
@@ -1365,48 +1366,70 @@ export class StyleMasterCreate {
 
           console.log(`  Row ${i + 1}: ItemCode = ${itemCode}`);
 
-          // Find the BuyerPOItem field value help button
-          const valueHelpButton = row.locator('[id*="BuyerPOItem"][id*="vhi"]').first();
+          // Find the BuyerPOItem column cell
+          const buyerPOItemCell = row.locator('td[data-sap-ui-colid*="BuyerPOItem"]').first();
+
+          // Find the value help button within this cell
+          const valueHelpButton = buyerPOItemCell.locator('[id*="vhi"]').first();
           const buttonCount = await valueHelpButton.count();
 
           if (buttonCount === 0) {
-            console.log(`    ✗ Value help button not found for BuyerPOItem`);
+            console.log(`    ✗ Value help button not found`);
             continue;
           }
 
           // Click the value help button to open dropdown
           await valueHelpButton.click();
-          await this.page.waitForTimeout(500);
+          await this.page.waitForTimeout(800);
 
-          console.log(`    ✓ Value help dropdown opened`);
+          console.log(`    ✓ Dropdown opened`);
 
-          // Find and click the matching item in the dropdown
-          // The dropdown shows items with values like S, M, L
-          const dropdownItems = this.page.locator('[role="grid"] tbody tr[role="row"]');
-          const dropdownItemCount = await dropdownItems.count();
+          // Find the dropdown popover/listbox
+          // Look for the table inside the popover that shows the options
+          const dropdownTable = this.page.locator('[role="grid"] tbody tr[role="row"]').first().locator('..').locator('..');
+
+          // Get all rows from the dropdown
+          const dropdownRows = this.page.locator('[id*="SuggestTable"] tbody tr[role="row"]');
+          const dropdownRowCount = await dropdownRows.count();
+
+          console.log(`    Found ${dropdownRowCount} items in dropdown`);
 
           let itemSelected = false;
 
-          for (let j = 0; j < dropdownItemCount; j++) {
-            const dropdownItem = dropdownItems.nth(j);
-            const itemText = await dropdownItem.locator('span').first().textContent();
+          for (let j = 0; j < dropdownRowCount; j++) {
+            try {
+              const dropdownRow = dropdownRows.nth(j);
 
-            if (itemText && itemText.trim() === itemCode.trim()) {
-              await dropdownItem.click();
-              await this.page.waitForTimeout(300);
-              console.log(`    ✓ Selected ${itemCode} from dropdown`);
-              itemSelected = true;
-              successCount++;
-              break;
+              // Get the text from the dropdown item - it's in a span element
+              const itemTextSpan = dropdownRow.locator('span.sapMText').first();
+              const dropdownItemText = await itemTextSpan.textContent();
+
+              if (dropdownItemText && dropdownItemText.trim() === itemCode.trim()) {
+                // Click the matching dropdown item
+                await dropdownRow.click();
+                await this.page.waitForTimeout(500);
+                console.log(`    ✓ Selected '${itemCode}' from dropdown`);
+                itemSelected = true;
+                successCount++;
+                break;
+              }
+            } catch (innerError) {
+              // Continue to next dropdown item if current one fails
+              continue;
             }
           }
 
           if (!itemSelected) {
-            console.log(`    ✗ Could not find matching item in dropdown for ${itemCode}`);
+            console.log(`    ⚠️ Could not find '${itemCode}' in dropdown options`);
           }
+
+          // Close the dropdown by clicking elsewhere or pressing Escape
+          await this.page.keyboard.press('Escape');
+          await this.page.waitForTimeout(300);
+
         } catch (e) {
           const errorMsg = e instanceof Error ? e.message : String(e);
-          console.log(`  Row ${i + 1}: Error - ${errorMsg.substring(0, 50)}`);
+          console.log(`  Row ${i + 1}: Error - ${errorMsg.substring(0, 80)}`);
         }
       }
 
@@ -1415,8 +1438,10 @@ export class StyleMasterCreate {
       console.log('\n╔════════════════════════════════════════════════════════════╗');
       if (successCount === rowCount) {
         console.log('║ ✓ ALL BUYER PO ITEMS SELECTED SUCCESSFULLY                ║');
-      } else {
+      } else if (successCount > 0) {
         console.log(`║ ⚠️  PARTIALLY COMPLETED (${successCount}/${rowCount})                  ║`);
+      } else {
+        console.log('║ ℹ️  NO ITEMS SELECTED                                      ║');
       }
       console.log('╚════════════════════════════════════════════════════════════╝\n');
 
