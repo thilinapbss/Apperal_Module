@@ -1461,13 +1461,19 @@ export class StyleMasterCreate {
             continue;
           }
 
-          // Find the value help button within this cell (the icon with id containing "vhi")
-          let valueHelpButton = buyerPOItemCell.locator('[id*="vhi"]').first();
+          // Find the value help button - it's a span with role="button" and id containing "vhi"
+          let valueHelpButton = buyerPOItemCell.locator('span[role="button"][id*="vhi"]').first();
           let buttonCount = await valueHelpButton.count();
 
           if (buttonCount === 0) {
-            // Try alternative selector for value help button
-            valueHelpButton = buyerPOItemCell.locator('span[class*="Icon"]').first();
+            // Try alternative: span with aria-label="Show Value Help"
+            valueHelpButton = buyerPOItemCell.locator('span[aria-label="Show Value Help"]').first();
+            buttonCount = await valueHelpButton.count();
+          }
+
+          if (buttonCount === 0) {
+            // Try alternative: any span with Icon class and button role
+            valueHelpButton = buyerPOItemCell.locator('span.sapUiIcon[role="button"]').first();
             buttonCount = await valueHelpButton.count();
           }
 
@@ -1494,18 +1500,22 @@ export class StyleMasterCreate {
           console.log(`    ✓ Dropdown opened`);
 
           // Find the SuggestTable in the popover - it contains the dropdown items
+          // Look for table with id ending in "SuggestTable-listUl"
           const suggestTable = this.page.locator('table[id*="SuggestTable"]');
           const suggestTableExists = await suggestTable.count();
 
           if (suggestTableExists === 0) {
-            console.log(`    ✗ SuggestTable not found in dropdown`);
+            console.log(`    ✗ SuggestTable dropdown not found`);
             await this.page.keyboard.press('Escape');
             await this.page.waitForTimeout(300);
             continue;
           }
 
-          // Get all rows from the suggest table
-          const dropdownRows = suggestTable.locator('tbody tr[role="row"]');
+          // Get the tbody from the suggest table
+          const suggestTableBody = suggestTable.locator('tbody').last();
+
+          // Get all rows from the suggest table tbody
+          const dropdownRows = suggestTableBody.locator('tr[role="row"]');
           const dropdownRowCount = await dropdownRows.count();
 
           console.log(`    Found ${dropdownRowCount} items in dropdown`);
@@ -1517,15 +1527,15 @@ export class StyleMasterCreate {
             try {
               const dropdownRow = dropdownRows.nth(j);
 
-              // Get the text from the span element in the row
+              // Get the span.sapMText which contains the actual value
               const itemSpan = dropdownRow.locator('span.sapMText').first();
               const itemText = await itemSpan.textContent();
 
-              // Check if this row contains the item code
+              // Check if this row contains the item code (exact match)
               if (itemText && itemText.trim() === itemCode.trim()) {
                 // Click the row to select it
                 await dropdownRow.click();
-                await this.page.waitForTimeout(500);
+                await this.page.waitForTimeout(800);
                 console.log(`    ✓ Selected '${itemCode}' from dropdown`);
                 itemSelected = true;
                 successCount++;
