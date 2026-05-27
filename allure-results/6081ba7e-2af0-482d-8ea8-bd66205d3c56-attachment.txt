@@ -1,0 +1,49 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53G: SELECT BUYER PO ITEMS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║         FILLING BUYER PO ITEMS FOR FINISH GOODS             ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Found 3 rows with data (5 total rows in table)
+
+  ╔═══════════════════════════════════════════════════════╗
+  ║ Row 1 - ItemCode: S
+  ╚═══════════════════════════════════════════════════════╝
+    ✓ Attempt 1: Typed 'S' into BuyerPOItem
+      Verification: Current value = 'S'
+    ✓ Value confirmed: 'S' is correctly entered
+    ✓ Filled Price with: '1500'
+    ℹ️  Verification - Row 1: BuyerPO='S', Price='1,500.0000'
+    ✓ Row 1 saved successfully
+  ╔═══════════════════════════════════════════════════════╗
+  ║ Row 2 - ItemCode: M
+  ╚═══════════════════════════════════════════════════════╝
+    ✓ Attempt 1: Typed 'M' into BuyerPOItem
+      Verification: Current value = 'M'
+    ✓ Value confirmed: 'M' is correctly entered
+    ✓ Filled Price with: '2000'
+    ℹ️  Verification - Row 2: BuyerPO='L', Price='2,000.0000'
+    ⚠️  Row 2: Value mismatch (expected 'M', got 'L')
+  ╔═══════════════════════════════════════════════════════╗
+  ║ Row 3 - ItemCode: L
+  ╚═══════════════════════════════════════════════════════╝
+    ✓ Attempt 1: Typed 'L' into BuyerPOItem
+      Verification: Current value = 'L'
+    ✓ Value confirmed: 'L' is correctly entered
+    ✓ Filled Price with: '2500'
+    ℹ️  Verification - Row 3: BuyerPO='L', Price='2,500.0000'
+    ✓ Row 3 saved successfully
+  Row 4: ⊘ Skipped (empty)
+  Row 5: ⊘ Skipped (empty)
+
+📊 Summary: 2/3 items filled
+
+╔════════════════════════════════════════════════════════════╗
+║ ⚠️  PARTIALLY COMPLETED: 2/3 ITEMS FILLED        ║
+╚════════════════════════════════════════════════════════════╝
+
+
+✓ TEST 53G PASSED: Buyer PO Items filled (2/3)

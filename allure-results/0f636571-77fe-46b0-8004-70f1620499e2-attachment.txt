@@ -1,0 +1,38 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53G: SELECT BUYER PO ITEMS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║         FILLING BUYER PO ITEMS FOR FINISH GOODS             ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Found 5 total rows in table
+
+  ╔═══════════════════════════════════════════════════════╗
+  ║ Row 1 - ItemCode: S
+  ╚═══════════════════════════════════════════════════════╝
+    ✓ Entered BuyerPOItem: 'S'
+    ✓ Entered Price: '1500'
+    ⚠️  Row 1: Verification failed (BuyerPO: L, Price: )
+  ╔═══════════════════════════════════════════════════════╗
+  ║ Row 2 - ItemCode: M
+  ╚═══════════════════════════════════════════════════════╝
+    ✓ Entered BuyerPOItem: 'M'
+    ✓ Entered Price: '2000'
+    ⚠️  Row 2: Verification failed (BuyerPO: L, Price: )
+  ╔═══════════════════════════════════════════════════════╗
+  ║ Row 3 - ItemCode: L
+  ╚═══════════════════════════════════════════════════════╝
+    ✓ Entered BuyerPOItem: 'L'
+    ✓ Entered Price: '2500'
+    ✓ Row 3 completed successfully (BuyerPO: L, Price: )
+  Row 4: ⊘ Skipped (empty)
+  Row 5: ⊘ Skipped (empty)
+
+📊 Summary: 1/5 items filled
+
+╔════════════════════════════════════════════════════════════╗
+║ ⚠️  PARTIALLY COMPLETED: 1/5 ITEMS FILLED        ║
+╚════════════════════════════════════════════════════════════╝
+

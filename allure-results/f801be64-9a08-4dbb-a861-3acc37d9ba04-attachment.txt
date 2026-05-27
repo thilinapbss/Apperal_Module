@@ -1,0 +1,21 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+
+════════════════════════════════════════════════════════════
+  TEST 53G: SELECT BUYER PO ITEMS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║         SELECTING BUYER PO ITEMS FOR FINISH GOODS           ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Found 0 rows in Finish Goods table
+
+📊 Completed: 0/0 rows selected
+
+╔════════════════════════════════════════════════════════════╗
+║ ✓ ALL BUYER PO ITEMS SELECTED SUCCESSFULLY                ║
+╚════════════════════════════════════════════════════════════╝
+
+
+✓ TEST 53G PASSED: All Buyer PO Items selected successfully

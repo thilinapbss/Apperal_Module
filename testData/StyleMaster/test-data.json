@@ -76,5 +76,37 @@
       "remarks": "Quality requirements document",
       "filePath": "testData/StyleMaster/UploadFiles/sample-jpg-2mb.jpg"
     }
+  ],
+  "rawMaterials": [
+    {
+      "itemCode": "ITEM1",
+      "itemName": "Item name 1"
+    },
+    {
+      "itemCode": "ITEM2",
+      "itemName": "Item name 2"
+    },
+    {
+      "itemCode": "ITEM3",
+      "itemName": "Item name 3"
+    }
+  ],
+  "allocationHierarchy": [
+    {
+      "rowIndex": 0,
+      "quantity": "100"
+    },
+    {
+      "rowIndex": 1,
+      "quantity": "50"
+    },
+    {
+      "rowIndex": 2,
+      "quantity": "30"
+    },
+    {
+      "rowIndex": 3,
+      "quantity": "20"
+    }
   ]
 }

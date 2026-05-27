@@ -1,0 +1,38 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53G: SELECT BUYER PO ITEMS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║         FILLING BUYER PO ITEMS FOR FINISH GOODS             ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Found 5 total rows in table
+
+  ╔═══════════════════════════════════════════════════════╗
+  ║ Row 1 - ItemCode: S
+  ╚═══════════════════════════════════════════════════════╝
+    ✓ Found BuyerPOItem input field
+    ✓ Typed 'S' into BuyerPOItem field
+    ✓ Value 'S' confirmed in field
+  ╔═══════════════════════════════════════════════════════╗
+  ║ Row 2 - ItemCode: M
+  ╚═══════════════════════════════════════════════════════╝
+    ✓ Found BuyerPOItem input field
+    ✓ Typed 'M' into BuyerPOItem field
+    ✓ Value 'M' confirmed in field
+  ╔═══════════════════════════════════════════════════════╗
+  ║ Row 3 - ItemCode: L
+  ╚═══════════════════════════════════════════════════════╝
+    ✓ Found BuyerPOItem input field
+    ✓ Typed 'L' into BuyerPOItem field
+    ✓ Value 'L' confirmed in field
+  Row 4: ⊘ Skipped (empty)
+  Row 5: ⊘ Skipped (empty)
+
+📊 Summary: 3/5 items filled
+
+╔════════════════════════════════════════════════════════════╗
+║ ⚠️  PARTIALLY COMPLETED: 3/5 ITEMS FILLED        ║
+╚════════════════════════════════════════════════════════════╝
+

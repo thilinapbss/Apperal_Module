@@ -1,0 +1,58 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53D: VERIFY SEMI-FINISH GOODS COMBINATIONS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║      VERIFYING SEMI-FINISH GOODS COMBINATIONS              ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Segment Values:
+  Size: S(Small), M(Medium), L(Large)
+  Color: RED(Red), GRE(Green), BLA(Black)
+  Season: Su(Summer), Wi(Winter)
+
+📋 Routing Routes:
+  Semi-Finish Goods Routes:
+    CU01: Cutting
+    SA1: Sawing
+  Finish Goods Routes (excluded):
+    PA1: Packing
+
+📊 Expected Combinations: 36
+  Calculation: 3 sizes × 3 colors × 2 seasons × 2 semi-finish routes = 36
+
+📊 Loading all rows from virtualized table...
+  (Using keyboard navigation to load all rows)
+  ✓ Table focused
+  ✓ Navigated to end of table
+  ✓ Back at beginning of table
+  ✓ Total table rows found in DOM: 5
+
+  ⚠️ Found only 5 codes, attempting Page Down scrolling...
+  [PageDown 1] Visible rows: 5, Total codes: 5
+  [PageDown 2] Visible rows: 5, Total codes: 10
+  [PageDown 3] Visible rows: 5, Total codes: 15
+  [PageDown 4] Visible rows: 5, Total codes: 20
+  [PageDown 5] Visible rows: 5, Total codes: 25
+  [PageDown 6] Visible rows: 5, Total codes: 30
+  [PageDown 7] Visible rows: 5, Total codes: 35
+  [PageDown 8] Visible rows: 5, Total codes: 36
+  ✓ All 36 codes found!
+
+  ✓ Row extraction complete!
+  ✓ Total unique codes found: 36
+
+📊 Actual Rows Extracted: 36
+
+🔍 Verification Results:
+  ✓ Expected: 36
+  ✓ Found: 36
+  ✓ Match: YES
+
+╔════════════════════════════════════════════════════════════╗
+║ ✓ ALL COMBINATIONS VERIFIED SUCCESSFULLY                  ║
+╚════════════════════════════════════════════════════════════╝
+
+
+✓ TEST 53D PASSED: All Semi-Finish Goods combinations verified

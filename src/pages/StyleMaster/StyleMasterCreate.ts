@@ -40,6 +40,13 @@ export class StyleMasterCreate {
   readonly attachmentDetailsCreateButton: Locator;
   readonly attachmentDetailsTable: Locator;
   readonly attachmentDetailsTableBody: Locator;
+  readonly rawMaterialsSection: Locator;
+  readonly rawMaterialsCreateButton: Locator;
+  readonly rawMaterialsTable: Locator;
+  readonly rawMaterialsTableBody: Locator;
+  readonly allocationHierarchySection: Locator;
+  readonly allocationHierarchyTreeTable: Locator;
+  readonly allocationHierarchyTableBody: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -80,6 +87,20 @@ export class StyleMasterCreate {
     this.attachmentDetailsCreateButton = page.locator('button[id*="AttachmentDetails::LineItem::StandardAction::Create"]');
     this.attachmentDetailsTable = page.locator('div[id*="AttachmentDetails::LineItem-innerTable-tableCtrlCnt"]');
     this.attachmentDetailsTableBody = page.locator('tbody[id*="AttachmentDetails::LineItem-innerTable-tblBody"], table[id*="AttachmentDetails::LineItem-innerTable-table"] tbody');
+    this.rawMaterialsSection = page.locator('[id*="RawMaterials"]');
+    // Raw Materials Create button is a BDI element, not a button
+    this.rawMaterialsCreateButton = page.locator('[id*="RawMaterials::LineItem::RawMaterials::StandardAction::Create"]');
+    this.rawMaterialsTable = page.locator('div[id*="RawMaterials::LineItem-innerTable-tableCtrlCnt"]');
+    // Try multiple selector patterns for table body
+    this.rawMaterialsTableBody = page.locator(
+      'tbody[id*="RawMaterials"][id*="LineItem"][id*="tblBody"], ' +
+      'tbody[id*="RawMaterials::LineItem-innerTable-tblBody"], ' +
+      'table[id*="RawMaterials::LineItem-innerTable-table"] tbody, ' +
+      'table[id*="RawMaterials"] tbody'
+    );
+    this.allocationHierarchySection = page.locator('section[id*="StyleTreeTable"]');
+    this.allocationHierarchyTreeTable = page.locator('div[id*="CustomSubSection::StyleTreeTable--styleTreeTable"]');
+    this.allocationHierarchyTableBody = page.locator('table[id*="StyleTreeTable--styleTreeTable-table"] tbody');
   }
 
   async waitForFormLoad() {
@@ -1400,202 +1421,732 @@ export class StyleMasterCreate {
   async selectBuyerPOItemsForFinishGoods() {
     try {
       console.log('\n╔════════════════════════════════════════════════════════════╗');
-      console.log('║         SELECTING BUYER PO ITEMS FOR FINISH GOODS           ║');
+      console.log('║         FILLING BUYER PO ITEMS FOR FINISH GOODS             ║');
       console.log('╚════════════════════════════════════════════════════════════╝\n');
 
-      // Find the Finish Goods table - specifically the data table, not header or cloned versions
-      const finishGoodsDataTable = this.page.locator('table[id*="FinishGoods-innerTable-table"]');
+      // Find the Finish Goods table
+      const finishGoodsTable = this.page.locator('table[id*="FinishGoods-innerTable-table"]');
 
-      // Get only the tbody that contains actual data rows (not cloned/virtual scrolling copies)
-      const dataTableBody = finishGoodsDataTable.locator('tbody').last();
-      const allRows = dataTableBody.locator('tr[role="row"]:has(td[data-sap-ui-colid*="ItemCode"])');
-      const totalRows = await allRows.count();
+      // Get the actual data tbody (skip header clones)
+      const dataTableBody = finishGoodsTable.locator('tbody').last();
 
-      // First pass: Extract only the itemCodes (don't store row references - they become stale)
-      const itemCodes: string[] = [];
-      for (let i = 0; i < totalRows; i++) {
+      // Get all data rows
+      const allRows = dataTableBody.locator('tr[role="row"]');
+      const totalTableRows = await allRows.count();
+
+      // First pass: Count only non-empty rows
+      let nonEmptyRowCount = 0;
+      for (let i = 0; i < totalTableRows; i++) {
         const row = allRows.nth(i);
         const itemCodeCell = row.locator('td[data-sap-ui-colid*="ItemCode"]').first();
         const itemCodeInput = itemCodeCell.locator('input').first();
         const itemCode = await itemCodeInput.inputValue();
-
         if (itemCode && itemCode.trim() !== '') {
-          itemCodes.push(itemCode.trim());
+          nonEmptyRowCount++;
         }
       }
 
-      const rowCount = itemCodes.length;
-      console.log(`📋 Found ${rowCount} rows in Finish Goods table`);
+      const totalRows = nonEmptyRowCount;
+      console.log(`📋 Found ${totalRows} rows with data (${totalTableRows} total rows in table)\n`);
 
       let successCount = 0;
 
-      // Second pass: Process each row with fresh DOM references
-      for (let i = 0; i < rowCount; i++) {
+      // Loop through each row
+      for (let i = 0; i < totalTableRows; i++) {
         try {
-          // Re-fetch rows fresh for each iteration to avoid stale references
-          const freshRows = finishGoodsDataTable.locator('table[id*="FinishGoods-innerTable-table"] tbody tr[role="row"]:has(td[data-sap-ui-colid*="ItemCode"])');
-          const row = freshRows.nth(i);
-          const itemCode = itemCodes[i];
+          // Get fresh row reference for each iteration
+          const freshAllRows = this.page.locator('table[id*="FinishGoods-innerTable-table"] tbody').last().locator('tr[role="row"]');
+          const currentRow = freshAllRows.nth(i);
 
-          console.log(`\n  Row ${i + 1}/${rowCount}: ItemCode = ${itemCode}`);
+          // Get ItemCode value from first column
+          const itemCodeCell = currentRow.locator('td[data-sap-ui-colid*="ItemCode"]').first();
+          const itemCodeInput = itemCodeCell.locator('input').first();
+          const itemCode = await itemCodeInput.inputValue();
 
-          // Find the BuyerPOItem column cell
-          const buyerPOItemCell = row.locator('td[data-sap-ui-colid*="BuyerPOItem"]').first();
-
-          // Wait for the cell to be visible
-          await buyerPOItemCell.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
-          await this.page.waitForTimeout(200);
-
-          // Find the input field (combobox) - try multiple selectors
-          let buyerPOInput = buyerPOItemCell.locator('input[role="combobox"]').first();
-          let inputExists = await buyerPOInput.count();
-
-          if (inputExists === 0) {
-            // Try alternative selector
-            buyerPOInput = buyerPOItemCell.locator('input[type="text"]').first();
-            inputExists = await buyerPOInput.count();
+          // Skip empty rows
+          if (!itemCode || itemCode.trim() === '') {
+            console.log(`  Row ${i + 1}: ⊘ Skipped (empty)`);
+            continue;
           }
 
-          if (inputExists === 0) {
+          console.log(`  ╔═══════════════════════════════════════════════════════╗`);
+          console.log(`  ║ Row ${i + 1} - ItemCode: ${itemCode.toUpperCase()}`);
+          console.log(`  ╚═══════════════════════════════════════════════════════╝`);
+
+          // Calculate price: 1500 for first row, then add 500 for each subsequent row
+          // Row 1: 1500, Row 2: 2000, Row 3: 2500, etc.
+          const basePrice = 1500;
+          const incrementPerRow = 500;
+          let rowCountForPricing = 0;
+
+          // Count non-empty rows up to current row to get accurate row number
+          for (let k = 0; k <= i; k++) {
+            const tempRow = this.page.locator('table[id*="FinishGoods-innerTable-table"] tbody').last().locator('tr[role="row"]').nth(k);
+            const tempItemCodeCell = tempRow.locator('td[data-sap-ui-colid*="ItemCode"]').first();
+            const tempItemCodeInput = tempItemCodeCell.locator('input').first();
+            const tempItemCode = await tempItemCodeInput.inputValue();
+            if (tempItemCode && tempItemCode.trim() !== '') {
+              rowCountForPricing++;
+            }
+          }
+
+          const price = String(basePrice + ((rowCountForPricing - 1) * incrementPerRow));
+
+          // Scroll row into view
+          await currentRow.scrollIntoViewIfNeeded();
+          await this.page.waitForTimeout(300);
+
+          // ===== FILL BUYER PO ITEM =====
+          const buyerPOItemCell = currentRow.locator('td[data-sap-ui-colid*="BuyerPOItem"]').first();
+          await buyerPOItemCell.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
+
+          const buyerPOInput = buyerPOItemCell.locator('input[role="combobox"]').first();
+          const buyerPOExists = await buyerPOInput.count();
+
+          if (buyerPOExists === 0) {
             console.log(`    ✗ BuyerPOItem input field not found`);
             continue;
           }
 
-          // Find the value help button - it's a span with role="button" and id containing "vhi"
-          let valueHelpButton = buyerPOItemCell.locator('span[role="button"][id*="vhi"]').first();
-          let buttonCount = await valueHelpButton.count();
-
-          if (buttonCount === 0) {
-            // Try alternative: span with aria-label="Show Value Help"
-            valueHelpButton = buyerPOItemCell.locator('span[aria-label="Show Value Help"]').first();
-            buttonCount = await valueHelpButton.count();
-          }
-
-          if (buttonCount === 0) {
-            // Try alternative: any span with Icon class and button role
-            valueHelpButton = buyerPOItemCell.locator('span.sapUiIcon[role="button"]').first();
-            buttonCount = await valueHelpButton.count();
-          }
-
-          if (buttonCount === 0) {
-            console.log(`    ✗ Value help button not found`);
-            continue;
-          }
-
-          // Scroll the row into view first
-          await row.scrollIntoViewIfNeeded();
-          await this.page.waitForTimeout(300);
-
-          // Click the value help button to open dropdown
+          // ===== FILL BUYER PO ITEM via TYPING WITH VERIFICATION =====
           try {
-            await valueHelpButton.click();
-          } catch {
-            // If click fails, try with force
-            await valueHelpButton.click({ force: true });
-          }
-          await this.page.waitForTimeout(800);
-          await this.page.waitForLoadState('networkidle');
-          await this.page.waitForTimeout(500);
+            const maxRetries = 3;
+            let entryAttempt = 0;
+            let entrySuccess = false;
 
-          console.log(`    ✓ Dropdown opened`);
+            while (entryAttempt < maxRetries && !entrySuccess) {
+              entryAttempt++;
 
-          // Find the SuggestTable in the popover - it contains the dropdown items
-          // Look for table with id ending in "SuggestTable-listUl"
-          const suggestTable = this.page.locator('table[id*="SuggestTable"]');
-          const suggestTableExists = await suggestTable.count();
+              // Click to focus the field
+              await buyerPOInput.click();
+              await this.page.waitForTimeout(200);
 
-          if (suggestTableExists === 0) {
-            console.log(`    ✗ SuggestTable dropdown not found`);
-            await this.page.keyboard.press('Escape');
-            await this.page.waitForTimeout(300);
-            continue;
-          }
+              // Clear any existing value
+              await buyerPOInput.fill('');
+              await this.page.waitForTimeout(150);
 
-          // Get the tbody from the suggest table
-          const suggestTableBody = suggestTable.locator('tbody').last();
+              // Type the value - input will auto-convert to uppercase
+              await buyerPOInput.fill(itemCode.toUpperCase());
+              console.log(`    Attempt ${entryAttempt}: Entered '${itemCode.toUpperCase()}'`);
 
-          // Get all rows from the suggest table tbody
-          const dropdownRows = suggestTableBody.locator('tr[role="row"]');
-          const dropdownRowCount = await dropdownRows.count();
+              // Wait for input field to settle and process the value
+              await this.page.waitForTimeout(500);
 
-          console.log(`    Found ${dropdownRowCount} items in dropdown`);
+              // Verify the value was actually entered and confirmed
+              const currentValue = await buyerPOInput.inputValue();
+              console.log(`      → Field value: '${currentValue}'`);
 
-          let itemSelected = false;
+              // Check if value matches (accounting for auto-uppercase)
+              if (currentValue && currentValue.trim().toUpperCase() === itemCode.trim().toUpperCase()) {
+                console.log(`      ✓ Verified: Value correctly filled`);
 
-          // Try to find and select the matching item
-          for (let j = 0; j < dropdownRowCount; j++) {
-            try {
-              const dropdownRow = dropdownRows.nth(j);
+                // Press Tab to confirm entry and move out of field
+                await this.page.keyboard.press('Tab');
+                await this.page.waitForTimeout(300);
 
-              // Get the span.sapMText which contains the actual value
-              const itemSpan = dropdownRow.locator('span.sapMText').first();
-              const itemText = await itemSpan.textContent();
-
-              // Check if this row contains the item code (exact match)
-              if (itemText && itemText.trim() === itemCode.trim()) {
-                // Click the row to select it
-                await dropdownRow.click();
-                await this.page.waitForTimeout(800);
-                console.log(`    ✓ Selected '${itemCode}' from dropdown`);
-                itemSelected = true;
-                successCount++;
-                break;
+                // Final verification after Tab
+                const finalValue = await buyerPOInput.inputValue();
+                if (finalValue && finalValue.trim().toUpperCase() === itemCode.trim().toUpperCase()) {
+                  console.log(`      ✓ Confirmed: '${finalValue}' saved successfully`);
+                  entrySuccess = true;
+                } else {
+                  console.log(`      ⚠️  Value lost after Tab, retrying...`);
+                }
+              } else {
+                console.log(`      ⚠️  Value mismatch: expected '${itemCode.toUpperCase()}', got '${currentValue}'`);
+                if (entryAttempt < maxRetries) {
+                  console.log(`      → Retrying attempt ${entryAttempt + 1}/${maxRetries}`);
+                  await this.page.waitForTimeout(400);
+                }
               }
-            } catch (innerError) {
-              // Continue to next dropdown item if current one fails
-              continue;
+            }
+
+            if (!entrySuccess) {
+              console.log(`    ✗ Failed to confirm '${itemCode.toUpperCase()}' after ${maxRetries} attempts`);
+            } else {
+              console.log(`    ✓ BuyerPOItem successfully filled and confirmed`);
+            }
+
+          } catch (e) {
+            console.log(`    ✗ Error filling BuyerPOItem: ${String(e).substring(0, 80)}`);
+          }
+
+          // ===== FILL PRICE =====
+          if (price) {
+            try {
+              const priceCell = currentRow.locator('td[data-sap-ui-colid*="Price"]').first();
+              const priceInput = priceCell.locator('input[type="text"]').first();
+              const priceExists = await priceInput.count();
+
+              if (priceExists === 0) {
+                console.log(`    ⚠️  Price input field not found`);
+              } else {
+                // Click the price field to focus it
+                await priceInput.click();
+                await this.page.waitForTimeout(200);
+
+                // Fill with price value
+                await priceInput.fill(price);
+                console.log(`    ✓ Filled Price with: '${price}'`);
+
+                // Trigger change event by pressing Enter
+                await priceInput.press('Enter');
+                await this.page.waitForTimeout(500);
+              }
+            } catch (e) {
+              console.log(`    ✗ Error filling Price: ${e}`);
             }
           }
 
-          if (!itemSelected) {
-            console.log(`    ⚠️ Could not find '${itemCode}' in dropdown options`);
-          }
+          // Wait a bit for all changes to be saved
+          await this.page.waitForTimeout(800);
 
-          // Close the dropdown by pressing Escape
+          // Verify values were actually saved by checking fresh references
           try {
-            await this.page.keyboard.press('Escape');
-            await this.page.waitForTimeout(500);
-          } catch {
-            // Ignore escape errors
-          }
+            // Get fresh row reference by counting from the start
+            const freshAllRows = this.page.locator('table[id*="FinishGoods-innerTable-table"] tbody').last().locator('tr[role="row"]');
+            const freshRow = freshAllRows.nth(i);
 
-          // Add extra wait before moving to next row
-          await this.page.waitForTimeout(300);
+            const verifyBuyerPOInput = freshRow.locator('td[data-sap-ui-colid*="BuyerPOItem"]').first().locator('input[role="combobox"]').first();
+            const verifyPriceInput = freshRow.locator('td[data-sap-ui-colid*="Price"]').first().locator('input[type="text"]').first();
+
+            const buyerPOValue = await verifyBuyerPOInput.inputValue();
+            const priceValue = await verifyPriceInput.inputValue();
+
+            console.log(`    ℹ️  Verification - Row ${i + 1}: BuyerPO='${buyerPOValue}', Price='${priceValue}'`);
+
+            if (buyerPOValue && buyerPOValue.trim().toUpperCase() === itemCode.trim().toUpperCase()) {
+              console.log(`    ✓ Row ${i + 1} saved successfully`);
+              successCount++;
+            } else {
+              console.log(`    ⚠️  Row ${i + 1}: Value mismatch (expected '${itemCode.trim().toUpperCase()}', got '${buyerPOValue}')`);
+            }
+          } catch (e) {
+            console.log(`    ✗ Row ${i + 1}: Verification error - ${String(e).substring(0, 50)}`);
+          }
 
         } catch (e) {
           const errorMsg = e instanceof Error ? e.message : String(e);
-          console.log(`  ✗ Row ${i + 1}: Error - ${errorMsg.substring(0, 100)}`);
-          // Continue to next row even if this one fails
-          try {
-            await this.page.keyboard.press('Escape');
-            await this.page.waitForTimeout(300);
-          } catch {
-            // Ignore escape errors
-          }
+          console.log(`  ✗ Row ${i + 1}: Error - ${errorMsg.substring(0, 80)}`);
         }
       }
 
-      console.log(`\n📊 Completed: ${successCount}/${rowCount} rows selected`);
+      console.log(`\n📊 Summary: ${successCount}/${totalRows} items filled\n`);
 
-      console.log('\n╔════════════════════════════════════════════════════════════╗');
-      if (successCount === rowCount) {
-        console.log('║ ✓ ALL BUYER PO ITEMS SELECTED SUCCESSFULLY                ║');
+      console.log('╔════════════════════════════════════════════════════════════╗');
+      if (totalRows === 0) {
+        console.log('║ ✓ NO DATA TO PROCESS (VALID NO-OP)                        ║');
+      } else if (successCount === totalRows) {
+        console.log(`║ ✓ COMPLETED: ${successCount}/${totalRows} BUYER PO ITEMS FILLED          ║`);
       } else if (successCount > 0) {
-        console.log(`║ ⚠️  PARTIALLY COMPLETED (${successCount}/${rowCount})                  ║`);
+        console.log(`║ ⚠️  PARTIALLY COMPLETED: ${successCount}/${totalRows} ITEMS FILLED        ║`);
       } else {
-        console.log('║ ℹ️  NO ITEMS SELECTED                                      ║');
+        console.log('║ ℹ️  NO ITEMS FILLED                                        ║');
       }
       console.log('╚════════════════════════════════════════════════════════════╝\n');
 
       return {
-        allSelected: successCount === rowCount,
+        allSelected: totalRows === 0 || successCount === totalRows,
         successCount,
-        totalRows: rowCount
+        totalRows
       };
     } catch (e) {
-      console.error('\n✗ Failed to select Buyer PO Items:');
+      console.error('\n✗ Failed to fill Buyer PO Items:');
       console.error(e);
       throw e;
+    }
+  }
+
+  // Raw Materials Methods
+
+  async scrollToRawMaterialsSection() {
+    try {
+      await this.page.evaluate(() => {
+        const rawMaterialsSection = document.querySelector('[id*="RawMaterials"]');
+        if (rawMaterialsSection) {
+          rawMaterialsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+      await this.page.waitForTimeout(800);
+      console.log('  ✓ Scrolled to Raw Materials section');
+    } catch (e) {
+      console.log('  ⚠️  Could not scroll to Raw Materials section');
+    }
+  }
+
+  async waitForRawMaterialsSection() {
+    // Use a more flexible selector that matches the scrolling selector
+    const selector = this.page.locator('[id*="RawMaterials"]');
+    await selector.waitFor({ state: 'visible', timeout: 10000 });
+    console.log('  ✓ Raw Materials section is visible');
+  }
+
+  async clickRawMaterialsCreateButton() {
+    try {
+      // First check if we're on the right page and form is loaded
+      const pageTitle = await this.page.title();
+      console.log(`  → Page title: ${pageTitle}`);
+
+      // Check what sections exist on page
+      const sections = await this.page.evaluate(() => {
+        return Array.from(document.querySelectorAll('[id*="table"]'))
+          .map(e => e.getAttribute('id'))
+          .filter((id): id is string => id !== null && id.includes('::'))
+          .map(id => id.split('::')[1])
+          .filter(Boolean)
+          .slice(0, 10);
+      });
+      console.log(`  → Found sections: ${sections.join(', ')}`);
+
+      // Scroll to ensure button is visible
+      await this.scrollToRawMaterialsSection();
+      await this.page.waitForTimeout(1000);
+
+      // Use JavaScript to find the Create button by searching for the ID containing the pattern
+      const results = await this.page.evaluate(() => {
+        // Find all elements with RawMaterials in ID
+        const rawMaterials = Array.from(document.querySelectorAll('[id*="RawMaterials"]')).map(e => ({
+          id: e.getAttribute('id'),
+          tag: e.tagName,
+          text: e.textContent?.substring(0, 50)
+        }));
+
+        // Find all elements with Create in text
+        const createElements = Array.from(document.querySelectorAll('*'))
+          .filter(e => e.textContent?.trim() === 'Create')
+          .map(e => ({
+            id: e.getAttribute('id'),
+            tag: e.tagName,
+            text: e.textContent
+          }));
+
+        return { rawMaterials: rawMaterials.slice(0, 5), createElements };
+      });
+
+      console.log('  → RawMaterials elements found:', results.rawMaterials.length);
+      for (const elem of results.rawMaterials) {
+        console.log(`    ${elem.tag}: ${elem.id}`);
+      }
+      console.log(`  → Create elements found: ${results.createElements.length}`);
+      for (const elem of results.createElements) {
+        console.log(`    ${elem.tag}: ${elem.id}`);
+      }
+
+      const buttonFound = await this.page.evaluate(() => {
+        // Find any element with RawMaterials and StandardAction::Create
+        const elements = document.querySelectorAll('[id*="RawMaterials"]');
+        for (const elem of elements) {
+          const id = elem.getAttribute('id') || '';
+          if (id.includes('StandardAction::Create')) {
+            return id;
+          }
+        }
+        return null;
+      });
+
+      if (!buttonFound) {
+        console.log('  → Button not found, searching by text...');
+
+        // Try finding by text "Create" in RawMaterials section
+        const createButtonFound = await this.page.evaluate(() => {
+          const rawMatsec = document.querySelector('[id*="RawMaterials"]');
+          if (!rawMatsec) return null;
+          const createBtns = rawMatsec.querySelectorAll('*');
+          for (const elem of createBtns) {
+            if (elem.textContent?.trim() === 'Create') {
+              return elem.getAttribute('id');
+            }
+          }
+          return null;
+        });
+
+        if (!createButtonFound) {
+          throw new Error('Raw Materials Create button not found in DOM');
+        }
+
+        // Click using the found ID
+        await this.page.evaluate((id) => {
+          const elem = document.getElementById(id);
+          if (elem) {
+            elem.scrollIntoView({ behavior: 'auto', block: 'center' });
+            setTimeout(() => {
+              elem.click();
+            }, 300);
+          }
+        }, createButtonFound);
+      } else {
+        // Click the found button
+        await this.page.evaluate((id) => {
+          const elem = document.getElementById(id);
+          if (elem) {
+            elem.scrollIntoView({ behavior: 'auto', block: 'center' });
+            setTimeout(() => {
+              elem.click();
+            }, 300);
+          }
+        }, buttonFound);
+      }
+
+      console.log('  ✓ Raw Materials Create button clicked');
+
+      await this.page.waitForLoadState('networkidle');
+      await this.page.waitForTimeout(800);
+    } catch (e) {
+      console.error(`  ✗ Failed to click Raw Materials Create button: ${e}`);
+      throw e;
+    }
+  }
+
+  async waitForRawMaterialsTableRow() {
+    try {
+      // Debug: Find the actual table
+      const actualTable = await this.page.evaluate(() => {
+        const tables = Array.from(document.querySelectorAll('table[id*="RawMaterials"]'));
+        return tables.map(t => ({
+          id: t.getAttribute('id'),
+          rows: t.querySelectorAll('tr[role="row"]').length
+        }));
+      });
+
+      console.log(`  → Found ${actualTable.length} RawMaterials tables with ${actualTable.map(t => t.rows).join(', ')} rows`);
+
+      // Wait for the table body to exist with a longer timeout
+      await this.rawMaterialsTableBody.first().waitFor({ state: 'visible', timeout: 15000 });
+
+      // Wait for any row in the table
+      const allRows = this.rawMaterialsTableBody.first().locator('tr[role="row"]');
+      await allRows.first().waitFor({ state: 'visible', timeout: 15000 });
+
+      // Extra wait for row to be fully rendered
+      await this.page.waitForTimeout(1000);
+      console.log('  ✓ New row detected in table');
+    } catch (e) {
+      console.error(`  ✗ Failed to wait for Raw Materials row: ${e}`);
+      throw e;
+    }
+  }
+
+  async fillRawMaterialRow(itemCode: string, itemName: string) {
+    try {
+      console.log(`\n  ╔═════════════════════════════════════════════════════╗`);
+      console.log(`  ║ Code: ${itemCode}, Name: ${itemName}`);
+      console.log(`  ╚═════════════════════════════════════════════════════╝`);
+
+      // Get all rows from the table body
+      const tableBody = this.rawMaterialsTableBody.first();
+      const allRows = tableBody.locator('tr[role="row"]');
+      const rowCount = await allRows.count();
+
+      console.log(`    Total rows in table: ${rowCount}`);
+
+      if (rowCount === 0) {
+        console.error(`    ✗ No rows found in table`);
+        return false;
+      }
+
+      // Get the first row (newly created one at top)
+      // Find inputs using the specific aria-labelledby selectors
+      const itemCodeInput = this.page.locator('input[aria-labelledby*="ItemCode-innerColumn"]').first();
+      const itemNameInput = this.page.locator('input[aria-labelledby*="ItemName-innerColumn"]').first();
+
+      // Verify inputs exist
+      const codeExists = await itemCodeInput.count();
+      const nameExists = await itemNameInput.count();
+
+      if (codeExists === 0 || nameExists === 0) {
+        console.error(`    ✗ Required input fields not found. Code: ${codeExists}, Name: ${nameExists}`);
+        return false;
+      }
+
+      console.log(`    ✓ Found ItemCode and ItemName input fields`);
+
+      // Scroll inputs into view
+      await itemCodeInput.scrollIntoViewIfNeeded();
+      await this.page.waitForTimeout(300);
+
+      // Fill Item Code
+      console.log(`    → Filling Item Code with "${itemCode}"...`);
+      await itemCodeInput.click({ timeout: 3000 });
+      await this.page.waitForTimeout(200);
+      await itemCodeInput.fill(itemCode);
+      await this.page.waitForTimeout(300);
+      console.log(`      ✓ Code entered: ${itemCode}`);
+
+      // Fill Item Name
+      console.log(`    → Filling Item Name with "${itemName}"...`);
+      await itemNameInput.scrollIntoViewIfNeeded();
+      await this.page.waitForTimeout(200);
+      await itemNameInput.click({ timeout: 3000 });
+      await this.page.waitForTimeout(200);
+      await itemNameInput.fill(itemName);
+      await this.page.waitForTimeout(300);
+      console.log(`      ✓ Name entered: ${itemName}`);
+
+      // Verify
+      const codeVal = await itemCodeInput.inputValue();
+      const nameVal = await itemNameInput.inputValue();
+
+      console.log(`    → Verification:`);
+      console.log(`      Code in field: '${codeVal}'`);
+      console.log(`      Name in field: '${nameVal}'`);
+
+      if (codeVal === itemCode && nameVal === itemName) {
+        console.log(`    ✓ Confirmed: Both fields filled correctly`);
+        return true;
+      } else {
+        console.log(`    ⚠️  Mismatch in values`);
+        return false;
+      }
+    } catch (e) {
+      console.error(`    ✗ Error: ${String(e).substring(0, 100)}`);
+      return false;
+    }
+  }
+
+  async addRawMaterials(rawMaterials: Array<{ itemCode: string; itemName: string }>) {
+    try {
+      console.log('\n╔════════════════════════════════════════════════════════════╗');
+      console.log('║           ADDING RAW MATERIALS                            ║');
+      console.log('║         (New rows added to table TOP)                     ║');
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      // Scroll to Raw Materials section
+      await this.scrollToRawMaterialsSection();
+
+      // Wait for create button to be available
+      await this.rawMaterialsCreateButton.waitFor({ state: 'attached', timeout: 5000 }).catch(() => {
+        console.log('  ⚠️  Create button not found, proceeding anyway');
+      });
+
+      let successCount = 0;
+
+      for (let i = 0; i < rawMaterials.length; i++) {
+        try {
+          console.log(`  [${i + 1}/${rawMaterials.length}] Adding Raw Material...`);
+
+          // Click Create button to add new row
+          await this.clickRawMaterialsCreateButton();
+
+          // Wait for new row to appear
+          await this.waitForRawMaterialsTableRow();
+
+          // Fill the newly created row
+          const success = await this.fillRawMaterialRow(
+            rawMaterials[i].itemCode,
+            rawMaterials[i].itemName
+          );
+
+          if (success) {
+            console.log(`    ✓ Raw Material ${i + 1} added successfully\n`);
+            successCount++;
+          } else {
+            console.log(`    ✗ Failed to add Raw Material ${i + 1}\n`);
+          }
+        } catch (e) {
+          console.error(`  ✗ Error adding Raw Material ${i + 1}: ${e}`);
+        }
+      }
+
+      console.log('╔════════════════════════════════════════════════════════════╗');
+      console.log(`║ ✓ Raw Materials Added: ${successCount}/${rawMaterials.length}`);
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      return {
+        successCount,
+        totalRows: rawMaterials.length,
+        allAdded: successCount === rawMaterials.length
+      };
+    } catch (e) {
+      console.error('\n✗ Failed to add Raw Materials:');
+      console.error(e);
+      throw e;
+    }
+  }
+
+  // Allocation Hierarchy Methods
+
+  async scrollToAllocationHierarchySection() {
+    try {
+      await this.page.evaluate(() => {
+        const allocationSection = document.querySelector('[id*="StyleTreeTable"]');
+        if (allocationSection) {
+          allocationSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+      await this.page.waitForTimeout(800);
+      console.log('  ✓ Scrolled to Allocation Hierarchy section');
+    } catch (e) {
+      console.log('  ⚠️  Could not scroll to Allocation Hierarchy section');
+    }
+  }
+
+  async waitForAllocationHierarchySection() {
+    await this.allocationHierarchySection.waitFor({ state: 'visible', timeout: 10000 });
+    console.log('  ✓ Allocation Hierarchy section is visible');
+  }
+
+  async expandTreeNode(rowIndex: number) {
+    try {
+      const allRows = this.allocationHierarchyTableBody.locator('tr[role="row"]');
+      const row = allRows.nth(rowIndex);
+
+      // Find the tree icon (expand/collapse button)
+      const treeIcon = row.locator('span[class*="sapUiTableTreeIcon"]').first();
+      const isExpandable = await treeIcon.evaluate((el) => {
+        return el.classList.contains('sapUiTableTreeIconNodeClosed');
+      });
+
+      if (isExpandable) {
+        await treeIcon.click();
+        await this.page.waitForTimeout(500);
+        console.log(`    ✓ Expanded node at row ${rowIndex + 1}`);
+        return true;
+      } else {
+        console.log(`    ℹ️  Node at row ${rowIndex + 1} is not expandable`);
+        return false;
+      }
+    } catch (e) {
+      console.error(`    ✗ Failed to expand node: ${e}`);
+      return false;
+    }
+  }
+
+  async fillAllocationQuantities(allocations: Array<{ rowIndex: number; quantity: string }>) {
+    try {
+      console.log('\n╔════════════════════════════════════════════════════════════╗');
+      console.log('║        FILLING ALLOCATION HIERARCHY QUANTITIES              ║');
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      // Scroll to section
+      await this.scrollToAllocationHierarchySection();
+      await this.waitForAllocationHierarchySection();
+
+      let successCount = 0;
+
+      for (const allocation of allocations) {
+        try {
+          const rowIndex = allocation.rowIndex;
+          const quantity = allocation.quantity;
+
+          console.log(`  ╔═════════════════════════════════════════════════════╗`);
+          console.log(`  ║ Row ${rowIndex + 1}: Quantity=${quantity}`);
+          console.log(`  ╚═════════════════════════════════════════════════════╝`);
+
+          // Get fresh row reference
+          const allRows = this.allocationHierarchyTableBody.locator('tr[role="row"]');
+          const currentRow = allRows.nth(rowIndex);
+
+          // Get the quantity input field (second column)
+          const quantityInput = currentRow
+            .locator('td[data-sap-ui-colid*="styleTreeColQuantity"]')
+            .first()
+            .locator('input[type="text"]')
+            .first();
+
+          // Scroll row into view
+          await currentRow.scrollIntoViewIfNeeded();
+          await this.page.waitForTimeout(300);
+
+          // Check if input exists
+          const inputExists = await quantityInput.count();
+          if (inputExists === 0) {
+            console.log(`    ✗ Quantity input field not found for row ${rowIndex + 1}`);
+            continue;
+          }
+
+          // Wait for input to be visible
+          await quantityInput.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
+
+          // Click and fill the input
+          await quantityInput.click();
+          await this.page.waitForTimeout(150);
+          await quantityInput.fill(quantity);
+          console.log(`    ✓ Quantity filled: ${quantity}`);
+
+          // Press Tab to confirm
+          await this.page.keyboard.press('Tab');
+          await this.page.waitForLoadState('networkidle');
+          await this.page.waitForTimeout(500);
+
+          // Verify the value was saved
+          const savedValue = await quantityInput.inputValue();
+          if (savedValue === quantity) {
+            console.log(`    ✓ Value verified: ${savedValue}`);
+            successCount++;
+          } else {
+            console.log(`    ⚠️  Value mismatch (expected '${quantity}', got '${savedValue}')`);
+          }
+        } catch (e) {
+          console.error(`  ✗ Error processing allocation: ${e}`);
+        }
+      }
+
+      console.log('\n╔════════════════════════════════════════════════════════════╗');
+      console.log(`║ ✓ Quantities Filled: ${successCount}/${allocations.length}`);
+      console.log('╚════════════════════════════════════════════════════════════╝\n');
+
+      return {
+        successCount,
+        totalRows: allocations.length,
+        allFilled: successCount === allocations.length
+      };
+    } catch (e) {
+      console.error('\n✗ Failed to fill allocation quantities:');
+      console.error(e);
+      throw e;
+    }
+  }
+
+  async getTreeNodeInfo() {
+    try {
+      console.log('\n  Retrieving Allocation Hierarchy tree structure...\n');
+
+      const allRows = this.allocationHierarchyTableBody.locator('tr[role="row"]');
+      const rowCount = await allRows.count();
+
+      const treeInfo: Array<{ rowIndex: number; styleName: string; level: number; isExpandable: boolean }> = [];
+
+      for (let i = 0; i < rowCount; i++) {
+        const row = allRows.nth(i);
+
+        // Get style code/name
+        const styleCell = row.locator('td[data-sap-ui-colid*="styleTreeColName"]').first();
+        const styleText = await styleCell.locator('span[class*="sapMText"]').first().textContent();
+
+        // Get tree level (aria-level attribute)
+        const level = await row.evaluate((el) => {
+          const ariaLevel = el.getAttribute('aria-level');
+          return ariaLevel ? parseInt(ariaLevel) : 0;
+        });
+
+        // Check if node is expandable
+        const treeIcon = row.locator('span[class*="sapUiTableTreeIcon"]').first();
+        const isExpandable = await treeIcon.evaluate((el) => {
+          return el.classList.contains('sapUiTableTreeIconNodeClosed');
+        });
+
+        if (styleText && styleText.trim()) {
+          treeInfo.push({
+            rowIndex: i,
+            styleName: styleText.trim(),
+            level,
+            isExpandable
+          });
+        }
+      }
+
+      console.log(`  Found ${treeInfo.length} nodes in tree:\n`);
+      treeInfo.forEach((node) => {
+        const indent = '  '.repeat(node.level);
+        const expandIcon = node.isExpandable ? '▶️ ' : '•';
+        console.log(`  ${indent}${expandIcon} [${node.rowIndex}] ${node.styleName} (Level: ${node.level})`);
+      });
+      console.log();
+
+      return treeInfo;
+    } catch (e) {
+      console.error('  ✗ Failed to get tree node info:', e);
+      return [];
     }
   }
 }

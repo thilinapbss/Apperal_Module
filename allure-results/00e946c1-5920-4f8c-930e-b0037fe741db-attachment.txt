@@ -1,0 +1,126 @@
+
+════════════════════════════════════════════════════════════
+  TEST 54: ADD RAW MATERIALS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║           ADDING RAW MATERIALS                            ║
+║         (New rows added to table TOP)                     ║
+╚════════════════════════════════════════════════════════════╝
+
+  ✓ Scrolled to Raw Materials section
+  ⚠️  Create button not found, proceeding anyway
+  [1/3] Adding Raw Material...
+  → Page title: Style Master
+  → Found sections: StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe
+  ✓ Scrolled to Raw Materials section
+  → RawMaterials elements found: 5
+    DIV: apperal.stylemaster::StyleMasterObjectPage--fe::ObjectPage-anchBar-apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials-anchor
+    DIV: apperal.stylemaster::StyleMasterObjectPage--fe::ObjectPage-anchBar-apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials-anchor-text
+    SECTION: apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials
+    DIV: apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials-header
+    DIV: apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials-title
+  → Create elements found: 24
+    BUTTON: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::FooterBar::StandardAction::Save
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::FooterBar::StandardAction::Save-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::FooterBar::StandardAction::Save-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::FooterBar::StandardAction::Save-BDI-content
+  ✓ Raw Materials Create button clicked
+  [2/3] Adding Raw Material...
+  → Page title: Style Master
+  → Found sections: StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe
+  ✓ Scrolled to Raw Materials section
+  → RawMaterials elements found: 5
+    DIV: apperal.stylemaster::StyleMasterObjectPage--fe::ObjectPage-anchBar-apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials-anchor
+    DIV: apperal.stylemaster::StyleMasterObjectPage--fe::ObjectPage-anchBar-apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials-anchor-text
+    SECTION: apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials
+    DIV: apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials-header
+    DIV: apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials-title
+  → Create elements found: 24
+    BUTTON: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::FooterBar::StandardAction::Save
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::FooterBar::StandardAction::Save-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::FooterBar::StandardAction::Save-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::FooterBar::StandardAction::Save-BDI-content
+  ✓ Raw Materials Create button clicked
+  [3/3] Adding Raw Material...
+  → Page title: Style Master
+  → Found sections: StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe, StyleMasterObjectPage--fe
+  ✓ Scrolled to Raw Materials section
+  → RawMaterials elements found: 5
+    DIV: apperal.stylemaster::StyleMasterObjectPage--fe::ObjectPage-anchBar-apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials-anchor
+    DIV: apperal.stylemaster::StyleMasterObjectPage--fe::ObjectPage-anchBar-apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials-anchor-text
+    SECTION: apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials
+    DIV: apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials-header
+    DIV: apperal.stylemaster::StyleMasterObjectPage--fe::FacetSection::RawMaterials-title
+  → Create elements found: 24
+    BUTTON: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::table::AttachmentDetails::LineItem::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::table::FinishGoods::LineItem::FinishGoods::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::table::RawMaterials::LineItem::RawMaterials::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::table::ItemSpecification::LineItem::ItemSpecification::StandardAction::Create-BDI-content
+    BUTTON: apperal.stylemaster::StyleMasterObjectPage--fe::FooterBar::StandardAction::Save
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::FooterBar::StandardAction::Save-inner
+    SPAN: apperal.stylemaster::StyleMasterObjectPage--fe::FooterBar::StandardAction::Save-content
+    BDI: apperal.stylemaster::StyleMasterObjectPage--fe::FooterBar::StandardAction::Save-BDI-content
+  ✓ Raw Materials Create button clicked
+╔════════════════════════════════════════════════════════════╗
+║ ✓ Raw Materials Added: 0/3
+╚════════════════════════════════════════════════════════════╝
+
+
+✗ TEST 54 FAILED: No raw materials were added

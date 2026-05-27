@@ -1,0 +1,13 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+
+════════════════════════════════════════════════════════════
+  TEST 54: ADD RAW MATERIALS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║           ADDING RAW MATERIALS                            ║
+║         (New rows added to table TOP)                     ║
+╚════════════════════════════════════════════════════════════╝
+
+  ✓ Scrolled to Raw Materials section

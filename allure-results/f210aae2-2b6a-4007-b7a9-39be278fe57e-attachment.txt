@@ -1,0 +1,26 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53G: SELECT BUYER PO ITEMS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║         SELECTING BUYER PO ITEMS FOR FINISH GOODS           ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Found 3 rows in Finish Goods table
+
+  Row 1/3: ItemCode = S
+    ✗ Value help button not found
+
+  Row 2/3: ItemCode = M
+    ✗ Value help button not found
+
+  Row 3/3: ItemCode = L
+    ✗ Value help button not found
+
+📊 Completed: 0/3 rows selected
+
+╔════════════════════════════════════════════════════════════╗
+║ ℹ️  NO ITEMS SELECTED                                      ║
+╚════════════════════════════════════════════════════════════╝
+

@@ -1,0 +1,53 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+
+════════════════════════════════════════════════════════════
+  TEST 54: ADD RAW MATERIALS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║           ADDING RAW MATERIALS                            ║
+║         (New rows added to table TOP)                     ║
+╚════════════════════════════════════════════════════════════╝
+
+  ✓ Scrolled to Raw Materials section
+  ⚠️  Create button not found, proceeding anyway
+  [1/3] Adding Raw Material...
+  ✓ Scrolled to Raw Materials section
+  → Trying fallback button selector...
+  → Trying StandardAction button...
+  → Debug: Looking for role="button" elements (SAP UI5)...
+    Debug: Found 3 elements with role="button"
+      RoleButton 0: id="shell-header-logo", aria-label="null", text=""
+      RoleButton 1: id="shellAppTitle-button", aria-label="Home", text="Home"
+      RoleButton 2: id="userActionsMenuHeaderButton", aria-label="Profile of System Administrator", text="SA"
+    Debug: Found 0 buttons with Create/Add/New text
+    Debug: Found 0 buttons with Create/Add aria-label
+  [2/3] Adding Raw Material...
+  ✓ Scrolled to Raw Materials section
+  → Trying fallback button selector...
+  → Trying StandardAction button...
+  → Debug: Looking for role="button" elements (SAP UI5)...
+    Debug: Found 3 elements with role="button"
+      RoleButton 0: id="shell-header-logo", aria-label="null", text=""
+      RoleButton 1: id="shellAppTitle-button", aria-label="Home", text="Home"
+      RoleButton 2: id="userActionsMenuHeaderButton", aria-label="Profile of System Administrator", text="SA"
+    Debug: Found 0 buttons with Create/Add/New text
+    Debug: Found 0 buttons with Create/Add aria-label
+  [3/3] Adding Raw Material...
+  ✓ Scrolled to Raw Materials section
+  → Trying fallback button selector...
+  → Trying StandardAction button...
+  → Debug: Looking for role="button" elements (SAP UI5)...
+    Debug: Found 3 elements with role="button"
+      RoleButton 0: id="shell-header-logo", aria-label="null", text=""
+      RoleButton 1: id="shellAppTitle-button", aria-label="Home", text="Home"
+      RoleButton 2: id="userActionsMenuHeaderButton", aria-label="Profile of System Administrator", text="SA"
+    Debug: Found 0 buttons with Create/Add/New text
+    Debug: Found 0 buttons with Create/Add aria-label
+╔════════════════════════════════════════════════════════════╗
+║ ✓ Raw Materials Added: 0/3
+╚════════════════════════════════════════════════════════════╝
+
+
+✗ TEST 54 FAILED: No raw materials were added

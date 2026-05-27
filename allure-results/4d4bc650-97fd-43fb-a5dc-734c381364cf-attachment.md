@@ -1,0 +1,19 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: apparel_regression_testing.spec.ts >> Apperal Module | Regression Test Suite >> 52. Click Create button in Style Master
+- Location: e2e\apparel_regression_testing.spec.ts:732:7
+
+# Error details
+
+```
+Error: locator.waitFor: Target page, context or browser has been closed
+Call log:
+  - waiting for locator('span[id*="DataField::Departments::Field-edit-inner-vhi"]') to be visible
+
+```

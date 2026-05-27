@@ -1,0 +1,24 @@
+  ✗ Failed to click Raw Materials Create button: TimeoutError: locator.waitFor: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator('button[id*="RawMaterials::LineItem::StandardAction::Create"]') to be visible
+
+  ✗ Error adding Raw Material 1: TimeoutError: locator.waitFor: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator('button[id*="RawMaterials::LineItem::StandardAction::Create"]') to be visible
+
+  ✗ Failed to click Raw Materials Create button: TimeoutError: locator.waitFor: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator('button[id*="RawMaterials::LineItem::StandardAction::Create"]') to be visible
+
+  ✗ Error adding Raw Material 2: TimeoutError: locator.waitFor: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator('button[id*="RawMaterials::LineItem::StandardAction::Create"]') to be visible
+
+  ✗ Failed to click Raw Materials Create button: TimeoutError: locator.waitFor: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator('button[id*="RawMaterials::LineItem::StandardAction::Create"]') to be visible
+
+  ✗ Error adding Raw Material 3: TimeoutError: locator.waitFor: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator('button[id*="RawMaterials::LineItem::StandardAction::Create"]') to be visible
+

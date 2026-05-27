@@ -1,0 +1,23 @@
+
+════════════════════════════════════════════════════════════
+  TEST 54: ADD RAW MATERIALS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║           ADDING RAW MATERIALS                            ║
+╚════════════════════════════════════════════════════════════╝
+
+  ✓ Scrolled to Raw Materials section
+  ✓ Raw Materials section is visible
+  [1/3] Adding Raw Material...
+  ✓ Scrolled to Raw Materials section
+  [2/3] Adding Raw Material...
+  ✓ Scrolled to Raw Materials section
+  [3/3] Adding Raw Material...
+  ✓ Scrolled to Raw Materials section
+╔════════════════════════════════════════════════════════════╗
+║ ✓ Raw Materials Added: 0/3
+╚════════════════════════════════════════════════════════════╝
+
+
+✗ TEST 54 FAILED: No raw materials were added

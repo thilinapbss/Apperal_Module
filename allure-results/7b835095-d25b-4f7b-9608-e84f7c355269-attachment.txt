@@ -1,0 +1,24 @@
+  ✗ Failed to wait for Raw Materials row: TimeoutError: locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('tbody[id*="RawMaterials::LineItem-innerTable-tblBody"], table[id*="RawMaterials::LineItem-innerTable-table"] tbody').locator('tr[role="row"]:not([class*="sapUiTableRowHidden"])').first() to be visible
+
+  ✗ Error adding Raw Material 1: TimeoutError: locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('tbody[id*="RawMaterials::LineItem-innerTable-tblBody"], table[id*="RawMaterials::LineItem-innerTable-table"] tbody').locator('tr[role="row"]:not([class*="sapUiTableRowHidden"])').first() to be visible
+
+  ✗ Failed to wait for Raw Materials row: TimeoutError: locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('tbody[id*="RawMaterials::LineItem-innerTable-tblBody"], table[id*="RawMaterials::LineItem-innerTable-table"] tbody').locator('tr[role="row"]:not([class*="sapUiTableRowHidden"])').first() to be visible
+
+  ✗ Error adding Raw Material 2: TimeoutError: locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('tbody[id*="RawMaterials::LineItem-innerTable-tblBody"], table[id*="RawMaterials::LineItem-innerTable-table"] tbody').locator('tr[role="row"]:not([class*="sapUiTableRowHidden"])').first() to be visible
+
+  ✗ Failed to wait for Raw Materials row: TimeoutError: locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('tbody[id*="RawMaterials::LineItem-innerTable-tblBody"], table[id*="RawMaterials::LineItem-innerTable-table"] tbody').locator('tr[role="row"]:not([class*="sapUiTableRowHidden"])').first() to be visible
+
+  ✗ Error adding Raw Material 3: TimeoutError: locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('tbody[id*="RawMaterials::LineItem-innerTable-tblBody"], table[id*="RawMaterials::LineItem-innerTable-table"] tbody').locator('tr[role="row"]:not([class*="sapUiTableRowHidden"])').first() to be visible
+

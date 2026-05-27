@@ -1,0 +1,6 @@
+  ✗ Failed to click Raw Materials Create button: Error: Raw Materials Create button not found in DOM
+  ✗ Error adding Raw Material 1: Error: Raw Materials Create button not found in DOM
+  ✗ Failed to click Raw Materials Create button: Error: Raw Materials Create button not found in DOM
+  ✗ Error adding Raw Material 2: Error: Raw Materials Create button not found in DOM
+  ✗ Failed to click Raw Materials Create button: Error: Raw Materials Create button not found in DOM
+  ✗ Error adding Raw Material 3: Error: Raw Materials Create button not found in DOM

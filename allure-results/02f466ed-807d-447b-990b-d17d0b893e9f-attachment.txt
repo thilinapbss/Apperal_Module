@@ -1,0 +1,29 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+
+════════════════════════════════════════════════════════════
+  TEST 54: ADD RAW MATERIALS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║           ADDING RAW MATERIALS                            ║
+║         (New rows added to table TOP)                     ║
+╚════════════════════════════════════════════════════════════╝
+
+  ✓ Scrolled to Raw Materials section
+  ⚠️  Create button not found, proceeding anyway
+  [1/3] Adding Raw Material...
+  ✓ Scrolled to Raw Materials section
+  → Button not found with first pattern, searching broader...
+  [2/3] Adding Raw Material...
+  ✓ Scrolled to Raw Materials section
+  → Button not found with first pattern, searching broader...
+  [3/3] Adding Raw Material...
+  ✓ Scrolled to Raw Materials section
+  → Button not found with first pattern, searching broader...
+╔════════════════════════════════════════════════════════════╗
+║ ✓ Raw Materials Added: 0/3
+╚════════════════════════════════════════════════════════════╝
+
+
+✗ TEST 54 FAILED: No raw materials were added
