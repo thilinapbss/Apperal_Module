@@ -1467,9 +1467,19 @@ export class StyleMasterCreate {
 
           console.log(`    ✓ Dropdown opened`);
 
-          // Find the dropdown table - it's usually in a popover dialog
-          // Look for a table with SuggestTable ID or similar suggestion table
-          const dropdownRows = this.page.locator('table tbody tr').filter({ has: this.page.locator('td:has(span)') });
+          // Find the SuggestTable in the popover - it contains the dropdown items
+          const suggestTable = this.page.locator('table[id*="SuggestTable"]');
+          const suggestTableExists = await suggestTable.count();
+
+          if (suggestTableExists === 0) {
+            console.log(`    ✗ SuggestTable not found in dropdown`);
+            await this.page.keyboard.press('Escape');
+            await this.page.waitForTimeout(300);
+            continue;
+          }
+
+          // Get all rows from the suggest table
+          const dropdownRows = suggestTable.locator('tbody tr[role="row"]');
           const dropdownRowCount = await dropdownRows.count();
 
           console.log(`    Found ${dropdownRowCount} items in dropdown`);
@@ -1477,15 +1487,16 @@ export class StyleMasterCreate {
           let itemSelected = false;
 
           // Try to find and select the matching item
-          for (let j = 0; j < Math.min(dropdownRowCount, 20); j++) {
+          for (let j = 0; j < dropdownRowCount; j++) {
             try {
               const dropdownRow = dropdownRows.nth(j);
 
-              // Get all text content from the row
-              const rowText = await dropdownRow.textContent();
+              // Get the text from the span element in the row
+              const itemSpan = dropdownRow.locator('span.sapMText').first();
+              const itemText = await itemSpan.textContent();
 
               // Check if this row contains the item code
-              if (rowText && rowText.includes(itemCode.trim())) {
+              if (itemText && itemText.trim() === itemCode.trim()) {
                 // Click the row to select it
                 await dropdownRow.click();
                 await this.page.waitForTimeout(500);
