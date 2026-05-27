@@ -1431,7 +1431,16 @@ export class StyleMasterCreate {
           // Find the BuyerPOItem column cell
           const buyerPOItemCell = row.locator('td[data-sap-ui-colid*="BuyerPOItem"]').first();
 
-          // Find the value help button within this cell
+          // Find the input field (combobox)
+          const buyerPOInput = buyerPOItemCell.locator('input[role="combobox"]').first();
+          const inputExists = await buyerPOInput.count();
+
+          if (inputExists === 0) {
+            console.log(`    ✗ BuyerPOItem input field not found`);
+            continue;
+          }
+
+          // Find the value help button within this cell (the icon with id containing "vhi")
           const valueHelpButton = buyerPOItemCell.locator('[id*="vhi"]').first();
           const buttonCount = await valueHelpButton.count();
 
@@ -1440,34 +1449,37 @@ export class StyleMasterCreate {
             continue;
           }
 
+          // Scroll the row into view first
+          await row.scrollIntoViewIfNeeded();
+          await this.page.waitForTimeout(300);
+
           // Click the value help button to open dropdown
           await valueHelpButton.click();
-          await this.page.waitForTimeout(800);
+          await this.page.waitForLoadState('networkidle');
+          await this.page.waitForTimeout(1000);
 
           console.log(`    ✓ Dropdown opened`);
 
-          // Find the dropdown popover/listbox
-          // Look for the table inside the popover that shows the options
-          const dropdownTable = this.page.locator('[role="grid"] tbody tr[role="row"]').first().locator('..').locator('..');
-
-          // Get all rows from the dropdown
-          const dropdownRows = this.page.locator('[id*="SuggestTable"] tbody tr[role="row"]');
+          // Find the dropdown table - it's usually in a popover dialog
+          // Look for a table with SuggestTable ID or similar suggestion table
+          const dropdownRows = this.page.locator('table tbody tr').filter({ has: this.page.locator('td:has(span)') });
           const dropdownRowCount = await dropdownRows.count();
 
           console.log(`    Found ${dropdownRowCount} items in dropdown`);
 
           let itemSelected = false;
 
-          for (let j = 0; j < dropdownRowCount; j++) {
+          // Try to find and select the matching item
+          for (let j = 0; j < Math.min(dropdownRowCount, 20); j++) {
             try {
               const dropdownRow = dropdownRows.nth(j);
 
-              // Get the text from the dropdown item - it's in a span element
-              const itemTextSpan = dropdownRow.locator('span.sapMText').first();
-              const dropdownItemText = await itemTextSpan.textContent();
+              // Get all text content from the row
+              const rowText = await dropdownRow.textContent();
 
-              if (dropdownItemText && dropdownItemText.trim() === itemCode.trim()) {
-                // Click the matching dropdown item
+              // Check if this row contains the item code
+              if (rowText && rowText.includes(itemCode.trim())) {
+                // Click the row to select it
                 await dropdownRow.click();
                 await this.page.waitForTimeout(500);
                 console.log(`    ✓ Selected '${itemCode}' from dropdown`);
@@ -1485,7 +1497,7 @@ export class StyleMasterCreate {
             console.log(`    ⚠️ Could not find '${itemCode}' in dropdown options`);
           }
 
-          // Close the dropdown by clicking elsewhere or pressing Escape
+          // Close the dropdown by pressing Escape
           await this.page.keyboard.press('Escape');
           await this.page.waitForTimeout(300);
 
