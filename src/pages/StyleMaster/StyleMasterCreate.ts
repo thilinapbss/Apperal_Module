@@ -1411,8 +1411,8 @@ export class StyleMasterCreate {
       const allRows = dataTableBody.locator('tr[role="row"]:has(td[data-sap-ui-colid*="ItemCode"])');
       const totalRows = await allRows.count();
 
-      // Count only rows with non-empty ItemCode
-      const dataRows: { row: any; itemCode: string }[] = [];
+      // First pass: Extract only the itemCodes (don't store row references - they become stale)
+      const itemCodes: string[] = [];
       for (let i = 0; i < totalRows; i++) {
         const row = allRows.nth(i);
         const itemCodeCell = row.locator('td[data-sap-ui-colid*="ItemCode"]').first();
@@ -1420,18 +1420,22 @@ export class StyleMasterCreate {
         const itemCode = await itemCodeInput.inputValue();
 
         if (itemCode && itemCode.trim() !== '') {
-          dataRows.push({ row, itemCode: itemCode.trim() });
+          itemCodes.push(itemCode.trim());
         }
       }
 
-      const rowCount = dataRows.length;
+      const rowCount = itemCodes.length;
       console.log(`📋 Found ${rowCount} rows in Finish Goods table`);
 
       let successCount = 0;
 
+      // Second pass: Process each row with fresh DOM references
       for (let i = 0; i < rowCount; i++) {
         try {
-          const { row, itemCode } = dataRows[i];
+          // Re-fetch rows fresh for each iteration to avoid stale references
+          const freshRows = finishGoodsDataTable.locator('table[id*="FinishGoods-innerTable-table"] tbody tr[role="row"]:has(td[data-sap-ui-colid*="ItemCode"])');
+          const row = freshRows.nth(i);
+          const itemCode = itemCodes[i];
 
           console.log(`\n  Row ${i + 1}/${rowCount}: ItemCode = ${itemCode}`);
 
