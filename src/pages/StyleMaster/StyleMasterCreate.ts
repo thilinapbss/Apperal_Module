@@ -1425,7 +1425,7 @@ export class StyleMasterCreate {
       }
 
       const rowCount = dataRows.length;
-      console.log(`📋 Found ${rowCount} rows with data in Finish Goods table (${totalRows} total rows, ${totalRows - rowCount} empty)`);
+      console.log(`📋 Found ${rowCount} rows in Finish Goods table`);
 
       let successCount = 0;
 
