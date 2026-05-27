@@ -1,0 +1,27 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53G: SELECT BUYER PO ITEMS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║         SELECTING BUYER PO ITEMS FOR FINISH GOODS           ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Found 3 rows in Finish Goods table
+  Row 1: ItemCode = S (data row 1/3)
+    ✓ Dropdown opened
+    Found 29 items in dropdown
+    ✓ Selected 'S' from dropdown
+  Row 2: ItemCode = M (data row 2/3)
+  Row 2: Error - locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('
+  Row 3: ItemCode = L (data row 3/3)
+    ✗ BuyerPOItem input field not found
+
+📊 Successfully selected Buyer PO Items: 1/3
+
+╔════════════════════════════════════════════════════════════╗
+║ ⚠️  PARTIALLY COMPLETED (1/3)                  ║
+╚════════════════════════════════════════════════════════════╝
+

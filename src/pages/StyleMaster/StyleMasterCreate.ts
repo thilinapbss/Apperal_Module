@@ -1433,7 +1433,7 @@ export class StyleMasterCreate {
         try {
           const { row, itemCode } = dataRows[i];
 
-          console.log(`  Row ${i + 1}: ItemCode = ${itemCode} (data row ${i + 1}/${rowCount})`);
+          console.log(`\n  Row ${i + 1}/${rowCount}: ItemCode = ${itemCode}`);
 
           // Find the BuyerPOItem column cell
           const buyerPOItemCell = row.locator('td[data-sap-ui-colid*="BuyerPOItem"]').first();
@@ -1516,16 +1516,30 @@ export class StyleMasterCreate {
           }
 
           // Close the dropdown by pressing Escape
-          await this.page.keyboard.press('Escape');
+          try {
+            await this.page.keyboard.press('Escape');
+            await this.page.waitForTimeout(500);
+          } catch {
+            // Ignore escape errors
+          }
+
+          // Add extra wait before moving to next row
           await this.page.waitForTimeout(300);
 
         } catch (e) {
           const errorMsg = e instanceof Error ? e.message : String(e);
-          console.log(`  Row ${i + 1}: Error - ${errorMsg.substring(0, 80)}`);
+          console.log(`  ✗ Row ${i + 1}: Error - ${errorMsg.substring(0, 100)}`);
+          // Continue to next row even if this one fails
+          try {
+            await this.page.keyboard.press('Escape');
+            await this.page.waitForTimeout(300);
+          } catch {
+            // Ignore escape errors
+          }
         }
       }
 
-      console.log(`\n📊 Successfully selected Buyer PO Items: ${successCount}/${rowCount}`);
+      console.log(`\n📊 Completed: ${successCount}/${rowCount} rows selected`);
 
       console.log('\n╔════════════════════════════════════════════════════════════╗');
       if (successCount === rowCount) {
