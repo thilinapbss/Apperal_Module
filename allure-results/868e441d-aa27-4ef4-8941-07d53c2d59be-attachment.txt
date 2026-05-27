@@ -1,0 +1,44 @@
+
+✗ TEST 53B FAILED:
+page.waitForLoadState: Target page, context or browser has been closed
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:1023:26)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7) {
+  [Symbol(step)]: {
+    location: {
+      file: 'Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts',
+      line: 1023,
+      column: 26,
+      function: 'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services'
+    },
+    category: 'pw:api',
+    title: 'Wait for load state "networkidle"',
+    apiName: 'page.waitForLoadState',
+    params: { info: [Object] },
+    group: undefined,
+    stepId: 'pw:api@93',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@93',
+      _title: 'Wait for load state "networkidle"',
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1779777086351,
+    error: {
+      message: 'Error: page.waitForLoadState: Target page, context or browser has been closed',
+      stack: 'Error: page.waitForLoadState: Target page, context or browser has been closed\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:1023:26)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:9)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:11)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:7)',
+      cause: undefined
+    }
+  }
+}

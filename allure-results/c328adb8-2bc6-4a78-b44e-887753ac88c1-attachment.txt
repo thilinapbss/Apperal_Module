@@ -1,0 +1,78 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+
+════════════════════════════════════════════════════════════
+  TEST 53B: FILL SEGMENT DATA FROM JSON BY POSITION
+════════════════════════════════════════════════════════════
+
+📍 Current page: http://kgntest.ddns.net:4005/launchpadPage.html#Shell-home
+  ⚠️ Style Master create form not detected, navigating back...
+
+📋 Loaded segments from JSON:
+  - Size
+  - Color
+  - Season
+
+╔════════════════════════════════════════════════════════════╗
+║   FILLING SEGMENTS BY POSITION (Segment1, 2, 3)            ║
+╚════════════════════════════════════════════════════════════╝
+
+
+┌─ POSITION: Segment1 ← SIZE
+│  Values to fill: 3
+│  Clicking Create button for row 1...
+  → Button hidden, using JavaScript click for Segment1
+│  ✓ Create button clicked
+  Found table body using selector: tbody[id*="::LineItem"][id*="tblBody"]
+│    ✗ Row 1: Failed to fill
+│  Clicking Create button for row 2...
+│  ✓ Create button clicked
+  Found table body using selector: tbody[id*="::LineItem"][id*="tblBody"]
+│    ✗ Row 2: Failed to fill
+│  Clicking Create button for row 3...
+│  ✓ Create button clicked
+  Found table body using selector: tbody[id*="::LineItem"][id*="tblBody"]
+│    ✗ Row 3: Failed to fill
+│  Status: ✗ PARTIAL (0/3)
+└─────────────────────────────────────────────────────
+
+┌─ POSITION: Segment2 ← COLOR
+│  Values to fill: 3
+│  Clicking Create button for row 1...
+│  ✓ Create button clicked
+  Found table body using selector: tbody[id*="::LineItem"][id*="tblBody"]
+│    ✗ Row 1: Failed to fill
+│  Clicking Create button for row 2...
+│  ✓ Create button clicked
+  Found table body using selector: tbody[id*="::LineItem"][id*="tblBody"]
+│    ✗ Row 2: Failed to fill
+│  Clicking Create button for row 3...
+│  ✓ Create button clicked
+  Found table body using selector: tbody[id*="::LineItem"][id*="tblBody"]
+│    ✗ Row 3: Failed to fill
+│  Status: ✗ PARTIAL (0/3)
+└─────────────────────────────────────────────────────
+
+┌─ POSITION: Segment3 ← SEASON
+│  Values to fill: 2
+│  Clicking Create button for row 1...
+│  ✓ Create button clicked
+  Found table body using selector: tbody[id*="::LineItem"][id*="tblBody"]
+│    ✗ Row 1: Failed to fill
+│  Clicking Create button for row 2...
+│  ✓ Create button clicked
+│    ✗ Row 2: Failed to fill
+│  Status: ✗ PARTIAL (0/2)
+└─────────────────────────────────────────────────────
+└─────────────────────────────────────────────────────
+
+╔════════════════════════════════════════════════════════════╗
+║          SEGMENT FILL BY POSITION - SUMMARY                ║
+╠════════════════════════════════════════════════════════════╣
+║ ✗ Size       filled successfully
+║ ✗ Color      filled successfully
+║ ✗ Season     filled successfully
+╠════════════════════════════════════════════════════════════╣
+║ Total: 0/3 segments filled
+╚════════════════════════════════════════════════════════════╝
+

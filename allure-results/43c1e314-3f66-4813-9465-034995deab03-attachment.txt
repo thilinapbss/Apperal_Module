@@ -1,0 +1,19 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53C: CLICK GENERATE BUTTON
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║         CLICKING SEMI-FINISH GOODS GENERATE BUTTON         ║
+╚════════════════════════════════════════════════════════════╝
+
+  Scrolling to Semi-Finish Goods section...
+  ✓ Generate button found
+  ✓ Generate button is visible
+  ✓ Generate button clicked
+
+║ ✓ Semi-Finish Goods data generated successfully
+╚════════════════════════════════════════════════════════════╝
+
+
+✓ TEST 53C PASSED: Generate button clicked successfully

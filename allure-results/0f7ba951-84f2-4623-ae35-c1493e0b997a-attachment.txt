@@ -1,0 +1,83 @@
+
+✗ TEST 53B FAILED:
+locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first()
+    - locator resolved to <button data-sap-ui-render="" data-ui5-accesskey="c" aria-keyshortcuts="Ctrl+Enter" class="sapMBtnBase sapMBtn sapMBarChild" id="apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create" data-sap-ui="apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create">…</button>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeTable">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalstylemaster-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events
+  - retrying click action
+    - waiting for element to be visible, enabled and stable
+
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:1035:28)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7) {
+  [Symbol(step)]: {
+    location: {
+      file: 'Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts',
+      line: 1035,
+      column: 28,
+      function: 'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services'
+    },
+    category: 'pw:api',
+    title: `Click locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first()`,
+    apiName: 'locator.click',
+    params: {
+      selector: 'button[id*="StyleMaster::LineItem::StandardAction::Create"] >> nth=0',
+      strict: true,
+      timeout: 30000
+    },
+    group: undefined,
+    stepId: 'pw:api@99',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@99',
+      _title: `Click locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first()`,
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1779777206874,
+    error: {
+      message: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        `\x1B[2m  - waiting for locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first()\x1B[22m\n` +
+        '\x1B[2m    - locator resolved to <button data-sap-ui-render="" data-ui5-accesskey="c" aria-keyshortcuts="Ctrl+Enter" class="sapMBtnBase sapMBtn sapMBarChild" id="apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create" data-sap-ui="apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create">…</button>\x1B[22m\n' +
+        '\x1B[2m  - attempting click action\x1B[22m\n' +
+        '\x1B[2m    - waiting for element to be visible, enabled and stable\x1B[22m\n' +
+        '\x1B[2m    - element is visible, enabled and stable\x1B[22m\n' +
+        '\x1B[2m    - scrolling into view if needed\x1B[22m\n' +
+        '\x1B[2m    - done scrolling\x1B[22m\n' +
+        '\x1B[2m    - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeTable">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalstylemaster-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events\x1B[22m\n' +
+        '\x1B[2m  - retrying click action\x1B[22m\n' +
+        '\x1B[2m    - waiting for element to be visible, enabled and stable\x1B[22m\n',
+      stack: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        `\x1B[2m  - waiting for locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first()\x1B[22m\n` +
+        '\x1B[2m    - locator resolved to <button data-sap-ui-render="" data-ui5-accesskey="c" aria-keyshortcuts="Ctrl+Enter" class="sapMBtnBase sapMBtn sapMBarChild" id="apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create" data-sap-ui="apperal.stylemaster::StyleMasterList--fe::table::StyleMaster::LineItem::StandardAction::Create">…</button>\x1B[22m\n' +
+        '\x1B[2m  - attempting click action\x1B[22m\n' +
+        '\x1B[2m    - waiting for element to be visible, enabled and stable\x1B[22m\n' +
+        '\x1B[2m    - element is visible, enabled and stable\x1B[22m\n' +
+        '\x1B[2m    - scrolling into view if needed\x1B[22m\n' +
+        '\x1B[2m    - done scrolling\x1B[22m\n' +
+        '\x1B[2m    - <div class="sapFeVerticalLayout sapFeVerticalContent sapFeTextAlignStart sapFeVerticalAlignTop sapFeTable">…</div> from <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" class="sapUiBlockLayer  sapUiPlaceholder" id="application-apperalstylemaster-display-component---appRootView--appContent--placeholder">…</div> subtree intercepts pointer events\x1B[22m\n' +
+        '\x1B[2m  - retrying click action\x1B[22m\n' +
+        '\x1B[2m    - waiting for element to be visible, enabled and stable\x1B[22m\n' +
+        '\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:1035:28)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:9)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:11)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:7)',
+      cause: undefined
+    }
+  }
+}

@@ -1,0 +1,58 @@
+
+✗ TEST 53B FAILED:
+locator.waitFor: Target page, context or browser has been closed
+Call log:
+  - waiting for locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first() to be visible
+
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:1034:28)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7) {
+  [Symbol(step)]: {
+    location: {
+      file: 'Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts',
+      line: 1034,
+      column: 28,
+      function: 'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services'
+    },
+    category: 'pw:api',
+    title: `Wait for selector locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first()`,
+    apiName: 'locator.waitFor',
+    params: {
+      selector: 'button[id*="StyleMaster::LineItem::StandardAction::Create"] >> nth=0',
+      strict: true,
+      omitReturnValue: true,
+      state: 'visible',
+      timeout: 30000
+    },
+    group: undefined,
+    stepId: 'pw:api@98',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@98',
+      _title: `Wait for selector locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first()`,
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1779777048993,
+    error: {
+      message: 'Error: locator.waitFor: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        `\x1B[2m  - waiting for locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first() to be visible\x1B[22m\n`,
+      stack: 'Error: locator.waitFor: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        `\x1B[2m  - waiting for locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first() to be visible\x1B[22m\n` +
+        '\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:1034:28)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:9)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:11)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:7)',
+      cause: undefined
+    }
+  }
+}

@@ -187,3 +187,180 @@ Session lost — re-logging in...
 [1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position
 Session lost — re-logging in...
 
+[1A[2KRe-login successful, resumed from home page
+
+[1A[2K
+════════════════════════════════════════════════════════════
+
+[1A[2K  TEST 53B: FILL SEGMENT DATA FROM JSON BY POSITION
+
+[1A[2K════════════════════════════════════════════════════════════
+
+[1A[2K
+📍 Current page: http://kgntest.ddns.net:4005/launchpadPage.html#Shell-home
+
+[1A[2K  ⚠️ Style Master create form not detected, navigating back...
+
+[1A[2K
+✗ TEST 53B FAILED:
+
+[1A[2Klocator.waitFor: Target page, context or browser has been closed
+Call log:
+[2m  - waiting for locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first() to be visible[22m
+
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39me2e\apparel_regression_testing.spec.ts:1034:28)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3045:9)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:2537:11)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3043:7) {
+  [[32mSymbol(step)[39m]: {
+    location: {
+      file: [32m'Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts'[39m,
+      line: [33m1034[39m,
+      column: [33m28[39m,
+      function: [32m'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services'[39m
+    },
+    category: [32m'pw:api'[39m,
+    title: [32m`Wait for selector locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first()`[39m,
+    apiName: [32m'locator.waitFor'[39m,
+    params: {
+      selector: [32m'button[id*="StyleMaster::LineItem::StandardAction::Create"] >> nth=0'[39m,
+      strict: [33mtrue[39m,
+      omitReturnValue: [33mtrue[39m,
+      state: [32m'visible'[39m,
+      timeout: [33m30000[39m
+    },
+    group: [90mundefined[39m,
+    stepId: [32m'pw:api@98'[39m,
+    boxedStack: [90mundefined[39m,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [36m[TestInfoImpl][39m,
+      _stepId: [32m'pw:api@98'[39m,
+      _title: [32m`Wait for selector locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first()`[39m,
+      _parentStep: [90mundefined[39m,
+      skip: [36m[Function (anonymous)][39m
+    },
+    complete: [36m[Function: complete][39m,
+    endWallTime: [33m1779776947793[39m,
+    error: {
+      message: [32m'Error: locator.waitFor: Target page, context or browser has been closed\n'[39m +
+        [32m'Call log:\n'[39m +
+        [32m`\x1B[2m  - waiting for locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first() to be visible\x1B[22m\n`[39m,
+      stack: [32m'Error: locator.waitFor: Target page, context or browser has been closed\n'[39m +
+        [32m'Call log:\n'[39m +
+        [32m`\x1B[2m  - waiting for locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first() to be visible\x1B[22m\n`[39m +
+        [32m'\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:1034:28)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:9)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:11)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:7)'[39m,
+      cause: [90mundefined[39m
+    }
+  }
+}
+
+[1A[2K  2) [firefox] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position 
+
+    [31mTest timeout of 120000ms exceeded.[39m
+
+    Error: locator.waitFor: Target page, context or browser has been closed
+    Call log:
+    [2m  - waiting for locator('button[id*="StyleMaster::LineItem::StandardAction::Create"]').first() to be visible[22m
+
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:1034:28)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
+
+    Error Context: test-results\apparel_regression_testing-baa9f--data-from-JSON-by-position-firefox\error-context.md
+
+    Error Context: test-results\apparel_regression_testing-baa9f--data-from-JSON-by-position-firefox\error-context.md
+
+
+[1A[2K◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+
+[1A[2K[3/3] [webkit] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position
+[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position
+Session lost — re-logging in...
+
+[1A[2KRe-login successful, resumed from home page
+
+[1A[2K
+════════════════════════════════════════════════════════════
+
+[1A[2K  TEST 53B: FILL SEGMENT DATA FROM JSON BY POSITION
+
+[1A[2K════════════════════════════════════════════════════════════
+
+[1A[2K
+📍 Current page: http://kgntest.ddns.net:4005/launchpadPage.html#Shell-home
+
+[1A[2K  ⚠️ Style Master create form not detected, navigating back...
+
+[1A[2K
+✗ TEST 53B FAILED:
+
+[1A[2Kpage.waitForLoadState: Target page, context or browser has been closed
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39me2e\apparel_regression_testing.spec.ts:1023:26)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3045:9)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:2537:11)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3043:7) {
+  [[32mSymbol(step)[39m]: {
+    location: {
+      file: [32m'Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts'[39m,
+      line: [33m1023[39m,
+      column: [33m26[39m,
+      function: [32m'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services'[39m
+    },
+    category: [32m'pw:api'[39m,
+    title: [32m'Wait for load state "networkidle"'[39m,
+    apiName: [32m'page.waitForLoadState'[39m,
+    params: { info: [36m[Object][39m },
+    group: [90mundefined[39m,
+    stepId: [32m'pw:api@93'[39m,
+    boxedStack: [90mundefined[39m,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [36m[TestInfoImpl][39m,
+      _stepId: [32m'pw:api@93'[39m,
+      _title: [32m'Wait for load state "networkidle"'[39m,
+      _parentStep: [90mundefined[39m,
+      skip: [36m[Function (anonymous)][39m
+    },
+    complete: [36m[Function: complete][39m,
+    endWallTime: [33m1779777086351[39m,
+    error: {
+      message: [32m'Error: page.waitForLoadState: Target page, context or browser has been closed'[39m,
+      stack: [32m'Error: page.waitForLoadState: Target page, context or browser has been closed\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:1023:26)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:9)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:11)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:7)'[39m,
+      cause: [90mundefined[39m
+    }
+  }
+}
+
+[1A[2K  3) [webkit] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position 
+
+    [31mTest timeout of 120000ms exceeded.[39m
+
+    Error: page.waitForLoadState: Target page, context or browser has been closed
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:1023:26)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
+
+    Error Context: test-results\apparel_regression_testing-baa9f--data-from-JSON-by-position-webkit\error-context.md
+
+    Error Context: test-results\apparel_regression_testing-baa9f--data-from-JSON-by-position-webkit\error-context.md
+
+
+[1A[2K  3 failed
+    [chromium] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position 
+    [firefox] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position 
+    [webkit] › e2e\apparel_regression_testing.spec.ts:997:7 › Apperal Module | Regression Test Suite › 53b. Fill segment data from JSON by position 

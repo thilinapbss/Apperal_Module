@@ -1403,9 +1403,13 @@ export class StyleMasterCreate {
       console.log('║         SELECTING BUYER PO ITEMS FOR FINISH GOODS           ║');
       console.log('╚════════════════════════════════════════════════════════════╝\n');
 
-      // Find the Finish Goods table
-      const finishGoodsTable = this.page.locator('table[id*="FinishGoods-innerTable-table"]');
-      const rows = finishGoodsTable.locator('tbody tr[data-sap-ui-rowindex]');
+      // Find the Finish Goods table - specifically the data table, not header or cloned versions
+      const finishGoodsDataTable = this.page.locator('table[id*="FinishGoods-innerTable-table"]');
+
+      // Get only the tbody that contains actual data rows (not cloned/virtual scrolling copies)
+      const dataTableBody = finishGoodsDataTable.locator('tbody').last();
+      const rows = dataTableBody.locator('tr[role="row"]:has(td[data-sap-ui-colid*="ItemCode"])');
+
       const rowCount = await rows.count();
 
       console.log(`📋 Found ${rowCount} rows in Finish Goods table`);

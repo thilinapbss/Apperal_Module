@@ -1,0 +1,18 @@
+  Expected 2+ inputs but found 0
+  Expected 2+ inputs but found 0
+  Expected 2+ inputs but found 0
+  Expected 2+ inputs but found 0
+  Expected 2+ inputs but found 0
+  Expected 2+ inputs but found 0
+  Expected 2+ inputs but found 0
+Failed to fill segment value in Segment3: Error: locator.count: Target page, context or browser has been closed
+│  ✗ Error: Error: page.waitForTimeout: Target page, context or browser has been closed
+
+✗ TEST 53B FAILED:
+Error: Only 0/3 segments were successfully filled
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:1058:15
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at processImmediate (node:internal/timers:459:9)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11
