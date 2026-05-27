@@ -1442,9 +1442,19 @@ export class StyleMasterCreate {
           // Find the BuyerPOItem column cell
           const buyerPOItemCell = row.locator('td[data-sap-ui-colid*="BuyerPOItem"]').first();
 
-          // Find the input field (combobox)
-          const buyerPOInput = buyerPOItemCell.locator('input[role="combobox"]').first();
-          const inputExists = await buyerPOInput.count();
+          // Wait for the cell to be visible
+          await buyerPOItemCell.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
+          await this.page.waitForTimeout(200);
+
+          // Find the input field (combobox) - try multiple selectors
+          let buyerPOInput = buyerPOItemCell.locator('input[role="combobox"]').first();
+          let inputExists = await buyerPOInput.count();
+
+          if (inputExists === 0) {
+            // Try alternative selector
+            buyerPOInput = buyerPOItemCell.locator('input[type="text"]').first();
+            inputExists = await buyerPOInput.count();
+          }
 
           if (inputExists === 0) {
             console.log(`    ✗ BuyerPOItem input field not found`);
@@ -1452,8 +1462,14 @@ export class StyleMasterCreate {
           }
 
           // Find the value help button within this cell (the icon with id containing "vhi")
-          const valueHelpButton = buyerPOItemCell.locator('[id*="vhi"]').first();
-          const buttonCount = await valueHelpButton.count();
+          let valueHelpButton = buyerPOItemCell.locator('[id*="vhi"]').first();
+          let buttonCount = await valueHelpButton.count();
+
+          if (buttonCount === 0) {
+            // Try alternative selector for value help button
+            valueHelpButton = buyerPOItemCell.locator('span[class*="Icon"]').first();
+            buttonCount = await valueHelpButton.count();
+          }
 
           if (buttonCount === 0) {
             console.log(`    ✗ Value help button not found`);
@@ -1465,9 +1481,15 @@ export class StyleMasterCreate {
           await this.page.waitForTimeout(300);
 
           // Click the value help button to open dropdown
-          await valueHelpButton.click();
+          try {
+            await valueHelpButton.click();
+          } catch {
+            // If click fails, try with force
+            await valueHelpButton.click({ force: true });
+          }
+          await this.page.waitForTimeout(800);
           await this.page.waitForLoadState('networkidle');
-          await this.page.waitForTimeout(1000);
+          await this.page.waitForTimeout(500);
 
           console.log(`    ✓ Dropdown opened`);
 
