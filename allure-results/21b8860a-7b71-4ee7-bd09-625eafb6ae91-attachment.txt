@@ -1,0 +1,26 @@
+
+════════════════════════════════════════════════════════════
+  TEST 53G: SELECT BUYER PO ITEMS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║         SELECTING BUYER PO ITEMS FOR FINISH GOODS           ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Found 5 rows in Finish Goods table
+  Row 1: ItemCode = S
+    ✓ Dropdown opened
+    Found 90 items in dropdown
+    ⚠️ Could not find 'S' in dropdown options
+  Row 1: Error - keyboard.press: Target page, context or browser has been closed
+  Row 2: Error - locator.inputValue: Target page, context or browser has been closed
+  Row 3: Error - locator.inputValue: Target page, context or browser has been closed
+  Row 4: Error - locator.inputValue: Target page, context or browser has been closed
+  Row 5: Error - locator.inputValue: Target page, context or browser has been closed
+
+📊 Successfully selected Buyer PO Items: 0/5
+
+╔════════════════════════════════════════════════════════════╗
+║ ℹ️  NO ITEMS SELECTED                                      ║
+╚════════════════════════════════════════════════════════════╝
+

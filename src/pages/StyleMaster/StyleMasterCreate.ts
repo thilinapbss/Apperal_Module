@@ -1408,29 +1408,32 @@ export class StyleMasterCreate {
 
       // Get only the tbody that contains actual data rows (not cloned/virtual scrolling copies)
       const dataTableBody = finishGoodsDataTable.locator('tbody').last();
-      const rows = dataTableBody.locator('tr[role="row"]:has(td[data-sap-ui-colid*="ItemCode"])');
+      const allRows = dataTableBody.locator('tr[role="row"]:has(td[data-sap-ui-colid*="ItemCode"])');
+      const totalRows = await allRows.count();
 
-      const rowCount = await rows.count();
+      // Count only rows with non-empty ItemCode
+      const dataRows: { row: any; itemCode: string }[] = [];
+      for (let i = 0; i < totalRows; i++) {
+        const row = allRows.nth(i);
+        const itemCodeCell = row.locator('td[data-sap-ui-colid*="ItemCode"]').first();
+        const itemCodeInput = itemCodeCell.locator('input').first();
+        const itemCode = await itemCodeInput.inputValue();
 
-      console.log(`📋 Found ${rowCount} rows in Finish Goods table`);
+        if (itemCode && itemCode.trim() !== '') {
+          dataRows.push({ row, itemCode: itemCode.trim() });
+        }
+      }
+
+      const rowCount = dataRows.length;
+      console.log(`📋 Found ${rowCount} rows with data in Finish Goods table (${totalRows} total rows, ${totalRows - rowCount} empty)`);
 
       let successCount = 0;
 
       for (let i = 0; i < rowCount; i++) {
         try {
-          const row = rows.nth(i);
+          const { row, itemCode } = dataRows[i];
 
-          // Get the ItemCode value from the first column
-          const itemCodeCell = row.locator('td[data-sap-ui-colid*="ItemCode"]').first();
-          const itemCodeInput = itemCodeCell.locator('input').first();
-          const itemCode = await itemCodeInput.inputValue();
-
-          if (!itemCode || itemCode.trim() === '') {
-            console.log(`  Row ${i + 1}: Skipped (empty ItemCode)`);
-            continue;
-          }
-
-          console.log(`  Row ${i + 1}: ItemCode = ${itemCode}`);
+          console.log(`  Row ${i + 1}: ItemCode = ${itemCode} (data row ${i + 1}/${rowCount})`);
 
           // Find the BuyerPOItem column cell
           const buyerPOItemCell = row.locator('td[data-sap-ui-colid*="BuyerPOItem"]').first();
