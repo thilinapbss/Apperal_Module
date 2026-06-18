@@ -1,0 +1,27 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+
+════════════════════════════════════════════════════════════
+  TEST 53F: VERIFY FINISH GOODS COMBINATIONS
+════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════╗
+║        VERIFYING FINISH GOODS COMBINATIONS                 ║
+╚════════════════════════════════════════════════════════════╝
+
+📋 Segment Values:
+  Size: S(Small), M(Medium), L(Large)
+  Color: RED(Red), GRE(Green), BLA(Black)
+  Season: Su(Summer), Wi(Winter)
+
+📋 Routing Routes:
+  Finish Goods Routes:
+    PA1: Packing
+  Semi-Finish Goods Routes (excluded):
+    CU01: Cutting
+    SA1: Sawing
+
+📊 Expected Row Count: 3
+  Expected items: S(Small), M(Medium), L(Large)
+
+📊 Counting non-empty rows in Finish Goods section...

@@ -1,25 +1,6 @@
 {
-  "routingPlanName": "Routing Plan 001",
+  "routingPlanName": "",
   "routingPlanCode": "",
   "status": "Active",
-  "details": [
-    {
-      "routeCode": "CU01",
-      "routeName": "Cutting",
-      "warehouse": "WH-CMB",
-      "isSemiFinishGood": true
-    },
-    {
-      "routeCode": "SA1",
-      "routeName": "Sawing",
-      "warehouse": "WH-CMB",
-      "isSemiFinishGood": true
-    },
-    {
-      "routeCode": "PA1",
-      "routeName": "Packing",
-      "warehouse": "WH-CMB",
-      "isSemiFinishGood": false
-    }
-  ]
+  "details": []
 }

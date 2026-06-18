@@ -1,5 +1,5 @@
 {
-  "code": "SE68SG",
+  "code": "SE714SG",
   "name": "Segment 2",
   "status": "",
   "segments": [
@@ -10,7 +10,7 @@
     },
     {
       "segmentCode": "COL",
-      "segmentName": "Colour",
+      "segmentName": "Color",
       "index": 2
     },
     {

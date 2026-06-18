@@ -1,0 +1,19 @@
+Buyer value (via inputValue): "Buyer 001"
+StyleNo value (via inputValue): "BUY0001"
+StyleDescription value (via inputValue): "BUY2"
+StyleColor value (via inputValue): "BUY_C2"
+Season value (via inputValue): "BUY25 SE02"
+Extracted Excel Data: {
+  buyer: 'Buyer 001',
+  styleNo: 'BUY0001',
+  styleDescription: 'BUY2',
+  styleColor: 'BUY_C2',
+  season: 'BUY25 SE02'
+}
+Form Values: {
+  buyer: 'Buyer 001',
+  styleNo: 'BUY0001',
+  styleDescription: 'BUY2',
+  styleColor: 'BUY_C2',
+  season: 'BUY25 SE02'
+}

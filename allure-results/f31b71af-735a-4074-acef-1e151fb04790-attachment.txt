@@ -1,0 +1,20 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+
+════════════════════════════════════════════════════════════
+  TEST 55: FILL ALLOCATION HIERARCHY QUANTITIES
+════════════════════════════════════════════════════════════
+
+📋 Tree Structure:
+
+  Retrieving Allocation Hierarchy tree structure...
+
+  Found 0 nodes in tree:
+
+
+
+╔════════════════════════════════════════════════════════════╗
+║        FILLING ALLOCATION HIERARCHY QUANTITIES              ║
+╚════════════════════════════════════════════════════════════╝
+
+  ✓ Scrolled to Allocation Hierarchy section

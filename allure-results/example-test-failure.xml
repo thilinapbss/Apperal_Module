@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testcase name="Test Product Search Filter" classname="com.example.tests.ProductTests" time="3.127">
+  <properties>
+    <property name="allure.label.suite" value="Product Catalog"/>
+    <property name="allure.label.feature" value="Search and Filter"/>
+    <property name="allure.label.story" value="Filter products by price range"/>
+    <property name="allure.label.severity" value="major"/>
+  </properties>
+  <failure message="Element not found: Price range slider" type="org.openqa.selenium.NoSuchElementException">
+    <![CDATA[
+      org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"xpath","selector":"//input[@class='price-slider']"}
+      at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+      at com.example.tests.ProductTests.testPriceFilter(ProductTests.java:45)
+    ]]>
+  </failure>
+  <system-out>Test execution started
+Product page loaded
+Search box located
+Typed filter criteria: "electronics"
+Results displayed with 24 products
+Attempted to locate price range slider
+Element not found - Test failed</system-out>
+</testcase>

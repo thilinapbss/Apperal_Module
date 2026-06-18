@@ -233,486 +233,489 @@ test.describe('Apperal Module | Regression Test Suite', () => {
     await homePage.waitForDashboard();
   });
 
-  // test('06. Should display all tile group headers', async () => {
-  //   await expect(homePage.groupHeader(homePage.merchandisingGroup)).toHaveText('Merchandising Process');
-  //   await expect(homePage.groupHeader(homePage.productionGroup)).toHaveText('Production Process');
-  //   await expect(homePage.groupHeader(homePage.otherGroup)).toHaveText('Other');
-  //   await expect(homePage.groupHeader(homePage.mastersGroup)).toHaveText('Masters & Sub Masters');
-  // });
-
-  // test('07. Should display Merchandising Process tiles', async () => {
-  //   const group = homePage.merchandisingGroup;
-  //   await expect(homePage.tile(group, 'Buyer PO Upload')).toBeVisible();
-  //   await expect(homePage.tile(group, 'Style Master')).toBeVisible();
-  //   await expect(homePage.tile(group, 'Trim Allocation')).toBeVisible();
-  //   await expect(homePage.tile(group, 'Bill Of Material')).toBeVisible();
-  //   await expect(homePage.tile(group, 'Cost Sheet')).toBeVisible();
-  //   await expect(homePage.tile(group, 'ERP Post')).toBeVisible();
-  //   await expect(homePage.tile(group, 'Lay Sheet')).toBeVisible();
-  // });
-
-  // test('08. Should display Production Process tiles', async () => {
-  //   const group = homePage.productionGroup;
-  //   const productionTiles = ['Master Plan', 'Gantt Chart Dashboard', 'Inspection', 'Inspection Checklist', 'QC'];
-
-  //   for (const tileTitle of productionTiles) {
-  //     const tile = homePage.tile(group, tileTitle);
-  //     const isVisible = await tile.isVisible({ timeout: 5000 }).catch(() => false);
-  //     if (!isVisible) {
-  //       console.log(`Production tile "${tileTitle}" not found`);
-  //     } else {
-  //       await expect(tile).toBeVisible();
-  //     }
-  //   }
-  // });
-
-  // test('09. Should display Other tiles', async () => {
-  //   const group = homePage.otherGroup;
-  //   await expect(homePage.tile(group, 'Number Series')).toBeVisible();
-  //   await expect(homePage.tile(group, 'UDO Creation')).toBeVisible();
-  //   await expect(homePage.tile(group, 'Bundle Code Generation')).toBeVisible();
-  //   await expect(homePage.tile(group, 'Cartoons')).toBeVisible();
-  //   await expect(homePage.tile(group, 'User & Role Management')).toBeVisible();
-  // });
-
-  // test('10. Should display Masters & Sub Masters tiles', async () => {
-  //   const group = homePage.mastersGroup;
-  //   await expect(homePage.tile(group, 'Segment Master')).toBeVisible();
-  //   await expect(homePage.tile(group, 'Routing Plan')).toBeVisible();
-  //   await expect(homePage.tile(group, 'Vendor Merchandiser')).toBeVisible();
-  //   await expect(homePage.tile(group, 'Sub Master Branch')).toBeVisible();
-  // });
-
-  // test('11. Click on Buyer PO Upload tile', async () => {
-  //   const buyerPoTile = homePage.tile(homePage.merchandisingGroup, 'Buyer PO Upload');
-  //   await expect(buyerPoTile).toBeVisible();
-  //   await buyerPoTile.click();
-  //   buyerPoUploadPage = new BuyerPoUploadPage(sharedPage);
-  // });
-
-  // test('12. Verify Buyer PO Upload page loaded', async () => {
-  //   await buyerPoUploadPage.waitForPageLoad();
-  // });
-
-  // test('13. Click Create button', async () => {
-  //   await expect(buyerPoUploadPage.createButton).toBeVisible();
-  //   await buyerPoUploadPage.clickCreateButton();
-  //   await sharedPage.waitForLoadState('networkidle');
-  // });
-
-  // test('14. Verify Buyer PO Upload form loaded', async () => {
-  //   buyerPoUploadFormPage = new BuyerPoUploadFormPage(sharedPage);
-  //   await buyerPoUploadFormPage.waitForFormLoad();
-  // });
-
-  // test('15. Verify form fields are visible', async () => {
-  //   await expect(buyerPoUploadFormPage.formContainer).toBeVisible();
-  // });
-
-  // test('16. Upload Excel file - PO Summary format1.xlsx', async () => {
-  //   await expect(buyerPoUploadFormPage.excelUploadButton).toBeVisible();
-
-  //   const excelFilePath = path.join(__dirname, '..', 'testData', 'Buyer_PO_Upload', 'PO Summary format1.xlsx');
-
-  //   if (fs.existsSync(excelFilePath)) {
-  //     console.log(`Uploading file: ${excelFilePath}`);
-  //     await buyerPoUploadFormPage.uploadExcelFile(excelFilePath);
-  //     await sharedPage.waitForLoadState('networkidle');
-  //   } else {
-  //     throw new Error(`Excel file not found at: ${excelFilePath}`);
-  //   }
-  // });
-
-  // test('18. Verify file upload processed', async () => {
-  //   await sharedPage.waitForLoadState('networkidle');
-  //   await sharedPage.waitForTimeout(2000);
-  //   console.log('File upload processed, form ready for verification');
-  // });
-
-  // test('19. Read Excel file and verify data loaded', async () => {
-  //   const excelFilePath = path.join(__dirname, '..', 'testData', 'Buyer_PO_Upload', 'PO Summary format1.xlsx');
-  //   const excelData = ExcelReader.readBuyerPOFile(excelFilePath);
-
-  //   await sharedPage.waitForTimeout(5000);
-
-  //   const buyerValue = await buyerPoUploadFormPage.getBuyerValue();
-  //   const styleNoValue = await buyerPoUploadFormPage.getStyleNoValue();
-  //   const styleDescValue = await buyerPoUploadFormPage.getStyleDescriptionValue();
-  //   const styleColorValue = await buyerPoUploadFormPage.getStyleColorValue();
-  //   const seasonValue = await buyerPoUploadFormPage.getSeasonValue();
-
-  //   console.log('Extracted Excel Data:', excelData);
-  //   console.log('Form Values:', { buyer: buyerValue, styleNo: styleNoValue, styleDescription: styleDescValue, styleColor: styleColorValue, season: seasonValue });
-
-  //   if (excelData.styleNo) {
-  //     expect(styleNoValue).toContain(excelData.styleNo);
-  //   }
-  //   if (excelData.styleDescription) {
-  //     expect(styleDescValue).toContain(excelData.styleDescription);
-  //   }
-  //   if (excelData.styleColor) {
-  //     expect(styleColorValue).toContain(excelData.styleColor);
-  //   }
-  //   if (excelData.season) {
-  //     expect(seasonValue).toContain(excelData.season);
-  //   }
-  // });
-
-  // test('20. Fill form: Select supplier, enter PO Date and Kimble Number', async () => {
-  //   console.log('Step 1: Opening Supplier Code value help dialog...');
-  //   await expect(buyerPoUploadFormPage.supplierCodeValueHelpButton).toBeVisible();
-  //   await buyerPoUploadFormPage.clickSupplierCodeValueHelpButton();
-  //   await sharedPage.waitForLoadState('networkidle');
-
-  //   console.log('Step 2: Selecting supplier from value help list...');
-  //   const supplierDescription = testData.suppliers[0].Description;
-  //   const supplierValue = testData.suppliers[0].Value;
-  //   console.log(`Selecting supplier: ${supplierDescription} (${supplierValue})`);
-
-  //   try {
-  //     await buyerPoUploadFormPage.selectSupplierByCode(supplierDescription || supplierValue);
-  //     console.log(`Selected supplier: ${supplierDescription}`);
-  //   } catch {
-  //     try {
-  //       await buyerPoUploadFormPage.selectSupplierByCode(supplierValue);
-  //       console.log(`Selected supplier by value: ${supplierValue}`);
-  //     } catch {
-  //       console.log('Supplier code not found, selecting first supplier instead');
-  //       await buyerPoUploadFormPage.selectFirstSupplierFromValueHelpList();
-  //     }
-  //   }
-
-  //   console.log('Step 3: Selecting PO Date from calendar...');
-  //   await buyerPoUploadFormPage.selectTodayFromCalendar();
-  //   const enteredDate = await buyerPoUploadFormPage.getPODateValue();
-  //   console.log(`PO Date selected: ${enteredDate}`);
-
-  //   console.log('Step 4: Entering Kimble Number...');
-  //   const kimbleNo = testData.testScenarios[0].kimbleNo.example;
-  //   await buyerPoUploadFormPage.enterKimbleNo(kimbleNo);
-  //   const enteredKimbleNo = await buyerPoUploadFormPage.getKimbleNoValue();
-  //   expect(enteredKimbleNo).toBe(kimbleNo);
-  //   console.log(`Kimble No entered: ${enteredKimbleNo}`);
-  // });
-
-  // test('21. Enter Remark', async () => {
-  //   const remark = testData.testScenarios[0].remark.example;
-  //   await buyerPoUploadFormPage.enterRemark(remark);
-  //   const enteredRemark = await buyerPoUploadFormPage.getRemarkValue();
-  //   expect(enteredRemark).toContain(remark);
-  // });
-
-  // test('22. Fill in all line item details (Delivery No, Dates)', async () => {
-  //   const lineItems = testData.testScenarios[0].lineItems;
-  //   await buyerPoUploadFormPage.fillLineItemDetailsInTable(lineItems);
-  // });
-
-  // test('22b. Capture all entered form data and save to buyerPO.json', async () => {
-  //   const formData = await buyerPoUploadFormPage.captureAllFormData();
-  //   console.log('Captured form data:', JSON.stringify(formData, null, 2));
-
-  //   const outputPath = path.join(__dirname, '../testData/Buyer_PO_Upload/buyerPO.json');
-  //   fs.writeFileSync(outputPath, JSON.stringify(formData, null, 2));
-  //   console.log(`Form data saved to ${outputPath}`);
-  // });
-
-  // test('23. Click Save/Create button to save the form', async () => {
-  //   await buyerPoUploadFormPage.clickSaveCreateButton();
-  // });
-
-  // test('24. Capture all line item details and update test data JSON', async () => {
-  //   const capturedLineItems = await buyerPoUploadFormPage.captureLineItemsWithAllDetails();
-  //   console.log('Captured Line Items:', JSON.stringify(capturedLineItems, null, 2));
-
-  //   const validItems = capturedLineItems.filter((item: any) => item.partNo && item.deliveryNo);
-  //   expect(validItems.length).toBeGreaterThan(0);
-  //   console.log(`Captured ${validItems.length} line items with complete data`);
-
-  //   testData.testScenarios[0].lineItems = validItems.map((item: any) => ({
-  //     poNo: item.poNo,
-  //     countryCode: item.countryCode,
-  //     partNo: item.partNo,
-  //     qty: item.qty,
-  //     deliveryDate: item.deliveryDate,
-  //     pcdDate: item.pcdDate,
-  //     fobDate: item.fobDate,
-  //     deliveryNo: item.deliveryNo,
-  //   }));
-
-  //   const updatedTestDataPath = path.join(__dirname, '../testData/Buyer_PO_Upload/test-data.json');
-  //   fs.writeFileSync(updatedTestDataPath, JSON.stringify(testData, null, 2));
-  //   console.log('Test data JSON updated with actual delivery numbers and values');
-  // });
-
-  // test('25. Verify saved record appears in the Buyer PO Upload list', async () => {
-  //   await buyerPoUploadFormPage.navigateBackToList();
-
-  //   const buyerPOPath = path.join(__dirname, '../testData/Buyer_PO_Upload/buyerPO.json');
-  //   const buyerPOData = JSON.parse(fs.readFileSync(buyerPOPath, 'utf-8'));
-
-  //   const supplierCode = buyerPOData.header.supplierCode;
-  //   const styleNo = buyerPOData.header.styleNo;
-  //   const season = buyerPOData.header.season;
-
-  //   console.log('Verifying record with:', { supplierCode, styleNo, season });
-
-  //   const result = await buyerPoUploadFormPage.verifyRecordInListTable({ supplierCode, styleNo, season });
-
-  //   console.log(`Total rows in list: ${result.totalRows}`);
-  //   console.log(`Matching rows: ${result.matchCount}`);
-  //   expect(result.found).toBe(true);
-  // });
-
-  // test('26. Navigate to home page and verify tile content', async () => {
-  //   await sharedPage.goto('/');
-  //   await homePage.waitForDashboard();
-
-  //   await expect(homePage.groupHeader(homePage.merchandisingGroup)).toHaveText('Merchandising Process');
-  //   await expect(homePage.groupHeader(homePage.productionGroup)).toHaveText('Production Process');
-  //   await expect(homePage.groupHeader(homePage.otherGroup)).toHaveText('Other');
-  //   await expect(homePage.groupHeader(homePage.mastersGroup)).toHaveText('Masters & Sub Masters');
-
-  //   await expect(homePage.tile(homePage.merchandisingGroup, 'Buyer PO Upload')).toBeVisible();
-  //   await expect(homePage.tile(homePage.mastersGroup, 'Segment Master')).toBeVisible();
-  // });
-
-  // test('27. Click on Segment Master tile and verify navigation', async () => {
-  //   const segmentMasterTile = homePage.tile(homePage.mastersGroup, 'Segment Master');
-  //   await expect(segmentMasterTile).toBeVisible();
-  //   await segmentMasterTile.click();
-  //   await sharedPage.waitForLoadState('networkidle');
-  //   await expect(sharedPage).toHaveURL(/apperalsegmentmaster/);
-  // });
-
-  // test('28. Click Create button on Segment Master list', async () => {
-  //   segmentMasterPage = new SegmentMasterPage(sharedPage);
-  //   await expect(segmentMasterPage.listCreateButton).toBeVisible({ timeout: 30000 });
-  //   await segmentMasterPage.clickCreateButton();
-  // });
-
-  // test('29. Enter name in Segment Master Create form', async () => {
-  //   segmentMasterCreatePage = new SegmentMasterCreate(sharedPage);
-  //   await segmentMasterCreatePage.waitForFormLoad();
-  //   await segmentMasterCreatePage.fillName(segmentMasterData.name);
-  //   const entered = await segmentMasterCreatePage.nameInput.inputValue();
-  //   expect(entered).toBe(segmentMasterData.name);
-  //   console.log(`Segment Master name entered: ${entered}`);
-  // });
-
-  // test('29b. Add all segment line items', async () => {
-  //   await expect(segmentMasterCreatePage.lineItemCreateButton).toBeVisible({ timeout: 10000 });
-  //   await segmentMasterCreatePage.fillAllLineItemRows(segmentMasterData.segments);
-  //   console.log(`Filled ${segmentMasterData.segments.length} segment line item(s)`);
-  // });
-
-  // test('29c. Save Segment Master record', async () => {
-  //   const segmentMasterTestDataPath = path.join(__dirname, '../testData/SegmentMaster/test-data.json');
-  //   await segmentMasterCreatePage.captureAndSaveFormData(segmentMasterTestDataPath);
-  //   await segmentMasterCreatePage.clickSaveButton();
-  //   await expect(sharedPage).toHaveURL(/apperalsegmentmaster/);
-  // });
-
-  // test('30. Navigate to home page and verify tile order', async () => {
-  //   await sharedPage.goto('/');
-  //   await homePage.waitForDashboard();
-  // });
-
-  // test('31. Verify Masters & Sub Masters tiles are displayed in correct order', async () => {
-  //   await expect(homePage.tile(homePage.mastersGroup, 'Segment Master')).toBeVisible();
-  //   await expect(homePage.tile(homePage.mastersGroup, 'Routing Plan')).toBeVisible();
-  // });
-
-  // test('32. Click on Routing Plan tile', async () => {
-  //   await homePage.clickRoutingPlanTile();
-  //   await sharedPage.waitForLoadState('networkidle');
-  // });
-
-  // test('33. Click Create button in Routing Plan', async () => {
-  //   routingPlanPage = new RoutingPlanPage(sharedPage);
-  //   await routingPlanPage.waitForPageLoad();
-  //   await routingPlanPage.clickCreateButton();
-  // });
-
-  // test('34. Wait for Routing Plan create form to load', async () => {
-  //   await routingPlanPage.waitForCreateFormLoad();
-  // });
-
-  // test('35. Fill Routing Plan Name', async () => {
-  //   await routingPlanPage.fillRoutingPlanName(routingPlanData.routingPlanName);
-  //   const enteredName = await routingPlanPage.routingPlanNameInput.inputValue();
-  //   expect(enteredName).toBe(routingPlanData.routingPlanName);
-  // });
-
-  // test('36. Fill Routing Plan Detail Rows', async () => {
-  //   // Reinitialize page objects as they may be undefined if test ran independently
-  //   routingPlanPage = new RoutingPlanPage(sharedPage);
-
-  //   // Ensure we're on the routing plan create form
-  //   try {
-  //     await routingPlanPage.waitForCreateFormLoad();
-  //   } catch {
-  //     // If form not loaded, navigate back to routing plan
-  //     homePage = new HomePage(sharedPage);
-  //     await homePage.clickRoutingPlanTile();
-  //     await sharedPage.waitForLoadState('networkidle');
-  //     await routingPlanPage.waitForPageLoad();
-  //     await routingPlanPage.clickCreateButton();
-  //     await routingPlanPage.waitForCreateFormLoad();
-  //   }
-
-  //   routingPlanCreate = new RoutingPlanCreate(sharedPage);
-  //   await routingPlanCreate.fillRoutingPlanDetailRows(routingPlanData.details);
-  //   console.log(`Filled ${routingPlanData.details.length} routing plan detail rows`);
-  // });
-
-  // test('37. Save Routing Plan', async () => {
-  //   // Reinitialize page objects as they may be undefined
-  //   routingPlanPage = new RoutingPlanPage(sharedPage);
-  //   routingPlanCreate = new RoutingPlanCreate(sharedPage);
-
-  //   // Ensure we're on the create form
-  //   try {
-  //     await routingPlanPage.waitForCreateFormLoad();
-  //   } catch {
-  //     // If form not loaded, navigate back
-  //     homePage = new HomePage(sharedPage);
-  //     await homePage.clickRoutingPlanTile();
-  //     await sharedPage.waitForLoadState('networkidle');
-  //     await routingPlanPage.waitForPageLoad();
-  //     await routingPlanPage.clickCreateButton();
-  //     await routingPlanPage.waitForCreateFormLoad();
-  //   }
-
-  //   // Capture and save routing plan data before saving
-  //   const testDataPath = path.join(__dirname, '..', 'testData', 'RoutingPlan', 'RoutingPlan.json');
-  //   await routingPlanCreate.captureAndSaveFormData(testDataPath);
-
-  //   await routingPlanPage.clickSaveButton();
-  // });
-
-  // test('38. Navigate to home page from Routing Plan', async () => {
-  //   // Navigate back to home page
-  //   await sharedPage.goto('http://kgntest.ddns.net:4005/launchpadPage.html?sap-ushell-config=lean#Shell-home');
-  //   await sharedPage.waitForLoadState('networkidle');
-
-  //   homePage = new HomePage(sharedPage);
-  //   await homePage.waitForDashboard();
-  // });
-
-  // test('39. Click on Vendor Merchandiser tile', async () => {
-  //   homePage = new HomePage(sharedPage);
-  //   await homePage.clickVendorMerchandiserTile();
-  //   await sharedPage.waitForLoadState('networkidle');
-  // });
-
-  // test('40. Wait for Vendor page to load', async () => {
-  //   const vendorPage = new VendorPage(sharedPage);
-  //   await vendorPage.waitForPageLoad();
-  // });
-
-  // test('41. Click Create button in Vendor', async () => {
-  //   vendorPage = new VendorPage(sharedPage);
-  //   await vendorPage.clickCreateButton();
-  // });
-
-  // test('42. Fill Vendor Form and Save', async () => {
-  //   vendorCreatePage = new VendorCreate(sharedPage);
-  //   await vendorCreatePage.waitForFormLoad();
-
-  //   // Fill vendor name
-  //   await vendorCreatePage.fillVendorName(vendorData.vendorName);
-  //   const enteredName = await vendorCreatePage.vendorNameInput.inputValue();
-  //   expect(enteredName).toBe(vendorData.vendorName);
-
-  //   // Fill vendor status
-  //   await vendorCreatePage.fillStatus(vendorData.status);
-  //   const enteredStatus = await vendorCreatePage.statusInput.inputValue();
-  //   expect(enteredStatus).toBe(vendorData.status);
-
-  //   console.log(`Filled vendor form: Name="${vendorData.vendorName}", Status="${vendorData.status}"`);
-
-  //   // Capture and save vendor data before saving
-  //   const testDataPath = path.join(__dirname, '..', 'testData', 'Vendor', 'Vendor.json');
-  //   await vendorCreatePage.captureAndSaveFormData(testDataPath);
-
-  //   // Save the vendor record
-  //   await vendorCreatePage.clickSaveButton();
-  //   console.log('Vendor created and saved successfully');
-  // });
-
-  // test('43. Navigate to home page from Vendor', async () => {
-  //   // Navigate back to home page
-  //   await sharedPage.goto('http://kgntest.ddns.net:4005/launchpadPage.html?sap-ushell-config=lean#Shell-home');
-  //   await sharedPage.waitForLoadState('networkidle');
-
-  //   homePage = new HomePage(sharedPage);
-  //   await homePage.waitForDashboard();
-  // });
-
-  // test('44. Click on Sub Master Branch tile', async () => {
-  //   homePage = new HomePage(sharedPage);
-  //   const subMasterBranchTile = sharedPage.locator('a[href*="apperalsubmasterbranch-display"]');
-  //   await subMasterBranchTile.click();
-  //   await sharedPage.waitForLoadState('networkidle');
-  // });
-
-
-  // test('45. Wait for Sub Master Branch page to load', async () => {
-  //   // Wait for the Sub Master Branch list page to load
-  //   await sharedPage.waitForLoadState('networkidle');
-  //   const pageContent = sharedPage.locator('[class*="sapMPage"], [role="main"]').first();
-  //   await pageContent.waitFor({ state: 'visible', timeout: 30000 });
-  //   console.log('Sub Master Branch page loaded successfully');
-  // });
-
-  // test('46. Wait for Sub Master Branch page to fully load', async () => {
-  //   subMasterBranchPage = new SubMasterBranchPage(sharedPage);
-  //   await subMasterBranchPage.waitForPageLoad();
-  // });
-
-  // test('47. Click Create button in Sub Master Branch', async () => {
-  //   subMasterBranchPage = new SubMasterBranchPage(sharedPage);
-  //   await subMasterBranchPage.clickCreateButton();
-  // });
-
-  // test('48. Fill Sub Master Branch Form and Save', async () => {
-  //   subMasterBranchCreatePage = new SubMasterBranchCreate(sharedPage);
-  //   await subMasterBranchCreatePage.waitForFormLoad();
-
-  //   // Fill branch code
-  //   await subMasterBranchCreatePage.fillBranchCode(subMasterBranchData.branchCode);
-  //   const enteredCode = await subMasterBranchCreatePage.branchCodeInput.inputValue();
-  //   expect(enteredCode).toBe(subMasterBranchData.branchCode);
-
-  //   // Fill branch name
-  //   await subMasterBranchCreatePage.fillBranchName(subMasterBranchData.branchName);
-  //   const enteredName = await subMasterBranchCreatePage.branchNameInput.inputValue();
-  //   expect(enteredName).toBe(subMasterBranchData.branchName);
-
-  //   // Fill status
-  //   await subMasterBranchCreatePage.fillStatus(subMasterBranchData.status);
-  //   const enteredStatus = await subMasterBranchCreatePage.statusInput.inputValue();
-  //   expect(enteredStatus).toBe(subMasterBranchData.status);
-
-  //   console.log(`Filled Sub Master Branch form: Code="${subMasterBranchData.branchCode}", Name="${subMasterBranchData.branchName}", Status="${subMasterBranchData.status}"`);
-
-  //   // Capture and save branch data before saving
-  //   const testDataPath = path.join(__dirname, '..', 'testData', 'SubMasterBranch', 'SubMasterBranch.json');
-  //   await subMasterBranchCreatePage.captureAndSaveFormData(testDataPath);
-
-  //   // Save the branch record
-  //   await subMasterBranchCreatePage.clickSaveButton();
-  //   console.log('Sub Master Branch created and saved successfully');
-  // });
-
-  // test('49. Navigate to home page from Sub Master Branch', async () => {
-  //   // Navigate back to home page
-  //   await sharedPage.goto('http://kgntest.ddns.net:4005/launchpadPage.html?sap-ushell-config=lean#Shell-home');
-  //   await sharedPage.waitForLoadState('networkidle');
-
-  //   homePage = new HomePage(sharedPage);
-  //   await homePage.waitForDashboard();
-  // });
+  test('06. Should display all tile group headers', async () => {
+    await expect(homePage.groupHeader(homePage.merchandisingGroup)).toHaveText('Merchandising Process');
+    await expect(homePage.groupHeader(homePage.productionGroup)).toHaveText('Production Process');
+    await expect(homePage.groupHeader(homePage.otherGroup)).toHaveText('Other');
+    await expect(homePage.groupHeader(homePage.mastersGroup)).toHaveText('Masters & Sub Masters');
+  });
+
+  test('07. Should display Merchandising Process tiles', async () => {
+    const group = homePage.merchandisingGroup;
+    await expect(homePage.tile(group, 'Buyer PO Upload')).toBeVisible();
+    await expect(homePage.tile(group, 'Style Master')).toBeVisible();
+    await expect(homePage.tile(group, 'Trim Allocation')).toBeVisible();
+    await expect(homePage.tile(group, 'Bill Of Material')).toBeVisible();
+    await expect(homePage.tile(group, 'Cost Sheet')).toBeVisible();
+    await expect(homePage.tile(group, 'ERP Post')).toBeVisible();
+    await expect(homePage.tile(group, 'Lay Sheet')).toBeVisible();
+  });
+
+  test('08. Should display Production Process tiles', async () => {
+    const group = homePage.productionGroup;
+    const productionTiles = ['Master Plan', 'Gantt Chart Dashboard', 'Inspection', 'Inspection Checklist', 'QC'];
+
+    for (const tileTitle of productionTiles) {
+      const tile = homePage.tile(group, tileTitle);
+      const isVisible = await tile.isVisible({ timeout: 5000 }).catch(() => false);
+      if (!isVisible) {
+        console.log(`Production tile "${tileTitle}" not found`);
+      } else {
+        await expect(tile).toBeVisible();
+      }
+    }
+  });
+
+  test('09. Should display Other tiles', async () => {
+    const group = homePage.otherGroup;
+    await expect(homePage.tile(group, 'Number Series')).toBeVisible();
+    await expect(homePage.tile(group, 'UDO Creation')).toBeVisible();
+    await expect(homePage.tile(group, 'Count Barcode')).toBeVisible();
+    await expect(homePage.tile(group, 'Cartoons')).toBeVisible();
+    await expect(homePage.tile(group, 'Inventory Transfer')).toBeVisible();
+    await expect(homePage.tile(group, 'Bar Code Generator')).toBeVisible();
+    await expect(homePage.tile(group, 'Approval Stage')).toBeVisible();
+    await expect(homePage.tile(group, 'Approval Template')).toBeVisible();
+    await expect(homePage.tile(group, 'Notification')).toBeVisible();
+    await expect(homePage.tile(group, 'User & Role Management')).toBeVisible();
+  });
+
+  test('10. Should display Masters & Sub Masters tiles', async () => {
+    const group = homePage.mastersGroup;
+    await expect(homePage.tile(group, 'Segment Master')).toBeVisible();
+    await expect(homePage.tile(group, 'Season Selection Submaster')).toBeVisible();
+    await expect(homePage.tile(group, 'Routing Plan')).toBeVisible();
+  });
+
+  test('11. Click on Buyer PO Upload tile', async () => {
+    const buyerPoTile = homePage.tile(homePage.merchandisingGroup, 'Buyer PO Upload');
+    await expect(buyerPoTile).toBeVisible();
+    await buyerPoTile.click();
+    buyerPoUploadPage = new BuyerPoUploadPage(sharedPage);
+  });
+
+  test('12. Verify Buyer PO Upload page loaded', async () => {
+    await buyerPoUploadPage.waitForPageLoad();
+  });
+
+  test('13. Click Create button', async () => {
+    await expect(buyerPoUploadPage.createButton).toBeVisible();
+    await buyerPoUploadPage.clickCreateButton();
+    await sharedPage.waitForLoadState('networkidle');
+  });
+
+  test('14. Verify Buyer PO Upload form loaded', async () => {
+    buyerPoUploadFormPage = new BuyerPoUploadFormPage(sharedPage);
+    await buyerPoUploadFormPage.waitForFormLoad();
+  });
+
+  test('15. Verify form fields are visible', async () => {
+    await expect(buyerPoUploadFormPage.formContainer).toBeVisible();
+  });
+
+  test('16. Upload Excel file - PO Summary format1.xlsx', async () => {
+    await expect(buyerPoUploadFormPage.excelUploadButton).toBeVisible();
+
+    const excelFilePath = path.join(__dirname, '..', 'testData', 'Buyer_PO_Upload', 'PO Summary format1.xlsx');
+
+    if (fs.existsSync(excelFilePath)) {
+      console.log(`Uploading file: ${excelFilePath}`);
+      await buyerPoUploadFormPage.uploadExcelFile(excelFilePath);
+      await sharedPage.waitForLoadState('networkidle');
+    } else {
+      throw new Error(`Excel file not found at: ${excelFilePath}`);
+    }
+  });
+
+  test('18. Verify file upload processed', async () => {
+    await sharedPage.waitForLoadState('networkidle');
+    await sharedPage.waitForTimeout(2000);
+    console.log('File upload processed, form ready for verification');
+  });
+
+  test('19. Read Excel file and verify data loaded', async () => {
+    const excelFilePath = path.join(__dirname, '..', 'testData', 'Buyer_PO_Upload', 'PO Summary format1.xlsx');
+    const excelData = ExcelReader.readBuyerPOFile(excelFilePath);
+
+    await sharedPage.waitForTimeout(5000);
+
+    const buyerValue = await buyerPoUploadFormPage.getBuyerValue();
+    const styleNoValue = await buyerPoUploadFormPage.getStyleNoValue();
+    const styleDescValue = await buyerPoUploadFormPage.getStyleDescriptionValue();
+    const styleColorValue = await buyerPoUploadFormPage.getStyleColorValue();
+    const seasonValue = await buyerPoUploadFormPage.getSeasonValue();
+
+    console.log('Extracted Excel Data:', excelData);
+    console.log('Form Values:', { buyer: buyerValue, styleNo: styleNoValue, styleDescription: styleDescValue, styleColor: styleColorValue, season: seasonValue });
+
+    if (excelData.styleNo) {
+      expect(styleNoValue).toContain(excelData.styleNo);
+    }
+    if (excelData.styleDescription) {
+      expect(styleDescValue).toContain(excelData.styleDescription);
+    }
+    if (excelData.styleColor) {
+      expect(styleColorValue).toContain(excelData.styleColor);
+    }
+    if (excelData.season) {
+      expect(seasonValue).toContain(excelData.season);
+    }
+  });
+
+  test('20. Fill form: Select supplier, enter PO Date and Kimble Number', async () => {
+    console.log('Step 1: Opening Supplier Code value help dialog...');
+    await expect(buyerPoUploadFormPage.supplierCodeValueHelpButton).toBeVisible();
+    await buyerPoUploadFormPage.clickSupplierCodeValueHelpButton();
+    await sharedPage.waitForLoadState('networkidle');
+
+    console.log('Step 2: Selecting supplier from value help list...');
+    const supplierDescription = testData.suppliers[0].Description;
+    const supplierValue = testData.suppliers[0].Value;
+    console.log(`Selecting supplier: ${supplierDescription} (${supplierValue})`);
+
+    try {
+      await buyerPoUploadFormPage.selectSupplierByCode(supplierDescription || supplierValue);
+      console.log(`Selected supplier: ${supplierDescription}`);
+    } catch {
+      try {
+        await buyerPoUploadFormPage.selectSupplierByCode(supplierValue);
+        console.log(`Selected supplier by value: ${supplierValue}`);
+      } catch {
+        console.log('Supplier code not found, selecting first supplier instead');
+        await buyerPoUploadFormPage.selectFirstSupplierFromValueHelpList();
+      }
+    }
+
+    console.log('Step 3: Selecting PO Date from calendar...');
+    await buyerPoUploadFormPage.selectTodayFromCalendar();
+    const enteredDate = await buyerPoUploadFormPage.getPODateValue();
+    console.log(`PO Date selected: ${enteredDate}`);
+
+    console.log('Step 4: Entering Kimble Number...');
+    const kimbleNo = testData.testScenarios[0].kimbleNo.example;
+    await buyerPoUploadFormPage.enterKimbleNo(kimbleNo);
+    const enteredKimbleNo = await buyerPoUploadFormPage.getKimbleNoValue();
+    expect(enteredKimbleNo).toBe(kimbleNo);
+    console.log(`Kimble No entered: ${enteredKimbleNo}`);
+  });
+
+  test('21. Enter Remark', async () => {
+    const remark = testData.testScenarios[0].remark.example;
+    await buyerPoUploadFormPage.enterRemark(remark);
+    const enteredRemark = await buyerPoUploadFormPage.getRemarkValue();
+    expect(enteredRemark).toContain(remark);
+  });
+
+  test('22. Fill in all line item details (Delivery No, Dates)', async () => {
+    const lineItems = testData.testScenarios[0].lineItems;
+    await buyerPoUploadFormPage.fillLineItemDetailsInTable(lineItems);
+  });
+
+  test('22b. Capture all entered form data and save to buyerPO.json', async () => {
+    const formData = await buyerPoUploadFormPage.captureAllFormData();
+    console.log('Captured form data:', JSON.stringify(formData, null, 2));
+
+    const outputPath = path.join(__dirname, '../testData/Buyer_PO_Upload/buyerPO.json');
+    fs.writeFileSync(outputPath, JSON.stringify(formData, null, 2));
+    console.log(`Form data saved to ${outputPath}`);
+  });
+
+  test('23. Click Save/Create button to save the form', async () => {
+    await buyerPoUploadFormPage.clickSaveCreateButton();
+  });
+
+  test('24. Capture all line item details and update test data JSON', async () => {
+    const capturedLineItems = await buyerPoUploadFormPage.captureLineItemsWithAllDetails();
+    console.log('Captured Line Items:', JSON.stringify(capturedLineItems, null, 2));
+
+    const validItems = capturedLineItems.filter((item: any) => item.partNo && item.deliveryNo);
+    expect(validItems.length).toBeGreaterThan(0);
+    console.log(`Captured ${validItems.length} line items with complete data`);
+
+    testData.testScenarios[0].lineItems = validItems.map((item: any) => ({
+      poNo: item.poNo,
+      countryCode: item.countryCode,
+      partNo: item.partNo,
+      qty: item.qty,
+      deliveryDate: item.deliveryDate,
+      pcdDate: item.pcdDate,
+      fobDate: item.fobDate,
+      deliveryNo: item.deliveryNo,
+    }));
+
+    const updatedTestDataPath = path.join(__dirname, '../testData/Buyer_PO_Upload/test-data.json');
+    fs.writeFileSync(updatedTestDataPath, JSON.stringify(testData, null, 2));
+    console.log('Test data JSON updated with actual delivery numbers and values');
+  });
+
+  test('25. Verify saved record appears in the Buyer PO Upload list', async () => {
+    await buyerPoUploadFormPage.navigateBackToList();
+
+    const buyerPOPath = path.join(__dirname, '../testData/Buyer_PO_Upload/buyerPO.json');
+    const buyerPOData = JSON.parse(fs.readFileSync(buyerPOPath, 'utf-8'));
+
+    const supplierCode = buyerPOData.header.supplierCode;
+    const styleNo = buyerPOData.header.styleNo;
+    const season = buyerPOData.header.season;
+
+    console.log('Verifying record with:', { supplierCode, styleNo, season });
+
+    const result = await buyerPoUploadFormPage.verifyRecordInListTable({ supplierCode, styleNo, season });
+
+    console.log(`Total rows in list: ${result.totalRows}`);
+    console.log(`Matching rows: ${result.matchCount}`);
+    expect(result.found).toBe(true);
+  });
+
+  test('26. Navigate to home page and verify tile content', async () => {
+    await sharedPage.goto('/');
+    await homePage.waitForDashboard();
+
+    await expect(homePage.groupHeader(homePage.merchandisingGroup)).toHaveText('Merchandising Process');
+    await expect(homePage.groupHeader(homePage.productionGroup)).toHaveText('Production Process');
+    await expect(homePage.groupHeader(homePage.otherGroup)).toHaveText('Other');
+    await expect(homePage.groupHeader(homePage.mastersGroup)).toHaveText('Masters & Sub Masters');
+
+    await expect(homePage.tile(homePage.merchandisingGroup, 'Buyer PO Upload')).toBeVisible();
+    await expect(homePage.tile(homePage.mastersGroup, 'Segment Master')).toBeVisible();
+  });
+
+  test('27. Click on Segment Master tile and verify navigation', async () => {
+    const segmentMasterTile = homePage.tile(homePage.mastersGroup, 'Segment Master');
+    await expect(segmentMasterTile).toBeVisible();
+    await segmentMasterTile.click();
+    await sharedPage.waitForLoadState('networkidle');
+    await expect(sharedPage).toHaveURL(/apperalsegmentmaster/);
+  });
+
+  test('28. Click Create button on Segment Master list', async () => {
+    segmentMasterPage = new SegmentMasterPage(sharedPage);
+    await expect(segmentMasterPage.listCreateButton).toBeVisible({ timeout: 30000 });
+    await segmentMasterPage.clickCreateButton();
+  });
+
+  test('29. Enter name in Segment Master Create form', async () => {
+    segmentMasterCreatePage = new SegmentMasterCreate(sharedPage);
+    await segmentMasterCreatePage.waitForFormLoad();
+    await segmentMasterCreatePage.fillName(segmentMasterData.name);
+    const entered = await segmentMasterCreatePage.nameInput.inputValue();
+    expect(entered).toBe(segmentMasterData.name);
+    console.log(`Segment Master name entered: ${entered}`);
+  });
+
+  test('29b. Add all segment line items', async () => {
+    await expect(segmentMasterCreatePage.lineItemCreateButton).toBeVisible({ timeout: 10000 });
+    await segmentMasterCreatePage.fillAllLineItemRows(segmentMasterData.segments);
+    console.log(`Filled ${segmentMasterData.segments.length} segment line item(s)`);
+  });
+
+  test('29c. Save Segment Master record', async () => {
+    const segmentMasterTestDataPath = path.join(__dirname, '../testData/SegmentMaster/test-data.json');
+    await segmentMasterCreatePage.captureAndSaveFormData(segmentMasterTestDataPath);
+    await segmentMasterCreatePage.clickSaveButton();
+    await expect(sharedPage).toHaveURL(/apperalsegmentmaster/);
+  });
+
+  test('30. Navigate to home page and verify tile order', async () => {
+    await sharedPage.goto('/');
+    await homePage.waitForDashboard();
+  });
+
+  test('31. Verify Masters & Sub Masters tiles are displayed in correct order', async () => {
+    await expect(homePage.tile(homePage.mastersGroup, 'Segment Master')).toBeVisible();
+    await expect(homePage.tile(homePage.mastersGroup, 'Routing Plan')).toBeVisible();
+  });
+
+  test('32. Click on Routing Plan tile', async () => {
+    await homePage.clickRoutingPlanTile();
+    await sharedPage.waitForLoadState('networkidle');
+  });
+
+  test('33. Click Create button in Routing Plan', async () => {
+    routingPlanPage = new RoutingPlanPage(sharedPage);
+    await routingPlanPage.waitForPageLoad();
+    await routingPlanPage.clickCreateButton();
+  });
+
+  test('34. Wait for Routing Plan create form to load', async () => {
+    await routingPlanPage.waitForCreateFormLoad();
+  });
+
+  test('35. Fill Routing Plan Name', async () => {
+    await routingPlanPage.fillRoutingPlanName(routingPlanData.routingPlanName);
+    const enteredName = await routingPlanPage.routingPlanNameInput.inputValue();
+    expect(enteredName).toBe(routingPlanData.routingPlanName);
+  });
+
+  test('36. Fill Routing Plan Detail Rows', async () => {
+    // Reinitialize page objects as they may be undefined if test ran independently
+    routingPlanPage = new RoutingPlanPage(sharedPage);
+
+    // Ensure we're on the routing plan create form
+    try {
+      await routingPlanPage.waitForCreateFormLoad();
+    } catch {
+      // If form not loaded, navigate back to routing plan
+      homePage = new HomePage(sharedPage);
+      await homePage.clickRoutingPlanTile();
+      await sharedPage.waitForLoadState('networkidle');
+      await routingPlanPage.waitForPageLoad();
+      await routingPlanPage.clickCreateButton();
+      await routingPlanPage.waitForCreateFormLoad();
+    }
+
+    routingPlanCreate = new RoutingPlanCreate(sharedPage);
+    await routingPlanCreate.fillRoutingPlanDetailRows(routingPlanData.details);
+    console.log(`Filled ${routingPlanData.details.length} routing plan detail rows`);
+  });
+
+  test('37. Save Routing Plan', async () => {
+    // Reinitialize page objects as they may be undefined
+    routingPlanPage = new RoutingPlanPage(sharedPage);
+    routingPlanCreate = new RoutingPlanCreate(sharedPage);
+
+    // Ensure we're on the create form
+    try {
+      await routingPlanPage.waitForCreateFormLoad();
+    } catch {
+      // If form not loaded, navigate back
+      homePage = new HomePage(sharedPage);
+      await homePage.clickRoutingPlanTile();
+      await sharedPage.waitForLoadState('networkidle');
+      await routingPlanPage.waitForPageLoad();
+      await routingPlanPage.clickCreateButton();
+      await routingPlanPage.waitForCreateFormLoad();
+    }
+
+    // Capture and save routing plan data before saving
+    const testDataPath = path.join(__dirname, '..', 'testData', 'RoutingPlan', 'RoutingPlan.json');
+    await routingPlanCreate.captureAndSaveFormData(testDataPath);
+
+    await routingPlanPage.clickSaveButton();
+  });
+
+  test('38. Navigate to home page from Routing Plan', async () => {
+    // Navigate back to home page
+    await sharedPage.goto('http://kgntest.ddns.net:4005/launchpadPage.html?sap-ushell-config=lean#Shell-home');
+    await sharedPage.waitForLoadState('networkidle');
+
+    homePage = new HomePage(sharedPage);
+    await homePage.waitForDashboard();
+  });
+
+  test('39. Click on Vendor Merchandiser tile', async () => {
+    homePage = new HomePage(sharedPage);
+    await homePage.clickVendorMerchandiserTile();
+    await sharedPage.waitForLoadState('networkidle');
+  });
+
+  test('40. Wait for Vendor page to load', async () => {
+    const vendorPage = new VendorPage(sharedPage);
+    await vendorPage.waitForPageLoad();
+  });
+
+  test('41. Click Create button in Vendor', async () => {
+    vendorPage = new VendorPage(sharedPage);
+    await vendorPage.clickCreateButton();
+  });
+
+  test('42. Fill Vendor Form and Save', async () => {
+    vendorCreatePage = new VendorCreate(sharedPage);
+    await vendorCreatePage.waitForFormLoad();
+
+    // Fill vendor name
+    await vendorCreatePage.fillVendorName(vendorData.vendorName);
+    const enteredName = await vendorCreatePage.vendorNameInput.inputValue();
+    expect(enteredName).toBe(vendorData.vendorName);
+
+    // Fill vendor status
+    await vendorCreatePage.fillStatus(vendorData.status);
+    const enteredStatus = await vendorCreatePage.statusInput.inputValue();
+    expect(enteredStatus).toBe(vendorData.status);
+
+    console.log(`Filled vendor form: Name="${vendorData.vendorName}", Status="${vendorData.status}"`);
+
+    // Capture and save vendor data before saving
+    const testDataPath = path.join(__dirname, '..', 'testData', 'Vendor', 'Vendor.json');
+    await vendorCreatePage.captureAndSaveFormData(testDataPath);
+
+    // Save the vendor record
+    await vendorCreatePage.clickSaveButton();
+    console.log('Vendor created and saved successfully');
+  });
+
+  test('43. Navigate to home page from Vendor', async () => {
+    // Navigate back to home page
+    await sharedPage.goto('http://kgntest.ddns.net:4005/launchpadPage.html?sap-ushell-config=lean#Shell-home');
+    await sharedPage.waitForLoadState('networkidle');
+
+    homePage = new HomePage(sharedPage);
+    await homePage.waitForDashboard();
+  });
+
+  test('44. Click on Sub Master Branch tile', async () => {
+    homePage = new HomePage(sharedPage);
+    await homePage.clickSubMasterBranchTile();
+    await sharedPage.waitForLoadState('networkidle');
+  });
+
+
+  test('45. Wait for Sub Master Branch page to load', async () => {
+    // Wait for the Sub Master Branch list page to load
+    await sharedPage.waitForLoadState('networkidle');
+    const pageContent = sharedPage.locator('[class*="sapMPage"], [role="main"]').first();
+    await pageContent.waitFor({ state: 'visible', timeout: 30000 });
+    console.log('Sub Master Branch page loaded successfully');
+  });
+
+  test('46. Wait for Sub Master Branch page to fully load', async () => {
+    subMasterBranchPage = new SubMasterBranchPage(sharedPage);
+    await subMasterBranchPage.waitForPageLoad();
+  });
+
+  test('47. Click Create button in Sub Master Branch', async () => {
+    subMasterBranchPage = new SubMasterBranchPage(sharedPage);
+    await subMasterBranchPage.clickCreateButton();
+  });
+
+  test('48. Fill Sub Master Branch Form and Save', async () => {
+    subMasterBranchCreatePage = new SubMasterBranchCreate(sharedPage);
+    await subMasterBranchCreatePage.waitForFormLoad();
+
+    // Fill branch code
+    await subMasterBranchCreatePage.fillBranchCode(subMasterBranchData.branchCode);
+    const enteredCode = await subMasterBranchCreatePage.branchCodeInput.inputValue();
+    expect(enteredCode).toBe(subMasterBranchData.branchCode);
+
+    // Fill branch name
+    await subMasterBranchCreatePage.fillBranchName(subMasterBranchData.branchName);
+    const enteredName = await subMasterBranchCreatePage.branchNameInput.inputValue();
+    expect(enteredName).toBe(subMasterBranchData.branchName);
+
+    // Fill status
+    await subMasterBranchCreatePage.fillStatus(subMasterBranchData.status);
+    const enteredStatus = await subMasterBranchCreatePage.statusInput.inputValue();
+    expect(enteredStatus).toBe(subMasterBranchData.status);
+
+    console.log(`Filled Sub Master Branch form: Code="${subMasterBranchData.branchCode}", Name="${subMasterBranchData.branchName}", Status="${subMasterBranchData.status}"`);
+
+    // Capture and save branch data before saving
+    const testDataPath = path.join(__dirname, '..', 'testData', 'SubMasterBranch', 'SubMasterBranch.json');
+    await subMasterBranchCreatePage.captureAndSaveFormData(testDataPath);
+
+    // Save the branch record
+    await subMasterBranchCreatePage.clickSaveButton();
+    console.log('Sub Master Branch created and saved successfully');
+  });
+
+  test('49. Navigate to home page from Sub Master Branch', async () => {
+    // Navigate back to home page
+    await sharedPage.goto('http://kgntest.ddns.net:4005/launchpadPage.html?sap-ushell-config=lean#Shell-home');
+    await sharedPage.waitForLoadState('networkidle');
+
+    homePage = new HomePage(sharedPage);
+    await homePage.waitForDashboard();
+  });
 
   test('50. Click on Style Master tile', async () => {
     homePage = new HomePage(sharedPage);

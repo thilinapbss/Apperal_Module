@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testcase name="Test Payment Gateway Integration" classname="com.example.tests.PaymentTests" time="0">
+  <properties>
+    <property name="allure.label.suite" value="Payment"/>
+    <property name="allure.label.feature" value="Checkout"/>
+    <property name="allure.label.story" value="Process payment with credit card"/>
+    <property name="allure.label.severity" value="critical"/>
+  </properties>
+  <skipped message="Payment gateway service is down for maintenance">Test skipped due to external service unavailability</skipped>
+  <system-out>Test execution started
+Attempting to connect to payment gateway API
+Payment gateway service is currently unavailable
+Test skipped - will retry after maintenance window</system-out>
+</testcase>

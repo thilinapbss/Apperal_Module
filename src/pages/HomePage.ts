@@ -45,4 +45,9 @@ export class HomePage {
     const vendorTile = this.page.locator('a[href*="apperalvendor-display"]');
     await vendorTile.click();
   }
+
+  async clickSubMasterBranchTile() {
+    const subMasterBranchTile = this.page.locator('a[href*="apperalsubmasterbranch-display"]');
+    await subMasterBranchTile.click();
+  }
 }

@@ -31,32 +31,32 @@
         {
           "poNo": "PONO",
           "countryCode": "UK",
-          "partNo": "S",
-          "qty": "600.00",
-          "deliveryDate": "May 21, 2026",
-          "pcdDate": "May 21, 2026",
-          "fobDate": "May 21, 2026",
-          "deliveryNo": "DLV-0521-1313-001"
+          "partNo": "M",
+          "qty": "500.00",
+          "deliveryDate": "Jun 18, 2026",
+          "pcdDate": "Jun 18, 2026",
+          "fobDate": "Jun 18, 2026",
+          "deliveryNo": "DLV-0618-1347-001"
         },
         {
           "poNo": "PONO",
           "countryCode": "UK",
-          "partNo": "M",
-          "qty": "500.00",
-          "deliveryDate": "May 21, 2026",
-          "pcdDate": "May 21, 2026",
-          "fobDate": "May 21, 2026",
-          "deliveryNo": "DLV-0521-1313-002"
+          "partNo": "S",
+          "qty": "600.00",
+          "deliveryDate": "Jun 18, 2026",
+          "pcdDate": "Jun 18, 2026",
+          "fobDate": "Jun 18, 2026",
+          "deliveryNo": "DLV-0618-1347-002"
         },
         {
           "poNo": "PONO",
           "countryCode": "UK",
           "partNo": "L",
           "qty": "500.00",
-          "deliveryDate": "May 21, 2026",
-          "pcdDate": "May 21, 2026",
-          "fobDate": "May 21, 2026",
-          "deliveryNo": "DLV-0521-1313-003"
+          "deliveryDate": "Jun 18, 2026",
+          "pcdDate": "Jun 18, 2026",
+          "fobDate": "Jun 18, 2026",
+          "deliveryNo": "DLV-0618-1347-003"
         }
       ]
     }

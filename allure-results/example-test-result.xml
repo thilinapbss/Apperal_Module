@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testcase name="Test Login Functionality" classname="com.example.tests.AuthenticationTests" time="2.543">
+  <properties>
+    <property name="allure.label.suite" value="Authentication"/>
+    <property name="allure.label.feature" value="User Login"/>
+    <property name="allure.label.story" value="Successful login with valid credentials"/>
+    <property name="allure.label.severity" value="critical"/>
+  </properties>
+  <system-out>Test execution started
+Login form loaded successfully
+Username entered: testuser@example.com
+Password entered successfully
+Submit button clicked
+Redirected to dashboard
+Test completed successfully</system-out>
+</testcase>

@@ -32,11 +32,11 @@ export default defineConfig({
   
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: 'http://kgntest.ddns.net:4005/',
+    baseURL: process.env.BASE_URL || 'http://localhost:3000/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    
+
     navigationTimeout: 90000,
     actionTimeout: 30000,
   },

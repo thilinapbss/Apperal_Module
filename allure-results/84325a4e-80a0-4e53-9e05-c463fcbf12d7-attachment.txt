@@ -1,0 +1,54 @@
+  ✗ Error processing allocation: TimeoutError: locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('table[id*="StyleTreeTable--styleTreeTable-table"] tbody').locator('tr[role="row"]').nth(1).locator('td[data-sap-ui-colid*="styleTreeColQuantity"]').first().locator('input[type="text"]').first()
+    - locator resolved to <input value="" type="text" autocomplete="off" class="sapMInputBaseInner" aria-labelledby="apperal.stylemaster::StyleMasterObjectPage--fe::CustomSubSection::StyleTreeTable--styleTreeColQuantity" id="apperal.stylemaster::StyleMasterObjectPage--fe::CustomSubSection::StyleTreeTable--styleTreeInpQuantity-__clone103-inner"/>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    39 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+
+  ✗ Error processing allocation: TimeoutError: locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('table[id*="StyleTreeTable--styleTreeTable-table"] tbody').locator('tr[role="row"]').nth(2).locator('td[data-sap-ui-colid*="styleTreeColQuantity"]').first().locator('input[type="text"]').first()
+    - locator resolved to <input value="" type="text" autocomplete="off" class="sapMInputBaseInner" aria-labelledby="apperal.stylemaster::StyleMasterObjectPage--fe::CustomSubSection::StyleTreeTable--styleTreeColQuantity" id="apperal.stylemaster::StyleMasterObjectPage--fe::CustomSubSection::StyleTreeTable--styleTreeInpQuantity-__clone105-inner"/>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    43 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+
+  ✗ Error processing allocation: TimeoutError: locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('table[id*="StyleTreeTable--styleTreeTable-table"] tbody').locator('tr[role="row"]').nth(3).locator('td[data-sap-ui-colid*="styleTreeColQuantity"]').first().locator('input[type="text"]').first()
+    - locator resolved to <input value="" type="text" autocomplete="off" class="sapMInputBaseInner" aria-labelledby="apperal.stylemaster::StyleMasterObjectPage--fe::CustomSubSection::StyleTreeTable--styleTreeColQuantity" id="apperal.stylemaster::StyleMasterObjectPage--fe::CustomSubSection::StyleTreeTable--styleTreeInpQuantity-__clone107-inner"/>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    43 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+

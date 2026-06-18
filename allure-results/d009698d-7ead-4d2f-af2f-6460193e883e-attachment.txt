@@ -1,0 +1,3 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+Routing plan data captured and saved to C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\RoutingPlan\RoutingPlan.json
