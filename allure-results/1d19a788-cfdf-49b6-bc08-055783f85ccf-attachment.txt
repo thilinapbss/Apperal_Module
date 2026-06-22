@@ -1,0 +1,72 @@
+
+📁 Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+Attempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+Waiting for 1 busy indicators to disappear...
+Clicking Excel Upload button
+✓ Excel Upload button clicked
+File chooser triggered, setting files
+✓ File uploaded successfully
+
+✅ ===== FILE UPLOADED SUCCESSFULLY =====
+✓ File: PO Summary format Multiple.xlsx
+✓ Upload Status: COMPLETED
+✓ Processing: IN PROGRESS
+=========================================
+
+
+📊 ===== LINE ITEMS CAPTURE =====
+📌 Table Title: Details (3)
+📌 Expected rows: 3
+📌 Table selection cleared
+
+🔄 Capturing rows line by line (ArrowDown → Capture all visible):
+
+⬇️  Row 1/3 - Pressing Down arrow key...
+⏳ Waiting 3 seconds for row to load...
+   Found 5 visible rows, capturing new ones...
+
+   ✓ New Row 1: PONO | UK | L | 500.00
+   ✓ New Row 2: PONO | UK | M | 500.00
+   ✓ New Row 3: PONO | UK | S | 600.00
+⬇️  Row 2/3 - Pressing Down arrow key...
+⏳ Waiting 3 seconds for row to load...
+   Found 5 visible rows, capturing new ones...
+
+⬇️  Row 3/3 - Pressing Down arrow key...
+⏳ Waiting 3 seconds for row to load...
+   Found 5 visible rows, capturing new ones...
+
+
+✅ LINE ITEMS CAPTURE COMPLETE
+Total rows captured: 3/3
+Status: ✅ SUCCESS - All 3 rows captured
+
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+📋 ALL CAPTURED LINE ITEMS (3/3)
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+Row # | PO No        | Country | Part No    | Qty        | Total      | Delivery No     | Delivery Date   | PCD Date        | FOB Date
+──────┼──────────────┼─────────┼────────────┼────────────┼────────────┼─────────────────┼─────────────────┼─────────────────┼──────────────
+1    | PONO         | UK      | L          | 500.00     | 1,600.00   |                 |                 |                 |           
+2    | PONO         | UK      | M          | 500.00     | 1,600.00   |                 |                 |                 |           
+3    | PONO         | UK      | S          | 600.00     | 1,600.00   |                 |                 |                 |           
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+✓ Line Items Summary:
+  • Total Rows Captured: 3
+  • Expected Rows: 3
+  • Status: ✅ COMPLETE
+
+
+📝 Filling date input fields for each line item...
+
+📋 Filling date details for 3 line items from test-data.json
+  ✓ Row 1: DeliveryNo = "DLV-0622-1624-001"
+  ✓ Row 1: DeliveryDate = "2026-06-01"
+  ✓ Row 1: PCD_Date = "2026-05-15"
+  ✓ Row 1: FOB_Date = "2026-05-20"
+  ✓ Row 2: DeliveryNo = "DLV-0622-1625-002"
+  ✓ Row 2: DeliveryDate = "2026-06-01"
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

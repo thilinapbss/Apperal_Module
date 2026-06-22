@@ -1,0 +1,5 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

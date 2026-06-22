@@ -1,0 +1,2 @@
+Not on dashboard — attempting to navigate back
+✓ Cleanup after last test: cleared all session data

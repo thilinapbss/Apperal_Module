@@ -1,0 +1,10 @@
+Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\buyerPO.json
+Attempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\buyerPO.json
+Clicking Excel Upload button
+File chooser triggered, setting files
+✓ File uploaded successfully
+✓ Alert displayed: "No valid data was found in the Ratio or Solid sections."
+✓ Alert verified: "No valid data was found in the Ratio or Solid sections."
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

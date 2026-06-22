@@ -1,0 +1,3 @@
+Session lost — re-logging in...
+Re-login successful, resumed from home page
+✓ Cleanup after last test: cleared all session data

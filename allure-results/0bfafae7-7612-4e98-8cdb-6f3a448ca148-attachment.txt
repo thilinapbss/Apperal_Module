@@ -1,0 +1,2 @@
+✓ Cleared localStorage and sessionStorage
+✓ Cleanup after last test: cleared all session data

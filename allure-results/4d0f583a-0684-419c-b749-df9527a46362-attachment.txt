@@ -1,0 +1,6 @@
+📋 Initializing test suite...
+📊 Test Data Loaded: 8 datasets
+✅ Test suite ready
+🧹 Clearing cache and logging out...
+✅ Auth file cleared
+✅ Cache cleared and session terminated

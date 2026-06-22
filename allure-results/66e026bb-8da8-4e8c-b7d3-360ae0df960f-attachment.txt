@@ -1,0 +1,6 @@
+ℹ️ Not on BuyerPOUpload page, re-logging in and navigating...
+Re-login successful, resumed from home page
+✅ TC-BPO-002: Buyer PO Upload page loaded successfully
+   ✓ Page URL: http://kgntest.ddns.net:4005/launchpadPage.html#apperalbuyerpoupload-display&/?sap-iapp-state=TASEHY3MLUHO8FLH8KO2CKVKD4PUJ682WB10CO0E4
+🧹 Final cleanup: Clearing all session data...
+✅ Session data cleared - ready for next test run

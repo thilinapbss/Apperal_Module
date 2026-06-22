@@ -1,8 +1,13 @@
 import { Page, Locator } from '@playwright/test';
 import path from 'path';
+import { BasePage } from '../BasePage';
+import type { SelectionResult, FillSegmentDataResult, SelectBuyerPOItemsResult } from '../../types';
 
-export class StyleMasterCreate {
-  readonly page: Page;
+/**
+ * StyleMasterCreate - Page Object for Style Master Creation Form
+ * Extends BasePage for common SAP UI5 interaction patterns
+ */
+export class StyleMasterCreate extends BasePage {
   readonly departmentsValueHelpButton: Locator;
   readonly departmentsDropdownTable: Locator;
   readonly departmentsTableBody: Locator;
@@ -49,7 +54,7 @@ export class StyleMasterCreate {
   readonly allocationHierarchyTableBody: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.departmentsValueHelpButton = page.locator('span[id*="DataField::Departments::Field-edit-inner-vhi"]');
     this.departmentsDropdownTable = page.locator('table[id*="SuggestTable-listUl"]');
     this.departmentsTableBody = page.locator('tbody[id*="SuggestTable-tblBody"]');
@@ -103,34 +108,48 @@ export class StyleMasterCreate {
     this.allocationHierarchyTableBody = page.locator('table[id*="StyleTreeTable--styleTreeTable-table"] tbody');
   }
 
-  async waitForFormLoad() {
-    await this.departmentsValueHelpButton.waitFor({ state: 'visible', timeout: 30000 });
+  /**
+   * Wait for form to load (departments value help button must be visible)
+   */
+  async waitForFormLoad(): Promise<void> {
+    this.logAction('Waiting for form load');
+    await this.waitForElement(this.departmentsValueHelpButton, { timeout: this.WAIT_TIMEOUT_VERY_LONG });
   }
 
-  async clickDepartmentsValueHelp() {
-    await this.departmentsValueHelpButton.click();
-    await this.page.waitForLoadState('networkidle');
+  /**
+   * Click departments value help button to open dropdown
+   */
+  async clickDepartmentsValueHelp(): Promise<void> {
+    this.logAction('Opening departments dropdown');
+    await this.clickValueHelpButton(this.departmentsValueHelpButton);
   }
 
-  async waitForDropdownLoad() {
-    await this.departmentsTableBody.waitFor({ state: 'attached', timeout: 10000 });
-    await this.page.waitForTimeout(500);
-  }
-
-  async selectDepartmentByRoutingPlan(routingPlanName: string) {
-    // Find the row containing the routing plan name and click it
-    const matchingRow = this.departmentsTableBody.locator(
-      `tr[role="row"]:has(span:text("${routingPlanName}"))`
+  /**
+   * Wait for dropdown table to load after clicking value help
+   */
+  async waitForDropdownLoad(): Promise<void> {
+    this.logAction('Waiting for dropdown to load');
+    await this.waitForElements(
+      this.departmentsTableBody.locator('tr[role="row"]'),
+      1,
+      this.WAIT_TIMEOUT_LONG
     );
-    await matchingRow.click();
-    await this.page.waitForLoadState('networkidle');
   }
 
-  async selectFirstDepartment() {
-    // Click the first row in the dropdown table
-    const firstRow = this.departmentsTableBody.locator('tr[role="row"]').first();
-    await firstRow.click();
-    await this.page.waitForLoadState('networkidle');
+  /**
+   * Select department by routing plan name from dropdown
+   */
+  async selectDepartmentByRoutingPlan(routingPlanName: string): Promise<void> {
+    this.logAction('Selecting department', routingPlanName);
+    await this.selectTableRowByText(this.departmentsTableBody, routingPlanName);
+  }
+
+  /**
+   * Select first department from dropdown
+   */
+  async selectFirstDepartment(): Promise<void> {
+    this.logAction('Selecting first department');
+    await this.selectTableRowByIndex(this.departmentsTableBody, 0);
   }
 
   async clickCustomerValueHelp() {

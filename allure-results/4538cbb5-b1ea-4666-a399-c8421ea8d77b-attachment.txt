@@ -1,0 +1,3 @@
+📋 Initializing test suite...
+✅ Test suite initialized - ready to run
+✅ TC-LGN-001: Login page loads correctly

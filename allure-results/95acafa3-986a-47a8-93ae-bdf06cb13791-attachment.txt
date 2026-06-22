@@ -1,0 +1,7 @@
+Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\buyerPO.json
+Attempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\buyerPO.json
+Waiting for 1 busy indicators to disappear...
+Clicking Excel Upload button
+✓ Excel Upload button clicked
+File chooser triggered, setting files
+✓ File uploaded successfully

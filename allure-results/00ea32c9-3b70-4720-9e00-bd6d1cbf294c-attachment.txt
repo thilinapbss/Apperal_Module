@@ -1,0 +1,3 @@
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

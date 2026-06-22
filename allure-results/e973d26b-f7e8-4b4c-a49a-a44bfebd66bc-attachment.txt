@@ -1,0 +1,120 @@
+
+📁 Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+Attempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+Clicking Excel Upload button
+✓ Excel Upload button clicked
+File chooser triggered, setting files
+✓ File uploaded successfully
+
+✅ ===== FILE UPLOADED SUCCESSFULLY =====
+✓ File: PO Summary format Multiple.xlsx
+✓ Upload Status: COMPLETED
+✓ Processing: IN PROGRESS
+=========================================
+
+
+📊 ===== LINE ITEMS CAPTURE =====
+📌 Table Title: Details (3)
+📌 Expected rows: 3
+📌 Table selection cleared
+
+🔄 Capturing rows line by line (ArrowDown → Capture all visible):
+
+⬇️  Row 1/3 - Pressing Down arrow key...
+⏳ Waiting 3 seconds for row to load...
+   Found 5 visible rows, capturing new ones...
+
+   ✓ New Row 1: PONO | UK | S | 600.00
+   ✓ New Row 2: PONO | UK | L | 500.00
+   ✓ New Row 3: PONO | UK | M | 500.00
+⬇️  Row 2/3 - Pressing Down arrow key...
+⏳ Waiting 3 seconds for row to load...
+   Found 5 visible rows, capturing new ones...
+
+⬇️  Row 3/3 - Pressing Down arrow key...
+⏳ Waiting 3 seconds for row to load...
+   Found 5 visible rows, capturing new ones...
+
+
+✅ LINE ITEMS CAPTURE COMPLETE
+Total rows captured: 3/3
+Status: ✅ SUCCESS - All 3 rows captured
+
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+📋 ALL CAPTURED LINE ITEMS (3/3)
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+Row # | PO No        | Country | Part No    | Qty        | Total      | Delivery No     | Delivery Date   | PCD Date        | FOB Date
+──────┼──────────────┼─────────┼────────────┼────────────┼────────────┼─────────────────┼─────────────────┼─────────────────┼──────────────
+1    | PONO         | UK      | S          | 600.00     | 1,600.00   |                 |                 |                 |           
+2    | PONO         | UK      | L          | 500.00     | 1,600.00   |                 |                 |                 |           
+3    | PONO         | UK      | M          | 500.00     | 1,600.00   |                 |                 |                 |           
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+✓ Line Items Summary:
+  • Total Rows Captured: 3
+  • Expected Rows: 3
+  • Status: ✅ COMPLETE
+
+
+📝 Filling date input fields for each line item...
+
+📋 Filling date details for 3 line items from test-data.json
+  ✓ Row 1: DeliveryNo = "DLV-0622-1647-001"
+  ✓ Row 1: DeliveryDate = "2026-06-01"
+  ✓ Row 1: PCD_Date = "2026-05-15"
+  ✓ Row 1: FOB_Date = "2026-06-20"
+  ✓ Row 2: DeliveryNo = "DLV-0622-1647-002"
+  ✓ Row 2: DeliveryDate = "2026-06-01"
+  ✓ Row 2: PCD_Date = "2026-05-15"
+  ✓ Row 2: FOB_Date = "2026-06-20"
+  ✓ Row 3: DeliveryNo = "DLV-0622-1647-003"
+  ✓ Row 3: DeliveryDate = "2026-06-01"
+  ✓ Row 3: PCD_Date = "2026-05-15"
+  ✓ Row 3: FOB_Date = "2026-06-20"
+✓ All line item date details filled in
+
+
+📝 Filling Kimble No field...
+📝 Filling Remark field...
+📝 Selecting Currency...
+Selecting currency: LKR
+Found currency row: LKR
+⚠ Currency selection skipped: TimeoutError: locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('[role="row"][class*="sapUiTableRow"]').nth(4)
+    - locator resolved to <tr role="row" aria-rowindex="5" aria-selected="false" data-sap-ui-rowindex="3" class="sapUiTableRow sapUiTableContentRow sapUiTableTr" id="apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::FormContainer::GeneratedFacet1::FieldValueHelp::Currency::Dialog::qualifier::::Table-innerTable-rows-row3" data-sap-ui="apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::FormContainer::GeneratedFacet1::FieldValueHelp::Currency::Dialog::qualifier::::Table-innerTable-rows-row3">…</tr>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <table role="presentation" data-sap-ui-table-acc-covered="overlay,nodata" class="sapUiTableCtrlScroll sapUiTableCtrlRowScroll sapUiTableCtrl" id="apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::FormContainer::GeneratedFacet1::FieldValueHelp::Currency::Dialog::qualifier::::Table-innerTable-table">…</table> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <table role="presentation" data-sap-ui-table-acc-covered="overlay,nodata" class="sapUiTableCtrlScroll sapUiTableCtrlRowScroll sapUiTableCtrl" id="apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::FormContainer::GeneratedFacet1::FieldValueHelp::Currency::Dialog::qualifier::::Table-innerTable-table">…</table> intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    47 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <table role="presentation" data-sap-ui-table-acc-covered="overlay,nodata" class="sapUiTableCtrlScroll sapUiTableCtrlRowScroll sapUiTableCtrl" id="apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::FormContainer::GeneratedFacet1::FieldValueHelp::Currency::Dialog::qualifier::::Table-innerTable-table">…</table> intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+Buyer value (via inputValue): "Buyer 001"
+StyleNo value (via inputValue): "BUY0001"
+StyleDescription value (via inputValue): "BUY2"
+StyleColor value (via inputValue): "BUY_C2"
+Season value (via inputValue): "BUY25 SE02"
+No value found for SupplierCode
+Remark value (via inputValue): "QA Testing - Test Order"
+No value found for Currency
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

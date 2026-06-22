@@ -1,608 +1,1015 @@
+
+> apperal_module@1.0.0 test
+> playwright test e2e/apparel_regression_testing.spec.ts
+
 ◇ injected env (2) from .env // tip: ⌘ suppress logs { quiet: true }
 
-Running 3 tests using 1 worker
+Running 24 tests using 1 worker
 
 [1A[2K◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
 
-[1A[2K[1/3] [chromium] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File
-[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File
-Session lost — re-logging in...
+[1A[2K[1/24] [chromium] › e2e\apparel_regression_testing.spec.ts:257:7 › Apperal Module | Regression Test Suite › 01. TC-LGN-001: Login page loads correctly
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:257:7 › Apperal Module | Regression Test Suite › 01. TC-LGN-001: Login page loads correctly
+✅ TC-LGN-001: Login page loads correctly
 
-[1A[2KRe-login successful, resumed from home page
+[1A[2K[2/24] [chromium] › e2e\apparel_regression_testing.spec.ts:269:7 › Apperal Module | Regression Test Suite › 02. TC-LGN-001:  Should display error message on invalid credentials
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:269:7 › Apperal Module | Regression Test Suite › 02. TC-LGN-001:  Should display error message on invalid credentials
+✅ TC-LGN-002: Invalid credentials error displayed correctly
 
-[1A[2K
-════════════════════════════════════════════════════════════
+[1A[2K[3/24] [chromium] › e2e\apparel_regression_testing.spec.ts:283:7 › Apperal Module | Regression Test Suite › 03. TC-LGN-002: Should successfully login with valid credentials and save auth
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:283:7 › Apperal Module | Regression Test Suite › 03. TC-LGN-002: Should successfully login with valid credentials and save auth
+✅ TC-LGN-003: Successfully logged in and session established
 
-[1A[2K  TEST 53B: KEY IN SEGMENT DATA FROM JSON FILE
+[1A[2K[4/24] [chromium] › e2e\apparel_regression_testing.spec.ts:306:9 › Apperal Module | Regression Test Suite › 04. TC-DSH-001: Dashboard loads with all tile groups
+[1A[2K[5/24] [chromium] › e2e\apparel_regression_testing.spec.ts:341:11 › Apperal Module | Regression Test Suite › 05. TC-DSH-002 - Clicking Buyer PO Upload tile navigates to list page
+[1A[2K[6/24] [chromium] › e2e\apparel_regression_testing.spec.ts:350:11 › Apperal Module | Regression Test Suite › 06. TC-BPO-003 - Table displays correct columns User is on Buyer PO Upload list page
+[1A[2K[7/24] [chromium] › e2e\apparel_regression_testing.spec.ts:359:11 › Apperal Module | Regression Test Suite › 07. TC-BPO-004 - Clicking Create navigates to New Buyer PO Upload page
+[1A[2K[8/24] [chromium] › e2e\apparel_regression_testing.spec.ts:368:10 › Apperal Module | Regression Test Suite › 08. TC-BPO-005 - Upload PO file with multiple line items
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:368:10 › Apperal Module | Regression Test Suite › 08. TC-BPO-005 - Upload PO file with multiple line items
 
-[1A[2K════════════════════════════════════════════════════════════
+📁 Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
 
-[1A[2Kℹ Form load check skipped (may not be on form page yet)
+[1A[2KAttempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
 
+[1A[2KClicking Excel Upload button
 
-[1A[2K📄 JSON Source: testData/StyleMaster/test-data.json
+[1A[2K✓ Excel Upload button clicked
 
-[1A[2K📍 Data Path: segments → {Color, Size, Season}
+[1A[2KFile chooser triggered, setting files
 
-[1A[2K
-
-[1A[2K
-╔════════════════════════════════════════════════════════════╗
-
-[1A[2K║      FILLING SEGMENT DATA FROM JSON FILE                  ║
-
-[1A[2K║      (SEGMENT → SECTION → ROW → CELL)                     ║
-
-[1A[2K╚════════════════════════════════════════════════════════════╝
-
-
-[1A[2K
-┌─ SEGMENT: COLOR
-
-[1A[2K│  Source: test-data.json → segments.Color.values
-
-[1A[2K│  Total Values: 3
-
-[1A[2K│
-
-[1A[2K│  Data Mapping:
-
-[1A[2K│    [1] Code: "RED" → Name: "Red"
-
-[1A[2K│    [2] Code: "GREEN" → Name: "Green"
-
-[1A[2K│    [3] Code: "BLACK" → Name: "Black"
-
-[1A[2K│
+[1A[2K✓ File uploaded successfully
 
 [1A[2K
-▶ Processing Color...
+✅ ===== FILE UPLOADED SUCCESSFULLY =====
 
-[1A[2K  Looking for section: "Color"...
+[1A[2K✓ File: PO Summary format Multiple.xlsx
 
-[1A[2K  ℹ No h3 headers found on page
+[1A[2K✓ Upload Status: COMPLETED
 
+[1A[2K✓ Processing: IN PROGRESS
 
-
-[1A[2K  Looking for section: "Color"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-[1A[2K│  Status: ✗ FAILED
-
-[1A[2K└─────────────────────────────────────────────────────
-
-[1A[2K
-┌─ SEGMENT: SIZE
-
-[1A[2K│  Source: test-data.json → segments.Size.values
-
-[1A[2K│  Total Values: 3
-
-[1A[2K│
-
-[1A[2K│  Data Mapping:
-
-[1A[2K│    [1] Code: "S" → Name: "Small"
-
-[1A[2K│    [2] Code: "M" → Name: "Medium"
-
-[1A[2K│    [3] Code: "L" → Name: "Large"
-
-[1A[2K│
-
-[1A[2K
-▶ Processing Size...
-
-[1A[2K  Looking for section: "Size"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-
-[1A[2K  Looking for section: "Size"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-[1A[2K│  Status: ✗ FAILED
-
-[1A[2K└─────────────────────────────────────────────────────
-
-[1A[2K
-┌─ SEGMENT: SEASON
-
-[1A[2K│  Source: test-data.json → segments.Season.values
-
-[1A[2K│  Total Values: 2
-
-[1A[2K│
-
-[1A[2K│  Data Mapping:
-
-[1A[2K│    [1] Code: "Su" → Name: "Summer"
-
-[1A[2K│    [2] Code: "Wi" → Name: "Winter"
-
-[1A[2K│
-
-[1A[2K
-▶ Processing Season...
-
-[1A[2K  Looking for section: "Season"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-
-[1A[2K  Looking for section: "Season"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-[1A[2K│  Status: ✗ FAILED
-
-[1A[2K└─────────────────────────────────────────────────────
-
-[1A[2K
-╔════════════════════════════════════════════════════════════╗
-
-[1A[2K║             SEGMENT DATA FILL COMPLETE SUMMARY             ║
-
-[1A[2K╠════════════════════════════════════════════════════════════╣
-
-[1A[2K║ ✗ Segment: Color    → Section: Color          
-
-[1A[2K║   └─ Row 1: [RED] = Red
-
-[1A[2K║   └─ Row 2: [GREEN] = Green
-
-[1A[2K║   └─ Row 3: [BLACK] = Black
-
-[1A[2K║ ✗ Segment: Size     → Section: Size           
-
-[1A[2K║   └─ Row 1: [S] = Small
-
-[1A[2K║   └─ Row 2: [M] = Medium
-
-[1A[2K║   └─ Row 3: [L] = Large
-
-[1A[2K║ ✗ Segment: Season   → Section: Season         
-
-[1A[2K║   └─ Row 1: [Su] = Summer
-
-[1A[2K║   └─ Row 2: [Wi] = Winter
-
-[1A[2K╠════════════════════════════════════════════════════════════╣
-
-[1A[2K║ Total Segments: 3 | Success: 0 | Failed: 3
-
-[1A[2K╚════════════════════════════════════════════════════════════╝
-
-
+[1A[2K=========================================
 
 
 [1A[2K
-════════════════════════════════════════════════════════════
+📊 ===== LINE ITEMS CAPTURE =====
 
-[1A[2K  1) [chromium] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File 
+[1A[2K📌 Table Title: Details (3)
 
-    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+[1A[2K📌 Expected rows: 3
 
-    Expected: [32m3[39m
-    Received: [31m0[39m
-        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:898:36)
-        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
-        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
-        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
+[1A[2K📌 Table selection cleared
 
-    Error Context: test-results\apparel_regression_testing-9aee7-Segment-Data-from-JSON-File-chromium\error-context.md
 
-    Error Context: test-results\apparel_regression_testing-9aee7-Segment-Data-from-JSON-File-chromium\error-context.md
+[1A[2K🔄 Capturing rows line by line (ArrowDown → Capture all visible):
 
+
+[1A[2K⬇️  Row 1/3 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K   ✓ New Row 1: PONO | UK | L | 500.00
+
+[1A[2K   ✓ New Row 2: PONO | UK | S | 600.00
+
+[1A[2K   ✓ New Row 3: PONO | UK | M | 500.00
+
+[1A[2K⬇️  Row 2/3 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K⬇️  Row 3/3 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K
+✅ LINE ITEMS CAPTURE COMPLETE
+
+[1A[2KTotal rows captured: 3/3
+
+[1A[2KStatus: ✅ SUCCESS - All 3 rows captured
+
+[1A[2K
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K📋 ALL CAPTURED LINE ITEMS (3/3)
+
+[1A[2K════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K
+Row # | PO No        | Country | Part No    | Qty        | Total      | Delivery No     | Delivery Date   | PCD Date        | FOB Date
+
+[1A[2K──────┼──────────────┼─────────┼────────────┼────────────┼────────────┼─────────────────┼─────────────────┼─────────────────┼──────────────
+
+[1A[2K1    | PONO         | UK      | L          | 500.00     | 1,600.00   |                 |                 |                 |           
+
+[1A[2K2    | PONO         | UK      | S          | 600.00     | 1,600.00   |                 |                 |                 |           
+
+[1A[2K3    | PONO         | UK      | M          | 500.00     | 1,600.00   |                 |                 |                 |           
+
+[1A[2K════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K
+✓ Line Items Summary:
+
+[1A[2K  • Total Rows Captured: 3
+
+[1A[2K  • Expected Rows: 3
+
+[1A[2K  • Status: ✅ COMPLETE
+
+[1A[2K
+
+[1A[2K
+📝 Filling date input fields for each line item...
+
+[1A[2K
+📋 Filling date details for 3 line items from test-data.json
+
+[1A[2K  ✓ Row 1: DeliveryNo = "DLV-0622-1634-001"
+
+[1A[2K  ✓ Row 1: DeliveryDate = "2026-06-01"
+
+[1A[2K  ✓ Row 1: PCD_Date = "2026-05-15"
+
+[1A[2K  ✓ Row 1: FOB_Date = "2026-06-20"
+
+[1A[2K  ✓ Row 2: DeliveryNo = "DLV-0622-1634-002"
+
+[1A[2K  ✓ Row 2: DeliveryDate = "2026-06-01"
+
+[1A[2K  ✓ Row 2: PCD_Date = "2026-05-15"
+
+[1A[2K  ✓ Row 2: FOB_Date = "2026-06-20"
+
+[1A[2K  ✓ Row 3: DeliveryNo = "DLV-0622-1634-003"
+
+[1A[2K  ✓ Row 3: DeliveryDate = "2026-06-01"
+
+[1A[2K  ✓ Row 3: PCD_Date = "2026-05-15"
+
+[1A[2K  ✓ Row 3: FOB_Date = "2026-06-20"
+
+[1A[2K✓ All line item date details filled in
+
+
+[1A[2K
+📝 Filling Kimble No field...
+
+[1A[2K📝 Filling Remark field...
+
+[1A[2KBuyer value (via inputValue): "Buyer 001"
+
+[1A[2KStyleNo value (via inputValue): "BUY0001"
+
+[1A[2KStyleDescription value (via inputValue): "BUY2"
+
+[1A[2KStyleColor value (via inputValue): "BUY_C2"
+
+[1A[2KSeason value (via inputValue): "BUY25 SE02"
+
+[1A[2KNo value found for SupplierCode
+
+[1A[2KKimbleNo value (via inputValue): "KIM-001-QA2"
+
+[1A[2KRemark value (via inputValue): "QA Testing - Test Order"
+
+[1A[2K
+📊 ===== LINE ITEMS CAPTURE =====
+
+[1A[2K📌 Table Title: Details (3)
+
+[1A[2K📌 Expected rows: 3
+
+[1A[2K📌 Table selection cleared
+
+
+[1A[2K🔄 Capturing rows line by line (ArrowDown → Capture all visible):
+
+
+[1A[2K⬇️  Row 1/3 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K   ✓ New Row 1: PONO | UK | L | 500.00
+
+[1A[2K   ✓ New Row 2: PONO | UK | S | 600.00
+
+[1A[2K   ✓ New Row 3: PONO | UK | M | 500.00
+
+[1A[2K⬇️  Row 2/3 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K⬇️  Row 3/3 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K
+✅ LINE ITEMS CAPTURE COMPLETE
+
+[1A[2KTotal rows captured: 3/3
+
+[1A[2KStatus: ✅ SUCCESS - All 3 rows captured
+
+[1A[2K
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K📋 ALL CAPTURED LINE ITEMS (3/3)
+
+[1A[2K════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K
+Row # | PO No        | Country | Part No    | Qty        | Total      | Delivery No     | Delivery Date   | PCD Date        | FOB Date
+
+[1A[2K──────┼──────────────┼─────────┼────────────┼────────────┼────────────┼─────────────────┼─────────────────┼─────────────────┼──────────────
+
+[1A[2K1    | PONO         | UK      | L          | 500.00     | 1,600.00   | DLV-0622-1634-001 | Jun 1, 2026     | May 15, 2026    | Jun 20, 2026
+
+[1A[2K2    | PONO         | UK      | S          | 600.00     | 1,600.00   | DLV-0622-1634-002 | Jun 1, 2026     | May 15, 2026    | Jun 20, 2026
+
+[1A[2K3    | PONO         | UK      | M          | 500.00     | 1,600.00   | DLV-0622-1634-003 | Jun 1, 2026     | May 15, 2026    | Jun 20, 2026
+
+[1A[2K════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K
+✓ Line Items Summary:
+
+[1A[2K  • Total Rows Captured: 3
+
+[1A[2K  • Expected Rows: 3
+
+[1A[2K  • Status: ✅ COMPLETE
+
+[1A[2K
+
+[1A[2K
+🔍 ===== PIVOT TABLE DIAGNOSTICS =====
+
+[1A[2K1. PivotSection blocks found: 94
+
+[1A[2K2. pivotGridTable elements found: 76
+
+[1A[2K3. All elements with 'pivot' in ID: 79
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotTableBox
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotTableTitle
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotTableTitle-inner
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotGridTable
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotGridTable-before
+
+[1A[2K⚠ Pivot table not found or error during capture: locator.all: SyntaxError: Failed to execute 'matches' on 'Element': '[id*="pivotGridTable"]-table' is not a valid selector.
+    at SelectorEvaluatorImpl._matchesCSS (<anonymous>:5328:20)
+    at <anonymous>:5200:31
+    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)
+    at SelectorEvaluatorImpl._matchesSimple (<anonymous>:5197:17)
+    at <anonymous>:5264:20
+    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)
+    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)
+    at <anonymous>:5265:22
+    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)
+    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)
+    at BuyerPoUploadFormPage.capturePivotTable [90m(C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39msrc\pages\BuyerPoUpload\BuyerPoUploadFormPage.ts:943:98[90m)[39m
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39me2e\apparel_regression_testing.spec.ts:445:33)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3045:9)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:2537:11)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3043:7) {
+  [[32mSymbol(step)[39m]: {
+    location: {
+      file: [32m'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\BuyerPoUpload\\BuyerPoUploadFormPage.ts'[39m,
+      line: [33m943[39m,
+      column: [33m98[39m,
+      function: [32m'BuyerPoUploadFormPage.capturePivotTable'[39m
+    },
+    category: [32m'pw:api'[39m,
+    title: [32m`Query count locator('[id*="pivotGridTable"]-table tbody tr[role="row"]')`[39m,
+    apiName: [32m'locator.all'[39m,
+    params: { selector: [32m'[id*="pivotGridTable"]-table tbody tr[role="row"]'[39m },
+    group: [90mundefined[39m,
+    stepId: [32m'pw:api@739'[39m,
+    boxedStack: [90mundefined[39m,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [36m[TestInfoImpl][39m,
+      _stepId: [32m'pw:api@739'[39m,
+      _title: [32m`Query count locator('[id*="pivotGridTable"]-table tbody tr[role="row"]')`[39m,
+      _parentStep: [90mundefined[39m,
+      skip: [36m[Function (anonymous)][39m
+    },
+    complete: [36m[Function: complete][39m,
+    endWallTime: [33m1782126315430[39m,
+    error: {
+      message: [32m`Error: locator.all: SyntaxError: Failed to execute 'matches' on 'Element': '[id*="pivotGridTable"]-table' is not a valid selector.\n`[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesCSS (<anonymous>:5328:20)\n'[39m +
+        [32m'    at <anonymous>:5200:31\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesSimple (<anonymous>:5197:17)\n'[39m +
+        [32m'    at <anonymous>:5264:20\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n'[39m +
+        [32m'    at <anonymous>:5265:22\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)'[39m,
+      stack: [32m`Error: locator.all: SyntaxError: Failed to execute 'matches' on 'Element': '[id*="pivotGridTable"]-table' is not a valid selector.\n`[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesCSS (<anonymous>:5328:20)\n'[39m +
+        [32m'    at <anonymous>:5200:31\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesSimple (<anonymous>:5197:17)\n'[39m +
+        [32m'    at <anonymous>:5264:20\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n'[39m +
+        [32m'    at <anonymous>:5265:22\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesCSS (<anonymous>:5328:20)\n'[39m +
+        [32m'    at <anonymous>:5200:31\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesSimple (<anonymous>:5197:17)\n'[39m +
+        [32m'    at <anonymous>:5264:20\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n'[39m +
+        [32m'    at <anonymous>:5265:22\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n'[39m +
+        [32m'    at BuyerPoUploadFormPage.capturePivotTable (C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\BuyerPoUpload\\BuyerPoUploadFormPage.ts:943:98)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:445:33)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:9)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:11)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:7)'[39m,
+      cause: [90mundefined[39m
+    }
+  }
+}
+
+[1A[2K
+📋 ===== UPLOADED DATA (MULTIPLE LINES) =====
+
+[1A[2K
+📌 Header Data:
+
+[1A[2K{
+  "buyer": "Buyer 001",
+  "styleNo": "BUY0001",
+  "styleDescription": "BUY2",
+  "styleColor": "BUY_C2",
+  "season": "BUY25 SE02",
+  "supplierCode": "",
+  "poDate": "",
+  "kimbleNo": "KIM-001-QA2",
+  "remark": "QA Testing - Test Order"
+}
+
+[1A[2K
+📊 PO Size Breakdown:
+
+[1A[2K⚠️  Not found or empty - Please check pivot table
+
+[1A[2K
+📦 Line Items:
+
+[1A[2K(3 rows)
+
+[1A[2K[
+  {
+    "deliveryDate": "2026-06-01",
+    "pcdDate": "2026-05-15",
+    "fobDate": "2026-06-20"
+  },
+  {
+    "deliveryDate": "2026-06-01",
+    "pcdDate": "2026-05-15",
+    "fobDate": "2026-06-20"
+  },
+  {
+    "deliveryDate": "2026-06-01",
+    "pcdDate": "2026-05-15",
+    "fobDate": "2026-06-20"
+  }
+]
+
+[1A[2K
+==============================================
+
+
+[1A[2K✓ Verified: 3 line items uploaded successfully with dates
+
+[1A[2K✓ Complete data saved to: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\buyerPO.json
+
+[1A[2K
+🎉 ===== UPLOAD COMPLETED SUCCESSFULLY =====
+
+[1A[2K✅ File: PO Summary format Multiple.xlsx
+
+[1A[2K✅ Line Items Captured: 3 rows with dates applied
+
+[1A[2K✅ Size Breakdown: Processing...
+
+[1A[2K✅ Data File: buyerPO.json
+
+[1A[2K✅ Status: ALL DATA EXTRACTED AND SAVED
+
+[1A[2K==========================================
+
+
+[1A[2K✓ Cleared localStorage and sessionStorage
+
+[1A[2K✓ Cleared 2 browser cookies
+
+[1A[2K✓ Cleanup after last test: cleared all session data
 
 [1A[2K◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
 
-[1A[2K[2/3] [firefox] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File
-[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File
-Session lost — re-logging in...
-
-[1A[2KRe-login successful, resumed from home page
-
-[1A[2K
-════════════════════════════════════════════════════════════
-
-[1A[2K  TEST 53B: KEY IN SEGMENT DATA FROM JSON FILE
-
-[1A[2K════════════════════════════════════════════════════════════
-
-[1A[2Kℹ Form load check skipped (may not be on form page yet)
-
-
-[1A[2K📄 JSON Source: testData/StyleMaster/test-data.json
-
-[1A[2K📍 Data Path: segments → {Color, Size, Season}
-
-[1A[2K
-
-[1A[2K
-╔════════════════════════════════════════════════════════════╗
-
-[1A[2K║      FILLING SEGMENT DATA FROM JSON FILE                  ║
-
-[1A[2K║      (SEGMENT → SECTION → ROW → CELL)                     ║
-
-[1A[2K╚════════════════════════════════════════════════════════════╝
-
-
-[1A[2K
-┌─ SEGMENT: COLOR
-
-[1A[2K│  Source: test-data.json → segments.Color.values
-
-[1A[2K│  Total Values: 3
-
-[1A[2K│
-
-[1A[2K│  Data Mapping:
-
-[1A[2K│    [1] Code: "RED" → Name: "Red"
-
-[1A[2K│    [2] Code: "GREEN" → Name: "Green"
-
-[1A[2K│    [3] Code: "BLACK" → Name: "Black"
-
-[1A[2K│
-
-[1A[2K
-▶ Processing Color...
-
-[1A[2K  Looking for section: "Color"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-
-[1A[2K  Looking for section: "Color"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-[1A[2K│  Status: ✗ FAILED
-
-[1A[2K└─────────────────────────────────────────────────────
-
-[1A[2K
-┌─ SEGMENT: SIZE
-
-[1A[2K│  Source: test-data.json → segments.Size.values
-
-[1A[2K│  Total Values: 3
-
-[1A[2K│
-
-[1A[2K│  Data Mapping:
-
-[1A[2K│    [1] Code: "S" → Name: "Small"
-
-[1A[2K│    [2] Code: "M" → Name: "Medium"
-
-[1A[2K│    [3] Code: "L" → Name: "Large"
-
-[1A[2K│
-
-[1A[2K
-▶ Processing Size...
-
-[1A[2K  Looking for section: "Size"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-
-[1A[2K  Looking for section: "Size"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-[1A[2K│  Status: ✗ FAILED
-
-[1A[2K└─────────────────────────────────────────────────────
-
-[1A[2K
-┌─ SEGMENT: SEASON
-
-[1A[2K│  Source: test-data.json → segments.Season.values
-
-[1A[2K│  Total Values: 2
-
-[1A[2K│
-
-[1A[2K│  Data Mapping:
-
-[1A[2K│    [1] Code: "Su" → Name: "Summer"
-
-[1A[2K│    [2] Code: "Wi" → Name: "Winter"
-
-[1A[2K│
-
-[1A[2K
-▶ Processing Season...
-
-[1A[2K  Looking for section: "Season"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-
-[1A[2K  Looking for section: "Season"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-[1A[2K│  Status: ✗ FAILED
-
-[1A[2K└─────────────────────────────────────────────────────
-
-[1A[2K
-╔════════════════════════════════════════════════════════════╗
-
-[1A[2K║             SEGMENT DATA FILL COMPLETE SUMMARY             ║
-
-[1A[2K╠════════════════════════════════════════════════════════════╣
-
-[1A[2K║ ✗ Segment: Color    → Section: Color          
-
-[1A[2K║   └─ Row 1: [RED] = Red
-
-[1A[2K║   └─ Row 2: [GREEN] = Green
-
-[1A[2K║   └─ Row 3: [BLACK] = Black
-
-[1A[2K║ ✗ Segment: Size     → Section: Size           
-
-[1A[2K║   └─ Row 1: [S] = Small
-
-[1A[2K║   └─ Row 2: [M] = Medium
-
-[1A[2K║   └─ Row 3: [L] = Large
-
-[1A[2K║ ✗ Segment: Season   → Section: Season         
-
-[1A[2K║   └─ Row 1: [Su] = Summer
-
-[1A[2K║   └─ Row 2: [Wi] = Winter
-
-[1A[2K╠════════════════════════════════════════════════════════════╣
-
-[1A[2K║ Total Segments: 3 | Success: 0 | Failed: 3
-
-[1A[2K╚════════════════════════════════════════════════════════════╝
-
-
-
-
-[1A[2K
-════════════════════════════════════════════════════════════
-
-[1A[2K  2) [firefox] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File 
-
-    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
-
-    Expected: [32m3[39m
-    Received: [31m0[39m
-        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:898:36)
+[1A[2K[9/24] [firefox] › e2e\apparel_regression_testing.spec.ts:257:7 › Apperal Module | Regression Test Suite › 01. TC-LGN-001: Login page loads correctly
+[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:257:7 › Apperal Module | Regression Test Suite › 01. TC-LGN-001: Login page loads correctly
+✅ TC-LGN-001: Login page loads correctly
+
+[1A[2K[10/24] [firefox] › e2e\apparel_regression_testing.spec.ts:269:7 › Apperal Module | Regression Test Suite › 02. TC-LGN-001:  Should display error message on invalid credentials
+[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:269:7 › Apperal Module | Regression Test Suite › 02. TC-LGN-001:  Should display error message on invalid credentials
+✅ TC-LGN-002: Invalid credentials error displayed correctly
+
+[1A[2K[11/24] [firefox] › e2e\apparel_regression_testing.spec.ts:283:7 › Apperal Module | Regression Test Suite › 03. TC-LGN-002: Should successfully login with valid credentials and save auth
+[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:283:7 › Apperal Module | Regression Test Suite › 03. TC-LGN-002: Should successfully login with valid credentials and save auth
+✅ TC-LGN-003: Successfully logged in and session established
+
+[1A[2K[12/24] [firefox] › e2e\apparel_regression_testing.spec.ts:306:9 › Apperal Module | Regression Test Suite › 04. TC-DSH-001: Dashboard loads with all tile groups
+[1A[2K[13/24] [firefox] › e2e\apparel_regression_testing.spec.ts:341:11 › Apperal Module | Regression Test Suite › 05. TC-DSH-002 - Clicking Buyer PO Upload tile navigates to list page
+[1A[2K[14/24] [firefox] › e2e\apparel_regression_testing.spec.ts:350:11 › Apperal Module | Regression Test Suite › 06. TC-BPO-003 - Table displays correct columns User is on Buyer PO Upload list page
+[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:350:11 › Apperal Module | Regression Test Suite › 06. TC-BPO-003 - Table displays correct columns User is on Buyer PO Upload list page
+✓ Cleared localStorage and sessionStorage
+
+[1A[2K✓ Cleared 2 browser cookies
+
+[1A[2K✓ Cleanup after last test: cleared all session data
+
+[1A[2K  1) [firefox] › e2e\apparel_regression_testing.spec.ts:350:11 › Apperal Module | Regression Test Suite › 06. TC-BPO-003 - Table displays correct columns User is on Buyer PO Upload list page 
+
+    TimeoutError: locator.click: Timeout 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('.lp-group-container[data-group="merchandising"]').locator('.lp-group-tiles').getByRole('link', { name: 'Buyer PO Upload Tile', exact: true })[22m
+    [2m    - locator resolved to <a role="link" id="__tile1" tabindex="-1" draggable="false" data-sap-ui="__tile1" data-sap-ui-render="" title="Buyer PO Upload" rel="noopener noreferrer" aria-label="Buyer PO Upload↵Tile" class="sapMGT sapMGTStateLoaded sapMGTScopeDisplay OneByOne sapMPointer sapMGTHeaderMode" href="http://kgntest.ddns.net:4005/launchpadPage.html?sap-ushell-config=lean#apperalbuyerpoupload-display">…</a>[22m
+    [2m  - attempting click action[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" id="sapUshellDashboardPage-busyIndicator" class="sapUiBlockLayer  sapUiLocalBusyIndicator sapUiLocalBusyIndicatorSizeMedium sapUiLocalBusyIndicatorFade">…</div> intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" id="sapUshellDashboardPage-busyIndicator" class="sapUiBlockLayer  sapUiLocalBusyIndicator sapUiLocalBusyIndicatorSizeMedium sapUiLocalBusyIndicatorFade">…</div> intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div alt="" tabindex="0" aria-valuemin="0" role="progressbar" aria-valuemax="100" title="Please wait" aria-valuetext="Busy" id="sapUshellDashboardPage-busyIndicator" class="sapUiBlockLayer  sapUiLocalBusyIndicator sapUiLocalBusyIndicatorSizeMedium sapUiLocalBusyIndicatorFade">…</div> intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m    32 × waiting for element to be visible, enabled and stable[22m
+    [2m       - element is not visible[22m
+    [2m     - retrying click action[22m
+    [2m       - waiting 500ms[22m
+
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:354:27)
         at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
         at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
         at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
 
-    Error Context: test-results\apparel_regression_testing-9aee7-Segment-Data-from-JSON-File-firefox\error-context.md
+    Error Context: test-results\apparel_regression_testing-8fef2-n-Buyer-PO-Upload-list-page-firefox\error-context.md
 
-    Error Context: test-results\apparel_regression_testing-9aee7-Segment-Data-from-JSON-File-firefox\error-context.md
+    Error Context: test-results\apparel_regression_testing-8fef2-n-Buyer-PO-Upload-list-page-firefox\error-context.md
 
 
-[1A[2K◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[1A[2K◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
 
-[1A[2K[3/3] [webkit] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File
-[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File
-Session lost — re-logging in...
+[1A[2K[15/24] [firefox] › e2e\apparel_regression_testing.spec.ts:359:11 › Apperal Module | Regression Test Suite › 07. TC-BPO-004 - Clicking Create navigates to New Buyer PO Upload page
+[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:359:11 › Apperal Module | Regression Test Suite › 07. TC-BPO-004 - Clicking Create navigates to New Buyer PO Upload page
+Not on dashboard — attempting to navigate back
+
+[1A[2KFailed to return to dashboard via back navigation — re-logging in
 
 [1A[2KRe-login successful, resumed from home page
 
-[1A[2K
-════════════════════════════════════════════════════════════
+[1A[2K[16/24] [firefox] › e2e\apparel_regression_testing.spec.ts:368:10 › Apperal Module | Regression Test Suite › 08. TC-BPO-005 - Upload PO file with multiple line items
+[1A[2K[firefox] › e2e\apparel_regression_testing.spec.ts:368:10 › Apperal Module | Regression Test Suite › 08. TC-BPO-005 - Upload PO file with multiple line items
 
-[1A[2K  TEST 53B: KEY IN SEGMENT DATA FROM JSON FILE
+📁 Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
 
-[1A[2K════════════════════════════════════════════════════════════
+[1A[2KAttempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
 
-[1A[2Kℹ Form load check skipped (may not be on form page yet)
+[1A[2KClicking Excel Upload button
 
+[1A[2K✓ Excel Upload button clicked
 
-[1A[2K📄 JSON Source: testData/StyleMaster/test-data.json
+[1A[2KFile chooser timeout: page.waitForEvent: Timeout 20000ms exceeded while waiting for event "filechooser"
+=========================== logs ===========================
+waiting for event "filechooser"
+============================================================
 
-[1A[2K📍 Data Path: segments → {Color, Size, Season}
+[1A[2KError uploading file: Error: File chooser dialog did not appear after clicking Excel Upload button
 
-[1A[2K
+[1A[2K✓ Cleared localStorage and sessionStorage
 
-[1A[2K
-╔════════════════════════════════════════════════════════════╗
+[1A[2K✓ Cleared 2 browser cookies
 
-[1A[2K║      FILLING SEGMENT DATA FROM JSON FILE                  ║
+[1A[2K✓ Cleanup after last test: cleared all session data
 
-[1A[2K║      (SEGMENT → SECTION → ROW → CELL)                     ║
+[1A[2K  2) [firefox] › e2e\apparel_regression_testing.spec.ts:368:10 › Apperal Module | Regression Test Suite › 08. TC-BPO-005 - Upload PO file with multiple line items 
 
-[1A[2K╚════════════════════════════════════════════════════════════╝
+    Error: File chooser dialog did not appear after clicking Excel Upload button
 
+       at ..\src\pages\BuyerPoUpload\BuyerPoUploadFormPage.ts:109
 
-[1A[2K
-┌─ SEGMENT: COLOR
-
-[1A[2K│  Source: test-data.json → segments.Color.values
-
-[1A[2K│  Total Values: 3
-
-[1A[2K│
-
-[1A[2K│  Data Mapping:
-
-[1A[2K│    [1] Code: "RED" → Name: "Red"
-
-[1A[2K│    [2] Code: "GREEN" → Name: "Green"
-
-[1A[2K│    [3] Code: "BLACK" → Name: "Black"
-
-[1A[2K│
-
-[1A[2K
-▶ Processing Color...
-
-[1A[2K  Looking for section: "Color"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-
-[1A[2K  Looking for section: "Color"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-[1A[2K│  Status: ✗ FAILED
-
-[1A[2K└─────────────────────────────────────────────────────
-
-[1A[2K
-┌─ SEGMENT: SIZE
-
-[1A[2K│  Source: test-data.json → segments.Size.values
-
-[1A[2K│  Total Values: 3
-
-[1A[2K│
-
-[1A[2K│  Data Mapping:
-
-[1A[2K│    [1] Code: "S" → Name: "Small"
-
-[1A[2K│    [2] Code: "M" → Name: "Medium"
-
-[1A[2K│    [3] Code: "L" → Name: "Large"
-
-[1A[2K│
-
-[1A[2K
-▶ Processing Size...
-
-[1A[2K  Looking for section: "Size"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-
-[1A[2K  Looking for section: "Size"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-[1A[2K│  Status: ✗ FAILED
-
-[1A[2K└─────────────────────────────────────────────────────
-
-[1A[2K
-┌─ SEGMENT: SEASON
-
-[1A[2K│  Source: test-data.json → segments.Season.values
-
-[1A[2K│  Total Values: 2
-
-[1A[2K│
-
-[1A[2K│  Data Mapping:
-
-[1A[2K│    [1] Code: "Su" → Name: "Summer"
-
-[1A[2K│    [2] Code: "Wi" → Name: "Winter"
-
-[1A[2K│
-
-[1A[2K
-▶ Processing Season...
-
-[1A[2K  Looking for section: "Season"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-
-[1A[2K  Looking for section: "Season"...
-
-[1A[2K  ℹ No h3 headers found on page
-
-
-[1A[2K│  Status: ✗ FAILED
-
-[1A[2K└─────────────────────────────────────────────────────
-
-[1A[2K
-╔════════════════════════════════════════════════════════════╗
-
-[1A[2K║             SEGMENT DATA FILL COMPLETE SUMMARY             ║
-
-[1A[2K╠════════════════════════════════════════════════════════════╣
-
-[1A[2K║ ✗ Segment: Color    → Section: Color          
-
-[1A[2K║   └─ Row 1: [RED] = Red
-
-[1A[2K║   └─ Row 2: [GREEN] = Green
-
-[1A[2K║   └─ Row 3: [BLACK] = Black
-
-[1A[2K║ ✗ Segment: Size     → Section: Size           
-
-[1A[2K║   └─ Row 1: [S] = Small
-
-[1A[2K║   └─ Row 2: [M] = Medium
-
-[1A[2K║   └─ Row 3: [L] = Large
-
-[1A[2K║ ✗ Segment: Season   → Section: Season         
-
-[1A[2K║   └─ Row 1: [Su] = Summer
-
-[1A[2K║   └─ Row 2: [Wi] = Winter
-
-[1A[2K╠════════════════════════════════════════════════════════════╣
-
-[1A[2K║ Total Segments: 3 | Success: 0 | Failed: 3
-
-[1A[2K╚════════════════════════════════════════════════════════════╝
-
-
-
-
-[1A[2K
-════════════════════════════════════════════════════════════
-
-[1A[2K  3) [webkit] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File 
-
-    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
-
-    Expected: [32m3[39m
-    Received: [31m0[39m
-        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:898:36)
+      107 |         await this.page.waitForTimeout(2000);
+      108 |       } else {
+    > 109 |         throw new Error('File chooser dialog did not appear after clicking Excel Upload button');
+          |               ^
+      110 |       }
+      111 |     } catch (error) {
+      112 |       console.error(`Error uploading file: ${error}`);
+        at BuyerPoUploadFormPage.uploadExcelFile (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\src\pages\BuyerPoUpload\BuyerPoUploadFormPage.ts:109:15)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:391:11)
         at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
         at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
         at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
 
-    Error Context: test-results\apparel_regression_testing-9aee7-Segment-Data-from-JSON-File-webkit\error-context.md
+    Error Context: test-results\apparel_regression_testing-d94bb-le-with-multiple-line-items-firefox\error-context.md
 
-    Error Context: test-results\apparel_regression_testing-9aee7-Segment-Data-from-JSON-File-webkit\error-context.md
+    Error Context: test-results\apparel_regression_testing-d94bb-le-with-multiple-line-items-firefox\error-context.md
 
+
+[1A[2K◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+
+[1A[2K[17/24] [webkit] › e2e\apparel_regression_testing.spec.ts:257:7 › Apperal Module | Regression Test Suite › 01. TC-LGN-001: Login page loads correctly
+[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:257:7 › Apperal Module | Regression Test Suite › 01. TC-LGN-001: Login page loads correctly
+✅ TC-LGN-001: Login page loads correctly
+
+[1A[2K[18/24] [webkit] › e2e\apparel_regression_testing.spec.ts:269:7 › Apperal Module | Regression Test Suite › 02. TC-LGN-001:  Should display error message on invalid credentials
+[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:269:7 › Apperal Module | Regression Test Suite › 02. TC-LGN-001:  Should display error message on invalid credentials
+✅ TC-LGN-002: Invalid credentials error displayed correctly
+
+[1A[2K[19/24] [webkit] › e2e\apparel_regression_testing.spec.ts:283:7 › Apperal Module | Regression Test Suite › 03. TC-LGN-002: Should successfully login with valid credentials and save auth
+[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:283:7 › Apperal Module | Regression Test Suite › 03. TC-LGN-002: Should successfully login with valid credentials and save auth
+✅ TC-LGN-003: Successfully logged in and session established
+
+[1A[2K[20/24] [webkit] › e2e\apparel_regression_testing.spec.ts:306:9 › Apperal Module | Regression Test Suite › 04. TC-DSH-001: Dashboard loads with all tile groups
+[1A[2K[21/24] [webkit] › e2e\apparel_regression_testing.spec.ts:341:11 › Apperal Module | Regression Test Suite › 05. TC-DSH-002 - Clicking Buyer PO Upload tile navigates to list page
+[1A[2K[22/24] [webkit] › e2e\apparel_regression_testing.spec.ts:350:11 › Apperal Module | Regression Test Suite › 06. TC-BPO-003 - Table displays correct columns User is on Buyer PO Upload list page
+[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:350:11 › Apperal Module | Regression Test Suite › 06. TC-BPO-003 - Table displays correct columns User is on Buyer PO Upload list page
+✓ Cleared localStorage and sessionStorage
+
+[1A[2K✓ Cleared 2 browser cookies
+
+[1A[2K✓ Cleanup after last test: cleared all session data
+
+[1A[2K  3) [webkit] › e2e\apparel_regression_testing.spec.ts:350:11 › Apperal Module | Regression Test Suite › 06. TC-BPO-003 - Table displays correct columns User is on Buyer PO Upload list page 
+
+    TimeoutError: locator.click: Timeout 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('.lp-group-container[data-group="merchandising"]').locator('.lp-group-tiles').getByRole('link', { name: 'Buyer PO Upload Tile', exact: true })[22m
+    [2m    - locator resolved to <a role="link" id="__tile1" tabindex="-1" draggable="false" data-sap-ui="__tile1" data-sap-ui-render="" title="Buyer PO Upload" rel="noopener noreferrer" aria-label="Buyer PO Upload↵Tile" class="sapMGT sapMGTStateLoaded sapMGTScopeDisplay OneByOne sapMPointer sapMGTHeaderMode" href="http://kgntest.ddns.net:4005/launchpadPage.html?sap-ushell-config=lean#apperalbuyerpoupload-display">…</a>[22m
+    [2m  - attempting click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is not stable[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is not visible[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    2 × waiting for element to be visible, enabled and stable[22m
+    [2m      - element is not visible[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m    18 × waiting for element to be visible, enabled and stable[22m
+    [2m       - element is not visible[22m
+    [2m     - retrying click action[22m
+    [2m       - waiting 500ms[22m
+
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:354:27)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+        at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7)
+
+    Error Context: test-results\apparel_regression_testing-8fef2-n-Buyer-PO-Upload-list-page-webkit\error-context.md
+
+    Error Context: test-results\apparel_regression_testing-8fef2-n-Buyer-PO-Upload-list-page-webkit\error-context.md
+
+
+[1A[2K◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+
+[1A[2K[23/24] [webkit] › e2e\apparel_regression_testing.spec.ts:359:11 › Apperal Module | Regression Test Suite › 07. TC-BPO-004 - Clicking Create navigates to New Buyer PO Upload page
+[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:359:11 › Apperal Module | Regression Test Suite › 07. TC-BPO-004 - Clicking Create navigates to New Buyer PO Upload page
+Not on dashboard — attempting to navigate back
+
+[1A[2KFailed to return to dashboard via back navigation — re-logging in
+
+[1A[2KRe-login successful, resumed from home page
+
+[1A[2K[24/24] [webkit] › e2e\apparel_regression_testing.spec.ts:368:10 › Apperal Module | Regression Test Suite › 08. TC-BPO-005 - Upload PO file with multiple line items
+[1A[2K[webkit] › e2e\apparel_regression_testing.spec.ts:368:10 › Apperal Module | Regression Test Suite › 08. TC-BPO-005 - Upload PO file with multiple line items
+
+📁 Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+
+[1A[2KAttempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+
+[1A[2KClicking Excel Upload button
+
+[1A[2K✓ Excel Upload button clicked
+
+[1A[2KFile chooser triggered, setting files
+
+[1A[2K✓ File uploaded successfully
+
+[1A[2K
+✅ ===== FILE UPLOADED SUCCESSFULLY =====
+
+[1A[2K✓ File: PO Summary format Multiple.xlsx
+
+[1A[2K✓ Upload Status: COMPLETED
+
+[1A[2K✓ Processing: IN PROGRESS
+
+[1A[2K=========================================
+
+
+[1A[2K
+📊 ===== LINE ITEMS CAPTURE =====
+
+[1A[2K📌 Table Title: Details (3)
+
+[1A[2K📌 Expected rows: 3
+
+[1A[2K📌 Table selection cleared
+
+
+[1A[2K🔄 Capturing rows line by line (ArrowDown → Capture all visible):
+
+
+[1A[2K⬇️  Row 1/3 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K   ✓ New Row 1: PONO | UK | M | 500.00
+
+[1A[2K   ✓ New Row 2: PONO | UK | L | 500.00
+
+[1A[2K   ✓ New Row 3: PONO | UK | S | 600.00
+
+[1A[2K⬇️  Row 2/3 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K⬇️  Row 3/3 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K
+✅ LINE ITEMS CAPTURE COMPLETE
+
+[1A[2KTotal rows captured: 3/3
+
+[1A[2KStatus: ✅ SUCCESS - All 3 rows captured
+
+[1A[2K
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K📋 ALL CAPTURED LINE ITEMS (3/3)
+
+[1A[2K════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K
+Row # | PO No        | Country | Part No    | Qty        | Total      | Delivery No     | Delivery Date   | PCD Date        | FOB Date
+
+[1A[2K──────┼──────────────┼─────────┼────────────┼────────────┼────────────┼─────────────────┼─────────────────┼─────────────────┼──────────────
+
+[1A[2K1    | PONO         | UK      | M          | 500.00     | 1,600.00   |                 |                 |                 |           
+
+[1A[2K2    | PONO         | UK      | L          | 500.00     | 1,600.00   |                 |                 |                 |           
+
+[1A[2K3    | PONO         | UK      | S          | 600.00     | 1,600.00   |                 |                 |                 |           
+
+[1A[2K════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K
+✓ Line Items Summary:
+
+[1A[2K  • Total Rows Captured: 3
+
+[1A[2K  • Expected Rows: 3
+
+[1A[2K  • Status: ✅ COMPLETE
+
+[1A[2K
+
+[1A[2K
+📝 Filling date input fields for each line item...
+
+[1A[2K
+📋 Filling date details for 3 line items from test-data.json
+
+[1A[2K  ✓ Row 1: DeliveryNo = "DLV-0622-1642-001"
+
+[1A[2K  ✓ Row 1: DeliveryDate = "2026-06-01"
+
+[1A[2K  ✓ Row 1: PCD_Date = "2026-05-15"
+
+[1A[2K  ✓ Row 1: FOB_Date = "2026-06-20"
+
+[1A[2K  ✓ Row 2: DeliveryNo = "DLV-0622-1642-002"
+
+[1A[2K  ✓ Row 2: DeliveryDate = "2026-06-01"
+
+[1A[2K  ✓ Row 2: PCD_Date = "2026-05-15"
+
+[1A[2K  ✓ Row 2: FOB_Date = "2026-06-20"
+
+[1A[2K  ✓ Row 3: DeliveryNo = "DLV-0622-1642-003"
+
+[1A[2K  ✓ Row 3: DeliveryDate = "2026-06-01"
+
+[1A[2K  ✓ Row 3: PCD_Date = "2026-05-15"
+
+[1A[2K  ✓ Row 3: FOB_Date = "2026-06-20"
+
+[1A[2K✓ All line item date details filled in
+
+
+[1A[2K
+📝 Filling Kimble No field...
+
+[1A[2K📝 Filling Remark field...
+
+[1A[2KBuyer value (via inputValue): "Buyer 001"
+
+[1A[2KStyleNo value (via inputValue): "BUY0001"
+
+[1A[2KStyleDescription value (via inputValue): "BUY2"
+
+[1A[2KStyleColor value (via inputValue): "BUY_C2"
+
+[1A[2KSeason value (via inputValue): "BUY25 SE02"
+
+[1A[2KNo value found for SupplierCode
+
+[1A[2KRemark value (via inputValue): "QA Testing - Test Order"
+
+[1A[2K
+📊 ===== LINE ITEMS CAPTURE =====
+
+[1A[2K📌 Table Title: Details (3)
+
+[1A[2K📌 Expected rows: 3
+
+[1A[2K📌 Table selection cleared
+
+
+[1A[2K🔄 Capturing rows line by line (ArrowDown → Capture all visible):
+
+
+[1A[2K⬇️  Row 1/3 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K   ✓ New Row 1: PONO | UK | M | 500.00
+
+[1A[2K   ✓ New Row 2: PONO | UK | L | 500.00
+
+[1A[2K   ✓ New Row 3: PONO | UK | S | 600.00
+
+[1A[2K⬇️  Row 2/3 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K⬇️  Row 3/3 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K
+✅ LINE ITEMS CAPTURE COMPLETE
+
+[1A[2KTotal rows captured: 3/3
+
+[1A[2KStatus: ✅ SUCCESS - All 3 rows captured
+
+[1A[2K
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K📋 ALL CAPTURED LINE ITEMS (3/3)
+
+[1A[2K════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K
+Row # | PO No        | Country | Part No    | Qty        | Total      | Delivery No     | Delivery Date   | PCD Date        | FOB Date
+
+[1A[2K──────┼──────────────┼─────────┼────────────┼────────────┼────────────┼─────────────────┼─────────────────┼─────────────────┼──────────────
+
+[1A[2K1    | PONO         | UK      | M          | 500.00     | 1,600.00   | DLV-0622-1642-001 | Jun 1, 2026     | May 15, 2026    | Jun 20, 2026
+
+[1A[2K2    | PONO         | UK      | L          | 500.00     | 1,600.00   | DLV-0622-1642-002 | Jun 1, 2026     | May 15, 2026    | Jun 20, 2026
+
+[1A[2K3    | PONO         | UK      | S          | 600.00     | 1,600.00   | DLV-0622-1642-003 | Jun 1, 2026     | May 15, 2026    | Jun 20, 2026
+
+[1A[2K════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K
+✓ Line Items Summary:
+
+[1A[2K  • Total Rows Captured: 3
+
+[1A[2K  • Expected Rows: 3
+
+[1A[2K  • Status: ✅ COMPLETE
+
+[1A[2K
+
+[1A[2K
+🔍 ===== PIVOT TABLE DIAGNOSTICS =====
+
+[1A[2K1. PivotSection blocks found: 94
+
+[1A[2K2. pivotGridTable elements found: 76
+
+[1A[2K3. All elements with 'pivot' in ID: 79
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotTableBox
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotTableTitle
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotTableTitle-inner
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotGridTable
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotGridTable-before
+
+[1A[2K⚠ Pivot table not found or error during capture: locator.all: SyntaxError: '[id*="pivotGridTable"]-table' is not a valid selector.
+    at BuyerPoUploadFormPage.capturePivotTable [90m(C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39msrc\pages\BuyerPoUpload\BuyerPoUploadFormPage.ts:935:98[90m)[39m
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39me2e\apparel_regression_testing.spec.ts:445:33)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3045:9)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:2537:11)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3043:7) {
+  [[32mSymbol(step)[39m]: {
+    location: {
+      file: [32m'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\BuyerPoUpload\\BuyerPoUploadFormPage.ts'[39m,
+      line: [33m935[39m,
+      column: [33m98[39m,
+      function: [32m'BuyerPoUploadFormPage.capturePivotTable'[39m
+    },
+    category: [32m'pw:api'[39m,
+    title: [32m`Query count locator('[id*="pivotGridTable"]-table tbody tr[role="row"]')`[39m,
+    apiName: [32m'locator.all'[39m,
+    params: { selector: [32m'[id*="pivotGridTable"]-table tbody tr[role="row"]'[39m },
+    group: [90mundefined[39m,
+    stepId: [32m'pw:api@738'[39m,
+    boxedStack: [90mundefined[39m,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [36m[TestInfoImpl][39m,
+      _stepId: [32m'pw:api@738'[39m,
+      _title: [32m`Query count locator('[id*="pivotGridTable"]-table tbody tr[role="row"]')`[39m,
+      _parentStep: [90mundefined[39m,
+      skip: [36m[Function (anonymous)][39m
+    },
+    complete: [36m[Function: complete][39m,
+    endWallTime: [33m1782126773055[39m,
+    error: {
+      message: [32m`Error: locator.all: SyntaxError: '[id*="pivotGridTable"]-table' is not a valid selector.`[39m,
+      stack: [32m`Error: locator.all: SyntaxError: '[id*="pivotGridTable"]-table' is not a valid selector.\n`[39m +
+        [32m'    at BuyerPoUploadFormPage.capturePivotTable (C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\BuyerPoUpload\\BuyerPoUploadFormPage.ts:935:98)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:445:33)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:9)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:11)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:7)'[39m,
+      cause: [90mundefined[39m
+    }
+  }
+}
+
+[1A[2K
+📋 ===== UPLOADED DATA (MULTIPLE LINES) =====
+
+[1A[2K
+📌 Header Data:
+
+[1A[2K{
+  "buyer": "Buyer 001",
+  "styleNo": "BUY0001",
+  "styleDescription": "BUY2",
+  "styleColor": "BUY_C2",
+  "season": "BUY25 SE02",
+  "supplierCode": "",
+  "poDate": "",
+  "kimbleNo": "KIM-001-QA2",
+  "remark": "QA Testing - Test Order"
+}
+
+[1A[2K
+📊 PO Size Breakdown:
+
+[1A[2K⚠️  Not found or empty - Please check pivot table
+
+[1A[2K
+📦 Line Items:
+
+[1A[2K(3 rows)
+
+[1A[2K[
+  {
+    "deliveryDate": "2026-06-01",
+    "pcdDate": "2026-05-15",
+    "fobDate": "2026-06-20"
+  },
+  {
+    "deliveryDate": "2026-06-01",
+    "pcdDate": "2026-05-15",
+    "fobDate": "2026-06-20"
+  },
+  {
+    "deliveryDate": "2026-06-01",
+    "pcdDate": "2026-05-15",
+    "fobDate": "2026-06-20"
+  }
+]
+
+[1A[2K
+==============================================
+
+
+[1A[2K✓ Verified: 3 line items uploaded successfully with dates
+
+[1A[2K✓ Complete data saved to: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\buyerPO.json
+
+[1A[2K
+🎉 ===== UPLOAD COMPLETED SUCCESSFULLY =====
+
+[1A[2K✅ File: PO Summary format Multiple.xlsx
+
+[1A[2K✅ Line Items Captured: 3 rows with dates applied
+
+[1A[2K✅ Size Breakdown: Processing...
+
+[1A[2K✅ Data File: buyerPO.json
+
+[1A[2K✅ Status: ALL DATA EXTRACTED AND SAVED
+
+[1A[2K==========================================
+
+
+[1A[2K✓ Cleared localStorage and sessionStorage
+
+[1A[2K✓ Cleared 2 browser cookies
+
+[1A[2K✓ Cleanup after last test: cleared all session data
 
 [1A[2K  3 failed
-    [chromium] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File 
-    [firefox] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File 
-    [webkit] › e2e\apparel_regression_testing.spec.ts:865:7 › Apperal Module | Regression Test Suite › 53b. Key In Segment Data from JSON File 
+    [firefox] › e2e\apparel_regression_testing.spec.ts:350:11 › Apperal Module | Regression Test Suite › 06. TC-BPO-003 - Table displays correct columns User is on Buyer PO Upload list page 
+    [firefox] › e2e\apparel_regression_testing.spec.ts:368:10 › Apperal Module | Regression Test Suite › 08. TC-BPO-005 - Upload PO file with multiple line items 
+    [webkit] › e2e\apparel_regression_testing.spec.ts:350:11 › Apperal Module | Regression Test Suite › 06. TC-BPO-003 - Table displays correct columns User is on Buyer PO Upload list page 
+  21 passed (9.3m)

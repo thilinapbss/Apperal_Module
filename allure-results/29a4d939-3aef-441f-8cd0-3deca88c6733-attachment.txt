@@ -1,0 +1,9 @@
+📌 Test Case: TC-LGN-002 - Empty username and password validation
+📋 Objective: Verify validation error when both username and password are empty
+✓ Step 1: Login page is open
+✓ Step 2: Leave Username empty
+✓ Step 3: Leave Password empty
+✓ Step 4: Click Login button
+⚠️ WARNING: No validation error message appeared
+✅ RESULT: Form submission blocked (no navigation occurred)
+✅ TEST PASSED: TC-LGN-002

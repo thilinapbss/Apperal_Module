@@ -1,0 +1,6 @@
+📋 Initializing test suite...
+📝 Starting fresh - login tests will execute normally
+✅ Test suite ready
+Re-login successful, resumed from home page
+🧹 Final cleanup: Clearing all session data...
+✅ Session data cleared - ready for next test run

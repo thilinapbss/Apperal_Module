@@ -1,0 +1,35 @@
+
+> apperal_module@1.0.0 test
+> playwright test e2e/apparel_regression_testing.spec.ts --project=chromium
+
+◇ injected env (2) from .env // tip: ⌘ enable debugging { debug: true }
+SyntaxError: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts: Identifier 'lineItemsWithDates' has already been declared. (433:16)
+
+[0m [90m 431 |[39m
+ [90m 432 |[39m           [90m// Apply dates to captured line items (dates already filled in UI via fillLineItemDetailsInTable)[39m
+[31m[1m>[22m[39m[90m 433 |[39m           [36mconst[39m lineItemsWithDates [33m=[39m uploadedData[33m.[39mlineItems[33m.[39mmap((item[33m:[39m any) [33m=>[39m ({
+ [90m     |[39m                 [31m[1m^[22m[39m
+ [90m 434 |[39m             [33m...[39mitem[33m,[39m
+ [90m 435 |[39m             deliveryDate[33m:[39m datesFromTestData[33m.[39mdeliveryDate [33m||[39m item[33m.[39mdeliveryDate [33m||[39m [32m''[39m[33m,[39m
+ [90m 436 |[39m             pcdDate[33m:[39m datesFromTestData[33m.[39mpcdDate [33m||[39m item[33m.[39mpcdDate [33m||[39m [32m''[39m[33m,[39m[0m
+
+   at apparel_regression_testing.spec.ts:433
+
+  431 |
+  432 |           // Apply dates to captured line items (dates already filled in UI via fillLineItemDetailsInTable)
+> 433 |           const lineItemsWithDates = uploadedData.lineItems.map((item: any) => ({
+      |                ^
+  434 |             ...item,
+  435 |             deliveryDate: datesFromTestData.deliveryDate || item.deliveryDate || '',
+  436 |             pcdDate: datesFromTestData.pcdDate || item.pcdDate || '',
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\transform\babelBundle.js:25038:43)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\transform\babelBundle.js:25018:43)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\transform\babelBundle.js:25038:43)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\transform\babelBundle.js:25018:43)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\common\index.js:1080:12)
+
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+
+[1A[2K

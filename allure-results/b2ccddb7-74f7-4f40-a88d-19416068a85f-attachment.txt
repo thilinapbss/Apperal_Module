@@ -1,0 +1,65 @@
+Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+Attempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format1.xlsx
+Clicking Excel Upload button
+File chooser triggered, setting files
+✓ File uploaded successfully
+✓ File uploaded successfully
+Buyer value (via inputValue): "Buyer 001"
+StyleNo value (via inputValue): "BUY0001"
+StyleDescription value (via inputValue): "BUY2"
+StyleColor value (via inputValue): "BUY_C2"
+Season value (via inputValue): "BUY25 SE02"
+No value found for SupplierCode
+No value found for Remark
+Capturing 5 rows with all details from table
+✓ All line item details captured
+
+📋 ===== UPLOADED DATA =====
+Header Data: {
+  "buyer": "Buyer 001",
+  "styleNo": "BUY0001",
+  "styleDescription": "BUY2",
+  "styleColor": "BUY_C2",
+  "season": "BUY25 SE02",
+  "supplierCode": "",
+  "poDate": "",
+  "kimbleNo": "",
+  "remark": ""
+}
+Line Items: [
+  {
+    "poNo": "PONO",
+    "countryCode": "UK",
+    "partNo": "M",
+    "qty": "500.00",
+    "total": "1,600.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PONO",
+    "countryCode": "UK",
+    "partNo": "S",
+    "qty": "600.00",
+    "total": "1,600.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PONO",
+    "countryCode": "UK",
+    "partNo": "L",
+    "qty": "500.00",
+    "total": "1,600.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  }
+]
+===========================
+

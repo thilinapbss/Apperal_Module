@@ -1,0 +1,116 @@
+Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format Multiple.xlsx
+Attempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format Multiple.xlsx
+Clicking Excel Upload button
+File chooser triggered, setting files
+✓ File uploaded successfully
+✓ File uploaded successfully
+Buyer value (via inputValue): "George 5"
+StyleNo value (via inputValue): "0003 - BES1_STY11"
+StyleDescription value (via inputValue): "Style Description"
+StyleColor value (via inputValue): "BLUE"
+Season value (via inputValue): "Season 001"
+No value found for SupplierCode
+No value found for Remark
+Capturing 5 rows with all details from table
+✓ All line item details captured
+Using fallback selector: 2nd grid found with 3 rows
+Capturing 3 rows from PO Size Breakdown table
+✓ PO Size Breakdown table captured: 3 rows
+
+📋 ===== UPLOADED DATA (MULTIPLE LINES) =====
+Header Data: {
+  "buyer": "George 5",
+  "styleNo": "0003 - BES1_STY11",
+  "styleDescription": "Style Description",
+  "styleColor": "BLUE",
+  "season": "Season 001",
+  "supplierCode": "",
+  "poDate": "",
+  "kimbleNo": "",
+  "remark": ""
+}
+Line Items (5 rows): [
+  {
+    "poNo": "PUR00020",
+    "countryCode": "UK",
+    "partNo": "L",
+    "qty": "30.00",
+    "total": "90.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00020",
+    "countryCode": "UK",
+    "partNo": "M",
+    "qty": "20.00",
+    "total": "90.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00020",
+    "countryCode": "UK",
+    "partNo": "S",
+    "qty": "40.00",
+    "total": "90.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00021",
+    "countryCode": "UK",
+    "partNo": "M",
+    "qty": "100.00",
+    "total": "250.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00021",
+    "countryCode": "UK",
+    "partNo": "S",
+    "qty": "50.00",
+    "total": "250.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  }
+]
+
+PO Size Breakdown (3 rows): [
+  {
+    "poNo": "PUR00020",
+    "size": "40",
+    "quantity": "20",
+    "amount": "30"
+  },
+  {
+    "poNo": "PUR00021",
+    "size": "50",
+    "quantity": "100",
+    "amount": "100"
+  },
+  {
+    "poNo": "",
+    "size": "0",
+    "quantity": "0",
+    "amount": "0"
+  }
+]
+==============================================
+
+✓ Verified: 5 line items + 3 size breakdowns uploaded successfully
+✓ Complete data saved to: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\buyerPOMultiple.json
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

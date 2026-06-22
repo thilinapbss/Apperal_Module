@@ -1,0 +1,61 @@
+{
+  "testCases": [
+    {
+      "id": "TC-LGN-001",
+      "title": "Login page loads correctly",
+      "priority": "High",
+      "type": "Smoke",
+      "precondition": "App URL is accessible",
+      "steps": [
+        "Open browser",
+        "Navigate to http://kgntest.ddns.net:4005/login.html"
+      ],
+      "expectedResult": "Login page loads with Username field, Password field, and Login button visible within 3 seconds",
+      "status": "Not Started"
+    },
+    {
+      "id": "TC-LGN-002",
+      "title": "Empty username and password validation",
+      "priority": "High",
+      "type": "Functional",
+      "precondition": "Login page is open",
+      "steps": [
+        "Leave Username empty",
+        "Leave Password empty",
+        "Click Login button"
+      ],
+      "expectedResult": "Validation error shown: 'Username is required' or similar. Form does not submit.",
+      "status": "Not Started"
+    },
+    {
+      "id": "TC-LGN-003",
+      "title": "Invalid credentials error message",
+      "priority": "High",
+      "type": "Functional",
+      "precondition": "Login page is open",
+      "steps": [
+        "Enter invalid username",
+        "Enter invalid password",
+        "Click Login button"
+      ],
+      "expectedResult": "Error message displayed: 'Invalid username or password'. Form does not submit.",
+      "status": "Completed",
+      "notes": "Implemented as test 02 in apparel_regression_testing.spec.ts"
+    },
+    {
+      "id": "TC-LGN-004",
+      "title": "Successful login with valid credentials",
+      "priority": "High",
+      "type": "Smoke",
+      "precondition": "Login page is open",
+      "steps": [
+        "Enter valid username (admin)",
+        "Enter valid password (Admin@1234)",
+        "Click Login button"
+      ],
+      "expectedResult": "User is authenticated and navigated to home page. Dashboard is visible.",
+      "status": "Completed",
+      "notes": "Implemented as test 03 in apparel_regression_testing.spec.ts"
+    }
+  ]
+}

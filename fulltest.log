@@ -1,0 +1,410 @@
+
+> apperal_module@1.0.0 test
+> playwright test e2e/apparel_regression_testing.spec.ts --project=chromium
+
+◇ injected env (2) from .env // tip: ⌘ override existing { override: true }
+
+Running 8 tests using 1 worker
+
+[1A[2K◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+
+[1A[2K[1/8] [chromium] › e2e\apparel_regression_testing.spec.ts:232:7 › Apperal Module | Regression Test Suite › 01. TC-LGN-001: Login page loads correctly
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:232:7 › Apperal Module | Regression Test Suite › 01. TC-LGN-001: Login page loads correctly
+✅ TC-LGN-001: Login page loads correctly
+
+[1A[2K[2/8] [chromium] › e2e\apparel_regression_testing.spec.ts:244:7 › Apperal Module | Regression Test Suite › 02. TC-LGN-001:  Should display error message on invalid credentials
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:244:7 › Apperal Module | Regression Test Suite › 02. TC-LGN-001:  Should display error message on invalid credentials
+✅ TC-LGN-002: Invalid credentials error displayed correctly
+
+[1A[2K[3/8] [chromium] › e2e\apparel_regression_testing.spec.ts:258:7 › Apperal Module | Regression Test Suite › 03. TC-LGN-002: Should successfully login with valid credentials and save auth
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:258:7 › Apperal Module | Regression Test Suite › 03. TC-LGN-002: Should successfully login with valid credentials and save auth
+✅ TC-LGN-003: Successfully logged in and session established
+
+[1A[2K[4/8] [chromium] › e2e\apparel_regression_testing.spec.ts:281:9 › Apperal Module | Regression Test Suite › 04. TC-DSH-001: Dashboard loads with all tile groups
+[1A[2K[5/8] [chromium] › e2e\apparel_regression_testing.spec.ts:316:11 › Apperal Module | Regression Test Suite › 05. TC-DSH-002 - Clicking Buyer PO Upload tile navigates to list page
+[1A[2K[6/8] [chromium] › e2e\apparel_regression_testing.spec.ts:325:11 › Apperal Module | Regression Test Suite › 06. TC-BPO-003 - Table displays correct columns User is on Buyer PO Upload list page
+[1A[2K[7/8] [chromium] › e2e\apparel_regression_testing.spec.ts:334:11 › Apperal Module | Regression Test Suite › 07. TC-BPO-004 - Clicking Create navigates to New Buyer PO Upload page
+[1A[2K[8/8] [chromium] › e2e\apparel_regression_testing.spec.ts:376:10 › Apperal Module | Regression Test Suite › 10. TC-BPO-007 - Upload PO file with multiple line items
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:376:10 › Apperal Module | Regression Test Suite › 10. TC-BPO-007 - Upload PO file with multiple line items
+
+📁 Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format Multiple.xlsx
+
+[1A[2KAttempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format Multiple.xlsx
+
+[1A[2KClicking Excel Upload button
+
+[1A[2K✓ Excel Upload button clicked
+
+[1A[2KFile chooser triggered, setting files
+
+[1A[2K✓ File uploaded successfully
+
+[1A[2K
+✅ ===== FILE UPLOADED SUCCESSFULLY =====
+
+[1A[2K✓ File: PO Summary format Multiple.xlsx
+
+[1A[2K✓ Upload Status: COMPLETED
+
+[1A[2K✓ Processing: IN PROGRESS
+
+[1A[2K=========================================
+
+
+[1A[2KBuyer value (via inputValue): "George 5"
+
+[1A[2KStyleNo value (via inputValue): "0003 - BES1_STY11"
+
+[1A[2KStyleDescription value (via inputValue): "Style Description"
+
+[1A[2KStyleColor value (via inputValue): "BLUE"
+
+[1A[2KSeason value (via inputValue): "Season 001"
+
+[1A[2KNo value found for SupplierCode
+
+[1A[2KNo value found for Remark
+
+[1A[2K
+📊 ===== LINE ITEMS CAPTURE =====
+
+[1A[2K📌 Table Title: Details (6)
+
+[1A[2K📌 Expected rows: 6
+
+[1A[2K📌 Table selection cleared
+
+
+[1A[2K🔄 Capturing rows line by line (ArrowDown → Capture all visible):
+
+
+[1A[2K⬇️  Row 1/6 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K   ✓ New Row 1: PUR00020 | UK | S | 40.00
+
+[1A[2K   ✓ New Row 2: PUR00020 | UK | L | 30.00
+
+[1A[2K   ✓ New Row 3: PUR00020 | UK | M | 20.00
+
+[1A[2K   ✓ New Row 4: PUR00021 | UK | M | 100.00
+
+[1A[2K   ✓ New Row 5: PUR00021 | UK | S | 50.00
+
+[1A[2K⬇️  Row 2/6 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K⬇️  Row 3/6 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K⬇️  Row 4/6 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K⬇️  Row 5/6 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K⬇️  Row 6/6 - Pressing Down arrow key...
+
+[1A[2K⏳ Waiting 3 seconds for row to load...
+
+[1A[2K   Found 5 visible rows, capturing new ones...
+
+
+[1A[2K   ✓ New Row 6: PUR00021 | UK | L | 100.00
+
+[1A[2K
+✅ LINE ITEMS CAPTURE COMPLETE
+
+[1A[2KTotal rows captured: 6/6
+
+[1A[2KStatus: ✅ SUCCESS - All 6 rows captured
+
+[1A[2K
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K📋 ALL CAPTURED LINE ITEMS (6/6)
+
+[1A[2K════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K
+Row # | PO No        | Country | Part No    | Qty        | Total      | Delivery No     | Delivery Date   | PCD Date        | FOB Date
+
+[1A[2K──────┼──────────────┼─────────┼────────────┼────────────┼────────────┼─────────────────┼─────────────────┼─────────────────┼──────────────
+
+[1A[2K1    | PUR00020     | UK      | S          | 40.00      | 90.00      |                 |                 |                 |           
+
+[1A[2K2    | PUR00020     | UK      | L          | 30.00      | 90.00      |                 |                 |                 |           
+
+[1A[2K3    | PUR00020     | UK      | M          | 20.00      | 90.00      |                 |                 |                 |           
+
+[1A[2K4    | PUR00021     | UK      | M          | 100.00     | 250.00     |                 |                 |                 |           
+
+[1A[2K5    | PUR00021     | UK      | S          | 50.00      | 250.00     |                 |                 |                 |           
+
+[1A[2K6    | PUR00021     | UK      | L          | 100.00     | 250.00     |                 |                 |                 |           
+
+[1A[2K════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+[1A[2K
+✓ Line Items Summary:
+
+[1A[2K  • Total Rows Captured: 6
+
+[1A[2K  • Expected Rows: 6
+
+[1A[2K  • Status: ✅ COMPLETE
+
+[1A[2K
+
+[1A[2K
+🔍 ===== PIVOT TABLE DIAGNOSTICS =====
+
+[1A[2K1. PivotSection blocks found: 94
+
+[1A[2K2. pivotGridTable elements found: 76
+
+[1A[2K3. All elements with 'pivot' in ID: 79
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotTableBox
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotTableTitle
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotTableTitle-inner
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotGridTable
+
+[1A[2K   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotGridTable-before
+
+[1A[2K⚠ Pivot table not found or error during capture: locator.all: SyntaxError: Failed to execute 'matches' on 'Element': '[id*="pivotGridTable"]-table' is not a valid selector.
+    at SelectorEvaluatorImpl._matchesCSS (<anonymous>:5328:20)
+    at <anonymous>:5200:31
+    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)
+    at SelectorEvaluatorImpl._matchesSimple (<anonymous>:5197:17)
+    at <anonymous>:5264:20
+    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)
+    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)
+    at <anonymous>:5265:22
+    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)
+    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)
+    at BuyerPoUploadFormPage.capturePivotTable [90m(C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39msrc\pages\BuyerPoUpload\BuyerPoUploadFormPage.ts:921:98[90m)[39m
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39me2e\apparel_regression_testing.spec.ts:415:33)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3045:9)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:2537:11)
+    at [90mC:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\[39mnode_modules\[4mplaywright[24m\lib\worker\workerProcessEntry.js:3043:7) {
+  [[32mSymbol(step)[39m]: {
+    location: {
+      file: [32m'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\BuyerPoUpload\\BuyerPoUploadFormPage.ts'[39m,
+      line: [33m921[39m,
+      column: [33m98[39m,
+      function: [32m'BuyerPoUploadFormPage.capturePivotTable'[39m
+    },
+    category: [32m'pw:api'[39m,
+    title: [32m`Query count locator('[id*="pivotGridTable"]-table tbody tr[role="row"]')`[39m,
+    apiName: [32m'locator.all'[39m,
+    params: { selector: [32m'[id*="pivotGridTable"]-table tbody tr[role="row"]'[39m },
+    group: [90mundefined[39m,
+    stepId: [32m'pw:api@672'[39m,
+    boxedStack: [90mundefined[39m,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [36m[TestInfoImpl][39m,
+      _stepId: [32m'pw:api@672'[39m,
+      _title: [32m`Query count locator('[id*="pivotGridTable"]-table tbody tr[role="row"]')`[39m,
+      _parentStep: [90mundefined[39m,
+      skip: [36m[Function (anonymous)][39m
+    },
+    complete: [36m[Function: complete][39m,
+    endWallTime: [33m1782117650115[39m,
+    error: {
+      message: [32m`Error: locator.all: SyntaxError: Failed to execute 'matches' on 'Element': '[id*="pivotGridTable"]-table' is not a valid selector.\n`[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesCSS (<anonymous>:5328:20)\n'[39m +
+        [32m'    at <anonymous>:5200:31\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesSimple (<anonymous>:5197:17)\n'[39m +
+        [32m'    at <anonymous>:5264:20\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n'[39m +
+        [32m'    at <anonymous>:5265:22\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)'[39m,
+      stack: [32m`Error: locator.all: SyntaxError: Failed to execute 'matches' on 'Element': '[id*="pivotGridTable"]-table' is not a valid selector.\n`[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesCSS (<anonymous>:5328:20)\n'[39m +
+        [32m'    at <anonymous>:5200:31\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesSimple (<anonymous>:5197:17)\n'[39m +
+        [32m'    at <anonymous>:5264:20\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n'[39m +
+        [32m'    at <anonymous>:5265:22\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesCSS (<anonymous>:5328:20)\n'[39m +
+        [32m'    at <anonymous>:5200:31\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesSimple (<anonymous>:5197:17)\n'[39m +
+        [32m'    at <anonymous>:5264:20\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n'[39m +
+        [32m'    at <anonymous>:5265:22\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n'[39m +
+        [32m'    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n'[39m +
+        [32m'    at BuyerPoUploadFormPage.capturePivotTable (C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\BuyerPoUpload\\BuyerPoUploadFormPage.ts:921:98)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:415:33)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:9)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:11)\n'[39m +
+        [32m'    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:7)'[39m,
+      cause: [90mundefined[39m
+    }
+  }
+}
+
+[1A[2K
+📋 ===== UPLOADED DATA (MULTIPLE LINES) =====
+
+[1A[2K
+📌 Header Data:
+
+[1A[2K{
+  "buyer": "George 5",
+  "styleNo": "0003 - BES1_STY11",
+  "styleDescription": "Style Description",
+  "styleColor": "BLUE",
+  "season": "Season 001",
+  "supplierCode": "",
+  "poDate": "",
+  "kimbleNo": "",
+  "remark": ""
+}
+
+[1A[2K
+📊 PO Size Breakdown:
+
+[1A[2K⚠️  Not found or empty - Please check pivot table
+
+[1A[2K
+📦 Line Items:
+
+[1A[2K(6 rows)
+
+[1A[2K[
+  {
+    "poNo": "PUR00020",
+    "countryCode": "UK",
+    "partNo": "S",
+    "qty": "40.00",
+    "total": "90.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00020",
+    "countryCode": "UK",
+    "partNo": "L",
+    "qty": "30.00",
+    "total": "90.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00020",
+    "countryCode": "UK",
+    "partNo": "M",
+    "qty": "20.00",
+    "total": "90.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00021",
+    "countryCode": "UK",
+    "partNo": "M",
+    "qty": "100.00",
+    "total": "250.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00021",
+    "countryCode": "UK",
+    "partNo": "S",
+    "qty": "50.00",
+    "total": "250.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00021",
+    "countryCode": "UK",
+    "partNo": "L",
+    "qty": "100.00",
+    "total": "250.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  }
+]
+
+[1A[2K
+==============================================
+
+
+[1A[2K✓ Verified: 6 line items uploaded successfully
+
+[1A[2K✓ Complete data saved to: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\buyerPOMultiple.json
+
+[1A[2K
+🎉 ===== UPLOAD COMPLETED SUCCESSFULLY =====
+
+[1A[2K✅ File: PO Summary format Multiple.xlsx
+
+[1A[2K✅ Line Items Captured: 6 rows
+
+[1A[2K✅ Size Breakdown: Processing...
+
+[1A[2K✅ Data File: buyerPOMultiple.json
+
+[1A[2K✅ Status: ALL DATA EXTRACTED AND SAVED
+
+[1A[2K==========================================
+
+
+[1A[2K✓ Cleared localStorage and sessionStorage
+
+[1A[2K✓ Cleared 2 browser cookies
+
+[1A[2K✓ Cleanup after last test: cleared all session data
+
+[1A[2K  8 passed (1.4m)

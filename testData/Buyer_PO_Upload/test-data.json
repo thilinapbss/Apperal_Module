@@ -26,39 +26,7 @@
           "sizeL": 300,
           "totalQty": 600
         }
-      },
-      "lineItems": [
-        {
-          "poNo": "PONO",
-          "countryCode": "UK",
-          "partNo": "M",
-          "qty": "500.00",
-          "deliveryDate": "Jun 18, 2026",
-          "pcdDate": "Jun 18, 2026",
-          "fobDate": "Jun 18, 2026",
-          "deliveryNo": "DLV-0618-1347-001"
-        },
-        {
-          "poNo": "PONO",
-          "countryCode": "UK",
-          "partNo": "S",
-          "qty": "600.00",
-          "deliveryDate": "Jun 18, 2026",
-          "pcdDate": "Jun 18, 2026",
-          "fobDate": "Jun 18, 2026",
-          "deliveryNo": "DLV-0618-1347-002"
-        },
-        {
-          "poNo": "PONO",
-          "countryCode": "UK",
-          "partNo": "L",
-          "qty": "500.00",
-          "deliveryDate": "Jun 18, 2026",
-          "pcdDate": "Jun 18, 2026",
-          "fobDate": "Jun 18, 2026",
-          "deliveryNo": "DLV-0618-1347-003"
-        }
-      ]
+      }
     }
   ],
   "suppliers": [
@@ -66,5 +34,12 @@
       "Description": "PRIMARK",
       "Value": "CS003"
     }
-  ]
+  ],
+  "dates": {
+    "deliveryDate": "2026-06-01",
+    "pcdDate": "2026-05-15",
+    "fobDate": "2026-06-20"
+  },
+  "currency": "LKR",
+  "poDate": "1 May 2026"
 }

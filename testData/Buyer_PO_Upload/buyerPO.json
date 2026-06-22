@@ -1,15 +1,16 @@
 {
-  "capturedAt": "2026-06-18T08:17:38.744Z",
+  "capturedAt": "2026-06-22T11:50:50.152Z",
   "header": {
     "buyer": "Buyer 001",
     "styleNo": "BUY0001",
     "styleDescription": "BUY2",
     "styleColor": "BUY_C2",
     "season": "BUY25 SE02",
-    "supplierCode": "CS003",
-    "poDate": "Jun 18, 2026",
+    "supplierCode": "",
+    "poDate": "",
     "kimbleNo": "KIM-001-QA2",
-    "remark": "QA Testing - Test Order"
+    "remark": "QA Testing - Test Order",
+    "currency": "LKR"
   },
   "lineItems": [
     {
@@ -18,10 +19,10 @@
       "partNo": "M",
       "qty": "500.00",
       "total": "1,600.00",
-      "deliveryNo": "DLV-0618-1347-001",
-      "deliveryDate": "Jun 18, 2026",
-      "pcdDate": "Jun 18, 2026",
-      "fobDate": "Jun 18, 2026"
+      "deliveryNo": "DLV-0622-1720-001",
+      "deliveryDate": "2026-06-01",
+      "pcdDate": "2026-05-15",
+      "fobDate": "2026-06-20"
     },
     {
       "poNo": "PONO",
@@ -29,10 +30,10 @@
       "partNo": "S",
       "qty": "600.00",
       "total": "1,600.00",
-      "deliveryNo": "DLV-0618-1347-002",
-      "deliveryDate": "Jun 18, 2026",
-      "pcdDate": "Jun 18, 2026",
-      "fobDate": "Jun 18, 2026"
+      "deliveryNo": "DLV-0622-1720-002",
+      "deliveryDate": "2026-06-01",
+      "pcdDate": "2026-05-15",
+      "fobDate": "2026-06-20"
     },
     {
       "poNo": "PONO",
@@ -40,10 +41,11 @@
       "partNo": "L",
       "qty": "500.00",
       "total": "1,600.00",
-      "deliveryNo": "DLV-0618-1347-003",
-      "deliveryDate": "Jun 18, 2026",
-      "pcdDate": "Jun 18, 2026",
-      "fobDate": "Jun 18, 2026"
+      "deliveryNo": "DLV-0622-1720-003",
+      "deliveryDate": "2026-06-01",
+      "pcdDate": "2026-05-15",
+      "fobDate": "2026-06-20"
     }
-  ]
+  ],
+  "sizeBreakdown": []
 }

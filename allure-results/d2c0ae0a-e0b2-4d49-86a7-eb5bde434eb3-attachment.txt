@@ -1,0 +1,3 @@
+✓ Cleared localStorage and sessionStorage
+Session lost — re-logging in...
+Re-login successful, resumed from home page

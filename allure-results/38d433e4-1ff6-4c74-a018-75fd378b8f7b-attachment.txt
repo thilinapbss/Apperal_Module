@@ -1,0 +1,3 @@
+✅ TC-LGN-003: Valid login – User authenticated and redirected to SAP Fiori dashboard
+🧹 Clearing browser cache...
+✅ Auth state preserved for next run

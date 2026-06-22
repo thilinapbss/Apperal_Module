@@ -1,0 +1,21 @@
+📋 Initializing test suite...
+🧹 Clearing browser cache before tests...
+🧹 Clearing all cache and session data...
+✅ Cleared: Auth file
+✅ Session data cleared
+✅ LocalStorage cleared
+✅ SessionStorage cleared
+✅ Cookies removed
+✅ IndexedDB cleaned
+📊 Test Data Loaded: 8 datasets
+✅ Test suite ready
+🧹 Final cleanup: Clearing all cache and session data after tests...
+🧹 Clearing all cache and session data...
+✅ Session data cleared
+✅ LocalStorage cleared
+✅ SessionStorage cleared
+✅ Cookies removed
+✅ IndexedDB cleaned
+✅ Test suite completed successfully
+✅ All session data cleared
+✅ Browser is in clean state

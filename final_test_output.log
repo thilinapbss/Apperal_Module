@@ -1,0 +1,31 @@
+
+> apperal_module@1.0.0 test
+> playwright test e2e/apparel_regression_testing.spec.ts
+
+◇ injected env (2) from .env // tip: ⌘ enable debugging { debug: true }
+
+Running 24 tests using 1 worker
+
+[1A[2K◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+
+[1A[2K[1/24] [chromium] › e2e\apparel_regression_testing.spec.ts:257:7 › Apperal Module | Regression Test Suite › 01. TC-LGN-001: Login page loads correctly
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:257:7 › Apperal Module | Regression Test Suite › 01. TC-LGN-001: Login page loads correctly
+✅ TC-LGN-001: Login page loads correctly
+
+[1A[2K[2/24] [chromium] › e2e\apparel_regression_testing.spec.ts:269:7 › Apperal Module | Regression Test Suite › 02. TC-LGN-001:  Should display error message on invalid credentials
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:269:7 › Apperal Module | Regression Test Suite › 02. TC-LGN-001:  Should display error message on invalid credentials
+✅ TC-LGN-002: Invalid credentials error displayed correctly
+
+[1A[2K[3/24] [chromium] › e2e\apparel_regression_testing.spec.ts:283:7 › Apperal Module | Regression Test Suite › 03. TC-LGN-002: Should successfully login with valid credentials and save auth
+[1A[2K[chromium] › e2e\apparel_regression_testing.spec.ts:283:7 › Apperal Module | Regression Test Suite › 03. TC-LGN-002: Should successfully login with valid credentials and save auth
+✅ TC-LGN-003: Successfully logged in and session established
+
+[1A[2K[4/24] [chromium] › e2e\apparel_regression_testing.spec.ts:306:9 › Apperal Module | Regression Test Suite › 04. TC-DSH-001: Dashboard loads with all tile groups
+[1A[2K[5/24] [chromium] › e2e\apparel_regression_testing.spec.ts:341:11 › Apperal Module | Regression Test Suite › 05. TC-DSH-002 - Clicking Buyer PO Upload tile navigates to list page
+[1A[2K[6/24] [chromium] › e2e\apparel_regression_testing.spec.ts:350:11 › Apperal Module | Regression Test Suite › 06. TC-BPO-003 - Table displays correct columns User is on Buyer PO Upload list page
+[1A[2K[7/24] [chromium] › e2e\apparel_regression_testing.spec.ts:359:11 › Apperal Module | Regression Test Suite › 07. TC-BPO-004 - Clicking Create navigates to New Buyer PO Upload page
+[1A[2K  1) [chromium] › e2e\apparel_regression_testing.spec.ts:359:11 › Apperal Module | Regression Test Suite › 07. TC-BPO-004 - Clicking Create navigates to New Buyer PO Upload page 
+
+    Error: worker process exited unexpectedly (code=143, signal=null)
+
+

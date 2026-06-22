@@ -1,0 +1,225 @@
+
+📁 Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format Multiple.xlsx
+Attempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format Multiple.xlsx
+Clicking Excel Upload button
+✓ Excel Upload button clicked
+File chooser triggered, setting files
+✓ File uploaded successfully
+
+✅ ===== FILE UPLOADED SUCCESSFULLY =====
+✓ File: PO Summary format Multiple.xlsx
+✓ Upload Status: COMPLETED
+✓ Processing: IN PROGRESS
+=========================================
+
+Buyer value (via inputValue): "George 5"
+StyleNo value (via inputValue): "0003 - BES1_STY11"
+StyleDescription value (via inputValue): "Style Description"
+StyleColor value (via inputValue): "BLUE"
+Season value (via inputValue): "Season 001"
+No value found for SupplierCode
+No value found for Remark
+
+📊 ===== LINE ITEMS CAPTURE =====
+Initial visible rows: 5 (before scrolling)
+Attempt 1: Current visible rows = 5
+Attempt 2: Current visible rows = 5
+✓ Reached end of table (no new rows loaded)
+✓ Navigation completed: Navigated down 1 times
+Found 5 total rows in Details table, capturing all...
+
+✅ LINE ITEMS CAPTURE COMPLETE
+Total rows captured: 5
+Expected: 6 rows (5 initial + 1 after scrolling)
+Status: ⚠ Only 5 rows captured
+=============================
+
+
+🔍 ===== PIVOT TABLE DIAGNOSTICS =====
+1. PivotSection blocks found: 94
+2. pivotGridTable elements found: 76
+3. All elements with 'pivot' in ID: 79
+   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotTableBox
+   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotTableTitle
+   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotTableTitle-inner
+   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotGridTable
+   - apperal.buyerpoupload::BuyerPoUploadHeaderObjectPage--fe::CustomSubSection::PivotSection--pivotGridTable-before
+⚠ Pivot table not found or error during capture: locator.all: SyntaxError: Failed to execute 'matches' on 'Element': '[id*="pivotGridTable"]-table' is not a valid selector.
+    at SelectorEvaluatorImpl._matchesCSS (<anonymous>:5328:20)
+    at <anonymous>:5200:31
+    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)
+    at SelectorEvaluatorImpl._matchesSimple (<anonymous>:5197:17)
+    at <anonymous>:5264:20
+    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)
+    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)
+    at <anonymous>:5265:22
+    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)
+    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)
+    at BuyerPoUploadFormPage.capturePivotTable (C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\src\pages\BuyerPoUpload\BuyerPoUploadFormPage.ts:876:98)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\e2e\apparel_regression_testing.spec.ts:383:33)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3045:9)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:2537:11)
+    at C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\node_modules\playwright\lib\worker\workerProcessEntry.js:3043:7) {
+  [Symbol(step)]: {
+    location: {
+      file: 'C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\BuyerPoUpload\\BuyerPoUploadFormPage.ts',
+      line: 876,
+      column: 98,
+      function: 'BuyerPoUploadFormPage.capturePivotTable'
+    },
+    category: 'pw:api',
+    title: `Query count locator('[id*="pivotGridTable"]-table tbody tr[role="row"]')`,
+    apiName: 'locator.all',
+    params: { selector: '[id*="pivotGridTable"]-table tbody tr[role="row"]' },
+    group: undefined,
+    stepId: 'pw:api@174',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@174',
+      _title: `Query count locator('[id*="pivotGridTable"]-table tbody tr[role="row"]')`,
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1782108855947,
+    error: {
+      message: `Error: locator.all: SyntaxError: Failed to execute 'matches' on 'Element': '[id*="pivotGridTable"]-table' is not a valid selector.\n` +
+        '    at SelectorEvaluatorImpl._matchesCSS (<anonymous>:5328:20)\n' +
+        '    at <anonymous>:5200:31\n' +
+        '    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n' +
+        '    at SelectorEvaluatorImpl._matchesSimple (<anonymous>:5197:17)\n' +
+        '    at <anonymous>:5264:20\n' +
+        '    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n' +
+        '    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n' +
+        '    at <anonymous>:5265:22\n' +
+        '    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n' +
+        '    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)',
+      stack: `Error: locator.all: SyntaxError: Failed to execute 'matches' on 'Element': '[id*="pivotGridTable"]-table' is not a valid selector.\n` +
+        '    at SelectorEvaluatorImpl._matchesCSS (<anonymous>:5328:20)\n' +
+        '    at <anonymous>:5200:31\n' +
+        '    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n' +
+        '    at SelectorEvaluatorImpl._matchesSimple (<anonymous>:5197:17)\n' +
+        '    at <anonymous>:5264:20\n' +
+        '    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n' +
+        '    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n' +
+        '    at <anonymous>:5265:22\n' +
+        '    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n' +
+        '    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n' +
+        '    at SelectorEvaluatorImpl._matchesCSS (<anonymous>:5328:20)\n' +
+        '    at <anonymous>:5200:31\n' +
+        '    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n' +
+        '    at SelectorEvaluatorImpl._matchesSimple (<anonymous>:5197:17)\n' +
+        '    at <anonymous>:5264:20\n' +
+        '    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n' +
+        '    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n' +
+        '    at <anonymous>:5265:22\n' +
+        '    at SelectorEvaluatorImpl._cached (<anonymous>:5121:20)\n' +
+        '    at SelectorEvaluatorImpl._matchesParents (<anonymous>:5247:17)\n' +
+        '    at BuyerPoUploadFormPage.capturePivotTable (C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\src\\pages\\BuyerPoUpload\\BuyerPoUploadFormPage.ts:876:98)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\e2e\\apparel_regression_testing.spec.ts:383:33)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3045:9)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:2537:11)\n' +
+        '    at C:\\Users\\thilina\\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\\Desktop\\Apperal_Module\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:3043:7)',
+      cause: undefined
+    }
+  }
+}
+
+📋 ===== UPLOADED DATA (MULTIPLE LINES) =====
+
+📌 Header Data:
+{
+  "buyer": "George 5",
+  "styleNo": "0003 - BES1_STY11",
+  "styleDescription": "Style Description",
+  "styleColor": "BLUE",
+  "season": "Season 001",
+  "supplierCode": "",
+  "poDate": "",
+  "kimbleNo": "",
+  "remark": ""
+}
+
+📊 PO Size Breakdown:
+⚠️  Not found or empty - Please check pivot table
+
+📦 Line Items:
+(5 rows)
+[
+  {
+    "poNo": "PUR00020",
+    "countryCode": "UK",
+    "partNo": "L",
+    "qty": "30.00",
+    "total": "90.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00020",
+    "countryCode": "UK",
+    "partNo": "S",
+    "qty": "40.00",
+    "total": "90.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00020",
+    "countryCode": "UK",
+    "partNo": "M",
+    "qty": "20.00",
+    "total": "90.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00021",
+    "countryCode": "UK",
+    "partNo": "L",
+    "qty": "100.00",
+    "total": "250.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  },
+  {
+    "poNo": "PUR00021",
+    "countryCode": "UK",
+    "partNo": "S",
+    "qty": "50.00",
+    "total": "250.00",
+    "deliveryNo": "",
+    "deliveryDate": "",
+    "pcdDate": "",
+    "fobDate": ""
+  }
+]
+
+==============================================
+
+✓ Verified: 5 line items uploaded successfully
+✓ Complete data saved to: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\buyerPOMultiple.json
+
+🎉 ===== UPLOAD COMPLETED SUCCESSFULLY =====
+✅ File: PO Summary format Multiple.xlsx
+✅ Line Items Captured: 5 rows
+✅ Size Breakdown: Processing...
+✅ Data File: buyerPOMultiple.json
+✅ Status: ALL DATA EXTRACTED AND SAVED
+==========================================
+
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

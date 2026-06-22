@@ -1,0 +1,5 @@
+Not on dashboard — attempting to navigate back
+Failed to return to dashboard via back navigation — re-logging in
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

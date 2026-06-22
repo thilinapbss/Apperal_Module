@@ -1,0 +1,79 @@
+
+📁 Uploading file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format Multiple.xlsx
+Attempting to upload file: C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Buyer_PO_Upload\PO Summary format Multiple.xlsx
+Waiting for 1 busy indicators to disappear...
+Clicking Excel Upload button
+✓ Excel Upload button clicked
+File chooser triggered, setting files
+✓ File uploaded successfully
+
+✅ ===== FILE UPLOADED SUCCESSFULLY =====
+✓ File: PO Summary format Multiple.xlsx
+✓ Upload Status: COMPLETED
+✓ Processing: IN PROGRESS
+=========================================
+
+Buyer value (via inputValue): "George 5"
+StyleNo value (via inputValue): "0003 - BES1_STY11"
+StyleDescription value (via inputValue): "Style Description"
+StyleColor value (via inputValue): "BLUE"
+Season value (via inputValue): "Season 001"
+No value found for SupplierCode
+No value found for Remark
+
+📊 ===== LINE ITEMS CAPTURE =====
+📌 Table Title: Details (6)
+📌 Expected rows from title: 6
+📌 Initial visible rows (before scroll): 5
+
+🔄 Scrolling to load all 6 rows...
+Attempt 1: Current rows = 5/6
+Attempt 2: Current rows = 5/6
+Attempt 3: Current rows = 5/6
+Attempt 4: Current rows = 5/6
+Attempt 5: Current rows = 5/6
+Attempt 6: Current rows = 5/6
+Attempt 7: Current rows = 5/6
+⚠️ Stuck - No new rows after 6 scroll attempts. Current: 5/6
+Attempt 8: Current rows = 5/6
+⚠️ Stuck - No new rows after 7 scroll attempts. Current: 5/6
+Attempt 9: Current rows = 5/6
+⚠️ Stuck - No new rows after 8 scroll attempts. Current: 5/6
+Attempt 10: Current rows = 5/6
+⚠️ Stuck - No new rows after 9 scroll attempts. Current: 5/6
+Attempt 11: Current rows = 5/6
+⚠️ Stuck - No new rows after 10 scroll attempts. Current: 5/6
+Attempt 12: Current rows = 5/6
+⚠️ Stuck - No new rows after 11 scroll attempts. Current: 5/6
+Attempt 13: Current rows = 5/6
+⚠️ Stuck - No new rows after 12 scroll attempts. Current: 5/6
+Attempt 14: Current rows = 5/6
+⚠️ Stuck - No new rows after 13 scroll attempts. Current: 5/6
+Attempt 15: Current rows = 5/6
+⚠️ Stuck - No new rows after 14 scroll attempts. Current: 5/6
+Attempt 16: Current rows = 5/6
+⚠️ Stuck - No new rows after 15 scroll attempts. Current: 5/6
+Attempt 17: Current rows = 5/6
+⚠️ Stuck - No new rows after 16 scroll attempts. Current: 5/6
+❌ FAILED TO LOAD ALL ROWS - Max scroll attempts reached
+✓ Scrolling completed: 16 scroll attempts
+Found 5 total rows in Details table, capturing all...
+
+✅ LINE ITEMS CAPTURE COMPLETE
+Total rows captured: 5/6
+Status: ❌ ERROR - Only 5/6 rows captured
+Missing 1 row(s)
+
+📋 ALL CAPTURED LINE ITEMS (5/6)
+Row # | PO No | Country | Part No | Qty | Total
+------|-------|---------|---------|-----|-------
+1. | PUR00020 | UK | S | 40.00 | 90.00
+2. | PUR00020 | UK | L | 30.00 | 90.00
+3. | PUR00020 | UK | M | 20.00 | 90.00
+4. | PUR00021 | UK | M | 100.00 | 250.00
+5. | PUR00021 | UK | L | 100.00 | 250.00
+=============================
+
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data
