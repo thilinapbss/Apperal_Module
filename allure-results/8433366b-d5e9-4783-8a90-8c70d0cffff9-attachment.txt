@@ -1,0 +1,1 @@
+✅ TC-LGN-002: Invalid credentials error displayed correctly

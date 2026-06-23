@@ -1,0 +1,1 @@
+✓ Cleanup after last test: cleared all session data

@@ -1,0 +1,7 @@
+Sub Master Branch page loaded successfully
+Filled Sub Master Branch form: Code="BR002", Name="Branch 001", Status="Active"
+Sub Master Branch data captured and saved to C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\SubMasterBranch\SubMasterBranch.json
+Sub Master Branch created and saved successfully
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

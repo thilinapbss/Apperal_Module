@@ -1,0 +1,3 @@
+Segment Master name entered: Segment 2_23/06/16:49:12_23/06/16:52:41_23/06/17:04:04
+Filled 3 segment line item(s)
+Form data captured and saved to C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\SegmentMaster\test-data.json

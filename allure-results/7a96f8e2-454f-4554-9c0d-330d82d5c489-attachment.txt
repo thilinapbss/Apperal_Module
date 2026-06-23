@@ -1,0 +1,6 @@
+Segment Master name entered: Segment 2
+Filled 3 segment line item(s)
+Form data captured and saved to C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\SegmentMaster\test-data.json
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

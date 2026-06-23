@@ -1,0 +1,7 @@
+
+⚠ Test failed - Checking if session is still valid...
+✓ Session is still valid - Continuing
+
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

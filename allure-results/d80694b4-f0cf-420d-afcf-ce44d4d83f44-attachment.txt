@@ -1,0 +1,6 @@
+Filled vendor form: Name="Vendor M", Status="Active"
+Vendor data captured and saved to C:\Users\thilina\OneDrive - Perfect Business Solutions Services (Pvt) Ltd\Desktop\Apperal_Module\testData\Vendor\Vendor.json
+Vendor created and saved successfully
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

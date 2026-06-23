@@ -1,25 +1,28 @@
 {
-  "routingPlanName": "Routing Plan 001",
+  "routingPlanName": "Routing Plan 004",
   "routingPlanCode": "RO10RU",
   "status": "Active",
   "details": [
     {
-      "routeCode": "CU01",
+      "routeCode": "C1",
       "routeName": "Cutting",
       "warehouse": "WH-CMB",
-      "isSemiFinishGood": true
+      "SemifinishedGood": "Production",
+      "FinishedGood": "Production"
     },
     {
-      "routeCode": "SA1",
+      "routeCode": "S1",
       "routeName": "Sawing",
       "warehouse": "WH-CMB",
-      "isSemiFinishGood": true
+      "SemifinishedGood": "Production",
+      "FinishedGood": "Production"
     },
     {
-      "routeCode": "PA1",
+      "routeCode": "P1",
       "routeName": "Packing",
       "warehouse": "WH-CMB",
-      "isSemiFinishGood": false
+      "SemifinishedGood": "Production",
+      "FinishedGood": "Production"
     }
   ]
 }

@@ -1,0 +1,10 @@
+
+⚠ Test failed - Checking if session is still valid...
+❌ Session lost - Attempting automatic recovery...
+Re-login successful, resumed from home page
+✓ Session recovered - User logged back in
+✓ Navigated to home - Ready for next test
+
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

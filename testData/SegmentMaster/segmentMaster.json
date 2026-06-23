@@ -1,8 +1,0 @@
-{
-  "name": "Segment 2",
-  "segments": [
-    { "segmentCode": "SIZ", "segmentName": "Size" },
-    { "segmentCode": "COL", "segmentName": "Color" },
-    { "segmentCode": "SEA", "segmentName": "Season" }
-  ]
-}

@@ -1,0 +1,1 @@
+✅ TC-LGN-001: Login page loads correctly

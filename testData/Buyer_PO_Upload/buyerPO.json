@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-06-22T11:50:50.152Z",
+  "capturedAt": "2026-06-23T11:32:39.082Z",
   "header": {
     "buyer": "Buyer 001",
     "styleNo": "BUY0001",
@@ -16,10 +16,21 @@
     {
       "poNo": "PONO",
       "countryCode": "UK",
+      "partNo": "L",
+      "qty": "500.00",
+      "total": "1,600.00",
+      "deliveryNo": "DLV-0623-1702-001",
+      "deliveryDate": "2026-06-01",
+      "pcdDate": "2026-05-15",
+      "fobDate": "2026-06-20"
+    },
+    {
+      "poNo": "PONO",
+      "countryCode": "UK",
       "partNo": "M",
       "qty": "500.00",
       "total": "1,600.00",
-      "deliveryNo": "DLV-0622-1720-001",
+      "deliveryNo": "DLV-0623-1702-002",
       "deliveryDate": "2026-06-01",
       "pcdDate": "2026-05-15",
       "fobDate": "2026-06-20"
@@ -30,18 +41,7 @@
       "partNo": "S",
       "qty": "600.00",
       "total": "1,600.00",
-      "deliveryNo": "DLV-0622-1720-002",
-      "deliveryDate": "2026-06-01",
-      "pcdDate": "2026-05-15",
-      "fobDate": "2026-06-20"
-    },
-    {
-      "poNo": "PONO",
-      "countryCode": "UK",
-      "partNo": "L",
-      "qty": "500.00",
-      "total": "1,600.00",
-      "deliveryNo": "DLV-0622-1720-003",
+      "deliveryNo": "DLV-0623-1702-003",
       "deliveryDate": "2026-06-01",
       "pcdDate": "2026-05-15",
       "fobDate": "2026-06-20"

@@ -1,0 +1,17 @@
+
+📝 STEP 1: Creating rows and filling data...
+
+[Row 1/3] Click Create button...
+[Row 1] Fill Route Code: C1
+[Row 1] Fill Route Name: Cutting
+[Row 1] Fill Warehouse: WH-CMB
+[Row 1] Fill Semifinished Good: Production
+✓ Row 1 completed
+
+[Row 2/3] Click Create button...
+[Row 2] Fill Route Code: S1
+[Row 2] Fill Route Name: Sawing
+[Row 2] Fill Warehouse: WH-CMB
+✓ Cleared localStorage and sessionStorage
+✓ Cleared 2 browser cookies
+✓ Cleanup after last test: cleared all session data

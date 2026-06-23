@@ -1,6 +1,28 @@
 {
-  "routingPlanName": "",
+  "routingPlanName": "Routing Plan 004_23/06/17:02:53",
   "routingPlanCode": "",
   "status": "Active",
-  "details": []
+  "details": [
+    {
+      "routeCode": "P1",
+      "routeName": "Packing",
+      "warehouse": "WH-CMB",
+      "SemifinishedGood": "Production",
+      "FinishedGood": "Production"
+    },
+    {
+      "routeCode": "S1",
+      "routeName": "Sawing",
+      "warehouse": "WH-CMB",
+      "SemifinishedGood": "Production",
+      "FinishedGood": "Production"
+    },
+    {
+      "routeCode": "C1",
+      "routeName": "Cutting",
+      "warehouse": "WH-CMB",
+      "SemifinishedGood": "Production",
+      "FinishedGood": "Production"
+    }
+  ]
 }
